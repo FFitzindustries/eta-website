@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Jost', 'Helvetica Neue', system-ui, sans-serif; color: #1c1512; background: #faf6f2; }
+    a { color: #c58a32; text-decoration: none; }
+    a:hover { color: #a06f24; }
+    .nav-link { color: #1c1512; font-size: 15px; letter-spacing: 0.02em; }
+    .nav-link:hover { color: #c58a32; }
+    .t-card { background: #ffffff; border: 1px solid #f0e4dc; padding: 26px 24px; display: flex; flex-direction: column; gap: 10px; }
+    .t-name { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; font-weight: 500; color: #1c1512; margin: 0; }
+    .t-sub { color: #7a6a60; font-size: 14px; line-height: 1.5; margin: 0; }
+    .t-link { font-size: 13px; letter-spacing: 0.05em; margin-top: auto; }
+    .g-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: #1c1512; margin: 0; }
+    .g-count { color: #b7a99e; font-size: 13px; letter-spacing: 0.08em; }
+  </style>
+</helmet>
+<div style="width: 1440px; min-height: 2850px; background: #faf6f2; display: flex; flex-direction: column;">
+
+  <div style="position: fixed; right: 28px; bottom: 28px; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(5,5,5,0.3); z-index: 50;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"></path></svg>
+  </div>
+
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 14px 64px; background: #ffffff; border-bottom: 1px solid #f0e4dc;">
+    <img src="logo.png" alt="ETA European Turkey Asia" style="height: 66px; width: auto;" />
+    <nav style="display: flex; gap: 30px; align-items: center;">
+      <a href="#" class="nav-link" style="color: #c58a32; font-weight: 500;">Behandlungen</a>
+      <a href="#" class="nav-link">Partnerklinik</a>
+      <a href="#" class="nav-link">Ablauf</a>
+      <a href="#" class="nav-link">Finanzierung</a>
+      <a href="#" class="nav-link">Vorher / Nachher</a>
+      <a href="#" class="nav-link">Kontakt</a>
+    </nav>
+    <div style="display: flex; gap: 18px; align-items: center;">
+      <div style="display: flex; gap: 6px; align-items: center; color: #7a6a60; font-size: 14px; letter-spacing: 0.05em;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7a6a60" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><ellipse cx="12" cy="12" rx="4" ry="9"></ellipse><path d="M3 12h18"></path></svg>
+        <span>DE</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#7a6a60" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: center; background: #25D366; color: #ffffff; padding: 12px 22px; border-radius: 2px; font-size: 15px; font-weight: 500; letter-spacing: 0.03em;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"></path></svg>
+        <span>WhatsApp</span>
+      </div>
+    </div>
+  </header>
+
+  <section style="background: #fbeef0; padding: 72px 64px; display: flex; flex-direction: column; gap: 18px;">
+    <div style="display: flex; gap: 10px; align-items: center; color: #a08a7c; font-size: 13px; letter-spacing: 0.06em;">
+      <a href="#" style="color: #a08a7c;">Behandlungen</a>
+      <span>/</span>
+      <span style="color: #1c1512;">Plastische Chirurgie</span>
+    </div>
+    <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 46px; color: #1c1512;">Plastische Chirurgie</h1>
+    <p style="margin: 0; color: #7a6a60; font-size: 17px; line-height: 1.7; max-width: 640px;">19 Eingriffe, durchgeführt von den Fachärztinnen und Fachärzten unserer Partnerklinik in Istanbul. Jede Behandlung beginnt mit einem persönlichen Beratungsgespräch auf Deutsch.</p>
+    <a href="#" style="font-size: 14px; letter-spacing: 0.04em; border-bottom: 1px solid #c58a32; padding-bottom: 2px; align-self: flex-start;">Zum gesamten Behandlungskatalog</a>
+  </section>
+
+  <section style="padding: 72px 64px; display: flex; flex-direction: column; gap: 56px;">
+
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <h2 class="g-title">Gesicht</h2>
+        <span class="g-count">5 BEHANDLUNGEN</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+        <div class="t-card"><h3 class="t-name">Nasenkorrektur</h3><p class="t-sub">Rhinoplastik: Form und Funktion der Nase</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Facelifting</h3><p class="t-sub">Straffung von Gesicht und Hals</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Lidstraffung</h3><p class="t-sub">Blepharoplastik: Ober- und Unterlider</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Ohrenkorrektur</h3><p class="t-sub">Otoplastik: Anlegen abstehender Ohren</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Brauenlifting &amp; Schläfenstraffung</h3><p class="t-sub">Öffnung der Augenpartie</p><a href="#" class="t-link">Mehr erfahren</a></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <h2 class="g-title">Brust</h2>
+        <span class="g-count">2 BEHANDLUNGEN</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+        <div class="t-card"><h3 class="t-name">Brustvergrösserung</h3><p class="t-sub">Mit Implantat oder Eigenfett</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Bruststraffung</h3><p class="t-sub">Form und Halt, etwa nach Stillzeit oder Gewichtsverlust</p><a href="#" class="t-link">Mehr erfahren</a></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <h2 class="g-title">Körper</h2>
+        <span class="g-count">5 BEHANDLUNGEN</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+        <div class="t-card"><h3 class="t-name">Fettabsaugung</h3><p class="t-sub">Liposuktion: gezielte Konturierung einzelner Zonen</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Bauchdeckenstraffung</h3><p class="t-sub">Straffung nach Schwangerschaft oder Abnahme</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Oberarmstraffung</h3><p class="t-sub">Straffe Kontur der Oberarme</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Oberschenkelstraffung</h3><p class="t-sub">Straffung der Innenseiten</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Eigenfett-Transfer</h3><p class="t-sub">Lipofilling: Volumen aus körpereigenem Fett</p><a href="#" class="t-link">Mehr erfahren</a></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <h2 class="g-title">Intimchirurgie Frau</h2>
+        <span class="g-count">2 BEHANDLUNGEN</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+        <div class="t-card"><h3 class="t-name">Schamlippenkorrektur</h3><p class="t-sub">Labioplastik, diskret beraten</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Venushügel-Korrektur</h3><p class="t-sub">Konturierung des Venushügels</p><a href="#" class="t-link">Mehr erfahren</a></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; gap: 16px; align-items: baseline;">
+        <h2 class="g-title">Intimchirurgie Mann</h2>
+        <span class="g-count">5 BEHANDLUNGEN</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+        <div class="t-card"><h3 class="t-name">Penisvergrösserung</h3><p class="t-sub">Länge und Umfang</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Penis-Eigenfett-Behandlung</h3><p class="t-sub">Volumenaufbau mit Eigenfett</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Penis-PRP-Behandlung</h3><p class="t-sub">Eigenbluttherapie</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Korrektur der Penisverkrümmung</h3><p class="t-sub">Operative Korrektur</p><a href="#" class="t-link">Mehr erfahren</a></div>
+        <div class="t-card"><h3 class="t-name">Stosswellentherapie</h3><p class="t-sub">ESWT, ohne Operation</p><a href="#" class="t-link">Mehr erfahren</a></div>
+      </div>
+    </div>
+
+  </section>
+
+  <section style="background: #050505; padding: 64px; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px; color: #ffffff;">Unsicher, welche Behandlung passt?</div>
+      <div style="color: #b7a99e; font-size: 15px;">Wir beraten Sie unverbindlich und auf Deutsch.</div>
+    </div>
+    <div style="display: flex; gap: 10px; align-items: center; background: #25D366; color: #ffffff; padding: 16px 30px; border-radius: 2px; font-size: 16px; font-weight: 500; letter-spacing: 0.03em;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"></path></svg>
+      <span>Unverbindlich anfragen</span>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+</body>
+</html>

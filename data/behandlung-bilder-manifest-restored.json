@@ -1,0 +1,507 @@
+[
+  {
+    "slug": "stirn-botox",
+    "path": "assets/img/behandlungen/stirn-botox.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "gesichts-botox",
+    "path": "assets/img/behandlungen/gesichts-botox.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "augenbrauen-botox",
+    "path": "assets/img/behandlungen/augenbrauen-botox.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "lippen-botox",
+    "path": "assets/img/behandlungen/lippen-botox.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "masseter-botox",
+    "path": "assets/img/behandlungen/masseter-botox.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "botox-haende",
+    "path": "assets/img/behandlungen/botox-haende.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "botox-achseln",
+    "path": "assets/img/behandlungen/botox-achseln.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "lippen-filler",
+    "path": "assets/img/behandlungen/lippen-filler.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "augenringe-filler",
+    "path": "assets/img/behandlungen/augenringe-filler.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "nasen-filler",
+    "path": "assets/img/behandlungen/nasen-filler.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "nasolabial-filler",
+    "path": "assets/img/behandlungen/nasolabial-filler.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "wangen-filler",
+    "path": "assets/img/behandlungen/wangen-filler.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "jawline-filler",
+    "path": "assets/img/behandlungen/jawline-filler.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "gesichtsverjuengung-filler",
+    "path": "assets/img/behandlungen/gesichtsverjuengung-filler.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "smart-filler",
+    "path": "assets/img/behandlungen/smart-filler.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "hifu-facelifting",
+    "path": "assets/img/behandlungen/hifu-facelifting.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "fadenlifting",
+    "path": "assets/img/behandlungen/fadenlifting.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "microneedling-rf",
+    "path": "assets/img/behandlungen/microneedling-rf.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "mesotherapie-gesicht",
+    "path": "assets/img/behandlungen/mesotherapie-gesicht.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "chemisches-peeling",
+    "path": "assets/img/behandlungen/chemisches-peeling.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "karbon-peeling",
+    "path": "assets/img/behandlungen/karbon-peeling.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "prp-vampirlifting",
+    "path": "assets/img/behandlungen/prp-vampirlifting.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "hydrafacial",
+    "path": "assets/img/behandlungen/hydrafacial.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "medizinische-hautpflege",
+    "path": "assets/img/behandlungen/medizinische-hautpflege.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "stammzellen-therapie",
+    "path": "assets/img/behandlungen/stammzellen-therapie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "lachs-dna-serum",
+    "path": "assets/img/behandlungen/lachs-dna-serum.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "skinbooster-jungbrunnen",
+    "path": "assets/img/behandlungen/skinbooster-jungbrunnen.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "4d-hautverjuengung",
+    "path": "assets/img/behandlungen/4d-hautverjuengung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "dehnungsstreifen-pigmentflecken",
+    "path": "assets/img/behandlungen/dehnungsstreifen-pigmentflecken.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "laser-haarentfernung",
+    "path": "assets/img/behandlungen/laser-haarentfernung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "laser-tattooentfernung",
+    "path": "assets/img/behandlungen/laser-tattooentfernung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "laser-faltenbehandlung",
+    "path": "assets/img/behandlungen/laser-faltenbehandlung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "laser-pigmentflecken",
+    "path": "assets/img/behandlungen/laser-pigmentflecken.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "besenreiser-couperose",
+    "path": "assets/img/behandlungen/besenreiser-couperose.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "gefaessveraenderungen",
+    "path": "assets/img/behandlungen/gefaessveraenderungen.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "feuermal-behandlung",
+    "path": "assets/img/behandlungen/feuermal-behandlung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "bbl-lichttherapie",
+    "path": "assets/img/behandlungen/bbl-lichttherapie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "fraktionierter-laser",
+    "path": "assets/img/behandlungen/fraktionierter-laser.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "q-switch-laser",
+    "path": "assets/img/behandlungen/q-switch-laser.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "laser-hautaufhellung",
+    "path": "assets/img/behandlungen/laser-hautaufhellung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "achselaufhellung",
+    "path": "assets/img/behandlungen/achselaufhellung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "intimaufhellung",
+    "path": "assets/img/behandlungen/intimaufhellung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "haaraufhellung",
+    "path": "assets/img/behandlungen/haaraufhellung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "kryolipolyse",
+    "path": "assets/img/behandlungen/kryolipolyse.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "fettweg-mesotherapie",
+    "path": "assets/img/behandlungen/fettweg-mesotherapie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "radiofrequenz",
+    "path": "assets/img/behandlungen/radiofrequenz.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "lymphdrainage",
+    "path": "assets/img/behandlungen/lymphdrainage.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "g5-cellulite-massage",
+    "path": "assets/img/behandlungen/g5-cellulite-massage.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "nasenkorrektur",
+    "path": "assets/img/behandlungen/nasenkorrektur.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "facelifting",
+    "path": "assets/img/behandlungen/facelifting.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "lidstraffung",
+    "path": "assets/img/behandlungen/lidstraffung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "ohrenkorrektur",
+    "path": "assets/img/behandlungen/ohrenkorrektur.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "brauenlifting-schlaefenstraffung",
+    "path": "assets/img/behandlungen/brauenlifting-schlaefenstraffung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "brustvergroesserung",
+    "path": "assets/img/behandlungen/brustvergroesserung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "bruststraffung",
+    "path": "assets/img/behandlungen/bruststraffung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "fettabsaugung",
+    "path": "assets/img/behandlungen/fettabsaugung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "bauchdeckenstraffung",
+    "path": "assets/img/behandlungen/bauchdeckenstraffung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "oberarmstraffung",
+    "path": "assets/img/behandlungen/oberarmstraffung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "oberschenkelstraffung",
+    "path": "assets/img/behandlungen/oberschenkelstraffung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "eigenfett-transfer",
+    "path": "assets/img/behandlungen/eigenfett-transfer.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "schamlippenkorrektur",
+    "path": "assets/img/behandlungen/schamlippenkorrektur.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "venushuegel-korrektur",
+    "path": "assets/img/behandlungen/venushuegel-korrektur.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "penisvergroesserung",
+    "path": "assets/img/behandlungen/penisvergroesserung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "penis-eigenfett",
+    "path": "assets/img/behandlungen/penis-eigenfett.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "penis-prp",
+    "path": "assets/img/behandlungen/penis-prp.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "penisverkruemmung",
+    "path": "assets/img/behandlungen/penisverkruemmung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "stosswellentherapie",
+    "path": "assets/img/behandlungen/stosswellentherapie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "fue-haartransplantation",
+    "path": "assets/img/behandlungen/fue-haartransplantation.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "dhi-haartransplantation",
+    "path": "assets/img/behandlungen/dhi-haartransplantation.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "saphir-haartransplantation",
+    "path": "assets/img/behandlungen/saphir-haartransplantation.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "perkutane-haartransplantation",
+    "path": "assets/img/behandlungen/perkutane-haartransplantation.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "haartransplantation-frauen",
+    "path": "assets/img/behandlungen/haartransplantation-frauen.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "barthaartransplantation",
+    "path": "assets/img/behandlungen/barthaartransplantation.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "augenbrauentransplantation",
+    "path": "assets/img/behandlungen/augenbrauentransplantation.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "haar-mesotherapie",
+    "path": "assets/img/behandlungen/haar-mesotherapie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "haar-prp",
+    "path": "assets/img/behandlungen/haar-prp.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "haarpigmentierung",
+    "path": "assets/img/behandlungen/haarpigmentierung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "hollywood-smile",
+    "path": "assets/img/behandlungen/hollywood-smile.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "zahnimplantate",
+    "path": "assets/img/behandlungen/zahnimplantate.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "kronen-veneers",
+    "path": "assets/img/behandlungen/kronen-veneers.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "bleaching",
+    "path": "assets/img/behandlungen/bleaching.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "zahnprothesen",
+    "path": "assets/img/behandlungen/zahnprothesen.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "zahnfuellungen",
+    "path": "assets/img/behandlungen/zahnfuellungen.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "wurzelbehandlung",
+    "path": "assets/img/behandlungen/wurzelbehandlung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "zahnreinigung",
+    "path": "assets/img/behandlungen/zahnreinigung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "dermatologie",
+    "path": "assets/img/behandlungen/dermatologie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "ernaehrungsberatung",
+    "path": "assets/img/behandlungen/ernaehrungsberatung.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "innere-medizin",
+    "path": "assets/img/behandlungen/innere-medizin.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "urologie",
+    "path": "assets/img/behandlungen/urologie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "gynaekologie",
+    "path": "assets/img/behandlungen/gynaekologie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "physiotherapie",
+    "path": "assets/img/behandlungen/physiotherapie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "allgemeinchirurgie",
+    "path": "assets/img/behandlungen/allgemeinchirurgie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "hno",
+    "path": "assets/img/behandlungen/hno.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "orthopaedie-traumatologie",
+    "path": "assets/img/behandlungen/orthopaedie-traumatologie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "radiologie",
+    "path": "assets/img/behandlungen/radiologie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "labor",
+    "path": "assets/img/behandlungen/labor.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "anaesthesiologie",
+    "path": "assets/img/behandlungen/anaesthesiologie.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "komplementaermedizin",
+    "path": "assets/img/behandlungen/komplementaermedizin.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "check-up",
+    "path": "assets/img/behandlungen/check-up.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "gesundheitsatteste",
+    "path": "assets/img/behandlungen/gesundheitsatteste.jpg",
+    "status": "ok"
+  },
+  {
+    "slug": "gesichts-mesolifting",
+    "path": "assets/img/behandlungen/gesichts-mesolifting.jpg",
+    "status": "ok"
+  }
+]

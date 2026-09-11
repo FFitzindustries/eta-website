@@ -1,0 +1,14 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 4900, "title": "Startseite" },
+    { "file": "Mobil.dc.html", "x": 1560, "y": 0, "w": 390, "h": 844, "title": "Startseite Mobil" },
+    { "file": "Kategorie.dc.html", "x": 0, "y": 5060, "w": 1440, "h": 2850, "title": "Plastische Chirurgie" },
+    { "file": "Behandlung.dc.html", "x": 1560, "y": 5060, "w": 1440, "h": 2100, "title": "Brustvergrösserung" },
+    { "file": "Kontakt.dc.html", "x": 0, "y": 8070, "w": 1440, "h": 1650, "title": "Kontakt" },
+    { "file": "Klinik.dc.html", "x": 1560, "y": 8070, "w": 1440, "h": 2280, "title": "Ablauf und Partnerklinik" }
+  ],
+  "annotations": [
+    { "id": "platzhalter-hinweis", "x": 1560, "y": 1000, "w": 390, "text": "Platzhalter im Mockup:\n[PREIS], [WHATSAPP-NUMMER], [E-MAIL], [BETREIBER-FIRMA], Vorher/Nachher-Bilder und Klinik-Fotos kommen von Mohema bzw. der Elit Klinik.\nDomain und Betreiberfirma sind noch offen." }
+  ],
+  "launch": { "view": "canvas" }
+}

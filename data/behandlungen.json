@@ -1,0 +1,236 @@
+{
+  "quelle": "https://elitklinik.com.tr (Navigation, Stand 2026-08-30)",
+  "hinweis": "Deutsche Namen sind ETA-Arbeitstitel, Texte werden neu geschrieben (kein 1:1-Kopieren). lokal_riverside = wird von Riverside Beauty St. Margrethen lokal angeboten (Cross-Linking).",
+  "kategorien": [
+    {
+      "id": "haut-beauty",
+      "name_de": "Haut & Beauty",
+      "name_tr": "Medikal Estetik",
+      "quelle_url": "https://elitklinik.com.tr/medikal-estetik-uygulamalari/",
+      "gruppen": [
+        {
+          "name_de": "Botox",
+          "quelle_url": "https://elitklinik.com.tr/botoks-uygulamalari/",
+          "behandlungen": [
+            { "slug": "stirn-botox", "name_de": "Stirn-Botox", "name_tr": "Alın Botoksu", "quelle_url": "https://elitklinik.com.tr/alin-botoksu/", "lokal_riverside": true },
+            { "slug": "gesichts-botox", "name_de": "Gesichts-Botox", "name_tr": "Yüz Botoksu", "quelle_url": "https://elitklinik.com.tr/yuz-botoksu/", "lokal_riverside": true },
+            { "slug": "augenbrauen-botox", "name_de": "Augenbrauen-Lifting mit Botox", "name_tr": "Kaş Botoksu", "quelle_url": "https://elitklinik.com.tr/kas-botoksu/", "lokal_riverside": true },
+            { "slug": "lippen-botox", "name_de": "Lippen-Botox (Barcode-Fältchen)", "name_tr": "Dudak Botoksu", "quelle_url": "https://elitklinik.com.tr/dudak-ustu-ve-kenari-botoksu/", "lokal_riverside": true },
+            { "slug": "masseter-botox", "name_de": "Masseter-Botox (Kiefer)", "name_tr": "Masseter / Çene Botoksu", "quelle_url": "https://elitklinik.com.tr/cene-botoksu/", "lokal_riverside": true },
+            { "slug": "botox-haende", "name_de": "Botox gegen Handschweiss", "name_tr": "El Terlemesi Botoksu", "quelle_url": "https://elitklinik.com.tr/el-terlemesi-botoksu/", "lokal_riverside": false },
+            { "slug": "botox-achseln", "name_de": "Botox gegen Achselschweiss", "name_tr": "Koltuk Altı Botoksu", "quelle_url": "https://elitklinik.com.tr/koltuk-alti-botoksu/", "lokal_riverside": false }
+          ]
+        },
+        {
+          "name_de": "Hyaluron & Filler",
+          "quelle_url": "https://elitklinik.com.tr/dolgu-uygulamalari/",
+          "behandlungen": [
+            { "slug": "lippen-filler", "name_de": "Lippenunterspritzung", "name_tr": "Dudak Dolgusu", "quelle_url": "https://elitklinik.com.tr/dudak-dolgusu/", "lokal_riverside": true },
+            { "slug": "augenringe-filler", "name_de": "Augenringe-Unterspritzung", "name_tr": "Göz Altı Işık Dolgusu", "quelle_url": "https://elitklinik.com.tr/goz-alti-isik-dolgusu/", "lokal_riverside": true },
+            { "slug": "nasen-filler", "name_de": "Nasenkorrektur mit Filler", "name_tr": "Burun Dolgusu", "quelle_url": "https://elitklinik.com.tr/burun-dolgusu/", "lokal_riverside": true },
+            { "slug": "nasolabial-filler", "name_de": "Nasolabialfalten-Filler", "name_tr": "Nazolabial Dolgu", "quelle_url": "https://elitklinik.com.tr/nazolabial-dolgu/", "lokal_riverside": true },
+            { "slug": "wangen-filler", "name_de": "Wangen- und Jochbein-Filler", "name_tr": "Elmacık ve Yanak Dolgusu", "quelle_url": "https://elitklinik.com.tr/elmacik-kemigi-ve-yanak-dolgusu/", "lokal_riverside": true },
+            { "slug": "jawline-filler", "name_de": "Jawline- und Kinn-Filler", "name_tr": "Çene (Jawline) Dolgusu", "quelle_url": "https://elitklinik.com.tr/cene-jawline-dolgusu/", "lokal_riverside": true },
+            { "slug": "gesichtsverjuengung-filler", "name_de": "Skinbooster / Gesichtsverjüngungs-Filler", "name_tr": "Yüz Gençleştirme Dolgusu", "quelle_url": "https://elitklinik.com.tr/yuz-genclestirme-dolgusu/", "lokal_riverside": true },
+            { "slug": "smart-filler", "name_de": "Smart-Filler", "name_tr": "Akıllı Dolgu", "quelle_url": "https://elitklinik.com.tr/akilli-dolgu/", "lokal_riverside": false }
+          ]
+        },
+        {
+          "name_de": "Straffung ohne OP",
+          "behandlungen": [
+            { "slug": "hifu-facelifting", "name_de": "Facelifting ohne OP (HIFU)", "name_tr": "Ameliyatsız Yüz Germe (HIFU)", "quelle_url": "https://elitklinik.com.tr/ameliyatsiz-yuz-germe-hifu/", "lokal_riverside": false },
+            { "slug": "fadenlifting", "name_de": "Fadenlifting (French Lift)", "name_tr": "Fransız Askısı", "quelle_url": "https://elitklinik.com.tr/fransiz-askisi/", "lokal_riverside": false },
+            { "slug": "microneedling-rf", "name_de": "Goldnadel-Radiofrequenz (Scarlet X)", "name_tr": "Altın İğne Tedavisi", "quelle_url": "https://elitklinik.com.tr/altin-igne-tedavisi-scarlet-x/", "lokal_riverside": false },
+            { "slug": "gesichts-mesolifting", "name_de": "Gesichts-Mesolifting", "name_tr": "Yüz Mezoliftingi", "quelle_url": "https://elitklinik.com.tr/yuz-mezoliftingi/", "lokal_riverside": true }
+          ]
+        },
+        {
+          "name_de": "Hautverjüngung & Pflege",
+          "quelle_url": "https://elitklinik.com.tr/cilt-genclestirme/",
+          "behandlungen": [
+            { "slug": "mesotherapie-gesicht", "name_de": "Mesotherapie zur Gesichtsverjüngung", "name_tr": "Yüz Gençleştirme Mezoterapisi", "quelle_url": "https://elitklinik.com.tr/yuz-genclestirme-mezoterapisi/", "lokal_riverside": true },
+            { "slug": "chemisches-peeling", "name_de": "Chemisches Peeling", "name_tr": "Kimyasal Peeling", "quelle_url": "https://elitklinik.com.tr/kimyasal-peeling/", "lokal_riverside": true },
+            { "slug": "karbon-peeling", "name_de": "Karbon-Peeling", "name_tr": "Karbon Peeling", "quelle_url": "https://elitklinik.com.tr/karbon-peeling/", "lokal_riverside": false },
+            { "slug": "prp-vampirlifting", "name_de": "PRP-Behandlung (Vampirlifting)", "name_tr": "Yüz ve Cilt PRP", "quelle_url": "https://elitklinik.com.tr/yuz-ve-cilt-prp-tedavisi/", "lokal_riverside": false },
+            { "slug": "hydrafacial", "name_de": "HydraFacial", "name_tr": "Hydrafacial Cilt Tedavisi", "quelle_url": "https://elitklinik.com.tr/hydrafacial-cilt-bakimi/", "lokal_riverside": false },
+            { "slug": "medizinische-hautpflege", "name_de": "Medizinische Hautpflege", "name_tr": "Medikal Cilt Bakımı", "quelle_url": "https://elitklinik.com.tr/medikal-cilt-bakimi/", "lokal_riverside": false },
+            { "slug": "stammzellen-therapie", "name_de": "Stammzellen-Hauttherapie", "name_tr": "Cilt Kök Hücre Tedavisi", "quelle_url": "https://elitklinik.com.tr/cilt-kok-hucre-tedavisi/", "lokal_riverside": false },
+            { "slug": "lachs-dna-serum", "name_de": "Lachs-DNA-Serum (Polynukleotide)", "name_tr": "Somon DNA Serum", "quelle_url": "https://elitklinik.com.tr/somon-dna-serum/", "lokal_riverside": false },
+            { "slug": "skinbooster-jungbrunnen", "name_de": "Jungbrunnen-Injektion (Skinbooster)", "name_tr": "Gençlik Aşısı", "quelle_url": "https://elitklinik.com.tr/genclik-asisi/", "lokal_riverside": false },
+            { "slug": "4d-hautverjuengung", "name_de": "4D-Hautverjüngung", "name_tr": "4D Cilt Gençleştirme", "quelle_url": "https://elitklinik.com.tr/4d-cilt-genclestirme/", "lokal_riverside": false },
+            { "slug": "dehnungsstreifen-pigmentflecken", "name_de": "Dehnungsstreifen- und Pigmentflecken-Behandlung", "name_tr": "Cilt Çatlak ve Leke Tedavisi", "quelle_url": "https://elitklinik.com.tr/cilt-catlak-leke-tedavisi/", "lokal_riverside": true }
+          ]
+        },
+        {
+          "name_de": "Laser-Behandlungen",
+          "behandlungen": [
+            { "slug": "laser-haarentfernung", "name_de": "Dauerhafte Laser-Haarentfernung", "name_tr": "Kalıcı Lazer Epilasyon", "quelle_url": "https://elitklinik.com.tr/kalici-lazer-epilasyon/", "lokal_riverside": false },
+            { "slug": "laser-tattooentfernung", "name_de": "Laser-Tattooentfernung", "name_tr": "Lazerle Dövme Silme", "quelle_url": "https://elitklinik.com.tr/dovme-sildirme-tedavileri/", "lokal_riverside": true },
+            { "slug": "laser-faltenbehandlung", "name_de": "Laser-Faltenbehandlung", "name_tr": "Lazer Kırışık Tedavisi", "quelle_url": "https://elitklinik.com.tr/lazer-kirisik-giderme-tedavisi/", "lokal_riverside": false },
+            { "slug": "laser-pigmentflecken", "name_de": "Laser-Pigmentflecken-Behandlung", "name_tr": "Lazerle Leke Tedavisi", "quelle_url": "https://elitklinik.com.tr/lazer-leke-tedavisi/", "lokal_riverside": true },
+            { "slug": "besenreiser-couperose", "name_de": "Besenreiser- und Couperose-Behandlung", "name_tr": "Telenjiektazi Tedavisi", "quelle_url": "https://elitklinik.com.tr/telenjiektazi-tedavisi/", "lokal_riverside": true },
+            { "slug": "gefaessveraenderungen", "name_de": "Laserbehandlung von Gefässveränderungen", "name_tr": "Damarsal Lezyon Tedavisi", "quelle_url": "https://elitklinik.com.tr/hemanjiom-damarsal-lezyon-lazer-tedavisi/", "lokal_riverside": false },
+            { "slug": "feuermal-behandlung", "name_de": "Feuermal-Behandlung (Portweinfleck)", "name_tr": "Porto Şarabı Lekesi Tedavisi", "quelle_url": "https://elitklinik.com.tr/porto-sarabi-lekesi-tedavisi/", "lokal_riverside": false },
+            { "slug": "bbl-lichttherapie", "name_de": "BBL-Lichttherapie", "name_tr": "BBL Lazer Tedavisi", "quelle_url": "https://elitklinik.com.tr/bbl-lazer-teknolojisi/", "lokal_riverside": false },
+            { "slug": "fraktionierter-laser", "name_de": "Fraktionierte Laserbehandlung", "name_tr": "Fraksiyonel Lazer Tedavisi", "quelle_url": "https://elitklinik.com.tr/fraksiyonel-lazer-tedavisi/", "lokal_riverside": false },
+            { "slug": "q-switch-laser", "name_de": "Q-Switch-Laserbehandlung", "name_tr": "Q-Switch Lazer Tedavisi", "quelle_url": "https://elitklinik.com.tr/q-switch-lazer-leke-tedavisi/", "lokal_riverside": false },
+            { "slug": "laser-hautaufhellung", "name_de": "Laser-Hautaufhellung", "name_tr": "Lazerle Cilt Beyazlatma", "quelle_url": "https://elitklinik.com.tr/lazerle-cilt-beyazlatma/", "lokal_riverside": false },
+            { "slug": "achselaufhellung", "name_de": "Achselaufhellung", "name_tr": "Koltuk Altı Beyazlatma", "quelle_url": "https://elitklinik.com.tr/lazerle-koltuk-alti-beyazlatma-tedavisi/", "lokal_riverside": false },
+            { "slug": "intimaufhellung", "name_de": "Aufhellung Intimbereich", "name_tr": "Lazerle Genital Bölge Beyazlatma", "quelle_url": "https://elitklinik.com.tr/lazerle-genital-bolge-beyazlatma/", "lokal_riverside": false },
+            { "slug": "haaraufhellung", "name_de": "Laser-Haaraufhellung", "name_tr": "Lazerle Tüy Sarartma", "quelle_url": "https://elitklinik.com.tr/tuy-sarartma-tedavisi/", "lokal_riverside": false }
+          ]
+        },
+        {
+          "name_de": "Körperformung",
+          "behandlungen": [
+            { "slug": "kryolipolyse", "name_de": "Kryolipolyse (Fettvereisung)", "name_tr": "Soğuk Lipoliz", "quelle_url": "https://elitklinik.com.tr/soguk-lipoliz/", "lokal_riverside": false },
+            { "slug": "fettweg-mesotherapie", "name_de": "Abnehm- und Fettweg-Mesotherapie", "name_tr": "Zayıflama ve İncelme Mezoterapisi", "quelle_url": "https://elitklinik.com.tr/zayiflama-incelme-mezoterapisi/", "lokal_riverside": true },
+            { "slug": "radiofrequenz", "name_de": "Radiofrequenz-Behandlung", "name_tr": "Radyofrekans Tedavisi", "quelle_url": "https://elitklinik.com.tr/radyofrekans-tedavisi/", "lokal_riverside": false },
+            { "slug": "lymphdrainage", "name_de": "Lymphdrainage", "name_tr": "Lenf Drenaj Masajı", "quelle_url": "https://elitklinik.com.tr/lenf-drenaj/", "lokal_riverside": false },
+            { "slug": "g5-cellulite-massage", "name_de": "G5-Cellulite-Massage", "name_tr": "G5 Selülit Masajı", "quelle_url": "https://elitklinik.com.tr/g5-selulit-masaji-tedavisi/", "lokal_riverside": false }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plastische-chirurgie",
+      "name_de": "Plastische Chirurgie",
+      "name_tr": "Plastik Cerrahi",
+      "quelle_url": "https://elitklinik.com.tr/plastik-ve-estetik-cerrahi/",
+      "gruppen": [
+        {
+          "name_de": "Gesicht",
+          "behandlungen": [
+            { "slug": "nasenkorrektur", "name_de": "Nasenkorrektur (Rhinoplastik)", "name_tr": "Burun Estetiği", "quelle_url": "https://elitklinik.com.tr/burun-estetigi/", "lokal_riverside": false },
+            { "slug": "facelifting", "name_de": "Facelifting", "name_tr": "Yüz Estetiği", "quelle_url": "https://elitklinik.com.tr/yuz-estetigi/", "lokal_riverside": false },
+            { "slug": "lidstraffung", "name_de": "Lidstraffung (Blepharoplastik)", "name_tr": "Göz Kapağı Estetiği", "quelle_url": "https://elitklinik.com.tr/goz-kapagi-estetigi/", "lokal_riverside": false },
+            { "slug": "ohrenkorrektur", "name_de": "Ohrenkorrektur (Otoplastik)", "name_tr": "Kulak Estetiği", "quelle_url": "https://elitklinik.com.tr/kulak-estetigi/", "lokal_riverside": false },
+            { "slug": "brauenlifting-schlaefenstraffung", "name_de": "Brauenlifting und Schläfenstraffung", "name_tr": "Kaş Kaldırma ve Şakak Germe", "quelle_url": "https://elitklinik.com.tr/kas-ve-sakak-kaldirma/", "lokal_riverside": false }
+          ]
+        },
+        {
+          "name_de": "Brust",
+          "quelle_url": "https://elitklinik.com.tr/meme-estetigi/",
+          "behandlungen": [
+            { "slug": "brustvergroesserung", "name_de": "Brustvergrösserung", "name_tr": "Meme Büyütme Ameliyatı", "quelle_url": "https://elitklinik.com.tr/meme-buyutme-ameliyati/", "lokal_riverside": false },
+            { "slug": "bruststraffung", "name_de": "Bruststraffung", "name_tr": "Meme Dikleştirme Ameliyatı", "quelle_url": "https://elitklinik.com.tr/meme-diklestirme-ameliyati/", "lokal_riverside": false }
+          ]
+        },
+        {
+          "name_de": "Körper",
+          "quelle_url": "https://elitklinik.com.tr/vucut-estetigi/",
+          "behandlungen": [
+            { "slug": "fettabsaugung", "name_de": "Fettabsaugung (Liposuktion)", "name_tr": "Liposuction", "quelle_url": "https://elitklinik.com.tr/liposuction-yag-aldirma/", "lokal_riverside": false },
+            { "slug": "bauchdeckenstraffung", "name_de": "Bauchdeckenstraffung", "name_tr": "Karın Germe", "quelle_url": "https://elitklinik.com.tr/karin-germe/", "lokal_riverside": false },
+            { "slug": "oberarmstraffung", "name_de": "Oberarmstraffung", "name_tr": "Kol Germe", "quelle_url": "https://elitklinik.com.tr/kol-germe/", "lokal_riverside": false },
+            { "slug": "oberschenkelstraffung", "name_de": "Oberschenkelstraffung", "name_tr": "Bacak Germe", "quelle_url": "https://elitklinik.com.tr/bacak-germe/", "lokal_riverside": false },
+            { "slug": "eigenfett-transfer", "name_de": "Eigenfett-Transfer (Lipofilling)", "name_tr": "Yağ Enjeksiyonu", "quelle_url": "https://elitklinik.com.tr/yag-enjeksiyonu/", "lokal_riverside": false }
+          ]
+        },
+        {
+          "name_de": "Intimchirurgie Frau",
+          "quelle_url": "https://elitklinik.com.tr/kadin-genital-estetik/",
+          "behandlungen": [
+            { "slug": "schamlippenkorrektur", "name_de": "Schamlippenkorrektur (Labioplastik)", "name_tr": "Labioplasti", "quelle_url": "https://elitklinik.com.tr/labioplasti-ic-dudak-estetigi/", "lokal_riverside": false },
+            { "slug": "venushuegel-korrektur", "name_de": "Venushügel-Korrektur", "name_tr": "Mons Pubis Ameliyatı", "quelle_url": "https://elitklinik.com.tr/mons-pubis-ameliyati/", "lokal_riverside": false }
+          ]
+        },
+        {
+          "name_de": "Intimchirurgie Mann",
+          "quelle_url": "https://elitklinik.com.tr/erkek-genital-estetik/",
+          "behandlungen": [
+            { "slug": "penisvergroesserung", "name_de": "Penisvergrösserung", "name_tr": "Penis Büyütme", "quelle_url": "https://elitklinik.com.tr/penis-buyutme/", "lokal_riverside": false },
+            { "slug": "penis-eigenfett", "name_de": "Penis-Eigenfett-Behandlung (Stem Shot)", "name_tr": "Penis Yağ Enjeksiyonu", "quelle_url": "https://elitklinik.com.tr/penis-dolgusu/", "lokal_riverside": false },
+            { "slug": "penis-prp", "name_de": "Penis-PRP-Behandlung", "name_tr": "Penis PRP Tedavisi", "quelle_url": "https://elitklinik.com.tr/penis-prp-tedavisi/", "lokal_riverside": false },
+            { "slug": "penisverkruemmung", "name_de": "Korrektur der Penisverkrümmung", "name_tr": "Penis Eğriliği", "quelle_url": "https://elitklinik.com.tr/penis-egriligi/", "lokal_riverside": false },
+            { "slug": "stosswellentherapie", "name_de": "Stosswellentherapie (ESWT)", "name_tr": "Şok Dalga Tedavisi", "quelle_url": "https://elitklinik.com.tr/sok-dalga-tedavisi-eswt/", "lokal_riverside": false }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haartransplantation",
+      "name_de": "Haartransplantation",
+      "name_tr": "Saç Ekimi",
+      "quelle_url": "https://elitklinik.com.tr/sac-ekimi/",
+      "gruppen": [
+        {
+          "name_de": "Haartransplantation",
+          "behandlungen": [
+            { "slug": "fue-haartransplantation", "name_de": "FUE-Haartransplantation", "name_tr": "FUE Saç Ekimi", "quelle_url": "https://elitklinik.com.tr/fue-sac-ekimi/", "lokal_riverside": false },
+            { "slug": "dhi-haartransplantation", "name_de": "DHI-Haartransplantation", "name_tr": "DHI Saç Ekimi", "quelle_url": "https://elitklinik.com.tr/dhi-sac-ekimi/", "lokal_riverside": false },
+            { "slug": "saphir-haartransplantation", "name_de": "Saphir-FUE-Haartransplantation", "name_tr": "Safir Saç Ekimi", "quelle_url": "https://elitklinik.com.tr/safir-sac-ekimi/", "lokal_riverside": false },
+            { "slug": "perkutane-haartransplantation", "name_de": "Perkutane Haartransplantation", "name_tr": "Perkütan Saç Ekimi", "quelle_url": "https://elitklinik.com.tr/perkutan-sac-ekimi/", "lokal_riverside": false },
+            { "slug": "haartransplantation-frauen", "name_de": "Haartransplantation für Frauen", "name_tr": "Kadın Saç Ekimi", "quelle_url": "https://elitklinik.com.tr/kadin-sac-ekimi/", "lokal_riverside": false },
+            { "slug": "barthaartransplantation", "name_de": "Barthaartransplantation", "name_tr": "Sakal Ekimi", "quelle_url": "https://elitklinik.com.tr/sakal-ekimi/", "lokal_riverside": false },
+            { "slug": "augenbrauentransplantation", "name_de": "Augenbrauentransplantation", "name_tr": "Kaş Ekimi", "quelle_url": "https://elitklinik.com.tr/kas-ekimi/", "lokal_riverside": false }
+          ]
+        },
+        {
+          "name_de": "Haarbehandlungen ohne OP",
+          "behandlungen": [
+            { "slug": "haar-mesotherapie", "name_de": "Haar-Mesotherapie", "name_tr": "Saç Mezoterapisi", "quelle_url": "https://elitklinik.com.tr/sac-mezoterapisi/", "lokal_riverside": false },
+            { "slug": "haar-prp", "name_de": "PRP-Haarbehandlung", "name_tr": "PRP Tedavisi", "quelle_url": "https://elitklinik.com.tr/prp-tedavisi/", "lokal_riverside": false },
+            { "slug": "haarpigmentierung", "name_de": "Haarpigmentierung (Haarsimulation)", "name_tr": "Saç Simülasyonu", "quelle_url": "https://elitklinik.com.tr/sac-simulasyonu/", "lokal_riverside": false }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zaehne",
+      "name_de": "Zähne",
+      "name_tr": "Diş Estetiği",
+      "quelle_url": "https://elitklinik.com.tr/agiz-ve-dis-sagligi-estetigi/",
+      "gruppen": [
+        {
+          "name_de": "Zahnästhetik & Zahnbehandlungen",
+          "behandlungen": [
+            { "slug": "hollywood-smile", "name_de": "Hollywood Smile", "name_tr": "Hollywood Smile", "quelle_url": "https://elitklinik.com.tr/hollywood-smile/", "lokal_riverside": false },
+            { "slug": "zahnimplantate", "name_de": "Zahnimplantate", "name_tr": "Diş İmplantı", "quelle_url": "https://elitklinik.com.tr/dis-implanti/", "lokal_riverside": false },
+            { "slug": "kronen-veneers", "name_de": "Kronen und Veneers", "name_tr": "Diş Kaplama", "quelle_url": "https://elitklinik.com.tr/dis-kaplama/", "lokal_riverside": false },
+            { "slug": "bleaching", "name_de": "Bleaching (Zahnaufhellung)", "name_tr": "Diş Beyazlatma", "quelle_url": "https://elitklinik.com.tr/dis-beyazlatma-tedavisi/", "lokal_riverside": false },
+            { "slug": "zahnprothesen", "name_de": "Zahnprothesen", "name_tr": "Diş Protezi", "quelle_url": "https://elitklinik.com.tr/dis-protezi/", "lokal_riverside": false },
+            { "slug": "zahnfuellungen", "name_de": "Zahnfüllungen", "name_tr": "Diş Dolgusu", "quelle_url": "https://elitklinik.com.tr/dis-dolgusu/", "lokal_riverside": false },
+            { "slug": "wurzelbehandlung", "name_de": "Wurzelkanalbehandlung", "name_tr": "Kanal Tedavisi", "quelle_url": "https://elitklinik.com.tr/kanal-tedavisi-endodonti/", "lokal_riverside": false },
+            { "slug": "zahnreinigung", "name_de": "Professionelle Zahnreinigung", "name_tr": "Diş Temizliği", "quelle_url": "https://elitklinik.com.tr/dis-temizligi/", "lokal_riverside": false }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medizinische-fachbereiche",
+      "name_de": "Medizinische Fachbereiche",
+      "name_tr": "Tıbbi Birimler",
+      "quelle_url": "https://elitklinik.com.tr/tibbi-birimler/",
+      "hinweis": "Fachabteilungen der Klinik, für ETA eher sekundär (Vertrauensaufbau / Vollständigkeit). Für v1 optional.",
+      "gruppen": [
+        {
+          "name_de": "Fachbereiche",
+          "behandlungen": [
+            { "slug": "dermatologie", "name_de": "Dermatologie", "name_tr": "Dermatoloji", "quelle_url": "https://elitklinik.com.tr/dermatoloji-cildiye/", "lokal_riverside": false },
+            { "slug": "ernaehrungsberatung", "name_de": "Ernährungsberatung und Diätetik", "name_tr": "Beslenme ve Diyetetik", "quelle_url": "https://elitklinik.com.tr/beslenme-ve-diyet/", "lokal_riverside": false },
+            { "slug": "innere-medizin", "name_de": "Innere Medizin", "name_tr": "Dahiliye", "quelle_url": "https://elitklinik.com.tr/dahiliye-ve-ic-hastaliklari/", "lokal_riverside": false },
+            { "slug": "urologie", "name_de": "Urologie", "name_tr": "Üroloji", "quelle_url": "https://elitklinik.com.tr/uroloji/", "lokal_riverside": false },
+            { "slug": "gynaekologie", "name_de": "Gynäkologie und Geburtshilfe", "name_tr": "Kadın Hastalıkları ve Doğum", "quelle_url": "https://elitklinik.com.tr/kadin-hastaliklari-ve-dogum/", "lokal_riverside": false },
+            { "slug": "physiotherapie", "name_de": "Physiotherapie und Rehabilitation", "name_tr": "Fizyoterapi ve Rehabilitasyon", "quelle_url": "https://elitklinik.com.tr/fizyoterapi-ve-rehabilitasyon/", "lokal_riverside": false },
+            { "slug": "allgemeinchirurgie", "name_de": "Allgemeinchirurgie", "name_tr": "Genel Cerrahi", "quelle_url": "https://elitklinik.com.tr/genel-cerrahi/", "lokal_riverside": false },
+            { "slug": "hno", "name_de": "Hals-Nasen-Ohren-Heilkunde", "name_tr": "Kulak Burun Boğaz", "quelle_url": "https://elitklinik.com.tr/kulak-burun-bogaz/", "lokal_riverside": false },
+            { "slug": "orthopaedie-traumatologie", "name_de": "Orthopädie und Traumatologie", "name_tr": "Ortopedi ve Travmatoloji", "quelle_url": "https://elitklinik.com.tr/ortopedi-ve-travmatoloji/", "lokal_riverside": false },
+            { "slug": "radiologie", "name_de": "Radiologie und Bildgebung", "name_tr": "Radyoloji", "quelle_url": "https://elitklinik.com.tr/radyoloji/", "lokal_riverside": false },
+            { "slug": "labor", "name_de": "Labordiagnostik", "name_tr": "Laboratuvar", "quelle_url": "https://elitklinik.com.tr/laboratuvar/", "lokal_riverside": false },
+            { "slug": "anaesthesiologie", "name_de": "Anästhesiologie und Intensivmedizin", "name_tr": "Anestezi ve Reanimasyon", "quelle_url": "https://elitklinik.com.tr/tibbi-birimler/anestezi-ve-reanimasyon/", "lokal_riverside": false },
+            { "slug": "komplementaermedizin", "name_de": "Traditionelle und Komplementärmedizin", "name_tr": "Getat Birimi", "quelle_url": "https://elitklinik.com.tr/tibbi-birimler/getat-birimi/", "lokal_riverside": false },
+            { "slug": "check-up", "name_de": "Medizinischer Check-up", "name_tr": "Check-Up", "quelle_url": "https://elitklinik.com.tr/check-up/", "lokal_riverside": false },
+            { "slug": "gesundheitsatteste", "name_de": "Gesundheitsatteste und Berichte", "name_tr": "Sağlık Raporları", "quelle_url": "https://elitklinik.com.tr/saglik-raporlari/", "lokal_riverside": false }
+          ]
+        }
+      ]
+    }
+  ],
+  "weitere_seiten": {
+    "doktoren": "https://elitklinik.com.tr/doktorlarimiz/",
+    "virtuelle_tour_360": "https://elitklinik.com.tr/360-sanal-tur/",
+    "kontakt": "https://elitklinik.com.tr/iletisim/",
+    "anfrageformular": "https://elitklinik.com.tr/bilgi-talep-formu/"
+  }
+}

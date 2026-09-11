@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ffitzindustries.github.io/eta-website/sitemap.xml

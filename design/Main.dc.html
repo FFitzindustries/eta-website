@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Jost', 'Helvetica Neue', system-ui, sans-serif; color: #1c1512; background: #faf6f2; }
+    a { color: #c58a32; text-decoration: none; }
+    a:hover { color: #a06f24; }
+    .nav-link { color: #1c1512; font-size: 15px; letter-spacing: 0.02em; }
+    .nav-link:hover { color: #c58a32; }
+  </style>
+</helmet>
+<div style="width: 1440px; min-height: 4900px; background: #faf6f2; display: flex; flex-direction: column;">
+
+  <div style="position: fixed; right: 28px; bottom: 28px; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(5,5,5,0.3); z-index: 50;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"></path></svg>
+  </div>
+
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 14px 64px; background: #ffffff; border-bottom: 1px solid #f0e4dc;">
+    <img src="logo.png" alt="ETA European Turkey Asia" style="height: 66px; width: auto;" />
+    <nav style="display: flex; gap: 30px; align-items: center;">
+      <a href="#" class="nav-link" style="color: #c58a32; font-weight: 500;">Behandlungen</a>
+      <a href="#" class="nav-link">Partnerklinik</a>
+      <a href="#" class="nav-link">Ablauf</a>
+      <a href="#" class="nav-link">Finanzierung</a>
+      <a href="#" class="nav-link">Vorher / Nachher</a>
+      <a href="#" class="nav-link">Kontakt</a>
+    </nav>
+    <div style="display: flex; gap: 18px; align-items: center;">
+      <div style="display: flex; gap: 6px; align-items: center; color: #7a6a60; font-size: 14px; letter-spacing: 0.05em;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7a6a60" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><ellipse cx="12" cy="12" rx="4" ry="9"></ellipse><path d="M3 12h18"></path></svg>
+        <span>DE</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#7a6a60" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: center; background: #25D366; color: #ffffff; padding: 12px 22px; border-radius: 2px; font-size: 15px; font-weight: 500; letter-spacing: 0.03em;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"></path></svg>
+        <span>WhatsApp</span>
+      </div>
+    </div>
+  </header>
+
+  <section style="position: relative; height: 660px; background: #050505; overflow: hidden;">
+    <img src="hero-a.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center;" />
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.6) 36%, rgba(5,5,5,0) 66%);"></div>
+    <div style="position: relative; max-width: 620px; padding: 104px 64px; display: flex; flex-direction: column; gap: 24px;">
+      <div style="color: #D998A5; font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase;">European Turkey Asia</div>
+      <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 52px; line-height: 1.15; color: #ffffff; text-wrap: pretty;">Ihre Schönheits&shy;behandlung in Istanbul. Betreut von A bis Z.</h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #e9ddd5; font-weight: 300; max-width: 480px;">Deutschsprachige Beratung, eine fest geprüfte Partnerklinik und ein Rundum-Paket mit Transfer, Hotel und Nachsorge. Sie kümmern sich um nichts ausser sich selbst.</p>
+      <div style="display: flex; gap: 16px; align-items: center; margin-top: 8px;">
+        <div style="display: flex; gap: 10px; align-items: center; background: #25D366; color: #ffffff; padding: 16px 30px; border-radius: 2px; font-size: 16px; font-weight: 500; letter-spacing: 0.03em;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"></path></svg>
+          <span>Unverbindlich anfragen</span>
+        </div>
+        <div style="color: #ffffff; padding: 16px 26px; border: 1px solid rgba(255,255,255,0.4); border-radius: 2px; font-size: 16px; letter-spacing: 0.03em;">Behandlungen entdecken</div>
+      </div>
+      <div style="display: flex; gap: 20px; align-items: center; margin-top: 12px; color: #b7a99e; font-size: 14px;">
+        <span>Deutschsprachige Betreuung</span>
+        <span style="color: #c58a32;">·</span>
+        <span>Fixe Partnerklinik</span>
+        <span style="color: #c58a32;">·</span>
+        <span>Transfer &amp; Hotel inklusive</span>
+      </div>
+    </div>
+    <div style="position: absolute; right: 44px; bottom: 32px; display: flex; gap: 10px; align-items: center; background: rgba(5,5,5,0.55); color: #ffffff; padding: 10px 20px; border-radius: 999px; font-size: 13px; letter-spacing: 0.04em;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff"><path d="M7 4l13 8-13 8V4z"></path></svg>
+      <span>Video abspielen</span>
+    </div>
+  </section>
+
+  <section style="padding: 96px 64px; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="color: #c58a32; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase;">Behandlungen</div>
+        <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 38px; color: #1c1512;">Vier Bereiche, ein Ansprechpartner</h2>
+      </div>
+      <a href="#" style="font-size: 15px; letter-spacing: 0.03em; border-bottom: 1px solid #c58a32; padding-bottom: 2px;">Alle Behandlungen ansehen</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+      <div style="background: #ffffff; border: 1px solid #f0e4dc; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.5"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z"></path></svg>
+        <h3 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 23px; color: #1c1512;">Plastische Chirurgie</h3>
+        <div style="color: #b7a99e; font-size: 13px; letter-spacing: 0.08em;">19 BEHANDLUNGEN</div>
+        <p style="margin: 0; color: #7a6a60; font-size: 15px; line-height: 1.6;">Brustvergrösserung, Fettabsaugung, Nasenkorrektur, Lidstraffung und mehr.</p>
+        <a href="#" style="font-size: 14px; letter-spacing: 0.05em; margin-top: auto;">Mehr erfahren</a>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #f0e4dc; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.5"><path d="M6 3c3 3-3 6 0 10s-3 5 0 8"></path><path d="M12 3c3 3-3 6 0 10s-3 5 0 8"></path><path d="M18 3c3 3-3 6 0 10s-3 5 0 8"></path></svg>
+        <h3 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 23px; color: #1c1512;">Haartransplantation</h3>
+        <div style="color: #b7a99e; font-size: 13px; letter-spacing: 0.08em;">10 BEHANDLUNGEN</div>
+        <p style="margin: 0; color: #7a6a60; font-size: 15px; line-height: 1.6;">FUE, DHI und Saphir-Technik, auch für Bart und Augenbrauen.</p>
+        <a href="#" style="font-size: 14px; letter-spacing: 0.05em; margin-top: auto;">Mehr erfahren</a>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #f0e4dc; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.5"><path d="M12 3c-2 0-3 1.2-4.8 1.2S4 5 4 8c0 2.8 1.4 3.8 1.9 5.6.5 1.7.6 6.4 2.4 6.4 1.5 0 1-3.8 3.7-3.8s2.2 3.8 3.7 3.8c1.8 0 1.9-4.7 2.4-6.4.5-1.8 1.9-2.8 1.9-5.6 0-3-1.4-3.8-3.2-3.8S14 3 12 3z"></path></svg>
+        <h3 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 23px; color: #1c1512;">Zähne</h3>
+        <div style="color: #b7a99e; font-size: 13px; letter-spacing: 0.08em;">8 BEHANDLUNGEN</div>
+        <p style="margin: 0; color: #7a6a60; font-size: 15px; line-height: 1.6;">Hollywood Smile, Implantate, Veneers und Bleaching.</p>
+        <a href="#" style="font-size: 14px; letter-spacing: 0.05em; margin-top: auto;">Mehr erfahren</a>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #f0e4dc; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.5"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"></path></svg>
+        <h3 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 23px; color: #1c1512;">Haut &amp; Beauty</h3>
+        <div style="color: #b7a99e; font-size: 13px; letter-spacing: 0.08em;">49 BEHANDLUNGEN</div>
+        <p style="margin: 0; color: #7a6a60; font-size: 15px; line-height: 1.6;">Botox, Lippenunterspritzung, Laser und Hautverjüngung.</p>
+        <a href="#" style="font-size: 14px; letter-spacing: 0.05em; margin-top: auto;">Mehr erfahren</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #050505; padding: 64px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.5"><path d="M4 5h16v11H9l-5 4V5z"></path></svg>
+      <div style="color: #ffffff; font-size: 17px; font-weight: 500;">Deutschsprachige Betreuung</div>
+      <div style="color: #b7a99e; font-size: 14px; line-height: 1.6;">Von der ersten Anfrage bis zur Nachkontrolle, eine feste Ansprechperson.</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.5"><path d="M4 20V6h16v14"></path><path d="M9 20v-5h6v5"></path><path d="M12 8v4"></path><path d="M10 10h4"></path></svg>
+      <div style="color: #ffffff; font-size: 17px; font-weight: 500;">Fixe Partnerklinik</div>
+      <div style="color: #b7a99e; font-size: 14px; line-height: 1.6;">Elit Klinik in Istanbul, von uns persönlich besucht.</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.5"><path d="M2 12l19-9-6 19-3.5-7L2 12z"></path></svg>
+      <div style="color: #ffffff; font-size: 17px; font-weight: 500;">Rundum-Paket</div>
+      <div style="color: #b7a99e; font-size: 14px; line-height: 1.6;">Flughafen-Transfer, Hotel und Behandlung aus einer Hand organisiert.</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.5"><path d="M12 3l7 3v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"></path></svg>
+      <div style="color: #ffffff; font-size: 17px; font-weight: 500;">Nachsorge in der Schweiz</div>
+      <div style="color: #b7a99e; font-size: 14px; line-height: 1.6;">Nachkontrolle im Rheintal, in Zusammenarbeit mit Riverside Beauty.</div>
+    </div>
+  </section>
+
+  <section style="padding: 96px 64px; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="color: #c58a32; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase;">So funktioniert es</div>
+      <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 38px; color: #1c1512;">In vier Schritten zu Ihrer Behandlung</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid #e6d5c9; padding-top: 22px;">
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px; color: #D998A5;">01</div>
+        <div style="font-size: 18px; font-weight: 500; color: #1c1512;">Anfrage</div>
+        <div style="color: #7a6a60; font-size: 15px; line-height: 1.6;">Per WhatsApp oder Formular, unverbindlich und diskret.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid #e6d5c9; padding-top: 22px;">
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px; color: #D998A5;">02</div>
+        <div style="font-size: 18px; font-weight: 500; color: #1c1512;">Beratung &amp; Angebot</div>
+        <div style="color: #7a6a60; font-size: 15px; line-height: 1.6;">Persönliches Gespräch auf Deutsch, danach ein Fixpreis-Angebot der Klinik.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid #e6d5c9; padding-top: 22px;">
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px; color: #D998A5;">03</div>
+        <div style="font-size: 18px; font-weight: 500; color: #1c1512;">Anzahlung &amp; Reise</div>
+        <div style="color: #7a6a60; font-size: 15px; line-height: 1.6;">Termin sichern und Flug buchen. Transfer und Hotel organisiert die Klinik.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; border-top: 1px solid #e6d5c9; padding-top: 22px;">
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px; color: #D998A5;">04</div>
+        <div style="font-size: 18px; font-weight: 500; color: #1c1512;">Behandlung &amp; Nachsorge</div>
+        <div style="color: #7a6a60; font-size: 15px; line-height: 1.6;">Eingriff in Istanbul, Nachkontrolle bei uns im Rheintal.</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #ffffff; border-top: 1px solid #f0e4dc; border-bottom: 1px solid #f0e4dc; padding: 96px 64px; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="color: #c58a32; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase;">Ergebnisse</div>
+        <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 38px; color: #1c1512;">Vorher / Nachher</h2>
+      </div>
+      <a href="#" style="font-size: 15px; letter-spacing: 0.03em; border-bottom: 1px solid #c58a32; padding-bottom: 2px;">Zur Galerie</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+      <div style="position: relative; height: 300px; background: #f7e4e6; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <div style="position: absolute; font-family: 'Playfair Display', Georgia, serif; font-size: 110px; color: #D998A5; opacity: 0.18; transform: rotate(-18deg); letter-spacing: 0.1em;">ETA</div>
+        <div style="position: relative; text-align: center; color: #7a6a60; font-size: 14px; letter-spacing: 0.06em; line-height: 1.8;">[VORHER / NACHHER]<br>Bildmaterial der Klinik folgt</div>
+      </div>
+      <div style="position: relative; height: 300px; background: #f7e4e6; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <div style="position: absolute; font-family: 'Playfair Display', Georgia, serif; font-size: 110px; color: #D998A5; opacity: 0.18; transform: rotate(-18deg); letter-spacing: 0.1em;">ETA</div>
+        <div style="position: relative; text-align: center; color: #7a6a60; font-size: 14px; letter-spacing: 0.06em; line-height: 1.8;">[VORHER / NACHHER]<br>Bildmaterial der Klinik folgt</div>
+      </div>
+      <div style="position: relative; height: 300px; background: #f7e4e6; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <div style="position: absolute; font-family: 'Playfair Display', Georgia, serif; font-size: 110px; color: #D998A5; opacity: 0.18; transform: rotate(-18deg); letter-spacing: 0.1em;">ETA</div>
+        <div style="position: relative; text-align: center; color: #7a6a60; font-size: 14px; letter-spacing: 0.06em; line-height: 1.8;">[VORHER / NACHHER]<br>Bildmaterial der Klinik folgt</div>
+      </div>
+    </div>
+    <div style="color: #b7a99e; font-size: 13px;">Alle Aufnahmen stammen aus unserer Partnerklinik und werden mit Einwilligung der Kundinnen und Kunden gezeigt.</div>
+  </section>
+
+  <section style="padding: 96px 64px; display: flex; flex-direction: column; gap: 40px; background: #fbeef0;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="color: #c58a32; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase;">Finanzierung</div>
+      <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 38px; color: #1c1512;">Drei Wege zu Ihrem Wunschtermin</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+      <div style="background: #ffffff; padding: 36px 32px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: #1c1512;">3 Raten, 0 % Zins</div>
+        <p style="margin: 0; color: #7a6a60; font-size: 15px; line-height: 1.7;">Der Behandlungspreis in drei Teilzahlungen, zinsfrei mit fixer Bearbeitungsgebühr.</p>
+      </div>
+      <div style="background: #ffffff; padding: 36px 32px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: #1c1512;">Ratenkauf mit Laufzeit</div>
+        <p style="margin: 0; color: #7a6a60; font-size: 15px; line-height: 1.7;">Flexible Laufzeiten über unseren Zahlungspartner [ANBIETER], Abwicklung direkt online.</p>
+      </div>
+      <div style="background: #ffffff; padding: 36px 32px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: #1c1512;">Ansparmodell</div>
+        <p style="margin: 0; color: #7a6a60; font-size: 15px; line-height: 1.7;">Sie sparen in Ihrem Tempo an. Sobald der Betrag erreicht ist, steht Ihr Termin fest.</p>
+      </div>
+    </div>
+    <div style="color: #a08a7c; font-size: 13px;">Konditionen und Details erhalten Sie im persönlichen Beratungsgespräch.</div>
+  </section>
+
+  <section style="padding: 96px 64px; display: flex; gap: 80px;">
+    <div style="width: 380px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px;">
+      <div style="color: #c58a32; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase;">Gut zu wissen</div>
+      <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 38px; color: #1c1512; text-wrap: pretty;">Häufige Fragen</h2>
+      <p style="margin: 8px 0 0; color: #7a6a60; font-size: 15px; line-height: 1.7;">Ihre Frage ist nicht dabei? Schreiben Sie uns direkt per WhatsApp, wir antworten persönlich.</p>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column;">
+      <div style="border-top: 1px solid #e6d5c9; padding: 26px 0; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-size: 18px; font-weight: 500; color: #1c1512;">Darf ich eine Begleitperson mitbringen?</div>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.7"><path d="M5 12h14"></path></svg>
+        </div>
+        <p style="margin: 0; color: #7a6a60; font-size: 15px; line-height: 1.7; max-width: 640px;">Ja, sehr gerne. Viele unserer Kundinnen und Kunden reisen zu zweit. Ihre Begleitperson ist beim Beratungsgespräch in der Klinik dabei und im Hotel untergebracht. [DETAILS ZU HOTEL UND BEGLEITPERSON]</p>
+      </div>
+      <div style="border-top: 1px solid #e6d5c9; padding: 26px 0; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 18px; font-weight: 500; color: #1c1512;">Wie lange bleibe ich in Istanbul?</div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.7"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+      </div>
+      <div style="border-top: 1px solid #e6d5c9; padding: 26px 0; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 18px; font-weight: 500; color: #1c1512;">In welcher Sprache werde ich betreut?</div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.7"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+      </div>
+      <div style="border-top: 1px solid #e6d5c9; border-bottom: 1px solid #e6d5c9; padding: 26px 0; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 18px; font-weight: 500; color: #1c1512;">Wie läuft die Nachsorge in der Schweiz?</div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c58a32" stroke-width="1.7"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #050505; padding: 88px 64px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center;">
+    <div style="color: #D998A5; font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase;">Der erste Schritt</div>
+    <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 40px; color: #ffffff; max-width: 640px; text-wrap: pretty;">Erzählen Sie uns, was Sie sich wünschen.</h2>
+    <p style="margin: 0; color: #b7a99e; font-size: 16px; max-width: 520px; line-height: 1.7;">Unverbindlich, diskret und auf Deutsch. Wir melden uns in der Regel noch am selben Tag.</p>
+    <div style="display: flex; gap: 10px; align-items: center; background: #25D366; color: #ffffff; padding: 16px 32px; border-radius: 2px; font-size: 16px; font-weight: 500; letter-spacing: 0.03em; margin-top: 10px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"></path></svg>
+      <span>Jetzt per WhatsApp anfragen</span>
+    </div>
+    <a href="#" style="color: #b7a99e; font-size: 14px; border-bottom: 1px solid #7a6a60; padding-bottom: 2px;">Oder Anfrage per Formular senden</a>
+  </section>
+
+  <footer style="background: #050505; border-top: 1px solid #241d18; padding: 72px 64px 0; display: flex; flex-direction: column; gap: 56px; margin-top: auto;">
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 34px; letter-spacing: 0.12em; color: #c58a32;">ETA</div>
+        <div style="color: #7a6a60; font-size: 12px; letter-spacing: 0.28em;">EUROPEAN TURKEY ASIA</div>
+        <p style="margin: 8px 0 0; color: #b7a99e; font-size: 14px; line-height: 1.7; max-width: 300px;">Ihre Agentur für Schönheitsbehandlungen in Istanbul, mit Betreuung aus der Schweiz.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="color: #ffffff; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Behandlungen</div>
+        <a href="#" style="color: #b7a99e; font-size: 14px;">Plastische Chirurgie</a>
+        <a href="#" style="color: #b7a99e; font-size: 14px;">Haartransplantation</a>
+        <a href="#" style="color: #b7a99e; font-size: 14px;">Zähne</a>
+        <a href="#" style="color: #b7a99e; font-size: 14px;">Haut &amp; Beauty</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="color: #ffffff; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Rechtliches</div>
+        <a href="#" style="color: #b7a99e; font-size: 14px;">Impressum</a>
+        <a href="#" style="color: #b7a99e; font-size: 14px;">AGB</a>
+        <a href="#" style="color: #b7a99e; font-size: 14px;">Datenschutz</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="color: #ffffff; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Kontakt</div>
+        <div style="color: #b7a99e; font-size: 14px;">WhatsApp: [WHATSAPP-NUMMER]</div>
+        <div style="color: #b7a99e; font-size: 14px;">E-Mail: [E-MAIL-ADRESSE]</div>
+        <div style="color: #b7a99e; font-size: 14px;">Nachsorge-Partner: Riverside Beauty, St. Margrethen</div>
+        <div style="display: flex; gap: 14px; align-items: center; margin-top: 4px;">
+          <a href="#" style="color: #b7a99e; font-size: 14px;">Instagram</a>
+          <span style="color: #7a6a60;">·</span>
+          <a href="#" style="color: #b7a99e; font-size: 14px;">Facebook</a>
+          <span style="color: #7a6a60;">·</span>
+          <a href="#" style="color: #b7a99e; font-size: 14px;">Messenger</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #241d18; padding: 24px 0; display: flex; justify-content: space-between; align-items: center;">
+      <div style="color: #7a6a60; font-size: 13px;">© 2026 [BETREIBER-FIRMA]. Alle Rechte vorbehalten.</div>
+      <div style="color: #7a6a60; font-size: 13px;">ETA ist eine Vermittlungsagentur und erbringt selbst keine medizinischen Leistungen.</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>
