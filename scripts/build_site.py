@@ -10,7 +10,7 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = ROOT / "site"
+SITE = ROOT / "docs"
 DATA = ROOT / "data"
 BASE_URL = "https://ffitzindustries.github.io/eta-website"
 

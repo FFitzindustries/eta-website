@@ -40,7 +40,7 @@ für Schönheits- und medizinische Behandlungen in Istanbul. Das bisherige Logo
 
 ## Referenz für Stimmung
 
-Bestehendes Mockup-Briefing mit Ton/Bildsprache: `docs/mockup-brief.md` in diesem Repo.
+Bestehendes Mockup-Briefing mit Ton/Bildsprache: `planning/mockup-brief.md` in diesem Repo.
 Aktuelles Platzhalter-Logo zum Vergleich: `assets/logo/eta-logo.svg`.
 
 ---

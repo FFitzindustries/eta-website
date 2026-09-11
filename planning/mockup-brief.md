@@ -14,7 +14,7 @@ Ziel: Klickbares/visuelles Mockup der ETA-Website (European Turkey Asia), Vermit
 - Hero Startseite: `~/eta-website/assets-hero/hero-a-seide-gold.png` (16:9, Frau rechts, Negativraum links für Headline). Es gibt auch ein 10s-Video (`hero-a-video.mp4`) - im Mockup reicht das Standbild mit Play-Andeutung.
 - Header "Ablauf/Partnerklinik": `~/eta-website/assets-hero/hero-b-istanbul.png` (Frau am Fenster, Bosporus-Skyline).
 - Beide Bilder fürs Canvas auf unter 70 KB downsamplen (`sips -Z 1200`, JPEG).
-- Behandlungs-Menü mit allen 94 Behandlungen: `~/eta-website/docs/behandlungskatalog.md` (Kategorien, Gruppen, deutsche Namen). Vollständige Daten: `~/eta-website/data/behandlungen.json`.
+- Behandlungs-Menü mit allen Behandlungen: `~/eta-website/planning/behandlungskatalog.md` (Kategorien, Gruppen, deutsche Namen). Vollständige Daten: `~/eta-website/data/behandlungen.json`.
 
 ## Zielgruppe (bestimmt Ton und Bild)
 
