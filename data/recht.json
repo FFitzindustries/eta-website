@@ -178,7 +178,7 @@
           "Schreiben Sie uns über WhatsApp, werden Ihre Nachrichten über die Infrastruktur von WhatsApp beziehungsweise Meta verarbeitet. Das liegt ausserhalb unseres Einflussbereichs, und dabei kann es zu einer Übermittlung in die USA kommen.",
           "Für Angaben zu Ihrer Gesundheit empfehlen wir deshalb ausdrücklich das Kontaktformular oder eine E-Mail. Unser Kontaktformular übermittelt Ihre Angaben direkt an uns und schreibt keine Gesundheitsangaben in eine WhatsApp-Nachricht."
         ],
-        "hinweis": "Befund inhalt B8: Genau das tut das Formular heute. Der Satz oben darf erst erscheinen, wenn der Absendeweg umgebaut ist — sonst steht in der Datenschutzerklärung das Gegenteil dessen, was die Seite tut. Bitte an die Bahn, die das Formular baut: entweder Absendeweg anpassen oder diesen Absatz umschreiben."
+        "hinweis": "Befund inhalt B8: Das Formular schrieb nach dem Speichern Name, Adresse, Geburtsdatum, Telefon, gewünschte Behandlung und Freitext in eine vorbereitete WhatsApp-Nachricht und öffnete sie selbsttätig. Die gewünschte Behandlung ist ein Gesundheitsdatum — der Absatz oben stand damit im Widerspruch zum Verhalten der Seite. Erledigt am 2026-09-20 durch die Bahn «abschluss»: static/assets/js/main.js öffnet WhatsApp nicht mehr von selbst, bietet es nur noch als Verweis an, und die vorbereitete Nachricht enthält ausser dem Namen keine Angabe mehr aus dem Formular. Wer den Absendeweg erneut ändert, prüft diesen Absatz mit."
       },
       {
         "id": "cookies",

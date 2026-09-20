@@ -336,8 +336,15 @@ def nav_wissen_eintraege(prefix):
     )
 
 
-def nav_wissen(prefix):
-    kopf = (f'<a href="{prefix}gut-zu-wissen.html" class="nav-drop-link"'
+def nav_wissen(prefix, active=""):
+    """«Gut zu wissen» im Menue. Die Seiten dahinter markieren den Punkt.
+
+    Bisher rief keine der sechs Seiten hinter diesem Punkt header_nav mit
+    einem aktiven Wert auf — der Menuepunkt blieb auf jeder von ihnen
+    unmarkiert (navigation, offener Punkt 7).
+    """
+    cls = "nav-drop-link active" if active == "wissen" else "nav-drop-link"
+    kopf = (f'<a href="{prefix}gut-zu-wissen.html" class="{cls}"'
             f'{i18n("nav.wissen")}>Gut zu wissen</a>')
     return nav_aufklapp(NAV_PANEL_ID + "wissen", kopf, "nav.wissen", "Gut zu wissen",
                         nav_wissen_eintraege(prefix))
@@ -938,7 +945,7 @@ def header_nav(prefix, active=""):
   <nav class="main-nav" id="main-nav" tabindex="-1" aria-label="Hauptnavigation"{i18n_attr('aria-label:nav.aria')}>
     <div class="main-nav-inner">
       {nav_kat_dropdowns(prefix, active)}
-      {nav_wissen(prefix)}
+      {nav_wissen(prefix, active)}
       {a(prefix + 'partnerklinik.html', 'Partnerklinik', 'partnerklinik', 'nav.partnerklinik')}
       {a(prefix + 'finanzierung.html', 'Finanzierung', 'finanzierung', 'nav.finanzierung')}
       {a(prefix + 'kontakt.html', 'Kontakt', 'kontakt', 'nav.kontakt')}
@@ -1629,6 +1636,13 @@ def vergleich_karte(slug, prefix, hervor=False):
             f'{i18n("beh." + slug + ".name")}>{h(name)}</a></h3>')
     marke = (f'<p class="small muted"{i18n("seite.vergleich.diese_seite")}>'
              f'Die Behandlung dieser Seite</p>') if hervor else ""
+    if not zeilen:
+        # Sechs der 19 verglichenen Behandlungen haben noch keine Sachangaben.
+        # Statt einer leeren Karte steht dort der Satz, der auf der eigenen
+        # Seite als Lead steht — derselbe Schluessel, keine neue Uebersetzung.
+        beschr = echt(BESCHREIBUNGEN.get(slug))
+        if beschr:
+            zeilen = f'<p class="small"{i18n("beh." + slug + ".desc")}>{h(beschr)}</p>'
     return (f'<div class="card vergleich-karte{" vergleich-karte--hier" if hervor else ""}">'
             f"{kopf}{marke}{zeilen}</div>")
 
@@ -2144,7 +2158,7 @@ def build_faq():
         "Wir antworten persönlich, in der Regel noch am selben Tag.",
         "seite.gutzuwissen.cta",
     )
-    seite("gut-zu-wissen.html", kopf, header_nav(prefix, ""), rumpf, prefix)
+    seite("gut-zu-wissen.html", kopf, header_nav(prefix, "wissen"), rumpf, prefix)
 
 
 def kontaktwege_block(prefix):
@@ -2438,7 +2452,7 @@ def inhalt_seite(relpath, titel, beschreibung, kurz, rumpf_inhalt, i18n_stamm,
 {rumpf_inhalt}
 </section>
 """ + cta_band(cta[0], cta[1], "seite." + i18n_stamm + ".cta")
-    seite(relpath, kopf, header_nav(prefix, ""), rumpf, prefix)
+    seite(relpath, kopf, header_nav(prefix, "wissen"), rumpf, prefix)
 
 
 def notfall_abschnitt(a):
@@ -2729,7 +2743,7 @@ def build_beratung():
   <p{i18n('seite.beratung.text')}>Suchen Sie sich aus, was Ihnen am nächsten kommt. Wir nennen die Verfahren, die dafür in Frage kommen, und sagen dazu, worin sie sich unterscheiden. Welches davon für Sie passt, klärt das ärztliche Gespräch.</p>
 </section>
 <section class="section beratung-liste">
-  <nav class="glossar-sprungliste" aria-label="Anliegen"{i18n_attr('aria-label:seite.beratung.kurz')}>{sprungliste}</nav>
+  <nav class="glossar-sprungliste" aria-label="Was passt zu mir?"{i18n_attr('aria-label:seite.beratung.kurz')}>{sprungliste}</nav>
   {abschnitte}
 </section>
 """ + cta_band(
@@ -2748,7 +2762,7 @@ def build_beratung():
                        ("Was passt zu mir?", kanonisch(SEITE_BERATUNG))]),
         ),
     )
-    seite(SEITE_BERATUNG, kopf, header_nav(prefix, ""), rumpf, prefix)
+    seite(SEITE_BERATUNG, kopf, header_nav(prefix, "wissen"), rumpf, prefix)
 
 
 def build_team():
@@ -3113,6 +3127,41 @@ def pruefe_daten():
         raise SystemExit("Abbruch, Kategorie unvollständig:\n  - " + "\n  - ".join(fehlend))
 
 
+def build_csp():
+    """Traegt die Hashes aller Inline-Skripte in die CSP von vercel.json ein.
+
+    Die CSP erlaubt nur script-src 'self'. Ein Inline-Skript — etwa die Sprachvorwahl,
+    die vor dem ersten Bildaufbau laufen muss — wird sonst vom Browser blockiert und
+    erzeugt auf jeder Seite einen Konsolenfehler. Das faellt lokal nicht auf, weil die
+    CSP erst von Vercel gesetzt wird. Deshalb rechnet der Build die Hashes selbst aus:
+    aendert sich ein Skript, aendert sich der Hash automatisch mit.
+    """
+    import base64
+    import hashlib
+
+    hashes = []
+    for datei in sorted(SITE.rglob("*.html")):
+        html = datei.read_text(encoding="utf-8")
+        for treffer in re.finditer(r"<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>", html, re.S):
+            if "ld+json" in treffer.group(1):
+                continue  # JSON-LD ist Datei-Inhalt, kein ausgefuehrtes Skript
+            roh = hashlib.sha256(treffer.group(2).encode("utf-8")).digest()
+            wert = "'sha256-" + base64.b64encode(roh).decode() + "'"
+            if wert not in hashes:
+                hashes.append(wert)
+
+    pfad = ROOT / "vercel.json"
+    inhalt = pfad.read_text(encoding="utf-8")
+    neu = "script-src 'self'" + ("" if not hashes else " " + " ".join(sorted(hashes)))
+    ersetzt, anzahl = re.subn(r"script-src 'self'[^;\"]*", neu, inhalt)
+    if anzahl != 1:
+        raise SystemExit(f"Abbruch: script-src in vercel.json {anzahl} mal gefunden, erwartet 1.")
+    if ersetzt != inhalt:
+        pfad.write_text(ersetzt, encoding="utf-8")
+    print(f"csp: {len(hashes)} Inline-Skripte freigegeben")
+
+
+
 def main():
     global CSS_VERSION, JS_VERSION
     pruefe_daten()
@@ -3142,6 +3191,7 @@ def main():
     build_404()
     build_sprachdateien()
     pruefe_schluessel()
+    build_csp()
     print(f"ok: {len(PAGES)} Seiten generiert in {SITE}, {len(VERWENDETE_SCHLUESSEL)} i18n-Schlüssel im HTML")
 
 

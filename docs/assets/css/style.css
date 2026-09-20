@@ -805,7 +805,9 @@ body.menue-offen .wa-float { display: none; }
 /* Sprungliste oben auf der Glossar- und der Beratungsseite. Jeder Eintrag
    ist ein Tippziel und haelt deshalb die 44 px ein. */
 .glossar-sprungliste {
-  display: flex; flex-wrap: wrap; gap: var(--raum-2);
+  /* 12 px statt 8: bei 390 px brachen zwei Reihen so um, dass benachbarte
+     Tippziele 0 px auseinanderlagen (werkzeug/schau.mjs, «zu dicht»). */
+  display: flex; flex-wrap: wrap; gap: var(--raum-3);
   margin: var(--raum-5) 0 var(--raum-8);
 }
 .glossar-sprung {
@@ -829,6 +831,12 @@ body.menue-offen .wa-float { display: none; }
   gap: var(--raum-4); padding: var(--raum-3) 0; border-top: 1px solid var(--linie-zart);
 }
 .glossar-zeile dt { font-weight: 500; }
+/* Kurze Begriffe wie «DHI» ergaben ein 27 px breites Tippziel. */
+.glossar-zeile dt > a,
+.glossar-verweise a {
+  display: inline-flex; align-items: center;
+  min-height: var(--ziel); min-width: var(--ziel);
+}
 .glossar-zeile dd { margin: 0; color: var(--text-2); font-size: var(--t-300); }
 
 /* Der zweite Zugang zum Katalog. */
@@ -836,7 +844,7 @@ body.menue-offen .wa-float { display: none; }
 .beratung-einstieg .card { border-top: 2px solid var(--gold); }
 .beratung-einstieg h2 { font-size: var(--t-500); }
 .beratung-einstieg p { color: var(--text-2); max-width: 68ch; }
-.anliegen-chips { display: flex; flex-wrap: wrap; gap: var(--raum-2); margin: var(--raum-4) 0 var(--raum-5); }
+.anliegen-chips { display: flex; flex-wrap: wrap; gap: var(--raum-3); margin: var(--raum-4) 0 var(--raum-5); }
 .anliegen-chip {
   display: inline-flex; align-items: center;
   min-height: var(--ziel); padding: var(--raum-2) var(--raum-4);

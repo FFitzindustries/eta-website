@@ -511,31 +511,39 @@ if (form) {
         return;
       }
 
-      // Gespeichert. Jetzt – und erst jetzt – der WhatsApp-Weg als Angebot.
+      // Gespeichert. Der WhatsApp-Weg ist danach ein Angebot — und zwar
+      // eines, das der Besucher selbst annimmt.
+      //
+      // Vorher stand hier window.open() mit einer fertigen Nachricht, die
+      // Name, Adresse, Geburtsdatum, Telefon, gewuenschte Behandlung und den
+      // Freitext enthielt. Zwei Gruende, warum das hier nicht mehr steht:
+      //
+      //   1. Die gewuenschte Behandlung ist ein Gesundheitsdatum (revDSG
+      //      Art. 5 lit. c, DSGVO Art. 9). data/recht.json sagt im Abschnitt
+      //      «Wenn Sie uns über WhatsApp schreiben» woertlich, das Formular
+      //      «schreibt keine Gesundheitsangaben in eine WhatsApp-Nachricht».
+      //      Genau das tat es. Jetzt geht nur noch der Name mit — alles
+      //      Weitere liegt bereits gespeichert bei ETA.
+      //   2. window.open() aus einem Promise heraus ist keine direkte
+      //      Nutzeraktion mehr; die meisten Browser blockieren das Fenster.
+      //      Ein Verweis, den man antippt, oeffnet zuverlaessig.
       var name = ((data.get("vorname") || "") + " " + (data.get("nachname") || "")).trim() || data.get("name") || "";
-      var adresse = ((data.get("strasse") || "") + ", " + (data.get("plz") || "") + " " + (data.get("ort") || "")).replace(/^,\s*|,\s*$/g, "").trim();
-      var telefon = ((data.get("vorwahl") || "") + " " + (data.get("telefon") || "")).trim();
       var zeilen = [
-        t("js.anfrage.betreff", "Neue Anfrage über die ETA-Website:"),
-        t("js.anfrage.name", "Name:") + " " + name,
-        adresse ? t("js.anfrage.adresse", "Adresse:") + " " + adresse : null,
-        data.get("geburtsdatum") ? t("js.anfrage.geburtsdatum", "Geburtsdatum:") + " " + data.get("geburtsdatum") : null,
-        telefon ? t("js.anfrage.telefon", "Telefon:") + " " + telefon : null,
-        t("js.anfrage.email", "E-Mail:") + " " + (data.get("email") || ""),
-        data.get("behandlung") ? t("js.anfrage.behandlung", "Behandlung:") + " " + data.get("behandlung") : null,
-        data.get("nachricht") ? t("js.anfrage.nachricht", "Nachricht:") + " " + data.get("nachricht") : null,
+        t("js.wa.nachformular", "Guten Tag ETA, ich habe soeben das Formular auf der Website ausgefüllt."),
+        name ? t("js.anfrage.name", "Name:") + " " + name : null,
       ].filter(Boolean);
       var href = whatsappHref(zeilen.join("\n"));
 
-      if (href) {
-        melde(
-          t("js.status.eingegangen", "Ihre Anfrage ist bei uns eingegangen. Wir melden uns in der Regel noch am selben Tag.") + " " +
-            t("js.status.wazusatz", "Für den direkten Draht haben wir Ihnen zusätzlich eine WhatsApp-Nachricht vorbereitet."),
-          false,
-        );
-        window.open(href, "_blank", "noopener");
-      } else {
-        melde(t("js.status.eingegangen", "Ihre Anfrage ist bei uns eingegangen. Wir melden uns in der Regel noch am selben Tag."), false);
+      melde(t("js.status.eingegangen", "Ihre Anfrage ist bei uns eingegangen. Wir melden uns in der Regel noch am selben Tag."), false);
+      if (href && status) {
+        var wahl = document.createElement("a");
+        wahl.className = "link";
+        wahl.href = href;
+        wahl.target = "_blank";
+        wahl.rel = "noopener";
+        wahl.textContent = t("js.status.wazusatz", "Wenn Sie zusätzlich direkt schreiben möchten: per WhatsApp");
+        status.appendChild(document.createTextNode(" "));
+        status.appendChild(wahl);
       }
 
       // Formular leeren, damit dieselbe Anfrage nicht versehentlich ein zweites

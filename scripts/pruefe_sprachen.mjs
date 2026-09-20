@@ -25,6 +25,8 @@ const SEITEN = [
   ['Ihre Reise', '/ihre-reise.html'],
   ['Was es kostet', '/was-es-kostet.html'],
   ['Gut zu wissen', '/gut-zu-wissen.html'],
+  ['Fachbegriffe', '/fachbegriffe.html'],
+  ['Was passt zu mir', '/was-passt-zu-mir.html'],
   ['Kontakt', '/kontakt.html'],
   ['AGB', '/agb.html'],
   ['Datenschutz', '/datenschutz.html'],

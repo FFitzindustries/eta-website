@@ -17,6 +17,10 @@ EIGENNAMEN = {
     "Facebook", "Messenger", "Istanbul", "Riverside Beauty", "St. Margrethen",
     "Botox", "FUE", "DHI", "PRP", "HIFU", "BBL", "Q-Switch",
     "Hollywood Smile", "HydraFacial", "info@eta-agency.ch", "+41 76 412 21 22",
+    # Fachbegriffe aus data/glossar.json, die in der Zielsprache gleich lauten
+    # oder als Abkuerzung gar nicht uebersetzt werden.
+    "ESWT", "SMAS", "Scarlet X", "Graft", "Hyaluronidase", "Masseter",
+    "Skinbooster", "Veneer",
 }
 
 
