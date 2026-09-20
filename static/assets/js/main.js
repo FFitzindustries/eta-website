@@ -80,19 +80,39 @@ function whatsappHref(text) {
   return url;
 }
 
-document.querySelectorAll(".js-whatsapp").forEach(function (el) {
-  var href = whatsappHref(t("js.wa.erstkontakt", "Hallo ETA, ich interessiere mich für eine Behandlung."));
-  if (href) {
-    el.setAttribute("href", href);
-    el.setAttribute("target", "_blank");
-    el.setAttribute("rel", "noopener");
-  } else {
-    el.addEventListener("click", function (e) {
-      e.preventDefault();
-      alert(t("js.wa.nochnicht", "Unsere WhatsApp-Nummer wird in Kürze freigeschaltet. Bitte nutzen Sie solange das Anfrage-Formular auf der Kontaktseite."));
-    });
-  }
-});
+// Setzt alle WhatsApp-Links. Wird beim Laden und nach jedem Sprachwechsel
+// aufgerufen, damit die vorbereitete Nachricht in der gewählten Sprache steht.
+// Vorher wurde sie einmal beim Laden gesetzt und blieb danach stehen.
+function whatsappLinksSetzen() {
+  // Allgemeine Knöpfe: ein Satz für die ganze Seite.
+  document.querySelectorAll(".js-whatsapp").forEach(function (el) {
+    var href = whatsappHref(t("js.wa.erstkontakt", "Hallo ETA, ich interessiere mich für eine Behandlung."));
+    if (href) {
+      el.setAttribute("href", href);
+      el.setAttribute("target", "_blank");
+      el.setAttribute("rel", "noopener");
+    } else if (!el._etaWaGebunden) {
+      el._etaWaGebunden = true;
+      el.addEventListener("click", function (e) {
+        e.preventDefault();
+        alert(t("js.wa.nochnicht", "Unsere WhatsApp-Nummer wird in Kürze freigeschaltet. Bitte nutzen Sie solange das Anfrage-Formular auf der Kontaktseite."));
+      });
+    }
+  });
+
+  // Knöpfe auf den Behandlungsseiten: eigene Nachricht je Behandlung. Der
+  // Generator legt den deutschen Text in data-wa-kontext und den Schlüssel der
+  // Übersetzung in data-wa-key ab.
+  document.querySelectorAll(".js-whatsapp-kontext").forEach(function (el) {
+    var rueckfall = el.getAttribute("data-wa-kontext") || "";
+    var schluessel = el.getAttribute("data-wa-key") || "";
+    var text = schluessel ? t(schluessel, rueckfall) : rueckfall;
+    var href = whatsappHref(text);
+    if (href) el.setAttribute("href", href);
+  });
+}
+
+whatsappLinksSetzen();
 
 // ============================================================== Navigation
 // Menü, Aufklappfelder, Suche und die feste WhatsApp-Blase.
@@ -712,6 +732,7 @@ function texteAnwenden(woerter, lang) {
 
   schalterMarkieren(lang);
   aktiveSprache = lang;
+  whatsappLinksSetzen();
 
   if (scrollY && window.pageYOffset !== scrollY) window.scrollTo(0, scrollY);
 }

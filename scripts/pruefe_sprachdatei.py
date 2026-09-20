@@ -88,7 +88,8 @@ def main():
         print(__doc__)
         return 2
     code = sys.argv[1]
-    fehler = pruefe("katalog", code) + pruefe("seiten", code)
+    # behdaten und inhalte kamen mit dem Ausbau der Redaktionsdaten dazu.
+    fehler = sum(pruefe(art, code) for art in ("katalog", "seiten", "behdaten", "inhalte"))
     print()
     print("Ergebnis:", "sauber" if fehler == 0 else f"{fehler} Beanstandungen")
     return 1 if fehler else 0

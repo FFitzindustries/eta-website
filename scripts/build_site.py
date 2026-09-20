@@ -144,9 +144,72 @@ HONEYPOT = (
 # ------------------------------------------------------------------ i18n-Hilfen
 VERWENDETE_SCHLUESSEL = set()
 
+# Die Texte aus den Redaktionsdaten tragen eigene Schluessel nach dem Schema
+#   daten.<dateiname-ohne-json>.<pfad-im-json-mit-punkten>
+# Erzeugt von scripts/i18n_daten_extrahieren.py, abgelegt als
+# data/i18n/behdaten-de.json (behandlungsdaten.json) und inhalte-de.json (die
+# sechs uebrigen Dateien). Der Generator baut denselben Schluessel aus Datei
+# und Pfad zusammen — siehe dkey() — und faellt still zurueck, wenn die
+# Extraktion den Wert gar nicht erfasst hat.
+DATEN_TEXTE = {}
+for _topf in ("behdaten", "inhalte"):
+    _quelle = I18N_QUELLE / f"{_topf}-de.json"
+    if _quelle.exists():
+        DATEN_TEXTE.update(json.loads(_quelle.read_text()))
+    else:
+        print(f"Hinweis: {_quelle.name} fehlt, die Werte daraus bleiben unausgezeichnet.")
+
+# Datenschluessel, die im HTML gebraucht wuerden, die die Extraktion aber nicht
+# kennt. Das ist der Normalfall fuer Zahlen, Kennungen und Redaktionsfelder;
+# gezaehlt wird trotzdem, damit ein Umbau der Datendateien auffaellt.
+UNBEKANNTE_DATENSCHLUESSEL = set()
+
+# Werte, die der Generator vor der Ausgabe umformt. Im HTML steht die
+# umgeformte Fassung; in der Sprachdatei stuende ohne Zutun die Rohfassung, und
+# der Umschalter schoebe sie beim Wechsel zurueck auf die Seite.
+# build_sprachdateien() legt deshalb dieselbe Umformung auf jede Sprache.
+DATEN_ABGELEITET = {}
+
+
+def dkey(datei, *pfad):
+    """Baut den Schluessel eines Redaktionswerts: daten.<datei>.<pfad>.
+
+    Listenindizes sind Zahlen ab 0, genau wie in behdaten-de.json und
+    inhalte-de.json:
+        dkey("behandlungsdaten", "behandlungen", "lidstraffung", "risiken", 7)
+        -> daten.behandlungsdaten.behandlungen.lidstraffung.risiken.7
+    """
+    return "daten." + datei + "." + ".".join(str(teil) for teil in pfad)
+
+
+def daten_bekannt(key):
+    """Wahr, wenn die Extraktion diesen Wert erfasst hat und er ausgeliefert wird."""
+    wert_ = DATEN_TEXTE.get(key)
+    return wert_ is not None and not KLAMMER.search(wert_)
+
+
+def dkey_abgeleitet(funktion, datei, *pfad):
+    """Wie dkey(), merkt sich aber, dass der Wert vor der Ausgabe umgeformt wird."""
+    key = dkey(datei, *pfad)
+    if daten_bekannt(key):
+        DATEN_ABGELEITET[key] = funktion
+    return key
+
 
 def i18n(key):
-    """Gibt das data-i18n-Attribut zurueck (mit fuehrendem Leerzeichen) und merkt sich den Schluessel."""
+    """Gibt das data-i18n-Attribut zurueck (mit fuehrendem Leerzeichen) und merkt sich den Schluessel.
+
+    Ein leerer Schluessel ergibt ein leeres Attribut — so darf jede Aufrufstelle
+    einfach durchreichen, was sie hat. Dasselbe gilt fuer Datenschluessel, die
+    die Extraktion nicht kennt: eine Zahl, eine Kennung oder ein Feld mit
+    Klammer-Platzhalter bekommt kein data-i18n, damit nie ein Schluessel im
+    HTML steht, den de.json nicht kennt.
+    """
+    if not key:
+        return ""
+    if key.startswith("daten.") and not daten_bekannt(key):
+        UNBEKANNTE_DATENSCHLUESSEL.add(key)
+        return ""
     VERWENDETE_SCHLUESSEL.add(key)
     return f' data-i18n="{key}"'
 
@@ -184,7 +247,7 @@ def wa_link(kontext):
     return "https://wa.me/" + WA_NUMMER + ("?text=" + quote(kontext) if kontext else "")
 
 
-def wa_button(label, size=18, cls="btn btn-gold", i18n_key="", kontext=""):
+def wa_button(label, size=18, cls="btn btn-gold", i18n_key="", kontext="", kontext_key=""):
     """WhatsApp-Knopf. Mit Kontext traegt er die Behandlung in die Nachricht.
 
     Die Beschriftung nennt den Kanal. data/seiteninhalte.json -> kontaktwege
@@ -204,8 +267,14 @@ def wa_button(label, size=18, cls="btn btn-gold", i18n_key="", kontext=""):
     i18n_attribut = i18n(i18n_key) if i18n_key else ""
     text = echt(kontext)
     if text and WA_NUMMER:
+        # data-wa-key nennt den Schluessel der vorbereiteten Nachricht. main.js
+        # baut den Link beim Sprachwechsel damit neu auf, sonst bliebe die
+        # Nachricht auf allen 101 Seiten deutsch, obwohl sie uebersetzt vorliegt.
+        key_attr = f' data-wa-key="{h(kontext_key)}"' if kontext_key else ""
+        if kontext_key:
+            VERWENDETE_SCHLUESSEL.add(kontext_key)
         return (f'<a href="{h(wa_link(text))}" class="{cls} js-whatsapp-kontext" '
-                f'target="_blank" rel="noopener" data-wa-kontext="{h(text)}">'
+                f'target="_blank" rel="noopener" data-wa-kontext="{h(text)}"{key_attr}>'
                 f'{WA_SVG.format(s=size)}<span{i18n_attribut}>{label}</span></a>')
     return f'<a href="#" class="{cls} js-whatsapp">{WA_SVG.format(s=size)}<span{i18n_attribut}>{label}</span></a>'
 
@@ -428,9 +497,18 @@ def fakt(label, wert_, label_key="", wert_key=""):
     text = echt(wert_)
     if text is None:
         return ""
-    l_attr = i18n(label_key) if label_key else ""
-    w_attr = i18n(wert_key) if wert_key else ""
-    return f'<div class="fact"><span{l_attr}>{h(label)}</span><strong{w_attr}>{h(text)}</strong></div>'
+    return (f'<div class="fact"><span{i18n(label_key)}>{h(label)}</span>'
+            f'<strong{i18n(wert_key)}>{h(text)}</strong></div>')
+
+
+def span(text, key=""):
+    """Ein Textstueck mit eigenem Schluessel.
+
+    data-i18n ersetzt den ganzen Textinhalt eines Elements. Steht Text neben
+    einer Zahl, einem Symbol, einem Link oder einem zweiten Text, bekommt er
+    deshalb ein eigenes <span> — und nur das <span> wird ausgezeichnet.
+    """
+    return f"<span{i18n(key)}>{h(text)}</span>"
 
 
 def kurzfassen(text, grenze=155):
@@ -452,6 +530,11 @@ def kurzfassen(text, grenze=155):
 REDAKTIONSNOTIZEN = ("einzutragen", "noch festzulegen", "vor der veröffentlichung", "noch zu klären")
 
 
+def saetze(text):
+    """Zerlegt einen Text in Saetze, samt Satzzeichen."""
+    return re.findall(r"[^.!?]+[.!?]*", text)
+
+
 def ohne_redaktionsnotiz(wert_):
     """Entfernt die Saetze, die sich an ETA richten, und gibt den Rest zurueck.
 
@@ -463,9 +546,8 @@ def ohne_redaktionsnotiz(wert_):
     if text is None:
         return None
     text = re.sub(r"\s+und ist von ETA einzutragen", "", text, flags=re.IGNORECASE)
-    saetze = re.findall(r"[^.!?]+[.!?]*", text)
     return echt("".join(
-        x for x in saetze if not any(n in x.lower() for n in REDAKTIONSNOTIZEN)
+        x for x in saetze(text) if not any(n in x.lower() for n in REDAKTIONSNOTIZEN)
     ))
 
 
@@ -488,23 +570,44 @@ def aufenthalt_kurz(wert_):
     return re.sub(r"\b(Nächte|Nacht) in Istanbul\b", r"\1", text)
 
 
-def absaetze(werte, klasse=""):
-    """Mehrere Absaetze aus einer Liste oder einem einzelnen Text."""
-    if isinstance(werte, str):
+def absaetze(werte, klasse="", key=""):
+    """Mehrere Absaetze aus einer Liste oder einem einzelnen Text.
+
+    key ist der Schluessel des Datenfelds. Steht dort ein einzelner Text,
+    bekommt der Absatz genau diesen Schluessel; steht dort eine Liste, bekommt
+    jeder Absatz key.<index> — dieselbe Schreibweise, in der die Schluessel in
+    behdaten-de.json und inhalte-de.json stehen. Der Index zaehlt die Rohliste,
+    nicht die ausgegebenen Absaetze: leere Eintraege verschieben nichts.
+    """
+    einzeln = isinstance(werte, str)
+    if einzeln:
         werte = [werte]
     c = f' class="{klasse}"' if klasse else ""
-    return "".join(f"<p{c}>{h(t)}</p>" for t in (echt(w) for w in (werte or [])) if t)
+    raus = ""
+    for i, wert_ in enumerate(werte or []):
+        text = echt(wert_)
+        if not text:
+            continue
+        raus += f"<p{c}{i18n(key if einzeln else f'{key}.{i}' if key else '')}>{h(text)}</p>"
+    return raus
 
 
-def punkte(werte, klasse="punkt-liste"):
+def punkte(werte, klasse="punkt-liste", key=""):
     """Eine Liste — oder nichts, wenn nichts drinsteht.
 
     Standard ist die neutrale Aufzaehlung. «check-list» traegt einen goldenen
     Haken und gehoert nur dorthin, wo ein Haken stimmt: Leistungsumfang,
     Packliste, belegte Zertifikate. Neben «Flug ab der Schweiz — nicht
     enthalten» oder neben einem Risiko waere er eine falsche Aussage.
+
+    key ist der Schluessel der Liste; jeder Eintrag bekommt key.<index>.
     """
-    eintraege = "".join(f"<li>{h(t)}</li>" for t in (echt(w) for w in (werte or [])) if t)
+    eintraege = ""
+    for i, wert_ in enumerate(werte or []):
+        text = echt(wert_)
+        if not text:
+            continue
+        eintraege += f"<li{i18n(f'{key}.{i}' if key else '')}>{h(text)}</li>"
     return f'<ul class="{klasse}">{eintraege}</ul>' if eintraege else ""
 
 
@@ -516,13 +619,16 @@ def block(titel, inhalt, i18n_key="", stufe="h2"):
     """
     if not inhalt or not inhalt.strip():
         return ""
-    key = i18n(i18n_key) if i18n_key else ""
-    return f"\n    <{stufe}{key}>{h(titel)}</{stufe}>\n    {inhalt}"
+    return f"\n    <{stufe}{i18n(i18n_key)}>{h(titel)}</{stufe}>\n    {inhalt}"
 
 
-def fakt_liste(paare, label_breit=False):
-    """Mehrere .fact-Zeilen aus (Etikett, Wert)-Paaren."""
-    return "\n      ".join(z for z in (fakt(a, b) for a, b in paare) if z)
+def fakt_liste(zeilen):
+    """Mehrere .fact-Zeilen aus (Etikett, Wert)-Paaren.
+
+    Wahlweise mit Schluesseln: (Etikett, Wert, Etikett-Schluessel,
+    Wert-Schluessel). Die Argumente gehen unveraendert an fakt().
+    """
+    return "\n      ".join(z for z in (fakt(*zeile) for zeile in zeilen) if z)
 
 
 # Slug -> (Kategorie-ID, Name) fuer Querverweise zwischen Behandlungen.
@@ -1029,7 +1135,7 @@ def footer(prefix):
 </html>"""
 
 
-def cta_band(title, sub, key, label=None, label_key=None, kontext=""):
+def cta_band(title, sub, key, label=None, label_key=None, kontext="", kontext_key=""):
     """CTA-Band. key ist der Schluesselstamm, z. B. seite.index.cta -> .titel / .sub."""
     if label is None:
         label = "Per WhatsApp schreiben"
@@ -1043,7 +1149,7 @@ def cta_band(title, sub, key, label=None, label_key=None, kontext=""):
       <h2{t_i18n}>{title}</h2>
       <p{s_i18n}>{sub}</p>
     </div>
-    {wa_button(label, 18, 'btn btn-gold', label_key, kontext)}
+    {wa_button(label, 18, 'btn btn-gold', label_key, kontext, kontext_key)}
   </div>
 </section>"""
 
@@ -1265,7 +1371,7 @@ def build_index():
   <h2{i18n('seite.index.fin.titel')}>Drei Wege zu Ihrem Wunschtermin</h2>
   <div class="grid-3">
     <div class="card"><h3 class="serif"{i18n('seite.index.fin.1.titel')}>3 Raten, 0 % Zins</h3><p{i18n('seite.index.fin.1.text')}>Der Behandlungspreis in drei Teilzahlungen, zinsfrei mit fixer Bearbeitungsgebühr.</p></div>
-    <div class="card"><h3 class="serif"{i18n('seite.index.fin.2.titel')}>Ratenkauf mit Laufzeit</h3><p{i18n('seite.index.fin.2.text')}>Flexible Laufzeiten über unseren Zahlungspartner, Abwicklung direkt online.</p></div>
+    <div class="card"><h3 class="serif"{i18n('seite.index.fin.2.titel')}>Ratenkauf mit Laufzeit</h3><p{i18n('seite.index.fin.2.text.ohne_anbieter')}>Flexible Laufzeiten über unseren Zahlungspartner, Abwicklung direkt online.</p></div>
     <div class="card"><h3 class="serif"{i18n('seite.index.fin.3.titel')}>Ansparmodell</h3><p{i18n('seite.index.fin.3.text')}>Sie sparen in Ihrem Tempo an. Sobald der Betrag erreicht ist, steht Ihr Termin fest.</p></div>
   </div>
   <p class="small muted"><span{i18n('seite.index.fin.hinweis')}>Konditionen und Details erhalten Sie im persönlichen Beratungsgespräch.</span> <a href="finanzierung.html"{i18n('seite.index.fin.hinweis_link')}>Mehr zur Finanzierung</a></p>
@@ -1439,19 +1545,32 @@ def detail_fakten(slug, lokal=False):
     (Abschnitt «Ergebnis»), nicht in einer zweispaltigen Faktenzeile.
     """
     d = BEHANDLUNGSDATEN.get(slug, {})
+
+    def dk(*pfad):
+        return dkey("behandlungsdaten", "behandlungen", slug, *pfad)
+
     # Bei den Behandlungen, die Riverside auch in der Schweiz anbietet, stand
     # im Kasten «kein Aufenthalt in Istanbul noetig» und zwei Zeilen darunter
     # «Klinik: Unsere Partnerklinik, Istanbul». Das widersprach sich.
-    klinik_wert = ("Partnerklinik Istanbul oder Riverside Beauty, St. Margrethen"
-                   if lokal else "Unsere Partnerklinik, Istanbul")
+    klinik_wert, klinik_key = (
+        ("Partnerklinik Istanbul oder Riverside Beauty, St. Margrethen",
+         "seite.behandlung.fakten.klinik.wert_lokal")
+        if lokal else
+        ("Unsere Partnerklinik, Istanbul", "seite.behandlung.fakten.klinik.wert")
+    )
     zeilen = [
         fakt("Aufenthalt in Istanbul", aufenthalt_kurz(d.get("aufenthalt_tage")),
-             "seite.behandlung.fakten.aufenthalt.label"),
-        fakt("Dauer der Behandlung", d.get("dauer_eingriff"), "seite.behandlung.fakten.dauer.label"),
-        fakt("Betäubung", d.get("betaeubung"), "seite.behandlung.fakten.betaeubung.label"),
-        fakt("Wieder alltagsfähig", d.get("ausfallzeit_alltag"), "seite.behandlung.fakten.ausfallzeit.label"),
-        fakt("Wieder Sport", d.get("ausfallzeit_sport"), "seite.behandlung.fakten.sport.label"),
-        fakt("Klinik", klinik_wert, "seite.behandlung.fakten.klinik.label"),
+             "seite.behandlung.fakten.aufenthalt.label",
+             dkey_abgeleitet(aufenthalt_kurz, "behandlungsdaten", "behandlungen", slug, "aufenthalt_tage")),
+        fakt("Dauer der Behandlung", d.get("dauer_eingriff"), "seite.behandlung.fakten.dauer.label",
+             dk("dauer_eingriff")),
+        fakt("Betäubung", d.get("betaeubung"), "seite.behandlung.fakten.betaeubung.label",
+             dk("betaeubung")),
+        fakt("Wieder alltagsfähig", d.get("ausfallzeit_alltag"), "seite.behandlung.fakten.ausfallzeit.label",
+             dk("ausfallzeit_alltag")),
+        fakt("Wieder Sport", d.get("ausfallzeit_sport"), "seite.behandlung.fakten.sport.label",
+             dk("ausfallzeit_sport")),
+        fakt("Klinik", klinik_wert, "seite.behandlung.fakten.klinik.label", klinik_key),
         fakt("Nachsorge", "Rheintal, Schweiz",
              "seite.behandlung.fakten.nachsorge.label", "seite.behandlung.fakten.nachsorge.wert"),
     ]
@@ -1471,16 +1590,21 @@ def detail_fakten(slug, lokal=False):
         # Kein Preis, aber die Grundlage, nach der er sich richtet. Das ist die
         # Angabe, mit der ein Interessent zwei Angebote vergleichen kann —
         # «je Graft» oder «je Zahn» sagt mehr als eine Zahl ohne Bezug.
+        # Der Schluessel wird auch dann als «abgeleitet» gemeldet, wenn von dem
+        # Wert nichts uebrig bleibt: so raeumt build_sprachdateien() die
+        # Redaktionsnotiz auch aus den Sprachdateien.
+        basis_key = dkey_abgeleitet(ohne_redaktionsnotiz, "behandlungsdaten",
+                                    "behandlungen", slug, "preis_basis")
         basis = ohne_redaktionsnotiz(d.get("preis_basis"))
         if basis:
             zeilen.append(
                 f'<p class="small muted"><span{i18n("seite.behandlung.preis.basis.label")}>'
-                f'Wonach sich der Preis richtet:</span> {h(basis)}</p>'
+                f'Wonach sich der Preis richtet:</span> {span(basis, basis_key)}</p>'
             )
     return "\n      ".join(z for z in zeilen if z)
 
 
-def risiko_block(d, prefix):
+def risiko_block(slug, d, prefix):
     """Risiken, Grenzen und Ausschlussgruende — aus den Daten, nie erfunden.
 
     Voll ausgearbeitete Behandlungen haben eigene Risiken; die knappen bekommen
@@ -1488,23 +1612,33 @@ def risiko_block(d, prefix):
     bekommen «wann zum Arzt» und «Grenzen des Verfahrens» aus der Gruppe, weil
     das in den Einzeleintraegen nicht doppelt steht (Befund inhalt B4).
     """
-    gruppe = RISIKEN_GRUPPEN.get(d.get("risiken_gruppe") or "", {})
-    eigene = punkte([x for x in d.get("risiken", [])])
+    gid = d.get("risiken_gruppe") or ""
+    gruppe = RISIKEN_GRUPPEN.get(gid, {})
+
+    def dk(*pfad):
+        return dkey("behandlungsdaten", "behandlungen", slug, *pfad)
+
+    def gk(*pfad):
+        return dkey("risiken-gruppen", "gruppen", gid, *pfad)
+
+    eigene = punkte([x for x in d.get("risiken", [])], key=dk("risiken"))
     teile = []
     if eigene:
         teile.append(eigene)
     elif gruppe:
-        teile.append(absaetze(gruppe.get("einleitung")))
-        teile.append(block("Was häufig vorkommt", punkte(gruppe.get("haeufig")),
+        teile.append(absaetze(gruppe.get("einleitung"), key=gk("einleitung")))
+        teile.append(block("Was häufig vorkommt", punkte(gruppe.get("haeufig"), key=gk("haeufig")),
                            "seite.behandlung.risiken.haeufig", "h3"))
-        teile.append(block("Was selten vorkommt", punkte(gruppe.get("selten")),
+        teile.append(block("Was selten vorkommt", punkte(gruppe.get("selten"), key=gk("selten")),
                            "seite.behandlung.risiken.selten", "h3"))
     teile.append(block("Wann diese Behandlung nicht in Frage kommt",
-                       punkte(d.get("nicht_geeignet_fuer")),
+                       punkte(d.get("nicht_geeignet_fuer"), key=dk("nicht_geeignet_fuer")),
                        "seite.behandlung.risiken.nicht_geeignet", "h3"))
-    teile.append(block("Wann Sie ärztliche Hilfe brauchen", absaetze(gruppe.get("wann_zum_arzt")),
+    teile.append(block("Wann Sie ärztliche Hilfe brauchen",
+                       absaetze(gruppe.get("wann_zum_arzt"), key=gk("wann_zum_arzt")),
                        "seite.behandlung.risiken.zum_arzt", "h3"))
-    teile.append(block("Was dieses Verfahren nicht kann", absaetze(gruppe.get("grenzen")),
+    teile.append(block("Was dieses Verfahren nicht kann",
+                       absaetze(gruppe.get("grenzen"), key=gk("grenzen")),
                        "seite.behandlung.risiken.grenzen", "h3"))
     inhalt = "".join(t for t in teile if t)
     if not inhalt.strip():
@@ -1519,16 +1653,27 @@ def risiko_block(d, prefix):
     return block("Risiken und Grenzen", inhalt, "seite.behandlung.risiken.titel")
 
 
-def faq_block(eintraege, titel, i18n_key):
-    """Behandlungseigene Fragen. Dieselbe Optik wie die allgemeine FAQ."""
-    paare = [(echt(e.get("frage")), echt(e.get("antwort"))) for e in eintraege or []]
-    paare = [(f_, a) for f_, a in paare if f_ and a]
+def faq_block(eintraege, titel, i18n_key, key_basis=""):
+    """Behandlungseigene Fragen. Dieselbe Optik wie die allgemeine FAQ.
+
+    key_basis ist der Schluessel der Frageliste in den Redaktionsdaten; jeder
+    Eintrag bekommt key_basis.<index>.frage bzw. .antwort. Der Index zaehlt die
+    Rohliste, damit eine unbeantwortete Frage die folgenden nicht verschiebt.
+    """
+    liste = ""
+    paare = []
+    for i, e in enumerate(eintraege or []):
+        frage, antwort = echt(e.get("frage")), echt(e.get("antwort"))
+        if not (frage and antwort):
+            continue
+        f_key = f"{key_basis}.{i}.frage" if key_basis else ""
+        a_key = f"{key_basis}.{i}.antwort" if key_basis else ""
+        liste += (f'<details{" open" if not paare else ""}>'
+                  f'<summary{i18n(f_key)}>{h(frage)}</summary>'
+                  f'<p{i18n(a_key)}>{h(antwort)}</p></details>')
+        paare.append((frage, antwort))
     if not paare:
         return "", []
-    liste = "".join(
-        f'<details{" open" if i == 0 else ""}><summary>{h(f_)}</summary><p>{h(a)}</p></details>'
-        for i, (f_, a) in enumerate(paare)
-    )
     return block(titel, f'<div class="faq-list wide">{liste}</div>', i18n_key), paare
 
 
@@ -1629,7 +1774,8 @@ def vergleich_karte(slug, prefix, hervor=False):
     kid, name = SLUG_REGISTER[slug]
     d = BEHANDLUNGSDATEN.get(slug, {})
     zeilen = "\n      ".join(z for z in (
-        fakt(label, d.get(feld), key) for feld, (label, key) in VERGLEICH_ETIKETTEN.items()
+        fakt(label, d.get(feld), key, dkey("behandlungsdaten", "behandlungen", slug, feld))
+        for feld, (label, key) in VERGLEICH_ETIKETTEN.items()
     ) if z)
     kopf = (f'<h3{i18n("beh." + slug + ".name")}>{h(name)}</h3>' if hervor else
             f'<h3><a class="link" href="{prefix}behandlungen/{kid}/{slug}.html"'
@@ -1715,27 +1861,35 @@ def detail_eigen(slug, b, prefix):
     """
     d = BEHANDLUNGSDATEN.get(slug, {})
     t = d.get("text") or {}
+
+    def dk(*pfad):
+        return dkey("behandlungsdaten", "behandlungen", slug, *pfad)
+
     teile = []
-    teile.append(block("Für wen diese Behandlung geeignet ist", absaetze(t.get("fuer_wen")),
+    teile.append(block("Für wen diese Behandlung geeignet ist",
+                       absaetze(t.get("fuer_wen"), key=dk("text", "fuer_wen")),
                        "seite.behandlung.fuer_wen.titel"))
-    teile.append(block("Was bei der Behandlung passiert", absaetze(t.get("was_passiert")),
+    teile.append(block("Was bei der Behandlung passiert",
+                       absaetze(t.get("was_passiert"), key=dk("text", "was_passiert")),
                        "seite.behandlung.was_passiert.titel"))
-    teile.append(block("Der Eingriff Schritt für Schritt", absaetze(t.get("ablauf")),
+    teile.append(block("Der Eingriff Schritt für Schritt",
+                       absaetze(t.get("ablauf"), key=dk("text", "ablauf")),
                        "seite.behandlung.eingriff.titel"))
     ergebnis = "".join([
-        absaetze(d.get("ergebnis_sichtbar_nach")),
-        absaetze(d.get("haltbarkeit")),
-        absaetze(d.get("sitzungen")),
+        absaetze(d.get("ergebnis_sichtbar_nach"), key=dk("ergebnis_sichtbar_nach")),
+        absaetze(d.get("haltbarkeit"), key=dk("haltbarkeit")),
+        absaetze(d.get("sitzungen"), key=dk("sitzungen")),
     ])
     teile.append(block("Ergebnis: wann sichtbar, wie lange haltbar", ergebnis,
                        "seite.behandlung.ergebnis.titel"))
-    teile.append(risiko_block(d, prefix))
-    danach = absaetze(t.get("danach")) + absaetze(d.get("nachsorge"))
+    teile.append(risiko_block(slug, d, prefix))
+    danach = (absaetze(t.get("danach"), key=dk("text", "danach"))
+              + absaetze(d.get("nachsorge"), key=dk("nachsorge")))
     teile.append(block("Nach der Behandlung", danach, "seite.behandlung.danach.titel"))
     # Ein Schluessel, ein Text: der Behandlungsname stuende sonst 28-mal
     # verschieden unter demselben i18n-Schluessel.
     fragen_html, paare = faq_block(d.get("faq"), "Häufige Fragen zu dieser Behandlung",
-                                   "seite.behandlung.faq.titel")
+                                   "seite.behandlung.faq.titel", dk("faq"))
     teile.append(fragen_html)
     # Die Gegenueberstellung steht dort, wo jemand schwankt: auf der Seite
     # jeder beteiligten Behandlung, nicht nur auf der Beratungsseite.
@@ -1785,6 +1939,10 @@ def build_details():
                     )
                 eigen, faq_paare = detail_eigen(slug, b, prefix)
                 wa_kontext = echt(d.get("whatsapp_text")) or ""
+                wa_kontext_key = (
+                    "daten.behandlungsdaten.behandlungen." + slug + ".whatsapp_text"
+                    if wa_kontext else ""
+                )
                 b_i18n = i18n("beh." + slug + ".name")
                 d_i18n = i18n("beh." + slug + ".desc") if desc else ""
                 ph_attr = i18n_attr("placeholder:seite.behandlung.formular.nachricht.ph." + slug)
@@ -1849,7 +2007,7 @@ def build_details():
     <div class="card facts">
       <h2 class="serif"{i18n('seite.behandlung.fakten.titel')}>Auf einen Blick</h2>
       {detail_fakten(slug, bool(b.get("lokal_riverside")))}
-      {wa_button('Per WhatsApp schreiben', 18, 'btn btn-gold', 'seite.allgemein.cta.anfragen', wa_kontext)}
+      {wa_button('Per WhatsApp schreiben', 18, 'btn btn-gold', 'seite.allgemein.cta.anfragen', wa_kontext, wa_kontext_key)}
       <form class="mini-form" id="anfrage-form" method="post">
         <input type="hidden" name="behandlung" value="{h(b['name_de'])}">
         {pflicht_hinweis()}
@@ -1871,6 +2029,7 @@ def build_details():
                     "Wir antworten persönlich, in der Regel noch am selben Tag.",
                     "seite.behandlung.cta", "Per WhatsApp fragen", "seite.behandlung.cta.knopf",
                     kontext=wa_kontext,
+                    kontext_key=wa_kontext_key,
                 )
                 seite(relpath, kopf, header_nav(prefix, kid), rumpf, prefix)
 
@@ -1887,13 +2046,16 @@ def klinik_punkte():
         f'<li{i18n("seite.partnerklinik.klinik.punkt.1")}>Deutschsprachige Betreuung direkt in der Klinik</li>',
         f'<li{i18n("seite.partnerklinik.klinik.punkt.2")}>Eigene Transfer- und Hotel-Organisation</li>',
     ]
-    for f_ in KLINIK.get("fakten_belegt", []):
+    for i, f_ in enumerate(KLINIK.get("fakten_belegt", [])):
         label, wert_ = echt(f_.get("label")), echt(f_.get("wert"))
         if label and wert_:
-            punkte.append(f"<li>{h(label)}: {h(wert_)}</li>")
-    fach = [h(x) for x in KLINIK.get("fachbereiche", []) if echt(x)]
+            punkte.append(f'<li>{span(label, dkey("klinik", "fakten_belegt", i, "label"))}: '
+                          f'{span(wert_, dkey("klinik", "fakten_belegt", i, "wert"))}</li>')
+    fach = [f'<span{i18n(dkey("klinik", "fachbereiche", i))}>{h(x)}</span>'
+            for i, x in enumerate(KLINIK.get("fachbereiche", [])) if echt(x)]
     if fach:
-        punkte.append(f'<li>Fachbereiche: {", ".join(fach)}</li>')
+        punkte.append(f'<li><span{i18n("seite.partnerklinik.klinik.fachbereiche")}>Fachbereiche:</span> '
+                      f'{", ".join(fach)}</li>')
     return "\n      ".join(punkte)
 
 
@@ -1902,22 +2064,30 @@ def abgrenzung_satz():
     text = echt((KLINIK.get("abgrenzung") or {}).get("text"))
     if not text:
         return ""
-    return (f'<div class="note-box">{h(text)} '
-            f'<a class="link" href="{SEITE_SCHIEFGEHT}">Was gilt, wenn etwas nicht wie geplant läuft</a></div>')
+    return (f'<div class="note-box">{span(text, dkey("klinik", "abgrenzung", "text"))} '
+            f'<a class="link" href="{SEITE_SCHIEFGEHT}"{i18n("seite.behandlung.risiken.link")}>'
+            f'Was gilt, wenn etwas nicht wie geplant läuft</a></div>')
 
 
 def klinik_adresse():
     """Anschrift der Partnerklinik. Erst damit ist sie nachpruefbar."""
     a = KLINIK.get("adresse", {})
-    zeilen = [echt(KLINIK.get("name"))]
-    zeilen.append(echt(a.get("strasse")))
-    zeilen.append(" ".join(x for x in [echt(a.get("plz")), echt(a.get("ort"))] if x))
-    zeilen.append(echt(a.get("land")))
-    zeilen = [h(z) for z in zeilen if z]
+    ort_zeile = " ".join(x for x in [
+        h(echt(a.get("plz"))) if echt(a.get("plz")) else "",
+        span(echt(a["ort"]), dkey("klinik", "adresse", "ort")) if echt(a.get("ort")) else "",
+    ] if x)
+    zeilen = [
+        span(echt(KLINIK["name"]), dkey("klinik", "name")) if echt(KLINIK.get("name")) else "",
+        span(echt(a["strasse"]), dkey("klinik", "adresse", "strasse")) if echt(a.get("strasse")) else "",
+        ort_zeile,
+        span(echt(a["land"]), dkey("klinik", "adresse", "land")) if echt(a.get("land")) else "",
+    ]
+    zeilen = [z for z in zeilen if z]
     if not zeilen:
         return ""
     url = echt(KLINIK.get("url"))
-    link = (f'<p class="small"><a class="link" href="{h(url)}" rel="noopener" target="_blank">'
+    link = (f'<p class="small"><a class="link" href="{h(url)}" rel="noopener" target="_blank"'
+            f'{i18n("seite.partnerklinik.klinik.website")}>'
             f'Website der Klinik</a></p>') if url else ""
     return f'<address class="klinik-adresse">{"<br>".join(zeilen)}</address>{link}'
 
@@ -2003,10 +2173,17 @@ def build_partnerklinik():
         )
     klinik_satz = ""
     if name:
+        ort = echt(KLINIK.get("adresse", {}).get("ort"))
+        # Der Ortsname bleibt als Eigenname unuebersetzt, wenn er nicht aus den
+        # Daten kommt — «Istanbul» heisst in allen vier Sprachen so.
+        ort_html = span(ort, dkey("klinik", "adresse", "ort")) if ort else "Istanbul"
         klinik_satz = (
-            f'<p class="small muted">Unsere Partnerklinik ist die <strong>{h(name)}</strong> '
-            f'in {h(echt(KLINIK.get("adresse", {}).get("ort")) or "Istanbul")}. '
-            "ETA vermittelt die Behandlung dort und erbringt selbst keine medizinischen Leistungen.</p>"
+            f'<p class="small muted">'
+            f'<span{i18n("seite.partnerklinik.klinik.satz.vor")}>Unsere Partnerklinik ist die</span> '
+            f'<strong{i18n(dkey("klinik", "name"))}>{h(name)}</strong> '
+            f'<span{i18n("seite.partnerklinik.klinik.satz.in")}>in</span> {ort_html}. '
+            f'<span{i18n("seite.partnerklinik.klinik.satz.nach")}>ETA vermittelt die Behandlung dort '
+            f'und erbringt selbst keine medizinischen Leistungen.</span></p>'
         )
     kopf = head(
         "Ablauf & Partnerklinik | ETA",
@@ -2070,7 +2247,20 @@ def build_partnerklinik():
 
 def anzahlung_satz():
     """Die Anzahlung stand dreimal als «[BETRAG]» im Erzeugnis. Solange der
-    Betrag nicht feststeht, wird er nicht genannt — der Rest des Satzes bleibt."""
+    Betrag nicht feststeht, wird er nicht genannt — der Rest des Satzes bleibt.
+
+    Dieselbe Entschaerfung traf «[ANBIETER]» in den Finanzierungstexten. In
+    data/i18n/seiten-*.json steht unter den alten Schluesseln aber weiter die
+    Fassung mit Klammer-Platzhalter, und build_sprachdateien() haelt jeden Wert
+    mit Klammer zurueck — der Schluessel fehlte damit in de.json. Deshalb
+    tragen die vier betroffenen Stellen jetzt eigene Schluessel:
+        seite.index.fin.2.text.ohne_anbieter
+        seite.finanzierung.2.text.ohne_anbieter
+        seite.finanzierung.hinweis.ohne_betrag
+        seite.kontakt.formular.hinweis.ohne_betrag
+    Die alten vier Schluessel sind damit unbenutzt und koennen aus allen vier
+    Sprachdateien verschwinden, sobald en, tr und ar nachgezogen sind.
+    """
     return (
         "Termine werden mit einer Anzahlung fixiert und können bis 72 Stunden "
         "vorher kostenlos verschoben werden."
@@ -2098,10 +2288,10 @@ def build_finanzierung():
   <h2{i18n('seite.finanzierung.modelle.titel')}>Die drei Modelle</h2>
   <div class="grid-3">
     <div class="card"><h3 class="serif"{i18n('seite.finanzierung.1.titel')}>3 Raten, 0 % Zins</h3><p{i18n('seite.finanzierung.1.text')}>Der Behandlungspreis in drei Teilzahlungen, zinsfrei mit fixer Bearbeitungsgebühr. Die erste Rate sichert Ihren Termin.</p></div>
-    <div class="card"><h3 class="serif"{i18n('seite.finanzierung.2.titel')}>Ratenkauf mit Laufzeit</h3><p{i18n('seite.finanzierung.2.text')}>Flexible Laufzeiten über unseren Zahlungspartner. Die Abwicklung läuft direkt online, die Konditionen sehen Sie vor Abschluss transparent.</p></div>
+    <div class="card"><h3 class="serif"{i18n('seite.finanzierung.2.titel')}>Ratenkauf mit Laufzeit</h3><p{i18n('seite.finanzierung.2.text.ohne_anbieter')}>Flexible Laufzeiten über unseren Zahlungspartner. Die Abwicklung läuft direkt online, die Konditionen sehen Sie vor Abschluss transparent.</p></div>
     <div class="card"><h3 class="serif"{i18n('seite.finanzierung.3.titel')}>Ansparmodell</h3><p{i18n('seite.finanzierung.3.text')}>Sie sparen in Ihrem Tempo mit regelmässigen Teilzahlungen an. Sobald der Betrag erreicht ist, steht Ihr Termin fest.</p></div>
   </div>
-  <div class="note-box"{i18n('seite.finanzierung.hinweis')}>Zahlungsarten: Twint, Banküberweisung, PayPal. {anzahlung_satz()} Alle Konditionen erhalten Sie schriftlich mit Ihrem Angebot.</div>
+  <div class="note-box"{i18n('seite.finanzierung.hinweis.ohne_betrag')}>Zahlungsarten: Twint, Banküberweisung, PayPal. {anzahlung_satz()} Alle Konditionen erhalten Sie schriftlich mit Ihrem Angebot.</div>
 </section>
 """ + cta_band(
         "Fragen zur Finanzierung?",
@@ -2128,6 +2318,7 @@ def build_faq():
     reise_html, reise_paare = faq_block(
         reise.get("fragen"), echt(reise.get("titel")) or "Fragen zur Reise",
         "seite.gutzuwissen.reise.titel",
+        dkey("seiteninhalte", "reise_faq", "fragen"),
     )
     kopf = head(
         "Gut zu wissen | ETA",
@@ -2172,7 +2363,10 @@ def kontaktwege_block(prefix):
     """
     kw = SEITENINHALTE.get("kontaktwege") or {}
     karten = ""
-    for kanal in sorted(kw.get("kanaele", []), key=lambda x: x.get("rang", 99)):
+    # Die Reihenfolge auf der Seite richtet sich nach «rang», die Schluessel
+    # nach der Stelle in data/seiteninhalte.json — deshalb die Nummer vorher.
+    for nr, kanal in sorted(enumerate(kw.get("kanaele", [])), key=lambda p: p[1].get("rang", 99)):
+        kb = dkey("seiteninhalte", "kontaktwege", "kanaele", nr)
         typ, label = kanal.get("typ"), echt(kanal.get("label"))
         if not label:
             continue
@@ -2189,16 +2383,19 @@ def kontaktwege_block(prefix):
         else:
             continue
         extern = ' target="_blank" rel="noopener"' if ziel.startswith("http") else ""
-        text = absaetze(kanal.get("text"), "small")
+        text = absaetze(kanal.get("text"), "small", key=kb + ".text")
         zeiten = echt(kanal.get("zeiten"))
         if zeiten:
-            text += f'<p class="small muted">{h(zeiten)}</p>'
-        karten += (f'<div class="card"><h3 class="serif">{h(label)}</h3>{text}'
-                   f'<a class="link" href="{h(ziel)}"{extern}>{h(label)}</a></div>')
+            text += f'<p class="small muted"{i18n(kb + ".zeiten")}>{h(zeiten)}</p>'
+        l_attr = i18n(kb + ".label")
+        karten += (f'<div class="card"><h3 class="serif"{l_attr}>{h(label)}</h3>{text}'
+                   f'<a class="link" href="{h(ziel)}"{extern}{l_attr}>{h(label)}</a></div>')
     if not karten:
         return ""
     hinweis = echt(kw.get("hinweis_gesundheitsdaten"))
-    kasten = f'<div class="note-box">{h(hinweis)}</div>' if hinweis else ""
+    kasten = (f'<div class="note-box"'
+              f'{i18n(dkey("seiteninhalte", "kontaktwege", "hinweis_gesundheitsdaten"))}>'
+              f'{h(hinweis)}</div>') if hinweis else ""
     return (f'\n<section class="section">'
             f'<h2{i18n("seite.kontakt.wege.titel")}>So erreichen Sie uns</h2>'
             f'<div class="grid-3">{karten}</div>{kasten}</section>')
@@ -2272,7 +2469,7 @@ def build_kontakt():
     <input type="hidden" name="einwilligung_version" value="{EINWILLIGUNG_VERSION}">
     <div class="form-footer">
       <button type="submit" class="btn btn-gold"{i18n('seite.allgemein.formular.senden')}>Anfrage senden</button>
-      <p class="small muted"{i18n('seite.kontakt.formular.hinweis')}>{anzahlung_satz()}</p>
+      <p class="small muted"{i18n('seite.kontakt.formular.hinweis.ohne_betrag')}>{anzahlung_satz()}</p>
     </div>
     {FORM_STATUS}
   </form>
@@ -2290,16 +2487,19 @@ def firma_adresse():
     """
     f_ = RECHT.get("firma", {})
     zeilen = []
+    # Der Firmenname ist ein Eigenname und bleibt unuebersetzt.
     name = echt(f_.get("name")) or "ETA – European Turkey Asia"
     rechtsform = echt(f_.get("rechtsform"))
     zeilen.append(h(name) + (f" ({h(rechtsform)})" if rechtsform else ""))
     if echt(f_.get("strasse")):
         zeilen.append(h(echt(f_["strasse"])))
+    land = echt(f_.get("land"))
+    land_html = span(land, dkey("recht", "firma", "land")) if land else ""
     ort = " ".join(x for x in [echt(f_.get("plz")), echt(f_.get("ort"))] if x)
     if ort:
-        zeilen.append(h(ort) + (", " + h(echt(f_.get("land"))) if echt(f_.get("land")) else ""))
-    elif echt(f_.get("land")):
-        zeilen.append(h(echt(f_["land"])))
+        zeilen.append(h(ort) + (", " + land_html if land_html else ""))
+    elif land_html:
+        zeilen.append(land_html)
     return "<p>" + "<br>".join(zeilen) + "</p>"
 
 
@@ -2307,12 +2507,14 @@ def firma_kontakt():
     f_ = RECHT.get("firma", {})
     kontakt = []
     if echt(f_.get("email")):
-        kontakt.append(f'E-Mail: <a href="mailto:{h(f_["email"])}">{h(f_["email"])}</a>')
+        kontakt.append(f'<span{i18n("seite.impressum.kontakt.email")}>E-Mail:</span> '
+                       f'<a href="mailto:{h(f_["email"])}">{h(f_["email"])}</a>')
     if echt(f_.get("telefon")):
         # Bewusst kein tel:-Link: die Nummer ist heute die WhatsApp-Nummer.
         # data/recht.json verlangt eine Bestaetigung, dass sie auch als
         # Telefonanschluss erreichbar ist, bevor daraus ein Anruf-Link wird.
-        kontakt.append(f'Telefon: {h(f_["telefon"])}')
+        kontakt.append(f'<span{i18n("seite.impressum.kontakt.telefon")}>Telefon:</span> '
+                       f'{h(f_["telefon"])}')
     return "<p>" + "<br>".join(kontakt) + "</p>" if kontakt else ""
 
 
@@ -2344,13 +2546,20 @@ ERSETZTE_IMPRESSUM_ABSCHNITTE = {
 }
 
 
-def recht_abschnitt(a, extra=""):
-    teile = [f'<h2>{h(a["titel"])}</h2>'] if echt(a.get("titel")) else []
-    for absatz in a.get("absaetze", []):
+def recht_abschnitt(a, extra="", basis=""):
+    """Ein Abschnitt aus data/recht.json. basis ist sein Schluessel in den Daten,
+    z. B. daten.recht.datenschutz.abschnitte.3 — Titel, Absaetze und Listen
+    haengen sich mit .titel, .absaetze.<i> und .liste.<i> daran."""
+    teile = [f'<h2{i18n(f"{basis}.titel" if basis else "")}>{h(a["titel"])}</h2>'] \
+        if echt(a.get("titel")) else []
+    for i, absatz in enumerate(a.get("absaetze", [])):
         if echt(absatz):
-            teile.append(f"<p>{h(absatz)}</p>")
+            teile.append(f'<p{i18n(f"{basis}.absaetze.{i}" if basis else "")}>{h(absatz)}</p>')
     if a.get("liste"):
-        eintraege = "".join(f"<li>{h(x)}</li>" for x in a["liste"] if echt(x))
+        eintraege = "".join(
+            f'<li{i18n(f"{basis}.liste.{i}" if basis else "")}>{h(x)}</li>'
+            for i, x in enumerate(a["liste"]) if echt(x)
+        )
         if eintraege:
             teile.append(f"<ul>{eintraege}</ul>")
     if extra:
@@ -2389,7 +2598,8 @@ def build_rechtliches():
         abschnitte = daten.get("abschnitte", [])
         koerper = [entwurf]
         if abschnitte:
-            for a in abschnitte:
+            for nr, a in enumerate(abschnitte):
+                basis = dkey("recht", teil, "abschnitte", nr)
                 if teil == "impressum" and a.get("id") in ERSETZTE_IMPRESSUM_ABSCHNITTE:
                     # Diese drei Abschnitte bestehen in den Daten nur aus einer
                     # Anweisung an den Generator («ergeben sich aus dem Block
@@ -2398,9 +2608,9 @@ def build_rechtliches():
                     # laesst den Abschnitt weg, wenn nichts davon gefuellt ist.
                     inhalt = ERSETZTE_IMPRESSUM_ABSCHNITTE[a["id"]]()
                     if inhalt:
-                        koerper.append(f'<h2>{h(a["titel"])}</h2>' + inhalt)
+                        koerper.append(f'<h2{i18n(basis + ".titel")}>{h(a["titel"])}</h2>' + inhalt)
                     continue
-                koerper.append(recht_abschnitt(a))
+                koerper.append(recht_abschnitt(a, basis=basis))
         else:
             koerper.append(f"<h2>{h(langtitel)}</h2>" + firma_adresse() + firma_kontakt())
         t_i18n = i18n("seite." + teil + ".titel")
@@ -2455,89 +2665,124 @@ def inhalt_seite(relpath, titel, beschreibung, kurz, rumpf_inhalt, i18n_stamm,
     seite(relpath, kopf, header_nav(prefix, "wissen"), rumpf, prefix)
 
 
-def notfall_abschnitt(a):
+def notfall_abschnitt(a, basis):
     """Der Abschnitt, auf den es im Ernstfall ankommt. Er steht deshalb oben."""
-    teile = [absaetze(a.get("absaetze"))]
-    warn = punkte(a.get("warnzeichen"))
+    teile = [absaetze(a.get("absaetze"), key=basis + ".absaetze")]
+    warn = punkte(a.get("warnzeichen"), key=basis + ".warnzeichen")
     if warn:
         titel = echt(a.get("warnzeichen_titel")) or "Sofort in eine Notfallaufnahme bei"
-        teile.append(f"<h3>{h(titel)}</h3>{warn}")
+        teile.append(f'<h3{i18n(basis + ".warnzeichen_titel")}>{h(titel)}</h3>{warn}')
     hinweis = echt(a.get("warnzeichen_hinweis"))
     if hinweis:
-        teile.append(f'<div class="note-box">{h(hinweis)}</div>')
-    nummern = fakt_liste([(n.get("label"), n.get("wert")) for n in a.get("notfallnummern", [])])
+        teile.append(f'<div class="note-box"{i18n(basis + ".warnzeichen_hinweis")}>{h(hinweis)}</div>')
+    nummern = fakt_liste([
+        (n.get("label"), n.get("wert"),
+         f"{basis}.notfallnummern.{i}.label", f"{basis}.notfallnummern.{i}.wert")
+        for i, n in enumerate(a.get("notfallnummern", []))
+    ])
     if nummern:
         teile.append(f'<div class="card">{nummern}</div>')
     return "".join(teile)
 
 
-def zustaendig_abschnitt(a):
-    teile = [absaetze(a.get("absaetze"))]
-    zeilen = fakt_liste([(r.get("frage"), r.get("wer")) for r in a.get("tabelle", [])])
+def zustaendig_abschnitt(a, basis):
+    teile = [absaetze(a.get("absaetze"), key=basis + ".absaetze")]
+    zeilen = fakt_liste([
+        (r.get("frage"), r.get("wer"), f"{basis}.tabelle.{i}.frage", f"{basis}.tabelle.{i}.wer")
+        for i, r in enumerate(a.get("tabelle", []))
+    ])
     if zeilen:
         teile.append(f'<div class="card">{zeilen}</div>')
     return "".join(teile)
 
 
+# Etikett und i18n-Schluessel je Zeile. Die Werte dazu liegen noch nicht vor
+# (data/seiteninhalte.json -> regelung / weg sind leer), die Zeilen erscheinen
+# deshalb heute nicht — die Schluessel stehen trotzdem hier, damit die Zeilen
+# uebersetzt sind, sobald ETA die Angaben liefert.
 REVISION_LABEL = [
-    ("gewaehrleistung_klinik", "Gewährleistung der Klinik"),
-    ("frist", "Frist"),
-    ("reise_bei_revision", "Reise und Unterkunft bei einer Revision"),
-    ("wer_entscheidet", "Wer über einen Revisionsfall entscheidet"),
+    ("gewaehrleistung_klinik", "Gewährleistung der Klinik", "seite.schiefgeht.revision.gewaehrleistung"),
+    ("frist", "Frist", "seite.schiefgeht.revision.frist"),
+    ("reise_bei_revision", "Reise und Unterkunft bei einer Revision", "seite.schiefgeht.revision.reise"),
+    ("wer_entscheidet", "Wer über einen Revisionsfall entscheidet", "seite.schiefgeht.revision.entscheidung"),
 ]
 BESCHWERDE_LABEL = [
-    ("kontakt", "Beschwerdestelle"),
-    ("frist_rueckmeldung", "Rückmeldung innerhalb von"),
-    ("eskalation", "Wenn wir uns nicht einigen"),
+    ("kontakt", "Beschwerdestelle", "seite.schiefgeht.beschwerde.stelle"),
+    ("frist_rueckmeldung", "Rückmeldung innerhalb von", "seite.schiefgeht.beschwerde.frist"),
+    ("eskalation", "Wenn wir uns nicht einigen", "seite.schiefgeht.beschwerde.eskalation"),
 ]
 
 
-def schiefgeht_abschnitt(a):
-    """Ein Abschnitt der Seite «Wenn etwas nicht wie geplant läuft»."""
+def schiefgeht_abschnitt(a, nr):
+    """Ein Abschnitt der Seite «Wenn etwas nicht wie geplant läuft».
+
+    nr ist die Stelle des Abschnitts in data/seiteninhalte.json, nicht die
+    Stelle auf der Seite: «vorrang» zieht einen Abschnitt nach oben, die
+    Schluessel folgen aber der Datei.
+    """
+    basis = dkey("seiteninhalte", "wenn_etwas_schiefgeht", "abschnitte", nr)
     aid = a.get("id")
     if aid == "notfall":
-        inhalt = notfall_abschnitt(a)
+        inhalt = notfall_abschnitt(a, basis)
     elif aid == "zustaendig":
-        inhalt = zustaendig_abschnitt(a)
+        inhalt = zustaendig_abschnitt(a, basis)
     else:
-        inhalt = absaetze(a.get("absaetze"))
+        inhalt = absaetze(a.get("absaetze"), key=basis + ".absaetze")
         # Die Gewaehrleistungsregelung der Klinik liegt noch nicht vor. Solange
         # alle Felder leer sind, erscheint keine leere Tabelle — nur der Text.
         for schluessel, labels in (("regelung", REVISION_LABEL), ("weg", BESCHWERDE_LABEL)):
             daten = a.get(schluessel) or {}
-            zeilen = fakt_liste([(label, daten.get(feld)) for feld, label in labels])
+            zeilen = fakt_liste([
+                (label, daten.get(feld), label_key, f"{basis}.{schluessel}.{feld}")
+                for feld, label, label_key in labels
+            ])
             if zeilen:
                 inhalt += f'<div class="card">{zeilen}</div>'
         # Nachsorgepartner: Name und Ort stehen fest, die Adresse noch nicht.
         partner = a.get("partner") or {}
         if echt(partner.get("name")):
             url = echt(partner.get("url"))
-            name = h(partner["name"])
-            wenn_ort = f", {h(echt(partner.get('ort')))}" if echt(partner.get("ort")) else ""
-            ziel = f'<a href="{h(url)}" rel="noopener" target="_blank">{name}</a>' if url else name
+            n_attr = i18n(basis + ".partner.name")
+            name = f"<span{n_attr}>{h(partner['name'])}</span>"
+            ziel = (f'<a href="{h(url)}" rel="noopener" target="_blank"{n_attr}>'
+                    f'{h(partner["name"])}</a>') if url else name
+            wenn_ort = (f', {span(echt(partner["ort"]), basis + ".partner.ort")}'
+                        if echt(partner.get("ort")) else "")
             inhalt += f"<p>{ziel}{wenn_ort}</p>"
         leistungen = a.get("leistungen") or {}
-        inhalt += block("Im Preis enthalten", punkte(leistungen.get("im_preis_enthalten"), "check-list"), stufe="h3")
-        inhalt += block("Zusätzlich kostenpflichtig", punkte(leistungen.get("zusaetzlich_kostenpflichtig")), stufe="h3")
-        inhalt += block("Fragen an Ihre Versicherung", punkte(a.get("pruefliste")), stufe="h3")
+        inhalt += block("Im Preis enthalten",
+                        punkte(leistungen.get("im_preis_enthalten"), "check-list",
+                               key=basis + ".leistungen.im_preis_enthalten"),
+                        "seite.schiefgeht.leistungen.enthalten", "h3")
+        inhalt += block("Zusätzlich kostenpflichtig",
+                        punkte(leistungen.get("zusaetzlich_kostenpflichtig"),
+                               key=basis + ".leistungen.zusaetzlich_kostenpflichtig"),
+                        "seite.schiefgeht.leistungen.kostenpflichtig", "h3")
+        inhalt += block("Fragen an Ihre Versicherung",
+                        punkte(a.get("pruefliste"), key=basis + ".pruefliste"),
+                        "seite.schiefgeht.pruefliste.titel", "h3")
     if not inhalt.strip():
         return ""
     titel = echt(a.get("titel"))
-    return (f"<h2>{h(titel)}</h2>" if titel else "") + inhalt
+    return (f'<h2{i18n(basis + ".titel")}>{h(titel)}</h2>' if titel else "") + inhalt
 
 
 def build_schiefgeht():
     daten = SEITENINHALTE.get("wenn_etwas_schiefgeht")
     if not daten:
         return
-    abschnitte = daten.get("abschnitte", [])
+    abschnitte = list(enumerate(daten.get("abschnitte", [])))
     # «vorrang» heisst: dieser Abschnitt gehoert ganz nach oben, vor allem
     # anderen. Es ist der einzige, bei dem eine Formulierung im Ernstfall zaehlt.
-    geordnet = ([a for a in abschnitte if a.get("vorrang")]
-                + [a for a in abschnitte if not a.get("vorrang")])
-    inhalt = absaetze(daten.get("intro"), "lead") + "".join(schiefgeht_abschnitt(a) for a in geordnet)
-    inhalt += (f'\n<p class="small"><a class="link" href="{SEITE_REISE}">Ihre Reise, Tag für Tag</a>'
-               f' · <a class="link" href="gut-zu-wissen.html">Gut zu wissen</a></p>')
+    geordnet = ([p for p in abschnitte if p[1].get("vorrang")]
+                + [p for p in abschnitte if not p[1].get("vorrang")])
+    inhalt = (absaetze(daten.get("intro"), "lead",
+                       key=dkey("seiteninhalte", "wenn_etwas_schiefgeht", "intro"))
+              + "".join(schiefgeht_abschnitt(a, nr) for nr, a in geordnet))
+    inhalt += (f'\n<p class="small"><a class="link" href="{SEITE_REISE}"'
+               f'{i18n("seite.schiefgeht.link.reise")}>Ihre Reise, Tag für Tag</a>'
+               f' · <a class="link" href="gut-zu-wissen.html"'
+               f'{i18n("seite.schiefgeht.link.wissen")}>Gut zu wissen</a></p>')
     inhalt_seite(
         SEITE_SCHIEFGEHT, echt(daten.get("titel")) or "Wenn etwas nicht wie geplant läuft",
         "Zuständigkeiten, Nachbesserung, Nachsorge, Versicherung und Notfallnummern — "
@@ -2552,25 +2797,37 @@ def build_reise():
     daten = SEITENINHALTE.get("reiseablauf")
     if not daten:
         return
-    inhalt = absaetze(daten.get("intro"), "lead")
+    basis = dkey("seiteninhalte", "reiseablauf")
+    inhalt = absaetze(daten.get("intro"), "lead", key=basis + ".intro")
     vor = daten.get("vor_der_reise") or {}
     schritte = "".join(
-        f"<li><h3>{h(echt(x.get('titel')))}</h3>{absaetze(x.get('text'))}</li>"
-        for x in vor.get("schritte", []) if echt(x.get("titel"))
+        f'<li><h3{i18n(f"{basis}.vor_der_reise.schritte.{i}.titel")}>{h(echt(x.get("titel")))}</h3>'
+        f'{absaetze(x.get("text"), key=f"{basis}.vor_der_reise.schritte.{i}.text")}</li>'
+        for i, x in enumerate(vor.get("schritte", [])) if echt(x.get("titel"))
     )
     if schritte:
-        inhalt += (f"<h2>{h(echt(vor.get('titel')) or 'Vor der Reise')}</h2>"
+        inhalt += (f'<h2{i18n(basis + ".vor_der_reise.titel")}>'
+                   f'{h(echt(vor.get("titel")) or "Vor der Reise")}</h2>'
                    f'<ol class="ablauf-list">{schritte}</ol>')
-    inhalt += block("Was Sie mitnehmen", punkte(vor.get("mitnehmen"), "check-list"), stufe="h3")
-    for tag in daten.get("tage", []):
-        kopfzeile = ": ".join(x for x in [echt(tag.get("tag")), echt(tag.get("titel"))] if x)
-        p_ = punkte(tag.get("punkte"))
-        if kopfzeile and p_:
-            inhalt += f"<h2>{h(kopfzeile)}</h2>{p_}"
+    inhalt += block("Was Sie mitnehmen",
+                    punkte(vor.get("mitnehmen"), "check-list", key=basis + ".vor_der_reise.mitnehmen"),
+                    "seite.reise.mitnehmen.titel", "h3")
+    for i, tag in enumerate(daten.get("tage", [])):
+        # Kopfzeile aus zwei Datenwerten: «Anreisetag» und «Ankunft und
+        # Voruntersuchung» sind zwei Schluessel, der Doppelpunkt bleibt dazwischen.
+        kopf = [span(echt(tag[feld]), f"{basis}.tage.{i}.{feld}")
+                for feld in ("tag", "titel") if echt(tag.get(feld))]
+        p_ = punkte(tag.get("punkte"), key=f"{basis}.tage.{i}.punkte")
+        if kopf and p_:
+            inhalt += f'<h2>{": ".join(kopf)}</h2>{p_}'
     zurueck = daten.get("nach_der_rueckkehr") or {}
-    inhalt += block(echt(zurueck.get("titel")) or "Nach der Rückkehr", punkte(zurueck.get("punkte")))
-    inhalt += (f'\n<p class="small"><a class="link" href="{SEITE_KOSTEN}">Was es insgesamt kostet</a>'
-               f' · <a class="link" href="{SEITE_SCHIEFGEHT}">Wenn etwas nicht wie geplant läuft</a></p>')
+    inhalt += block(echt(zurueck.get("titel")) or "Nach der Rückkehr",
+                    punkte(zurueck.get("punkte"), key=basis + ".nach_der_rueckkehr.punkte"),
+                    basis + ".nach_der_rueckkehr.titel")
+    inhalt += (f'\n<p class="small"><a class="link" href="{SEITE_KOSTEN}"'
+               f'{i18n("seite.reise.link.kosten")}>Was es insgesamt kostet</a>'
+               f' · <a class="link" href="{SEITE_SCHIEFGEHT}"'
+               f'{i18n("seite.reise.link.schiefgeht")}>Wenn etwas nicht wie geplant läuft</a></p>')
     inhalt_seite(
         SEITE_REISE, echt(daten.get("titel")) or "Ihre Reise, Tag für Tag",
         "Von der ersten Anfrage bis zur Nachkontrolle: Vorbereitung, Packliste, Ankunft, "
@@ -2582,10 +2839,10 @@ def build_reise():
 
 # Wer traegt welchen Posten. Die Schluessel stehen so in data/seiteninhalte.json.
 KOSTEN_GRUPPEN = [
-    ("im Fixpreis", "Im Fixpreis enthalten"),
-    ("teils im Fixpreis", "Teils im Fixpreis"),
-    ("Aufpreis", "Gegen Aufpreis"),
-    ("Eigenleistung", "Nicht enthalten — das zahlen Sie selbst"),
+    ("im Fixpreis", "Im Fixpreis enthalten", "seite.kosten.gruppe.fixpreis"),
+    ("teils im Fixpreis", "Teils im Fixpreis", "seite.kosten.gruppe.teils"),
+    ("Aufpreis", "Gegen Aufpreis", "seite.kosten.gruppe.aufpreis"),
+    ("Eigenleistung", "Nicht enthalten — das zahlen Sie selbst", "seite.kosten.gruppe.eigenleistung"),
 ]
 
 
@@ -2593,35 +2850,45 @@ def build_kosten():
     daten = SEITENINHALTE.get("gesamtkosten")
     if not daten:
         return
-    inhalt = absaetze(daten.get("intro"), "lead")
+    basis = dkey("seiteninhalte", "gesamtkosten")
+    inhalt = absaetze(daten.get("intro"), "lead", key=basis + ".intro")
     posten = daten.get("posten", [])
-    for traeger, titel in KOSTEN_GRUPPEN:
+    for traeger, titel, titel_key in KOSTEN_GRUPPEN:
         eintraege = ""
-        for x in posten:
+        for i, x in enumerate(posten):
             if x.get("traeger") != traeger or not echt(x.get("label")):
                 continue
             betrag = echt(x.get("betrag"))
+            h_key = dkey_abgeleitet(ohne_redaktionsnotiz, "seiteninhalte",
+                                    "gesamtkosten", "posten", i, "hinweis")
             hinweis = ohne_redaktionsnotiz(x.get("hinweis"))
-            zeile = h(echt(x["label"]))
+            zeile = span(echt(x["label"]), f"{basis}.posten.{i}.label")
             if betrag:
                 zeile += f" — <strong>{h(betrag)}</strong>"
             if hinweis:
-                zeile += f'<br><span class="small muted">{h(hinweis)}</span>'
+                zeile += f'<br><span class="small muted"{i18n(h_key)}>{h(hinweis)}</span>'
             eintraege += f"<li>{zeile}</li>"
         if eintraege:
             # Der goldene Haken nur dort, wo etwas enthalten ist. Neben
             # «Flug ab der Schweiz» unter «nicht enthalten» behauptet er das
             # Gegenteil dessen, was dasteht.
             cls = "check-list" if traeger == "im Fixpreis" else "punkt-liste"
-            inhalt += f'<h2>{h(titel)}</h2><ul class="{cls}">{eintraege}</ul>'
+            inhalt += f'<h2{i18n(titel_key)}>{h(titel)}</h2><ul class="{cls}">{eintraege}</ul>'
     # Das Rechenbeispiel bleibt weg, solange keine Zahlen da sind. Ein leeres
     # Beispiel waere schlimmer als keines.
     beispiel = daten.get("rechenbeispiel") or {}
-    zeilen = fakt_liste([(z.get("label"), z.get("betrag")) for z in beispiel.get("zeilen", [])])
+    zeilen = fakt_liste([
+        (z.get("label"), z.get("betrag"), f"{basis}.rechenbeispiel.zeilen.{i}.label",
+         f"{basis}.rechenbeispiel.zeilen.{i}.betrag")
+        for i, z in enumerate(beispiel.get("zeilen", []))
+    ])
     if zeilen:
-        inhalt += f'<h2>Ein Beispiel</h2><div class="card">{zeilen}</div>'
-    inhalt += (f'\n<p class="small"><a class="link" href="finanzierung.html">Finanzierung in Raten</a>'
-               f' · <a class="link" href="{SEITE_REISE}">Ihre Reise, Tag für Tag</a></p>')
+        inhalt += (f'<h2{i18n("seite.kosten.beispiel.titel")}>Ein Beispiel</h2>'
+                   f'<div class="card">{zeilen}</div>')
+    inhalt += (f'\n<p class="small"><a class="link" href="finanzierung.html"'
+               f'{i18n("seite.kosten.link.finanzierung")}>Finanzierung in Raten</a>'
+               f' · <a class="link" href="{SEITE_REISE}"'
+               f'{i18n("seite.kosten.link.reise")}>Ihre Reise, Tag für Tag</a></p>')
     inhalt_seite(
         SEITE_KOSTEN, echt(daten.get("titel")) or "Was es wirklich kostet",
         "Was der Fixpreis enthält und was nicht: Flug, Begleitperson, zusätzliche Nächte, "
@@ -3014,25 +3281,92 @@ def zusammengesetzte_schluessel(texte, lang="de"):
     return neu
 
 
+# Die vier Toepfe je Sprache, in der Reihenfolge, in der sie sich ueberschreiben:
+#   seiten    Seitentexte, Formulare, feste Texte des Generators
+#   katalog   Kategorien, Gruppen, Behandlungsnamen und -beschreibungen
+#   behdaten  die Werte aus data/behandlungsdaten.json
+#   inhalte   die Werte aus den sechs uebrigen Redaktionsdateien
+I18N_TOEPFE = ["seiten", "katalog", "behdaten", "inhalte"]
+
+
+def abgeleiteter_wert(funktion, roh_de, wert_lang):
+    """Legt die Umformung, die der Generator auf den deutschen Wert anwendet,
+    auf denselben Wert in einer anderen Sprache.
+
+    Beide Umformungen sind auf Deutsch getrimmt: aufenthalt_kurz() streicht
+    «in Istanbul», ohne_redaktionsnotiz() die Saetze, die sich an ETA richten.
+    Auf Englisch, Tuerkisch und Arabisch greifen die Muster nicht.
+
+    Bei aufenthalt_kurz() ist das harmlos: dort bleibt hoechstens ein
+    «in Istanbul» stehen, das neben dem Etikett «Aufenthalt in Istanbul» nur
+    doppelt ist. Bei einer Redaktionsnotiz waere es ein Schaden — «The range is
+    to be entered by ETA» hat auf einer Kundenseite nichts verloren. Deshalb
+    wird dort, wo das Deutsche ganze Schlusssaetze verloren hat, dieselbe Zahl
+    Schlusssaetze auch in der Uebersetzung gestrichen. Steckte die Notiz im
+    Deutschen nur als Nebensatz drin, laesst sie sich in der Uebersetzung nicht
+    sicher finden: dann kommt None zurueck, der Schluessel wird
+    zurueckgehalten, und es bleibt der bereits bereinigte deutsche Text stehen.
+    """
+    kurz_de = funktion(roh_de)
+    if kurz_de is None:
+        return None
+    neu = funktion(wert_lang)
+    if neu is None or kurz_de == echt(roh_de):
+        # Auf Deutsch war nichts zu kuerzen, also auch sonst nirgends.
+        return neu
+    if neu != echt(wert_lang) or funktion is not ohne_redaktionsnotiz:
+        # Die Regel hat auch hier gegriffen — oder es geht um «in Istanbul»,
+        # das stehen bleiben darf.
+        return neu
+    weg = len(saetze(echt(roh_de))) - len(saetze(kurz_de))
+    if weg <= 0:
+        return None
+    return echt("".join(saetze(neu)[:-weg]))
+
+
 def build_sprachdateien():
-    """Fuehrt seiten-<lang>.json und katalog-<lang>.json zu docs/assets/i18n/<lang>.json zusammen."""
+    """Fuehrt die vier Quelltoepfe je Sprache zu docs/assets/i18n/<lang>.json zusammen.
+
+    Fuer Deutsch muessen alle vier da sein — de.json ist die Rueckfallebene
+    jeder anderen Sprache. Bei en, tr und ar entstehen die Uebersetzungen
+    parallel: was noch fehlt, wird uebersprungen und auf der Konsole genannt,
+    der Build laeuft weiter. Fuer die fehlenden Schluessel bleibt im Browser
+    der deutsche Text stehen.
+    """
     ziel = SITE / "assets" / "i18n"
     ziel.mkdir(parents=True, exist_ok=True)
     gebaut = []
     entfernt = []
+    notiz = []
     for lang in SPRACHEN:
-        seiten_datei = I18N_QUELLE / f"seiten-{lang}.json"
-        katalog_datei = I18N_QUELLE / f"katalog-{lang}.json"
-        fehlend = [d.name for d in (seiten_datei, katalog_datei) if not d.exists()]
+        dateien = [I18N_QUELLE / f"{topf}-{lang}.json" for topf in I18N_TOEPFE]
+        fehlend = [d.name for d in dateien if not d.exists()]
+        if fehlend and lang == "de":
+            raise SystemExit("Abbruch: " + ", ".join(fehlend) + " fehlt, de.json ist Pflicht.")
         if fehlend:
-            if lang == "de":
-                raise SystemExit("Abbruch: " + ", ".join(fehlend) + " fehlt, de.json ist Pflicht.")
-            print(f"i18n: {lang} übersprungen, es fehlt noch: {', '.join(fehlend)}")
-            continue
+            print(f"i18n: {lang} ohne {', '.join(fehlend)} — dort bleibt der deutsche Text stehen.")
         texte = {}
-        texte.update(json.loads(seiten_datei.read_text()))
-        texte.update(json.loads(katalog_datei.read_text()))
+        for datei in dateien:
+            if datei.exists():
+                texte.update(json.loads(datei.read_text()))
+        if not texte:
+            print(f"i18n: {lang} übersprungen, keine einzige Quelldatei vorhanden.")
+            continue
         texte.update(zusammengesetzte_schluessel(texte, lang))
+        # Werte, die der Generator vor der Ausgabe kuerzt, muessen auch in der
+        # Sprachdatei gekuerzt ankommen — sonst schoebe der Umschalter die
+        # Rohfassung zurueck auf die Seite.
+        for schluessel, funktion in DATEN_ABGELEITET.items():
+            if schluessel not in texte:
+                continue
+            wert_ = abgeleiteter_wert(funktion, DATEN_TEXTE[schluessel], texte[schluessel])
+            if wert_ is not None:
+                texte[schluessel] = wert_
+                continue
+            del texte[schluessel]
+            if schluessel in VERWENDETE_SCHLUESSEL:
+                ZURUECKGEHALTEN.add(schluessel)
+                notiz.append(f"{lang}:{schluessel}")
         # Kein Klammer-Platzhalter verlaesst den Generator — auch nicht ueber
         # eine Sprachdatei. Sonst schiebt der Umschalter «[X TAGE]» zurueck in
         # eine Seite, aus der der Generator die Zeile entfernt hat.
@@ -3056,6 +3390,13 @@ def build_sprachdateien():
         )
         for e in entfernt:
             print("  - " + e)
+    if notiz:
+        # Diese Uebersetzungen tragen eine Redaktionsnotiz, die sich nicht
+        # eindeutig herausschneiden liess. Statt «to be entered by ETA» auf
+        # einer Kundenseite bleibt dort der deutsche, bereits bereinigte Text.
+        sprachen = sorted({e.split(":", 1)[0] for e in notiz})
+        print(f"i18n: {len(notiz)} Übersetzungen mit Redaktionsnotiz zurückgehalten "
+              f"({', '.join(sprachen)}), dort bleibt der deutsche Text stehen.")
 
 
 ZURUECKGEHALTEN = set()
