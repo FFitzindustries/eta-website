@@ -66,6 +66,13 @@ SEITENINHALTE = lies_optional(DATA / "seiteninhalte.json", {})
 # Risikotexte je Behandlungsgruppe, Schluessel "<kategorie-id>/<gruppen-slug>".
 RISIKEN = lies_optional(DATA / "risiken-gruppen.json", {})
 RISIKEN_GRUPPEN = RISIKEN.get("gruppen", {})
+# Fachbegriffe mit Kurz- und Langfassung. Lagen bis zur letzten Bahn ungenutzt
+# da: «Graft» — die Groesse, nach der Haartransplantationen abgerechnet werden —
+# stand auf sieben Seiten und wurde nirgends erklaert (Befund inhalt B13).
+GLOSSAR = lies_optional(DATA / "glossar.json", {})
+# Zweiter Zugang zum Katalog: nach Anliegen statt nach Verfahren, dazu fuenf
+# Gegenueberstellungen (Befund inhalt B12).
+BERATUNG = lies_optional(DATA / "beratung.json", {})
 # Bauplan der Bildvarianten, erzeugt von scripts/bilder_aufbereiten.mjs.
 BILD_VARIANTEN = lies_optional(STATIC / "assets" / "img" / "abgeleitet.json", {})
 
@@ -179,6 +186,13 @@ def wa_link(kontext):
 
 def wa_button(label, size=18, cls="btn btn-gold", i18n_key="", kontext=""):
     """WhatsApp-Knopf. Mit Kontext traegt er die Behandlung in die Nachricht.
+
+    Die Beschriftung nennt den Kanal. data/seiteninhalte.json -> kontaktwege
+    verlangt das ausdruecklich: «Muss als WhatsApp erkennbar sein, bevor sich
+    die App oeffnet.» Vorher hiess der Knopf auf 112 Seiten «Unverbindlich
+    anfragen» — das ist dort der Name des Formularwegs (Rang 1), nicht der
+    von WhatsApp (Rang 2). Das Zeichen im Knopf ist aria-hidden; wer vorlesen
+    laesst, hoert nur die Beschriftung.
 
     Ohne Kontext bleibt alles wie bisher: href="#", Klasse js-whatsapp, und
     main.js setzt den allgemeinen Text ein. Mit Kontext steht der fertige
@@ -306,6 +320,10 @@ def nav_wissen_eintraege(prefix):
     ausdruecklich in die Hauptnavigation.
     """
     eintraege = []
+    if BERATUNG_ANLIEGEN:
+        eintraege.append((SEITE_BERATUNG, "Was passt zu mir?", "seite.beratung.kurz"))
+    if GLOSSAR_SORTIERT:
+        eintraege.append((SEITE_GLOSSAR, "Fachbegriffe", "seite.glossar.kurz"))
     if SEITENINHALTE.get("wenn_etwas_schiefgeht"):
         eintraege.append((SEITE_SCHIEFGEHT, "Wenn etwas nicht wie geplant läuft", "seite.schiefgeht.kurz"))
     if SEITENINHALTE.get("reiseablauf"):
@@ -523,6 +541,69 @@ def _seitenpfad(schluessel, standard):
 SEITE_SCHIEFGEHT = _seitenpfad("wenn_etwas_schiefgeht", "wenn-etwas-nicht-wie-geplant-laeuft")
 SEITE_REISE = _seitenpfad("reiseablauf", "ihre-reise")
 SEITE_KOSTEN = _seitenpfad("gesamtkosten", "was-es-kostet")
+SEITE_GLOSSAR = "fachbegriffe.html"
+SEITE_BERATUNG = "was-passt-zu-mir.html"
+
+
+# ------------------------------------------------------------- Fachbegriffe
+def _glossar_register():
+    """Begriffe aus data/glossar.json, jeder mit Sprungmarke und Suchmuster.
+
+    Das Suchmuster ist der Begriff selbst plus moegliche deutsche Endungen:
+    «Graft» findet «Grafts», «Krone» findet «Kronen», «Masseter» findet
+    «Massetermuskel». Bewusst kein Wortstamm — «Vene» wuerde sonst «Venen»
+    treffen und dort «Veneer» erklaeren, wo von Blutgefaessen die Rede ist.
+    Der erste Buchstabe darf gross oder klein sein, der Rest muss stimmen.
+    """
+    reg = {}
+    for e in GLOSSAR.get("eintraege", []):
+        begriff = echt(e.get("begriff"))
+        kurz = echt(e.get("kurz"))
+        if not begriff or not kurz:
+            continue
+        erst = begriff[0]
+        rest = re.escape(begriff[1:])
+        muster = re.compile(
+            r"(?<![0-9A-Za-zÄÖÜäöüß])[" + erst.upper() + erst.lower() + r"]" + rest
+            + r"[a-zäöüß]*(?![0-9A-Za-zÄÖÜäöüß])"
+        )
+        reg[begriff] = {
+            "eintrag": e,
+            "slug": slugify(begriff),
+            "kurz": kurz,
+            "lang": echt(e.get("lang")),
+            "muster": muster,
+            "behandlungen": [x for x in e.get("behandlungen", []) if x],
+            "siehe_auch": [x for x in e.get("siehe_auch", []) if x],
+        }
+    return reg
+
+
+GLOSSAR_REGISTER = _glossar_register()
+# Alphabetisch nach deutschem Begriff — die Reihenfolge der Seite.
+GLOSSAR_SORTIERT = sorted(GLOSSAR_REGISTER.items(), key=lambda kv: kv[0].lower())
+
+
+def glossar_schluessel(slug, feld):
+    return f"glossar.{slug}.{feld}"
+
+
+# ---------------------------------------------------------------- Beratung
+BERATUNG_ANLIEGEN = [a for a in BERATUNG.get("anliegen", []) if echt(a.get("titel"))]
+_VERGLEICHE = BERATUNG.get("vergleiche") or {}
+VERGLEICH_GRUPPEN = {k: v for k, v in (_VERGLEICHE.get("gruppen") or {}).items() if v.get("behandlungen")}
+VERGLEICH_SPALTEN = _VERGLEICHE.get("spalten_standard") or []
+# Behandlung -> Vergleichsgruppe, damit die Gegenueberstellung dort steht, wo
+# jemand schwankt: auf der Detailseite jeder beteiligten Behandlung.
+VERGLEICH_FUER_SLUG = {}
+for _gid, _g in VERGLEICH_GRUPPEN.items():
+    for _s in _g["behandlungen"]:
+        VERGLEICH_FUER_SLUG.setdefault(_s, _gid)
+
+
+def vergleich_slug(gid):
+    """«haut-beauty/straffung-ohne-op» -> «haut-beauty-straffung-ohne-op»."""
+    return slugify(gid)
 
 
 def prefix_fuer(relpath):
@@ -710,6 +791,31 @@ def schrift_css(prefix):
     )
 
 
+# Das Woerterbuch wird bisher erst von main.js geholt, und main.js steht ganz
+# unten. Wer einen anderssprachigen Browser hat, sieht deshalb erst die
+# deutsche Fassung und dann den Austausch — gemessen 0,048 CLS auf der
+# Startseite (geruest, Bitte 6). Diese fuenfzehn Zeilen starten dieselbe
+# Anfrage im <head>, also waehrend das Stylesheet noch laedt und lange vor dem
+# ersten Bildaufbau. Sie aendern nichts an der Seite: kein lang, kein dir, kein
+# Text. Faellt die Anfrage aus, faellt nur der Vorlauf aus, und main.js holt
+# die Datei wie bisher selbst.
+I18N_VORLAUF = (
+    '(function(){try{'
+    'var S=["de","en","tr","ar"],w=null;'
+    'try{w=localStorage.getItem("eta_lang")}catch(e){}'
+    'if(S.indexOf(w)<0){w=null;'
+    'var l=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||"de"];'
+    'for(var i=0;i<l.length&&!w;i++){var c=String(l[i]||"").toLowerCase().split("-")[0];'
+    'if(S.indexOf(c)>=0)w=c}}'
+    'if(!w)w="de";'
+    'window.__etaSprache=w;'
+    'if(window.fetch)window.__etaWoerter=fetch("__WURZEL__assets/i18n/"+w+".json",'
+    '{credentials:"same-origin"}).then(function(a){return a.ok?a.json():null})'
+    '["catch"](function(){return null});'
+    '}catch(e){}})();'
+)
+
+
 def head(title, desc, prefix, canonical, title_key, desc_key, jsonld="", vorladen="", robots=""):
     t_i18n = i18n(title_key)
     d_attr = i18n_attr("content:" + desc_key)
@@ -740,10 +846,35 @@ def head(title, desc, prefix, canonical, title_key, desc_key, jsonld="", vorlade
   <link rel="icon" href="{prefix}assets/img/favicon.png" type="image/png">
   <link rel="preload" as="font" type="font/woff2" href="{prefix}assets/fonts/jost-latin.woff2" crossorigin>{vorladen}
   <style>{schrift_css(prefix)}</style>
+  <script>{I18N_VORLAUF.replace("__WURZEL__", prefix)}</script>
   <link rel="stylesheet" href="{prefix}assets/css/style.css{CSS_VERSION}">{jsonld}
 </head>
 <body>
 <a class="skip-link" href="#inhalt"{i18n('seite.allgemein.sprunglink')}>Zum Inhalt springen</a>"""
+
+
+def logo_bild(prefix):
+    """Das Zeichen in der Kopfleiste, in der Groesse, in der es gezeigt wird.
+
+    Vorher lag hier das 400 x 334 grosse Original: 16 KB fuer eine Flaeche von
+    48 x 40 CSS-Pixeln, auf jeder Seite (Bitte 4 von «geruest», offen
+    geblieben bei «navigation»). Die Stufen kommen aus
+    scripts/bilder_aufbereiten.mjs. Bei Pixelverhaeltnis 2 laedt ein heutiger
+    Browser jetzt 1,2 KB statt 16 KB.
+
+    «width» und «height» stehen weiter drin — ohne sie springt die Leiste beim
+    Laden. Das Original bleibt ausgeliefert, weil die Organisationsangabe im
+    JSON-LD darauf zeigt.
+    """
+    img = f"{prefix}assets/img/eta-logo"
+    return (
+        "<picture>"
+        f'<source type="image/webp" srcset="{img}-48.webp 1x, {img}-96.webp 2x, {img}-144.webp 3x">'
+        f'<img src="{img}-96.png" srcset="{img}-48.png 1x, {img}-96.png 2x, {img}-144.png 3x" '
+        f'alt="ETA – European Turkey Asia" class="logo" width="48" height="40" '
+        f'fetchpriority="high" decoding="async">'
+        "</picture>"
+    )
 
 
 def header_nav(prefix, active=""):
@@ -794,7 +925,7 @@ def header_nav(prefix, active=""):
     </div>
   </div>
   <div class="header-bar">
-    <a href="{prefix}index.html" class="logo-link"><img src="{prefix}assets/img/eta-logo.png" alt="ETA – European Turkey Asia" class="logo" width="48" height="40"></a>
+    <a href="{prefix}index.html" class="logo-link">{logo_bild(prefix)}</a>
     {kopf_suche(prefix)}
     <div class="header-actions">
       {wa_button('WhatsApp', 17, 'btn btn-gold btn-sm', 'nav.whatsapp')}
@@ -856,6 +987,7 @@ def footer(prefix):
       <a href="{prefix}behandlungen/haut-beauty/index.html"{i18n('kat.haut-beauty.name')}>Haut &amp; Beauty</a>
       <a href="{prefix}behandlungen/medizinische-fachbereiche/index.html"{i18n('kat.medizinische-fachbereiche.name')}>Medizinische Fachbereiche</a>
       <a href="{prefix}behandlungen/index.html"{i18n('seite.behandlungen.titel')}>Alle Behandlungen</a>
+      {f'<a href="{prefix}{SEITE_BERATUNG}"{i18n("seite.beratung.kurz")}>Was passt zu mir?</a>' if BERATUNG_ANLIEGEN else ''}
     </div>
     <div>
       <div class="footer-title"{i18n('footer.titel.rechtliches')}>Rechtliches</div>
@@ -869,6 +1001,7 @@ def footer(prefix):
       <a href="{prefix}{SEITE_REISE}"{i18n('seite.reise.kurz')}>Ihre Reise</a>
       <a href="{prefix}{SEITE_KOSTEN}"{i18n('seite.kosten.kurz')}>Was es kostet</a>
       <a href="{prefix}{SEITE_SCHIEFGEHT}"{i18n('seite.schiefgeht.kurz')}>Wenn etwas nicht wie geplant läuft</a>
+      {f'<a href="{prefix}{SEITE_GLOSSAR}"{i18n("seite.glossar.kurz")}>Fachbegriffe</a>' if GLOSSAR_SORTIERT else ''}
     </div>
     <div>
       <div class="footer-title"{i18n('footer.titel.kontakt')}>Kontakt</div>
@@ -892,7 +1025,7 @@ def footer(prefix):
 def cta_band(title, sub, key, label=None, label_key=None, kontext=""):
     """CTA-Band. key ist der Schluesselstamm, z. B. seite.index.cta -> .titel / .sub."""
     if label is None:
-        label = "Unverbindlich anfragen"
+        label = "Per WhatsApp schreiben"
         label_key = "seite.allgemein.cta.anfragen"
     t_i18n = i18n(key + ".titel")
     s_i18n = i18n(key + ".sub")
@@ -1080,7 +1213,7 @@ def build_index():
     <h1{i18n('hero.headline')}>Ihre Schönheitsbehandlung in Istanbul. Betreut von A bis Z.</h1>
     <p{i18n('hero.sub')}>Deutschsprachige Beratung, eine fest geprüfte Partnerklinik und ein Rundum-Paket mit Transfer, Hotel und Nachsorge. Sie kümmern sich um nichts ausser sich selbst.</p>
     <div class="hero-ctas">
-      {wa_button('Unverbindlich anfragen', 18, 'btn btn-gold', 'hero.cta1')}
+      {wa_button('Per WhatsApp schreiben', 18, 'btn btn-gold', 'hero.cta1')}
       <a href="behandlungen/index.html" class="btn btn-outline-light"{i18n('hero.cta2')}>Behandlungen entdecken</a>
     </div>
     <div class="hero-trust"><span{i18n('hero.trust1')}>Deutschsprachige Betreuung</span><span class="dot">·</span><span{i18n('hero.trust2')}>Fixe Partnerklinik</span><span class="dot">·</span><span{i18n('hero.trust3')}>Transfer &amp; Hotel inklusive</span></div>
@@ -1151,6 +1284,33 @@ def build_index():
 
 
 # ------------------------------------------------------- Behandlungs-Übersicht
+def beratung_einstieg(prefix):
+    """Der zweite Weg in den Katalog, ganz oben auf der Katalogseite.
+
+    Der Katalog ist nach Verfahren sortiert. Wer sein Anliegen kennt, aber
+    nicht den Namen des Verfahrens, fand hier bisher 101 Fachbegriffe und
+    keinen Einstieg (Befund inhalt B12). Die drei genannten Anliegen sind die
+    ersten drei aus data/beratung.json und fuehren mit einer Sprungmarke
+    direkt zum jeweiligen Abschnitt.
+    """
+    if not BERATUNG_ANLIEGEN:
+        return ""
+    beispiele = "".join(
+        f'<a class="anliegen-chip" href="{prefix}{SEITE_BERATUNG}#{h(a["id"])}"'
+        f'{i18n("beratung.anliegen." + a["id"] + ".titel")}>{h(a["titel"])}</a>'
+        for a in BERATUNG_ANLIEGEN[:3]
+    )
+    return f"""
+<section class="section beratung-einstieg">
+  <div class="card">
+    <h2{i18n('seite.behandlungen.beratung.titel')}>Sie kennen Ihr Anliegen, nicht das Verfahren?</h2>
+    <p{i18n('seite.behandlungen.beratung.text')}>Dann suchen Sie nicht nach dem Namen. Wir haben 13 häufige Anliegen zusammengestellt und sagen zu jedem, welche Verfahren in Frage kommen und worin sie sich unterscheiden.</p>
+    <div class="anliegen-chips">{beispiele}</div>
+    <a class="btn btn-outline" href="{prefix}{SEITE_BERATUNG}"{i18n('seite.behandlungen.beratung.link')}>Nach Anliegen suchen</a>
+  </div>
+</section>"""
+
+
 def build_behandlungen_index():
     prefix = "../"
     blocks = ""
@@ -1190,6 +1350,7 @@ def build_behandlungen_index():
   <h1{i18n('seite.behandlungen.titel')}>Alle Behandlungen</h1>
   <p{i18n('seite.behandlungen.text')}>Der komplette Katalog unserer Partnerklinik, übersetzt und für Sie aufbereitet. Jede Behandlung beginnt mit einem unverbindlichen Beratungsgespräch auf Deutsch.</p>
 </section>
+{beratung_einstieg(prefix)}
 {blocks}
 """ + cta_band(
         "Unsicher, welche Behandlung passt?",
@@ -1364,6 +1525,140 @@ def faq_block(eintraege, titel, i18n_key):
     return block(titel, f'<div class="faq-list wide">{liste}</div>', i18n_key), paare
 
 
+# Welche Felder einer Behandlung in den Volltext einfliessen, in dem nach
+# Fachbegriffen gesucht wird. Redaktionsnotizen und Steuerfelder bleiben
+# draussen: «risiken_gruppe» ist ein Schluessel, kein Text, und
+# «evidenz_hinweis» richtet sich an die Redaktion, nicht an den Besucher.
+GLOSSAR_NICHT_DURCHSUCHEN = {
+    "freigabe", "quelle", "stand", "evidenz_hinweis", "whatsapp_text",
+    "verwandt", "risiken_gruppe", "waehrung",
+}
+
+
+def beh_volltext(slug):
+    """Der Text, der auf dieser Behandlungsseite tatsaechlich steht.
+
+    Grundlage fuer die Frage, welche Fachbegriffe die Seite erklaeren muss.
+    Der Gruppen-Risikotext zaehlt mit, weil er mit ausgegeben wird — steht
+    «Hyaluronidase» dort, muss das Wort auch dort erklaert sein.
+    """
+    stuecke = []
+
+    def sammle(o):
+        if isinstance(o, str):
+            stuecke.append(o)
+        elif isinstance(o, list):
+            for x in o:
+                sammle(x)
+        elif isinstance(o, dict):
+            for k, v in o.items():
+                if k not in GLOSSAR_NICHT_DURCHSUCHEN:
+                    sammle(v)
+
+    d = BEHANDLUNGSDATEN.get(slug, {})
+    sammle(d)
+    sammle(RISIKEN_GRUPPEN.get(d.get("risiken_gruppe") or "", {}))
+    stuecke.append(BESCHREIBUNGEN.get(slug, ""))
+    if slug in SLUG_REGISTER:
+        stuecke.append(SLUG_REGISTER[slug][1])
+    return " ".join(stuecke)
+
+
+def glossar_fuer(slug):
+    """Die Fachbegriffe, die auf dieser Behandlungsseite vorkommen.
+
+    Zwei Wege fuehren hinein: das Wort steht im Text der Seite, oder
+    data/glossar.json ordnet den Begriff dieser Behandlung ausdruecklich zu.
+    Der zweite Weg faengt die Faelle, in denen der Text das Wort umschreibt
+    («Saphirklingen» statt «Saphir-FUE»).
+    """
+    text = beh_volltext(slug)
+    return [(b, e) for b, e in GLOSSAR_SORTIERT
+            if slug in e["behandlungen"] or e["muster"].search(text)]
+
+
+def glossar_block(slug, prefix):
+    """Kurzerklaerungen am Fuss der Behandlungsseite.
+
+    Bewusst ein eigener Abschnitt und keine Einschuebe im Fliesstext: Die
+    medizinischen Texte sind noch nicht fachlich freigegeben, und wer in
+    fremde Saetze Klammern einbaut, veraendert sie. Ein Block laesst den Text
+    unberuehrt, traegt eigene i18n-Schluessel und faellt weg, wenn die Seite
+    keinen Fachbegriff enthaelt.
+    """
+    treffer = glossar_fuer(slug)
+    if not treffer:
+        return ""
+    zeilen = "".join(
+        f'<div class="glossar-zeile">'
+        f'<dt><a class="link" href="{prefix}{SEITE_GLOSSAR}#{e["slug"]}"'
+        f'{i18n(glossar_schluessel(e["slug"], "begriff"))}>{h(b)}</a></dt>'
+        f'<dd{i18n(glossar_schluessel(e["slug"], "kurz"))}>{h(e["kurz"])}</dd>'
+        f"</div>"
+        for b, e in treffer
+    )
+    inhalt = (f'<dl class="glossar-liste">{zeilen}</dl>'
+              f'<p class="small"><a class="link" href="{prefix}{SEITE_GLOSSAR}"'
+              f'{i18n("seite.behandlung.glossar.link")}>Alle Fachbegriffe erklärt</a></p>')
+    return block("Fachbegriffe auf dieser Seite", inhalt, "seite.behandlung.glossar.titel")
+
+
+# --------------------------------------------------- Vergleich von Verfahren
+# Etikett je Spalte der Gegenueberstellung. Drei davon gibt es im Kasten
+# «Auf einen Blick» schon — ein Schluessel, ein Text.
+VERGLEICH_ETIKETTEN = {
+    "dauer_eingriff": ("Dauer der Behandlung", "seite.behandlung.fakten.dauer.label"),
+    "betaeubung": ("Betäubung", "seite.behandlung.fakten.betaeubung.label"),
+    "ausfallzeit_alltag": ("Wieder alltagsfähig", "seite.behandlung.fakten.ausfallzeit.label"),
+    "haltbarkeit": ("Wie lange es hält", "seite.vergleich.haltbarkeit.label"),
+    "sitzungen": ("Zahl der Sitzungen", "seite.vergleich.sitzungen.label"),
+}
+
+
+def vergleich_karte(slug, prefix, hervor=False):
+    """Eine Behandlung in der Gegenueberstellung. Leere Felder fallen weg."""
+    if slug not in SLUG_REGISTER:
+        return ""
+    kid, name = SLUG_REGISTER[slug]
+    d = BEHANDLUNGSDATEN.get(slug, {})
+    zeilen = "\n      ".join(z for z in (
+        fakt(label, d.get(feld), key) for feld, (label, key) in VERGLEICH_ETIKETTEN.items()
+    ) if z)
+    kopf = (f'<h3{i18n("beh." + slug + ".name")}>{h(name)}</h3>' if hervor else
+            f'<h3><a class="link" href="{prefix}behandlungen/{kid}/{slug}.html"'
+            f'{i18n("beh." + slug + ".name")}>{h(name)}</a></h3>')
+    marke = (f'<p class="small muted"{i18n("seite.vergleich.diese_seite")}>'
+             f'Die Behandlung dieser Seite</p>') if hervor else ""
+    return (f'<div class="card vergleich-karte{" vergleich-karte--hier" if hervor else ""}">'
+            f"{kopf}{marke}{zeilen}</div>")
+
+
+def vergleich_block(gid, prefix, hier_slug="", titel_stufe="h2"):
+    """Die Gegenueberstellung einer Gruppe: Entscheidungshilfe plus Karten.
+
+    Bewusst keine Tabelle. Von den 19 verglichenen Behandlungen haben 6 noch
+    gar keine Sachangaben und «preis_ab» ist ueberall leer — eine Tabelle mit
+    vier Spalten waere zur Haelfte leer, und die gefuellten Zellen sind ganze
+    Saetze, die bei 320 px Breite in keine Spalte passen. Karten zeigen
+    dasselbe, lassen leere Felder weg und brauchen kein Querscrollen.
+    """
+    g = VERGLEICH_GRUPPEN.get(gid)
+    if not g:
+        return ""
+    titel = echt(g.get("titel"))
+    hilfe = echt(g.get("entscheidungshilfe"))
+    vslug = vergleich_slug(gid)
+    karten = "".join(vergleich_karte(s, prefix, hervor=(s == hier_slug)) for s in g["behandlungen"])
+    if not karten:
+        return ""
+    inhalt = ""
+    if hilfe:
+        inhalt += f'<p{i18n("beratung.vergleich." + vslug + ".hilfe")}>{h(hilfe)}</p>'
+    inhalt += f'<div class="grid-3 vergleich-gitter">{karten}</div>'
+    return block(titel or "Im Vergleich", inhalt,
+                 "beratung.vergleich." + vslug + ".titel", titel_stufe)
+
+
 def verwandt_block(d, prefix):
     """Verwandte Behandlungen. Heute gab es von einer Behandlung zur naechsten
     keinen Weg ausser ueber das Menue (Befund inhalt B5)."""
@@ -1428,6 +1723,10 @@ def detail_eigen(slug, b, prefix):
     fragen_html, paare = faq_block(d.get("faq"), "Häufige Fragen zu dieser Behandlung",
                                    "seite.behandlung.faq.titel")
     teile.append(fragen_html)
+    # Die Gegenueberstellung steht dort, wo jemand schwankt: auf der Seite
+    # jeder beteiligten Behandlung, nicht nur auf der Beratungsseite.
+    teile.append(vergleich_block(VERGLEICH_FUER_SLUG.get(slug, ""), prefix, hier_slug=slug))
+    teile.append(glossar_block(slug, prefix))
     teile.append(verwandt_block(d, prefix))
     return "".join(x for x in teile if x), paare
 
@@ -1536,7 +1835,7 @@ def build_details():
     <div class="card facts">
       <h2 class="serif"{i18n('seite.behandlung.fakten.titel')}>Auf einen Blick</h2>
       {detail_fakten(slug, bool(b.get("lokal_riverside")))}
-      {wa_button('Unverbindlich anfragen', 18, 'btn btn-gold', 'seite.allgemein.cta.anfragen', wa_kontext)}
+      {wa_button('Per WhatsApp schreiben', 18, 'btn btn-gold', 'seite.allgemein.cta.anfragen', wa_kontext)}
       <form class="mini-form" id="anfrage-form" method="post">
         <input type="hidden" name="behandlung" value="{h(b['name_de'])}">
         {pflicht_hinweis()}
@@ -1743,7 +2042,7 @@ def build_partnerklinik():
     {abgrenzung_satz()}
     <div class="btn-row">
       {rundgang_knopf}
-      {wa_button('Fragen zur Klinik stellen', 18, 'btn btn-gold', 'seite.partnerklinik.klinik.cta')}
+      {wa_button('Fragen zur Klinik per WhatsApp', 18, 'btn btn-gold', 'seite.partnerklinik.klinik.cta')}
     </div>
   </div>
 </section>
@@ -2318,6 +2617,140 @@ def build_kosten():
     )
 
 
+def build_glossar():
+    """Alle Fachbegriffe an einem Ort, mit Sprungmarke je Begriff.
+
+    Warum eine eigene Seite und nicht nur Kurzerklaerungen auf den
+    Behandlungsseiten: Nach «Was ist ein Graft» wird gesucht, und eine
+    Erklaerung, die 33-mal verteilt in Kaesten steht, ist nicht auffindbar.
+    Die Behandlungsseiten tragen die Kurzfassung und verweisen hierher; hier
+    steht die Langfassung samt Querverweisen. Beides kommt aus derselben
+    Quelle, data/glossar.json.
+    """
+    if not GLOSSAR_SORTIERT:
+        return
+    prefix = ""
+    # Sprungliste: bei 33 Begriffen der Unterschied zwischen Nachschlagen und
+    # Scrollen.
+    sprungliste = "".join(
+        f'<a class="glossar-sprung" href="#{e["slug"]}"'
+        f'{i18n(glossar_schluessel(e["slug"], "begriff"))}>{h(b)}</a>'
+        for b, e in GLOSSAR_SORTIERT
+    )
+    abschnitte = ""
+    for b, e in GLOSSAR_SORTIERT:
+        eintrag = e["eintrag"]
+        text = e["lang"] or e["kurz"]
+        langfassung = f'<p{i18n(glossar_schluessel(e["slug"], "lang" if e["lang"] else "kurz"))}>{h(text)}</p>'
+        # Wo der Begriff vorkommt: nur Behandlungen, die es wirklich gibt.
+        ziele = "".join(
+            f'<a class="link" href="{prefix}behandlungen/{SLUG_REGISTER[x][0]}/{x}.html"'
+            f'{i18n("beh." + x + ".name")}>{h(SLUG_REGISTER[x][1])}</a>'
+            for x in e["behandlungen"] if x in SLUG_REGISTER
+        )
+        vorkommen = (f'<p class="small glossar-verweise"><span{i18n("seite.glossar.vorkommen")}>'
+                     f'Kommt vor bei:</span> {ziele}</p>') if ziele else ""
+        # Siehe auch: nur Begriffe, die das Glossar auch kennt.
+        weiter = "".join(
+            f'<a class="link" href="#{GLOSSAR_REGISTER[x]["slug"]}"'
+            f'{i18n(glossar_schluessel(GLOSSAR_REGISTER[x]["slug"], "begriff"))}>{h(x)}</a>'
+            for x in e["siehe_auch"] if x in GLOSSAR_REGISTER
+        )
+        siehe = (f'<p class="small glossar-verweise"><span{i18n("seite.glossar.siehe_auch")}>'
+                 f'Siehe auch:</span> {weiter}</p>') if weiter else ""
+        abschnitte += (
+            f'<article class="glossar-eintrag" id="{e["slug"]}">'
+            f'<h2{i18n(glossar_schluessel(e["slug"], "begriff"))}>{h(b)}</h2>'
+            f'{langfassung}{vorkommen}{siehe}</article>'
+        )
+    rumpf_inhalt = (
+        f'<p class="glossar-einleitung"{i18n("seite.glossar.text")}>'
+        f'Fachwörter, die in Angeboten und auf Behandlungsseiten vorkommen — hier in '
+        f'normalem Deutsch. Wer die Begriffe kennt, kann Angebote vergleichen. '
+        f'Die Erklärungen sind allgemein und ersetzen kein ärztliches Gespräch.</p>'
+        f'<nav class="glossar-sprungliste" aria-label="Fachbegriffe"'
+        f'{i18n_attr("aria-label:seite.glossar.kurz")}>{sprungliste}</nav>'
+        f'{abschnitte}'
+    )
+    inhalt_seite(
+        SEITE_GLOSSAR, "Fachbegriffe, verständlich erklärt",
+        "Graft, DHI, Saphir, HIFU, Veneer, Masseter: die Fachwörter aus Angeboten und "
+        "Behandlungsseiten, in normalem Deutsch erklärt.",
+        "Fachbegriffe", rumpf_inhalt, "glossar",
+        cta=("Ein Wort fehlt hier?", "Fragen Sie uns — wir erklären es Ihnen."),
+    )
+
+
+def build_beratung():
+    """Der zweite Zugang zum Katalog: nach Anliegen statt nach Verfahren.
+
+    Befund inhalt B12: Wer eine Behandlung sucht, kennt meist sein Anliegen
+    («meine Haut wirkt müde»), nicht das Verfahren («Skinbooster»). Der
+    Katalog war bisher nur nach Verfahren sortiert. Wer sich nicht entscheiden
+    kann, fragt nicht an — er vertagt.
+    """
+    if not BERATUNG_ANLIEGEN:
+        return
+    prefix = ""
+    # Kurzliste oben: bei 13 Anliegen der Weg zum eigenen in einem Blick.
+    sprungliste = "".join(
+        f'<a class="glossar-sprung" href="#{h(a["id"])}"'
+        f'{i18n("beratung.anliegen." + a["id"] + ".titel")}>{h(a["titel"])}</a>'
+        for a in BERATUNG_ANLIEGEN
+    )
+    abschnitte = ""
+    for a in BERATUNG_ANLIEGEN:
+        aid = a["id"]
+        karten = "".join(
+            f'<a class="t-card" href="{prefix}behandlungen/{SLUG_REGISTER[x][0]}/{x}.html">'
+            f'<h4{i18n("beh." + x + ".name")}>{h(SLUG_REGISTER[x][1])}</h4>'
+            f'<span class="link"{i18n("seite.allgemein.mehr_erfahren")}>Mehr erfahren</span></a>'
+            for x in a.get("verfahren", []) if x in SLUG_REGISTER
+        )
+        text = echt(a.get("text"))
+        teile = ""
+        if text:
+            teile += f'<p{i18n("beratung.anliegen." + aid + ".text")}>{h(text)}</p>'
+        if karten:
+            teile += f'<div class="grid-4">{karten}</div>'
+        # Die Gegenueberstellung, falls es fuer dieses Anliegen eine gibt.
+        # Sieben der 13 Anliegen verweisen auf eine Gruppe, die es noch nicht
+        # gibt — dort bleibt der Block einfach weg.
+        teile += vergleich_block(a.get("vergleich") or "", prefix, titel_stufe="h3")
+        if not teile:
+            continue
+        abschnitte += (f'<article class="anliegen" id="{h(aid)}">'
+                       f'<h2{i18n("beratung.anliegen." + aid + ".titel")}>{h(a["titel"])}</h2>'
+                       f"{teile}</article>")
+    rumpf = f"""
+<section class="page-band">
+  <div class="crumbs"><a href="index.html"{i18n('seite.allgemein.crumb.start')}>Start</a><span>/</span><span{i18n('seite.beratung.kurz')}>Was passt zu mir?</span></div>
+  <h1{i18n('seite.beratung.titel')}>Sie kennen Ihr Anliegen, nicht das Verfahren?</h1>
+  <p{i18n('seite.beratung.text')}>Suchen Sie sich aus, was Ihnen am nächsten kommt. Wir nennen die Verfahren, die dafür in Frage kommen, und sagen dazu, worin sie sich unterscheiden. Welches davon für Sie passt, klärt das ärztliche Gespräch.</p>
+</section>
+<section class="section beratung-liste">
+  <nav class="glossar-sprungliste" aria-label="Anliegen"{i18n_attr('aria-label:seite.beratung.kurz')}>{sprungliste}</nav>
+  {abschnitte}
+</section>
+""" + cta_band(
+        "Nichts davon trifft es genau?",
+        "Schildern Sie uns Ihr Anliegen in eigenen Worten.",
+        "seite.beratung.cta",
+    )
+    kopf = head(
+        "Was passt zu mir? | ETA",
+        "Nach Anliegen statt nach Verfahren: 13 häufige Anliegen und die Behandlungen, "
+        "die dafür in Frage kommen — mit den Unterschieden dazwischen.",
+        prefix, kanonisch(SEITE_BERATUNG), "meta.beratung.title", "meta.beratung.desc",
+        jsonld=ld(
+            ld_organisation(),
+            ld_krumen([("Start", kanonisch("index.html")),
+                       ("Was passt zu mir?", kanonisch(SEITE_BERATUNG))]),
+        ),
+    )
+    seite(SEITE_BERATUNG, kopf, header_nav(prefix, ""), rumpf, prefix)
+
+
 def build_team():
     """Die Team-Seite entsteht nur, wenn Personen hinterlegt sind.
 
@@ -2413,6 +2846,17 @@ def suchindex_seiten():
         eintraege.append(("Ihre Reise", ["Ablauf", "Reise", "Hotel", "Transfer", "Flug", "Aufenthalt"], SEITE_REISE))
     if SEITENINHALTE.get("gesamtkosten"):
         eintraege.append(("Was es kostet", ["Kosten", "Preis", "Gesamtkosten", "Budget", "Anzahlung"], SEITE_KOSTEN))
+    if BERATUNG_ANLIEGEN:
+        eintraege.append(("Was passt zu mir?",
+                          ["Anliegen", "Beratung", "Vergleich", "Unterschied", "welche Behandlung"],
+                          SEITE_BERATUNG))
+    if GLOSSAR_SORTIERT:
+        # Jeder Fachbegriff ist ein Synonym der Glossarseite. Wer «Graft»
+        # eintippt, landet damit bei der Erklaerung und nicht im Nichts.
+        eintraege.append(("Fachbegriffe",
+                          ["Glossar", "Lexikon", "Begriff", "Abkürzung"]
+                          + [b for b, _ in GLOSSAR_SORTIERT],
+                          SEITE_GLOSSAR))
     return [{"n": name, "t": "", "k": "Seite", "s": syn, "d": "", "u": url}
             for name, syn, url in eintraege]
 
@@ -2468,6 +2912,34 @@ def build_meta_files():
 
 
 # ------------------------------------------------------------ Sprachdateien
+def deutsche_datentexte():
+    """Die deutschen Texte, die aus glossar.json und beratung.json kommen.
+
+    Dieselbe Funktion nutzt scripts/pruefe_katalog_aktuell.py, um die Kopie in
+    data/i18n/seiten-de.json gegen die Quelle zu pruefen.
+    """
+    out = {}
+    for begriff, e in GLOSSAR_SORTIERT:
+        out[glossar_schluessel(e["slug"], "begriff")] = begriff
+        out[glossar_schluessel(e["slug"], "kurz")] = e["kurz"]
+        if e["lang"]:
+            out[glossar_schluessel(e["slug"], "lang")] = e["lang"]
+    for a in BERATUNG_ANLIEGEN:
+        out["beratung.anliegen." + a["id"] + ".titel"] = echt(a["titel"])
+        text = echt(a.get("text"))
+        if text:
+            out["beratung.anliegen." + a["id"] + ".text"] = text
+    for gid, g in VERGLEICH_GRUPPEN.items():
+        vslug = vergleich_slug(gid)
+        titel = echt(g.get("titel"))
+        hilfe = echt(g.get("entscheidungshilfe"))
+        if titel:
+            out["beratung.vergleich." + vslug + ".titel"] = titel
+        if hilfe:
+            out["beratung.vergleich." + vslug + ".hilfe"] = hilfe
+    return out
+
+
 def zusammengesetzte_schluessel(texte, lang="de"):
     """Baut die Schluessel, die aus einer Vorlage und einem Katalogtext entstehen.
 
@@ -2484,6 +2956,15 @@ def zusammengesetzte_schluessel(texte, lang="de"):
        Sprachumschalter die zu langen Fassungen zurueck (Befund technik B13).
     """
     neu = {}
+    # Fachbegriffe und Beratungstexte: fuer Deutsch sind data/glossar.json und
+    # data/beratung.json die Quelle, genau wie beschreibungen.json weiter
+    # unten. In seiten-de.json steht nur eine Kopie fuer den Abgleich der
+    # Uebersetzer (scripts/pruefe_sprachdatei.py); aendert jemand die
+    # Datendatei, gewinnt hier die Datendatei, und die Kopie kann nie
+    # veraltet auf der Seite landen. scripts/pruefe_katalog_aktuell.py meldet
+    # die Abweichung.
+    if lang == "de":
+        neu.update(deutsche_datentexte())
     vorlagen = {
         "beh_title": texte.get("meta.tpl.beh.title", "{name} in Istanbul | ETA"),
         "beh_desc": texte.get("meta.tpl.beh.desc", "{name}: {desc} Beratung auf Deutsch, Behandlung in unserer Partnerklinik in Istanbul."),
@@ -2654,6 +3135,8 @@ def main():
     build_reise()
     build_kosten()
     build_team()
+    build_glossar()
+    build_beratung()
     build_suchindex()
     build_meta_files()
     build_404()

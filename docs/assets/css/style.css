@@ -797,6 +797,74 @@ body.menue-offen .wa-float { display: none; }
 .legal p { color: var(--text-2); }
 
 /* ==========================================================================
+   Fachbegriffe, Anliegen, Vergleich
+   Drei neue Bausteine der letzten Bahn. Sie kommen ohne eigene Farben aus
+   und benutzen nur Marken, die es schon gibt.
+   ========================================================================== */
+
+/* Sprungliste oben auf der Glossar- und der Beratungsseite. Jeder Eintrag
+   ist ein Tippziel und haelt deshalb die 44 px ein. */
+.glossar-sprungliste {
+  display: flex; flex-wrap: wrap; gap: var(--raum-2);
+  margin: var(--raum-5) 0 var(--raum-8);
+}
+.glossar-sprung {
+  display: inline-flex; align-items: center;
+  min-height: var(--ziel); padding: var(--raum-2) var(--raum-4);
+  border: 1px solid var(--linie); background: var(--flaeche);
+  font-size: var(--t-200); color: var(--text-2);
+}
+.glossar-sprung:hover { border-color: var(--gold); color: var(--gold-tief); }
+
+.glossar-eintrag { border-top: 1px solid var(--linie); padding-top: var(--raum-5); margin-top: var(--raum-6); }
+.glossar-eintrag:first-of-type { border-top: none; }
+.glossar-eintrag h2 { font-family: var(--sans); font-size: var(--t-500); margin-bottom: var(--raum-3); }
+.glossar-verweise { display: flex; flex-wrap: wrap; gap: var(--raum-2) var(--raum-4); align-items: baseline; }
+.glossar-verweise > span { color: var(--text-3); }
+
+/* Kurzerklaerungen am Fuss der Behandlungsseite. */
+.glossar-liste { margin: 0; max-width: 68ch; }
+.glossar-zeile {
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+  gap: var(--raum-4); padding: var(--raum-3) 0; border-top: 1px solid var(--linie-zart);
+}
+.glossar-zeile dt { font-weight: 500; }
+.glossar-zeile dd { margin: 0; color: var(--text-2); font-size: var(--t-300); }
+
+/* Der zweite Zugang zum Katalog. */
+.beratung-einstieg { padding-block: 0 var(--raum-7); }
+.beratung-einstieg .card { border-top: 2px solid var(--gold); }
+.beratung-einstieg h2 { font-size: var(--t-500); }
+.beratung-einstieg p { color: var(--text-2); max-width: 68ch; }
+.anliegen-chips { display: flex; flex-wrap: wrap; gap: var(--raum-2); margin: var(--raum-4) 0 var(--raum-5); }
+.anliegen-chip {
+  display: inline-flex; align-items: center;
+  min-height: var(--ziel); padding: var(--raum-2) var(--raum-4);
+  border: 1px solid var(--linie); background: var(--grund);
+  font-size: var(--t-200); color: var(--text-2);
+}
+.anliegen-chip:hover { border-color: var(--gold); color: var(--gold-tief); }
+
+.anliegen { border-top: 1px solid var(--linie); padding-top: var(--raum-6); margin-top: var(--raum-7); }
+.anliegen:first-of-type { border-top: none; margin-top: 0; }
+.anliegen > p { color: var(--text-2); max-width: 68ch; margin-bottom: var(--raum-5); }
+.anliegen h3 { font-size: var(--t-400); margin-top: var(--raum-6); }
+.anliegen .t-card h4 { font-size: var(--t-400); color: var(--text); margin: 0; }
+.anliegen .t-card:hover h4 { color: var(--gold-tief); }
+
+/* Gegenueberstellung: eine Karte je Verfahren, leere Angaben fallen weg. */
+.vergleich-gitter { margin-top: var(--raum-5); align-items: start; }
+.vergleich-karte h3 { font-size: var(--t-400); margin: 0 0 var(--raum-3); }
+.vergleich-karte .fact { font-size: var(--t-200); }
+.vergleich-karte--hier { border-color: var(--gold); background: var(--grund); }
+.vergleich-karte--hier > .small { margin-bottom: var(--raum-3); }
+
+@media (max-width: 560px) {
+  /* Nebeneinander bleiben Etikett und Wert unter 160 px breit. */
+  .glossar-zeile { grid-template-columns: minmax(0, 1fr); gap: var(--raum-1); }
+}
+
+/* ==========================================================================
    Haltepunkte
    Weniger als vorher: die Raster regeln sich über minmax/auto-fit selbst.
    ========================================================================== */

@@ -21,7 +21,10 @@ const SEITEN = [
   ['Detail Bleaching', '/behandlungen/zaehne/bleaching.html'],
   ['Partnerklinik', '/partnerklinik.html'],
   ['Finanzierung', '/finanzierung.html'],
-  ['Vorher/Nachher', '/vorher-nachher.html'],
+  ['Wenn etwas schiefgeht', '/wenn-etwas-nicht-wie-geplant-laeuft.html'],
+  ['Ihre Reise', '/ihre-reise.html'],
+  ['Was es kostet', '/was-es-kostet.html'],
+  ['Gut zu wissen', '/gut-zu-wissen.html'],
   ['Kontakt', '/kontakt.html'],
   ['AGB', '/agb.html'],
   ['Datenschutz', '/datenschutz.html'],
@@ -122,13 +125,15 @@ for (const [name, pfad] of SEITEN) {
   await page.close();
 }
 
-// Screenshots je Sprache von der Startseite
+// Screenshots je Sprache von der Startseite. Der Zielordner laesst sich ueber
+// ETA_BILDER setzen; fehlt er, werden die Aufnahmen uebersprungen.
+const BILDER = process.env.ETA_BILDER || '/home/fitzindustries/screenshots';
 const page = await kontext.newPage();
 for (const sp of ['de', 'en', 'tr', 'ar']) {
   await page.goto(BASIS + '/index.html', { waitUntil: 'networkidle' });
   await page.click(`.lang-switch [data-lang="${sp}"]`);
   await page.waitForTimeout(900);
-  await page.screenshot({ path: `/home/fitzindustries/screenshots/eta-${sp}.png`, fullPage: false });
+  await page.screenshot({ path: `${BILDER}/eta-${sp}.png`, fullPage: false });
 }
 await page.close();
 

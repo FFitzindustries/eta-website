@@ -602,6 +602,24 @@ function ursprungsAttribut(el, attr) {
 function ladeWoerterbuch(lang) {
   if (I18N_GELADEN[lang]) return Promise.resolve(I18N_GELADEN[lang]);
   if (I18N_UNTERWEGS[lang]) return I18N_UNTERWEGS[lang];
+  // Der <head> hat die Datei für die Startsprache schon angefordert, während
+  // das Stylesheet noch lud. Hier wird sie nur abgeholt — kein zweiter Abruf.
+  // Ist dort etwas schiefgegangen (kein fetch, Netzfehler, leere Antwort),
+  // liefert das Versprechen null, und es läuft der normale Weg darunter.
+  if (window.__etaWoerter && lang === window.__etaSprache) {
+    var vorlauf = window.__etaWoerter.then(function (daten) {
+      if (!daten || typeof daten !== "object") throw new Error("Vorlauf ohne Inhalt");
+      I18N_GELADEN[lang] = daten;
+      delete I18N_UNTERWEGS[lang];
+      return daten;
+    })["catch"](function () {
+      delete I18N_UNTERWEGS[lang];
+      window.__etaWoerter = null;   // beim nächsten Versuch der normale Weg
+      return ladeWoerterbuch(lang);
+    });
+    I18N_UNTERWEGS[lang] = vorlauf;
+    return vorlauf;
+  }
   if (ASSET_WURZEL === null) return Promise.reject(new Error("Wurzelpfad nicht ermittelbar"));
   var lauf = fetch(ASSET_WURZEL + "assets/i18n/" + lang + ".json", { credentials: "same-origin" })
     .then(function (antwort) {

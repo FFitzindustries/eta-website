@@ -74,11 +74,42 @@
  "og-image.jpg": {
   "breite": 1200,
   "hoehe": 678,
-  "webp": [],
   "jpg": [
    {
     "breite": 1200,
     "hoehe": 678
+   }
+  ]
+ },
+ "eta-logo.png": {
+  "breite": 400,
+  "hoehe": 334,
+  "webp": [
+   {
+    "breite": 48,
+    "hoehe": 40
+   },
+   {
+    "breite": 96,
+    "hoehe": 80
+   },
+   {
+    "breite": 144,
+    "hoehe": 120
+   }
+  ],
+  "png": [
+   {
+    "breite": 48,
+    "hoehe": 40
+   },
+   {
+    "breite": 96,
+    "hoehe": 80
+   },
+   {
+    "breite": 144,
+    "hoehe": 120
    }
   ]
  },

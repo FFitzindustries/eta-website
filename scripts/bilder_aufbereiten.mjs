@@ -36,6 +36,13 @@ const PLAN = [
   { quelle: "hero-b.jpg", webp: [480, 960, 1170, 1440, 1920], jpg: [960, 1440] },
   // Vorschaubild fuer geteilte Links. Wird von der Seite selbst nie geladen.
   { quelle: "og-image.jpg", webp: [], jpg: [1200] },
+  // Das Zeichen in der Kopfleiste. Es liegt als 400 x 334 grosses PNG vor und
+  // wird 48 x 40 dargestellt — 16 KB fuer ein Bild, von dem 94 Prozent der
+  // Flaeche weggerechnet werden, auf jeder der 120 Seiten. Drei Stufen decken
+  // Pixelverhaeltnis 1 bis 3 ab. PNG bleibt der Ruecklauf, weil ein Zeichen
+  // mit harten Kanten in WebP bei dieser Groesse nichts spart, wenn ein alter
+  // Browser es nicht versteht.
+  { quelle: "eta-logo.png", webp: [48, 96, 144], jpg: [], png: [48, 96, 144] },
 ];
 
 // Die 101 Behandlungsbilder werden hoechstens 300 CSS-Pixel breit gezeigt,
@@ -64,9 +71,9 @@ for (const eintrag of PLAN) {
   quellBytes += statSync(quellPfad).size;
 
   const stamm = eintrag.quelle.slice(0, eintrag.quelle.length - extname(eintrag.quelle).length);
-  const varianten = { breite: meta.width, hoehe: meta.height, webp: [], jpg: [] };
+  const varianten = { breite: meta.width, hoehe: meta.height, webp: [], jpg: [], png: [] };
 
-  for (const [format, breiten] of [["webp", eintrag.webp], ["jpg", eintrag.jpg]]) {
+  for (const [format, breiten] of [["webp", eintrag.webp], ["jpg", eintrag.jpg], ["png", eintrag.png ?? []]]) {
     for (const b of breiten) {
       if (b > meta.width) continue; // nie hochrechnen
       const ziel = join(IMG, `${stamm}-${b}.${format}`);
@@ -78,12 +85,15 @@ for (const eintrag of PLAN) {
         continue;
       }
       let p = sharp(quellPfad).resize({ width: b, withoutEnlargement: true });
-      p = format === "webp" ? p.webp({ quality: WEBP_Q }) : p.jpeg({ quality: JPG_Q, mozjpeg: true, progressive: true });
+      if (format === "webp") p = p.webp({ quality: WEBP_Q });
+      else if (format === "png") p = p.png({ compressionLevel: 9, palette: true });
+      else p = p.jpeg({ quality: JPG_Q, mozjpeg: true, progressive: true });
       await p.toFile(ziel);
       erzeugt += 1;
       zielBytes += statSync(ziel).size;
     }
   }
+  for (const f of ["webp", "jpg", "png"]) if (!varianten[f].length) delete varianten[f];
   manifest[eintrag.quelle.split("\\").join("/")] = varianten;
 }
 
