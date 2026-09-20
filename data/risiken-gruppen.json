@@ -1,0 +1,348 @@
+{
+  "_lies_mich": "Risikotexte je Behandlungsgruppe. Schlüssel ist «<kategorie-id>/<gruppen-slug>», wobei der Gruppen-Slug derselbe ist, den der Generator für die Sprungmarken auf den Kategorieseiten bildet.\n\nJeder Text trägt \"freigabe\": \"offen\" und ist damit ein Redaktionsentwurf, der von der Partnerklinik fachlich freizugeben ist. Bis dahin darf er nicht als geprüfte medizinische Aufklärung ausgegeben werden — der Generator soll ihn mit einem sichtbaren Hinweis versehen oder zurückhalten, je nach Entscheidung des Auftraggebers.\n\nDie Texte ersetzen keine ärztliche Aufklärung. Sie sollen das leisten, was heute auf 116 Seiten fehlt: dass jemand, der sich informiert, die Risiken hier findet und nicht anderswo — und dass er merkt, dass sie ihm nicht verschwiegen werden.",
+  "stand": "2026-09-20",
+  "haftungshinweis": "Diese Angaben sind allgemein und ersetzen weder die ärztliche Aufklärung noch das persönliche Gespräch mit der behandelnden Ärztin oder dem behandelnden Arzt. Welche Risiken in Ihrem Fall bestehen, hängt von Ihrem Befund, Ihren Vorerkrankungen und Ihren Medikamenten ab.",
+  "gruppen": {
+    "haut-beauty/botox": {
+      "titel": "Risiken und Grenzen bei Botulinumtoxin-Behandlungen",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Botulinumtoxin wird seit Jahrzehnten in der Medizin eingesetzt und gilt bei fachgerechter Anwendung und richtiger Dosierung als gut verträglich. Risikofrei ist es deshalb nicht. Die meisten unerwünschten Wirkungen sind vorübergehend, weil der Wirkstoff selbst nach einigen Monaten abgebaut wird.",
+      "haeufig": [
+        "kleine Blutergüsse und Rötungen an den Einstichstellen, meist für ein bis zwei Tage",
+        "Kopfschmerzen oder ein Druckgefühl in den ersten Tagen",
+        "ein leichtes Schwere- oder Spannungsgefühl in der behandelten Region"
+      ],
+      "selten": [
+        "ein hängendes Oberlid oder eine abgesunkene Braue, wenn der Wirkstoff in benachbarte Muskeln wandert — das bildet sich über Wochen von selbst zurück, ist bis dahin aber deutlich sichtbar",
+        "eine asymmetrische Mimik bei ungleicher Verteilung",
+        "Schluck- oder Sprechbeschwerden nach Behandlung im Hals- oder Kieferbereich",
+        "allergische Reaktionen",
+        "ein Nachlassen der Wirkung bei sehr häufiger Anwendung durch Antikörperbildung"
+      ],
+      "wann_zum_arzt": "Bei Atemnot, Schluckbeschwerden, verschwommenem oder doppeltem Sehen oder ausgeprägter Muskelschwäche suchen Sie sofort ärztliche Hilfe. Bei einem hängenden Lid oder einer deutlichen Asymmetrie melden Sie sich innerhalb weniger Tage bei der behandelnden Praxis.",
+      "grenzen": "Botulinumtoxin entspannt Muskeln. Es wirkt deshalb gegen Falten, die durch Mimik entstehen — nicht gegen Falten, die schon im entspannten Gesicht eingegraben sind, nicht gegen erschlaffte Haut und nicht gegen Volumenverlust. Wer ein straffes Gesichtsoval erwartet, erwartet vom falschen Verfahren etwas.",
+      "gruppe_name_de": "Botox"
+    },
+    "haut-beauty/hyaluron-filler": {
+      "titel": "Risiken und Grenzen bei Unterspritzungen mit Hyaluronsäure",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Hyaluronsäure-Filler gelten als vergleichsweise sicher, weil sich das Material mit einem Gegenmittel wieder auflösen lässt. Die schwerwiegendste Komplikation — der versehentliche Verschluss eines Blutgefässes — ist selten, aber ernst und muss sofort behandelt werden. Fragen Sie vor der Behandlung, ob das Gegenmittel Hyaluronidase in der Praxis vorrätig ist.",
+      "haeufig": [
+        "Schwellung und Blutergüsse für einige Tage",
+        "Druckempfindlichkeit im behandelten Bereich",
+        "tastbare Unregelmässigkeiten oder kleine Knötchen, die sich meist zurückbilden",
+        "Asymmetrie, die sich nachkorrigieren lässt"
+      ],
+      "selten": [
+        "Gefässverschluss (vaskuläre Okklusion): Der Filler gelangt in ein Gefäss und unterbricht die Durchblutung. Folgen können Gewebeuntergang und — bei Injektionen in der Nasen- und Augenregion — Sehstörungen bis zur Erblindung sein.",
+        "Infektion oder Abszess an der Einstichstelle",
+        "verzögerte Fremdkörperreaktion mit Knötchenbildung Wochen bis Monate später",
+        "Reaktivierung von Lippenherpes",
+        "allergische Reaktion auf Bestandteile des Präparats"
+      ],
+      "wann_zum_arzt": "Sofort zurück in die Praxis oder in eine Notfallaufnahme bei: zunehmendem, starkem Schmerz nach der Behandlung, Weissfärbung oder fleckiger, netzartiger Verfärbung der Haut, plötzlicher Sehstörung. Das sind die Zeichen eines Gefässverschlusses, und er ist behandelbar, wenn man schnell ist — jede Stunde zählt. Bei Fieber, Überwärmung oder Eiterbildung innerhalb weniger Tage melden.",
+      "grenzen": "Filler geben Volumen und zeichnen Konturen nach. Sie straffen keine erschlaffte Haut, ersetzen kein Lifting und verbessern die Hautqualität nur begrenzt. Zu viel Material führt zu einem aufgepolsterten Gesicht, das älter statt jünger wirkt — weniger ist hier regelmässig mehr.",
+      "gruppe_name_de": "Hyaluron & Filler"
+    },
+    "haut-beauty/straffung-ohne-op": {
+      "titel": "Risiken und Grenzen bei Straffungsverfahren ohne Operation",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Ultraschall, Radiofrequenz und Fadenlifting arbeiten unter der Hautoberfläche, ohne sie zu eröffnen. Die Risiken sind entsprechend geringer als bei einer Operation — die Wirkung aber auch. Der häufigste Schaden bei diesen Verfahren ist nicht medizinisch, sondern eine Erwartung, die das Verfahren nicht erfüllen kann.",
+      "haeufig": [
+        "Rötung, Schwellung und Druckempfindlichkeit für Stunden bis Tage",
+        "Schmerzen während der Behandlung, bei Ultraschall teils deutlich",
+        "vorübergehendes Kribbeln oder Taubheitsgefühl",
+        "bei Fäden: Ziehen und Spannungsgefühl über ein bis zwei Wochen"
+      ],
+      "selten": [
+        "Verbrennung oder Blasenbildung bei falscher Energieeinstellung",
+        "vorübergehende Nervenirritation mit Schwäche der Mimik",
+        "Fettgewebeschwund im behandelten Bereich bei zu hoher Energie, was das Gesicht eingefallen wirken lässt",
+        "bei Fäden: sicht- oder tastbare Fäden, Dellen entlang des Fadenverlaufs, Verrutschen eines Fadens, Infektion an einer Eintrittsstelle",
+        "ausbleibendes Ansprechen — diese Verfahren wirken nicht bei allen gleich"
+      ],
+      "wann_zum_arzt": "Bei Blasen, offenen Stellen, zunehmender Rötung mit Überwärmung oder bei einer neu aufgetretenen Schwäche der Mimik zeitnah ärztlich abklären lassen. Bei Fäden: bei Fieber oder Eiter an einer Eintrittsstelle sofort melden.",
+      "grenzen": "Diese Verfahren straffen bestehendes Gewebe und regen Kollagenbildung an. Sie entfernen keine überschüssige Haut. Bei deutlicher Erschlaffung mit Hautüberschuss ist ein operatives Facelifting die ehrliche Antwort — und wer Ihnen bei diesem Befund ein Fadenlifting als Alternative verkauft, verkauft Ihnen Zeit, nicht ein Ergebnis.",
+      "gruppe_name_de": "Straffung ohne OP"
+    },
+    "haut-beauty/hautverjuengung-pflege": {
+      "titel": "Risiken und Grenzen bei Hautverjüngungs- und Pflegebehandlungen",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Diese Gruppe umfasst sehr unterschiedliche Verfahren — von der professionellen Reinigungsbehandlung über Peelings und Mikroverletzungen bis zu Injektionen mit Wirkstoffen. Entsprechend unterschiedlich sind die Risiken. Gemeinsam ist ihnen: Bei mehreren dieser Verfahren ist die Wirkung nicht durch belastbare Studien belegt, und das gehört gesagt, bevor Sie sich entscheiden.",
+      "haeufig": [
+        "Rötung, Schwellung und Spannungsgefühl für Stunden bis einige Tage",
+        "Schuppung und Trockenheit nach Peelings",
+        "kleine Blutergüsse und Quaddeln nach Injektionen",
+        "vorübergehende Verschlechterung des Hautbilds in der ersten Woche"
+      ],
+      "selten": [
+        "Infektion an Einstich- oder Behandlungsstellen",
+        "anhaltende Rötung, Pigmentverschiebung oder Narbenbildung nach tiefen Peelings und bei dunkleren Hauttypen",
+        "Reaktivierung von Herpes",
+        "allergische oder verzögerte Fremdkörperreaktion, je nach Präparat",
+        "ausbleibendes Ansprechen"
+      ],
+      "wann_zum_arzt": "Bei zunehmender Rötung mit Überwärmung, Eiterbildung oder Fieber innerhalb weniger Tage ärztlich abklären lassen. Bei einem sich ausbreitenden Bläschenausschlag an eine Herpesreaktivierung denken und rasch behandeln lassen.",
+      "grenzen": "Diese Verfahren verbessern Hautbild, Feuchtigkeit und Oberfläche. Sie heben kein abgesunkenes Gewebe und ersetzen keine Straffung. Bei den regenerativen Verfahren (Eigenblut, Polynukleotide, Stammzellpräparate) gilt zusätzlich: Ein Teil der Behandelten spricht nicht an, und ein ausbleibender Erfolg ist kein Behandlungsfehler. Fragen Sie nach Präparat, Hersteller und Zulassungsstatus.",
+      "gruppe_name_de": "Hautverjüngung & Pflege"
+    },
+    "haut-beauty/laser-behandlungen": {
+      "titel": "Risiken und Grenzen bei Laser- und Lichtbehandlungen",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Laser arbeiten mit Licht, das von einem bestimmten Farbstoff in der Haut aufgenommen wird — von Haarpigment, von Tattoofarbe, von Blutfarbstoff oder vom Wasser in der Haut. Alle Risiken dieser Gruppe hängen daran, wie gut Gerät, Einstellung und Hauttyp zusammenpassen. Der wichtigste einzelne Faktor, den Sie selbst beeinflussen: gebräunte Haut deutlich erhöht das Verbrennungsrisiko.",
+      "haeufig": [
+        "Rötung, Schwellung und Wärmegefühl für Stunden bis Tage",
+        "Krustenbildung nach abtragenden Behandlungen",
+        "vorübergehende Dunkel- oder Aufhellung der behandelten Haut",
+        "Schmerzen während der Behandlung"
+      ],
+      "selten": [
+        "Verbrennung mit Blasenbildung",
+        "dauerhafte Pigmentverschiebung, besonders bei dunkleren Hauttypen und bei gebräunter Haut",
+        "Narbenbildung, meist als Folge einer Verbrennung oder einer Infektion",
+        "Infektion oder Herpesreaktivierung nach abtragenden Verfahren",
+        "Augenschäden ohne korrekten Augenschutz",
+        "paradoxes Haarwachstum am Rand des behandelten Gebiets bei der Haarentfernung"
+      ],
+      "wann_zum_arzt": "Bei Blasen, offenen Stellen, zunehmender Rötung mit Überwärmung, Eiter oder Fieber zeitnah ärztlich abklären lassen. Bei Sehstörungen nach einer Behandlung im Gesicht sofort.",
+      "grenzen": "Laserbehandlungen wirken auf die Hautoberfläche und die oberen Schichten. Sie straffen kein abgesunkenes Gewebe und ersetzen weder Filler noch Lifting. Bei der Haarentfernung gilt: Es ist eine dauerhafte Haarreduktion, keine dauerhafte Haarfreiheit — helle, rote und graue Haare sprechen kaum an. Bei der Tattooentfernung sind mehrere Sitzungen nötig, und manche Farben lassen sich nicht vollständig entfernen.",
+      "gruppe_name_de": "Laser-Behandlungen"
+    },
+    "haut-beauty/koerperformung": {
+      "titel": "Risiken und Grenzen bei Körperformungsbehandlungen ohne Operation",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Kälte, Wärme, Massage und Injektionen verändern kleine, umschriebene Fettdepots. Keines dieser Verfahren ist ein Mittel zur Gewichtsabnahme, und keines ersetzt eine Fettabsaugung. Das ist keine Vorsichtsformel, sondern der häufigste Grund für Enttäuschung in dieser Gruppe.",
+      "haeufig": [
+        "Rötung, Schwellung und Druckempfindlichkeit über Tage",
+        "Taubheitsgefühl im behandelten Bereich über Tage bis Wochen",
+        "Blutergüsse und Verhärtungen",
+        "bei Injektionen: deutliche Schwellung über mehrere Tage bis zwei Wochen"
+      ],
+      "selten": [
+        "paradoxe Fettgewebsvermehrung nach Kryolipolyse — eine seltene, aber beschriebene Reaktion, bei der das behandelte Areal grösser statt kleiner wird und die operativ korrigiert werden muss",
+        "Erfrierung oder Verbrennung der Haut",
+        "Knötchen, Unregelmässigkeiten und Dellen",
+        "Infektion oder Abszess nach Injektionen",
+        "Gewebeuntergang bei fehlerhafter Injektionstiefe",
+        "ausbleibendes Ansprechen"
+      ],
+      "wann_zum_arzt": "Bei zunehmender Rötung mit Überwärmung, Eiter oder Fieber sofort ärztlich abklären lassen. Bei offenen Stellen oder Blasen ebenfalls. Wenn ein behandeltes Areal nach Wochen fester und grösser wird statt kleiner, melden Sie sich — das kann eine paradoxe Reaktion sein.",
+      "grenzen": "Diese Verfahren formen kleine Areale bei stabilem Gewicht. Sie helfen nicht beim Abnehmen, straffen keine erschlaffte Haut und wirken nicht bei allen Behandelten. Für grössere Volumina ist eine Fettabsaugung das passende Verfahren — und für Gewicht die Ernährung.",
+      "gruppe_name_de": "Körperformung"
+    },
+    "plastische-chirurgie/gesicht": {
+      "titel": "Risiken und Grenzen bei operativen Eingriffen im Gesicht",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Jede Operation im Gesicht bringt zwei Arten von Risiken mit sich: die allgemeinen einer Operation und Narkose, und die besonderen dieser Region — sichtbare Narben, Nervenäste für die Mimik und die Tatsache, dass ein Ergebnis im Gesicht nicht zu verbergen ist. Rechnen Sie bei allen Eingriffen dieser Gruppe mit zwei bis drei Wochen sichtbarer Schwellung und Verfärbung.",
+      "haeufig": [
+        "Schwellung und Blutergüsse über zwei bis drei Wochen",
+        "Taubheitsgefühl im Operationsgebiet über Wochen bis Monate",
+        "Spannungs- und Fremdheitsgefühl",
+        "Narben, die über zwölf bis achtzehn Monate verblassen, aber bleiben"
+      ],
+      "selten": [
+        "Nachblutung oder Blutansammlung, die eine erneute Operation nötig machen kann — meist in den ersten Stunden",
+        "Infektion oder Wundheilungsstörung, deutlich häufiger bei Raucherinnen und Rauchern",
+        "Verletzung eines Gesichtsnervenastes mit vorübergehender oder, selten, dauerhafter Schwäche der Mimik",
+        "Asymmetrie oder ein Ergebnis, das nicht der Erwartung entspricht",
+        "wulstige oder verbreiterte Narben",
+        "Notwendigkeit einer Nachkorrektur",
+        "allgemeine Narkoserisiken sowie Thrombose und Lungenembolie"
+      ],
+      "wann_zum_arzt": "Sofort ärztliche Hilfe bei: rasch zunehmender einseitiger Schwellung oder Schmerz in den ersten Stunden und Tagen (Hinweis auf eine Nachblutung), Fieber über 38,5 Grad, zunehmender Rötung mit Überwärmung oder Eiter, Atemnot, Brustschmerz oder einseitig geschwollenem, schmerzendem Bein (Hinweis auf Thrombose oder Lungenembolie), plötzlicher Sehstörung. Melden Sie sich innerhalb von Tagen bei jeder neu aufgetretenen Schwäche der Mimik und bei jeder Wunde, die sich öffnet.",
+      "grenzen": "Eine Operation verändert Form und Position von Gewebe. Sie verbessert die Hautqualität nicht: Pigmentflecken, feine Knitterfalten und Sonnenschäden bleiben. Sie hält die Alterung nicht an, sondern stellt die Uhr zurück. Und sie kann die Vorstellung aus einem bearbeiteten Bild nicht erfüllen — was möglich ist, bestimmen Ihr Knochenbau, Ihre Hautdicke und Ihre Heilung.",
+      "gruppe_name_de": "Gesicht"
+    },
+    "plastische-chirurgie/brust": {
+      "titel": "Risiken und Grenzen bei Brustoperationen",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Brustoperationen sind gut etablierte Eingriffe mit einem hohen Anteil zufriedener Patientinnen. Sie sind zugleich Eingriffe mit Spätfolgen, die Jahre später auftreten können — bei Implantaten die Kapselfibrose, bei Straffungen das erneute Absinken. Wer einen dieser Eingriffe plant, plant auch eine mögliche Zweitoperation mit.",
+      "haeufig": [
+        "Schwellung, Spannungsgefühl und Schmerzen in den ersten Tagen",
+        "eingeschränkte Armbewegung über ein bis zwei Wochen",
+        "veränderte Empfindung von Brustwarze und Haut, meist rückläufig",
+        "Narben, die über zwölf bis achtzehn Monate verblassen"
+      ],
+      "selten": [
+        "Nachblutung oder Blutansammlung mit Notwendigkeit einer erneuten Operation",
+        "Infektion — bei Implantaten besonders ernst, weil sie zur Entfernung zwingen kann",
+        "Kapselfibrose: Verhärtung der Bindegewebskapsel um das Implantat, die Brust wird fest, schmerzhaft oder verformt; häufigste Spätkomplikation, oft erst nach Jahren",
+        "dauerhafter Verlust der Empfindung in der Brustwarze",
+        "eingeschränkte oder verlorene Stillfähigkeit",
+        "Durchblutungsstörung von Brustwarze oder Warzenhof bis zum Gewebeverlust",
+        "Implantatriss, Verrutschen oder sichtbare Ränder und Wellenbildung",
+        "BIA-ALCL, eine sehr seltene Form von Lymphdrüsenkrebs im Zusammenhang mit bestimmten texturierten Implantaten",
+        "erschwerte Beurteilung der Mammographie",
+        "allgemeine Narkoserisiken sowie Thrombose und Lungenembolie"
+      ],
+      "wann_zum_arzt": "Sofort ärztliche Hilfe bei: rasch zunehmender einseitiger Schwellung oder Schmerz in den ersten Tagen, Fieber über 38,5 Grad, Rötung mit Überwärmung oder Eiter, Atemnot oder Brustschmerz, einseitig geschwollenem und schmerzendem Bein. Ärztlich abklären lassen — auch Jahre später — bei: neu aufgetretener Verhärtung, Formveränderung, anhaltendem Schmerz oder einer plötzlichen Schwellung der Brust.",
+      "grenzen": "Eine Vergrösserung schafft Volumen, aber keine Straffung; eine Straffung schafft Form, aber kein Volumen. Implantate sind kein Zustand für immer — rechnen Sie mit einem Wechsel oder einer Entfernung irgendwann, mitsamt Kosten. Und: Schwangerschaft, Stillzeit und Gewichtsschwankungen verändern jede operierte Brust erneut.",
+      "gruppe_name_de": "Brust"
+    },
+    "plastische-chirurgie/koerper": {
+      "titel": "Risiken und Grenzen bei Körperoperationen",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Straffungen und Fettabsaugungen am Körper sind die Eingriffe mit dem höchsten Thromboserisiko in diesem Katalog — und es addiert sich mit dem Risiko eines langen Rückflugs. Deshalb gibt die Klinik den Rückflugtermin vor, nicht Ihr Kalender. Nehmen Sie diese Vorgabe ernst, auch wenn Sie sich gut fühlen.",
+      "haeufig": [
+        "ausgedehnte Blutergüsse und Schwellung über Wochen",
+        "Taubheitsgefühl der behandelten Haut, nach Bauchdeckenstraffungen unterhalb des Nabels häufig dauerhaft",
+        "Spannungsgefühl, das die ersten Tage zu einer gebeugten Haltung zwingt",
+        "lange, dauerhafte Narben bei Straffungen"
+      ],
+      "selten": [
+        "Thrombose und Lungenembolie — bei diesen Eingriffen das ernsteste Risiko",
+        "Flüssigkeitsansammlung (Serom), die mehrfach abpunktiert werden muss; nach Bauchdeckenstraffungen die häufigste Komplikation",
+        "Nachblutung oder Blutansammlung",
+        "Wundheilungsstörung, besonders in der Narbenmitte und besonders bei Raucherinnen und Rauchern",
+        "Dellen, Wellen und Konturunregelmässigkeiten nach Fettabsaugung — häufigster Grund für Nachkorrekturen",
+        "erschlaffte Haut, wo zu viel Volumen entfernt wurde",
+        "Durchblutungsstörung oder Verlust des neu eingesetzten Nabels",
+        "Fettembolie — selten, aber schwerwiegend",
+        "allgemeine Narkoserisiken"
+      ],
+      "wann_zum_arzt": "Sofort ärztliche Hilfe bei: Atemnot, Brustschmerz, Herzrasen oder plötzlichem Husten (Hinweis auf Lungenembolie), einseitig geschwollenem, warmem und schmerzendem Bein (Hinweis auf Thrombose), Fieber über 38,5 Grad, rasch zunehmender Schwellung, Rötung mit Überwärmung oder Eiter, sich öffnender Wunde. Diese Warnzeichen gelten auch noch Wochen nach dem Eingriff und auch zu Hause in der Schweiz — gehen Sie damit in eine Notfallaufnahme, nicht erst in die Sprechstunde.",
+      "grenzen": "Eine Fettabsaugung ist kein Mittel zur Gewichtsabnahme und hält kein Gewicht. Eine Straffung entfernt Haut, verlangt aber ein stabiles Gewicht und eine abgeschlossene Familienplanung, sonst ist das Ergebnis nach der nächsten Schwangerschaft oder Gewichtszunahme weitgehend dahin. Beide Eingriffe hinterlassen Narben, die bleiben.",
+      "gruppe_name_de": "Körper"
+    },
+    "plastische-chirurgie/intimchirurgie-frau": {
+      "titel": "Risiken und Grenzen bei intimchirurgischen Eingriffen bei Frauen",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Eingriffe in dieser Region werden häufig aus einer Mischung aus körperlichen Beschwerden und ästhetischen Gründen gewünscht. Eine gute Beratung trennt beides und klärt, ob ein Eingriff überhaupt nötig ist: Die natürliche Bandbreite in diesem Bereich ist sehr gross, und vieles, was als Abweichung empfunden wird, ist normal.",
+      "haeufig": [
+        "Schwellung, Druckgefühl und Schmerzen über ein bis zwei Wochen",
+        "Blutergüsse",
+        "vorübergehend verändertes Empfindungsvermögen",
+        "eingeschränktes Sitzen und Gehen in den ersten Tagen"
+      ],
+      "selten": [
+        "Nachblutung oder Blutansammlung",
+        "Infektion oder Wundheilungsstörung in einer Region, die schwer trocken zu halten ist",
+        "Wundrandauseinanderweichen mit verzögerter Heilung",
+        "dauerhaft verändertes oder vermindertes Empfindungsvermögen",
+        "schmerzhafte Narben oder Narbenzug, auch beim Geschlechtsverkehr",
+        "Asymmetrie oder ein Ergebnis, das nicht der Erwartung entspricht",
+        "Notwendigkeit einer Nachkorrektur",
+        "allgemeine Narkoserisiken"
+      ],
+      "wann_zum_arzt": "Sofort ärztlich abklären lassen bei: Fieber, zunehmender Rötung mit Überwärmung, Eiter, übelriechendem Ausfluss, sich öffnender Wunde, stärker werdenden Schmerzen oder anhaltender Blutung.",
+      "grenzen": "Ein Eingriff verändert die Form, nicht die Empfindung — und er kann sie verschlechtern. Wo Beschwerden beim Sport, beim Sitzen oder beim Geschlechtsverkehr der Anlass sind, ist das ein nachvollziehbarer Grund. Wo es allein um ein Bild geht, das ein Vergleich erzeugt hat, lohnt ein zweites Gespräch, bevor operiert wird.",
+      "gruppe_name_de": "Intimchirurgie Frau"
+    },
+    "plastische-chirurgie/intimchirurgie-mann": {
+      "titel": "Risiken und Grenzen bei intimchirurgischen Eingriffen bei Männern",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Eingriffe in dieser Region gehören zu den heikelsten in diesem Katalog. Mehrere der angebotenen Verfahren — insbesondere Volumenaufbau mit Eigenfett, Eigenblutbehandlungen und Stosswellentherapie — sind in ihrer Wirksamkeit nicht durch belastbare Studien belegt. Gleichzeitig sind die möglichen Folgen einer Komplikation hier besonders einschneidend. Eine urologische Abklärung vor jedem dieser Eingriffe ist keine Formalität, sondern die Voraussetzung.",
+      "haeufig": [
+        "Schwellung, Blutergüsse und Druckempfindlichkeit über ein bis drei Wochen",
+        "vorübergehend verändertes Empfindungsvermögen",
+        "Schmerzen bei Erektion in der Heilungsphase"
+      ],
+      "selten": [
+        "Infektion oder Wundheilungsstörung",
+        "Nachblutung oder Blutansammlung",
+        "Knötchen, ungleichmässige Verteilung oder Verhärtungen nach Eigenfettbehandlungen",
+        "Vernarbung mit Verkürzung oder Verkrümmung",
+        "dauerhaft verändertes oder vermindertes Empfindungsvermögen",
+        "Erektionsstörungen",
+        "unbefriedigendes Ergebnis mit Notwendigkeit einer Korrekturoperation, die schwieriger ist als der Ersteingriff",
+        "allgemeine Narkoserisiken"
+      ],
+      "wann_zum_arzt": "Sofort ärztliche Hilfe bei: Fieber, zunehmender Rötung mit Überwärmung, Eiter, starken oder zunehmenden Schmerzen, Problemen beim Wasserlassen, anhaltender Blutung oder einer neu aufgetretenen Verhärtung.",
+      "grenzen": "Bei mehreren Verfahren dieser Gruppe ist ein Wirksamkeitsnachweis nicht erbracht, und ein ausbleibender Erfolg ist deshalb ein realistisches Ergebnis. Eine Korrektur ist in dieser Region deutlich schwieriger als der Ersteingriff. Lassen Sie sich vor der Entscheidung urologisch beraten — auch und gerade von jemandem, der den Eingriff nicht anbietet.",
+      "gruppe_name_de": "Intimchirurgie Mann"
+    },
+    "haartransplantation/haartransplantation": {
+      "titel": "Risiken und Grenzen bei Haartransplantationen",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Eine Haartransplantation ist ein vergleichsweise risikoarmer Eingriff in örtlicher Betäubung. Die häufigsten Enttäuschungen sind nicht medizinischer Art, sondern eine Frage der Erwartung: an die Dichte, an den Zeitpunkt und daran, dass der eigene Haarausfall nach dem Eingriff weiterläuft.",
+      "haeufig": [
+        "Schwellung von Stirn und Augenlidern in den ersten drei bis fünf Tagen",
+        "Krusten und Rötung im Empfangsbereich über zehn bis vierzehn Tage",
+        "Taubheitsgefühl an Entnahme- und Empfangsstelle über Wochen bis Monate",
+        "Shock Loss: vorübergehender Ausfall auch bestehender Haare im behandelten Bereich",
+        "punktförmige Narben im Entnahmebereich"
+      ],
+      "selten": [
+        "Entzündung einzelner Haarfollikel (Follikulitis)",
+        "Infektion oder Wundheilungsstörung",
+        "Nachblutung",
+        "ungleichmässige Dichte, eine Haarlinie, die nicht zum Gesicht passt, oder eine falsche Wuchsrichtung",
+        "schlechte Anwuchsrate mit deutlich weniger Haar als erwartet",
+        "sichtbare Übererntung des Spenderbereichs, wenn zu viele Grafts entnommen wurden — das ist nicht korrigierbar",
+        "wulstige Narbenbildung bei entsprechender Veranlagung"
+      ],
+      "wann_zum_arzt": "Zeitnah ärztlich abklären lassen bei: Fieber, zunehmender Rötung mit Überwärmung, Eiter an Entnahme- oder Empfangsstelle, starken oder zunehmenden Schmerzen, anhaltender Blutung. Eine Schwellung der Stirn in den ersten Tagen ist dagegen normal.",
+      "grenzen": "Verpflanzt wird das vorhandene Spenderhaar, nicht neues. Die Dichte des zwanzigjährigen Haars lässt sich damit nicht wiederherstellen, und der Spenderbereich ist endlich. Der erblich bedingte Haarausfall läuft nach dem Eingriff weiter: Ohne begleitende Behandlung kann das Ergebnis nach Jahren wieder lückig wirken, obwohl die Transplantate halten. Beurteilen lässt sich das Ergebnis frühestens nach zwölf Monaten.",
+      "gruppe_name_de": "Haartransplantation"
+    },
+    "haartransplantation/haarbehandlungen-ohne-op": {
+      "titel": "Risiken und Grenzen bei Haarbehandlungen ohne Operation",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Eigenblut-, Wirkstoff- und Pigmentierungsbehandlungen am Haar sind risikoarm. Bei den injektionsbasierten Verfahren ist die Wirksamkeit jedoch nicht durch belastbare Studien gesichert, und ein Teil der Behandelten spricht nicht an. Das gehört vor der Entscheidung gesagt, nicht danach.",
+      "haeufig": [
+        "Druckgefühl, Rötung und leichte Schwellung der Kopfhaut für einige Stunden",
+        "kleine Blutergüsse an den Einstichstellen",
+        "Kopfschmerzen am Behandlungstag",
+        "bei Pigmentierung: Rötung und Krustenbildung für einige Tage"
+      ],
+      "selten": [
+        "Infektion an den Einstichstellen",
+        "allergische Reaktion auf Wirkstoffe oder Pigmente",
+        "bei Pigmentierung: Farbveränderung ins Bläuliche oder Rötliche über die Jahre, unregelmässiges Verblassen, Notwendigkeit von Auffrischungen",
+        "ausbleibendes Ansprechen"
+      ],
+      "wann_zum_arzt": "Zeitnah ärztlich abklären lassen bei zunehmender Rötung mit Überwärmung, Eiter oder Fieber. Bei einem sich ausbreitenden Ausschlag ebenfalls.",
+      "grenzen": "Diese Verfahren können vorhandene, geschwächte Haarwurzeln unterstützen oder optisch verdichten. Wo keine Haarwurzeln mehr sind, wächst mit keinem von ihnen Haar. Die Pigmentierung erzeugt den Eindruck von Dichte, sie ist aber Farbe in der Haut, kein Haar — und sie muss aufgefrischt werden.",
+      "gruppe_name_de": "Haarbehandlungen ohne OP"
+    },
+    "zaehne/zahnaesthetik-zahnbehandlungen": {
+      "titel": "Risiken und Grenzen bei zahnmedizinischen und zahnästhetischen Behandlungen",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Der wichtigste Punkt bei ästhetischen Zahnbehandlungen ist selten ein medizinisches Risiko, sondern die Unumkehrbarkeit: Was an Zahnsubstanz abgetragen wird, kommt nicht zurück, und ein beschliffener Zahn braucht dauerhaft eine Versorgung. Der zweite Punkt ist die Nachsorge: Kronen, Veneers und Implantate verlangen lebenslange Kontrolle — in der Schweiz, mit den entsprechenden Kosten.",
+      "haeufig": [
+        "Überempfindlichkeit auf Kalt und Warm über Wochen",
+        "Druckgefühl und Reizung des Zahnfleischs",
+        "Schwellung und Blutergüsse nach chirurgischen Eingriffen",
+        "Gewöhnungsphase beim Biss"
+      ],
+      "selten": [
+        "Absterben des Zahnnervs nach dem Beschleifen, was eine Wurzelbehandlung nötig macht",
+        "Rückgang des Zahnfleischs mit sichtbarem Kronenrand",
+        "Karies unter dem Kronenrand bei unsauberem Randschluss",
+        "Abplatzen oder Bruch der Keramik, besonders bei Zähneknirschen",
+        "bei Implantaten: ausbleibendes Einheilen, Nervverletzung mit Taubheit an Lippe und Kinn, Eröffnung der Kieferhöhle, Periimplantitis mit Knochenabbau bis zum Implantatverlust",
+        "Biss- oder Kiefergelenkbeschwerden bei veränderter Bisshöhe",
+        "Infektion"
+      ],
+      "wann_zum_arzt": "Zeitnah zahnärztlich abklären lassen bei: anhaltendem oder zunehmendem Schmerz, Schwellung der Wange, Fieber, Eiterbildung, anhaltender Taubheit von Lippe oder Kinn, lockerer Krone oder lockerem Implantat, Blutung, die nicht steht. In der Schweiz ist die erste Anlaufstelle Ihre Zahnärztin oder Ihr Zahnarzt; bringen Sie die Unterlagen der Klinik mit.",
+      "grenzen": "Eine ästhetische Versorgung ersetzt keine Sanierung: Karies, Wurzelentzündungen und Parodontitis gehören vorher behandelt, sonst wird über ein Problem hinweggearbeitet. Keramik ist keine Lösung für immer — rechnen Sie bei Kronen, Veneers und Implantatkronen mit einem Ersatz nach zehn bis fünfzehn Jahren. Und rechnen Sie die Kosten der Kontrollen in der Schweiz von Anfang an mit ein.",
+      "gruppe_name_de": "Zahnästhetik & Zahnbehandlungen"
+    },
+    "medizinische-fachbereiche/fachbereiche": {
+      "titel": "Hinweise zu den medizinischen Fachbereichen",
+      "freigabe": "offen",
+      "quelle": "ETA-Redaktionsentwurf 2026-09-20, allgemeines medizinisches Fachwissen. Fachlich nicht geprüft — Freigabe durch die Partnerklinik ausstehend.",
+      "einleitung": "Diese Einträge beschreiben Fachabteilungen der Partnerklinik, nicht einzelne Behandlungen. Welche Untersuchung oder Behandlung in Ihrem Fall sinnvoll ist, ergibt sich aus der ärztlichen Abklärung vor Ort. ETA vermittelt und organisiert; die medizinische Entscheidung trifft die Ärztin oder der Arzt.",
+      "haeufig": [],
+      "selten": [],
+      "wann_zum_arzt": "Bei akuten Beschwerden wenden Sie sich an Ihre Hausärztin oder Ihren Hausarzt in der Schweiz oder an die Notfallaufnahme. Eine geplante Auslandsbehandlung ist kein Ersatz für eine dringende Abklärung zu Hause.",
+      "grenzen": "Für Abklärungen und Behandlungen, die Ihre Krankenkasse in der Schweiz übernimmt, ist eine Auslandsbehandlung meist nicht der sinnvolle Weg — Kostenübernahme im Ausland ist an enge Voraussetzungen gebunden und muss vorher geklärt werden. Sprechen Sie zuerst mit Ihrer Hausärztin oder Ihrem Hausarzt.",
+      "gruppe_name_de": "Fachbereiche"
+    }
+  },
+  "_schluessel_hinweis": "Der Schlüssel entspricht «<kategorie-id>/<slug>», wobei der Slug mit derselben Funktion gebildet wird wie im Generator (scripts/build_site.py, slugify()): kleingeschrieben, Umlaute zu ae/oe/ue, alles Übrige zu «-». Ein «&» im Gruppennamen verschwindet dadurch ersatzlos: «Hyaluron & Filler» → «hyaluron-filler». Damit passen die Schlüssel zu den id-Ankern der Kategorieseiten."
+}

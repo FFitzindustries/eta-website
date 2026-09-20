@@ -1,0 +1,474 @@
+{
+  "_lies_mich": "Rechtstexte als Datenstruktur, aus der der Generator Impressum, Datenschutzerklärung und AGB baut. Quelle sind die fertigen Entwürfe unter planning/ (datenschutz-entwurf.md, vertrag-entwurf.md), die bisher nirgends verwendet wurden, obwohl die Live-Seiten nur Kurzfassungen mit Platzhaltern zeigen (Befund inhalt B9).\n\nREGELN\n1. Leeres Feld heisst: Angabe fehlt. Der Generator gibt die Zeile dann NICHT aus. Keine eckigen Klammern, kein «k. A.». Die fehlenden Angaben stehen gesammelt unter \"offene_punkte\" und in data/AUSFUELLHILFE.md.\n2. \"entwurf_banner\": true heisst, der ENTWURF-Kasten wird noch angezeigt. Er darf erst auf false gesetzt werden, wenn (a) alle Pflichtangaben gefüllt sind und (b) eine anwaltliche Prüfung vorliegt. Nicht vorher.\n3. Dieser Text ist von einem Redaktionsagenten aufbereitet, nicht von einer Juristin oder einem Juristen. Er ersetzt keine anwaltliche Prüfung.",
+  "stand": "2026-09-20",
+  "entwurf_banner": true,
+  "entwurf_text": "Diese Seite ist eine Arbeitsversion. Die Angaben zum Unternehmen werden ergänzt und der Text wird vor dem Start juristisch geprüft.",
+  "firma": {
+    "_hinweis": "Diese Angaben werden von Impressum, Datenschutzerklärung und AGB gemeinsam benutzt. Jedes leere Feld fehlt im Erzeugnis, statt als Platzhalter zu erscheinen. Alle sind für den Start zwingend.",
+    "name": "",
+    "rechtsform": "",
+    "strasse": "",
+    "plz": "",
+    "ort": "",
+    "land": "Schweiz",
+    "hr_nummer": "",
+    "hr_kanton": "",
+    "hr_link": "",
+    "hr_link_hinweis": "Sobald die UID bekannt ist, hier den direkten Zefix-Link eintragen (https://www.zefix.ch). Ein nachschlagbarer Handelsregistereintrag ist für die Zielgruppe der wirksamste einzelne Vertrauensbeleg — Befund inhalt B2 zählt auf 116 Seiten null nachprüfbare Tatsachen.",
+    "uid": "",
+    "mwst_nummer": "",
+    "vertretung": "",
+    "vertretung_funktion": "",
+    "email": "info@eta-agency.ch",
+    "email_quelle": "scripts/build_site.py, Fussbereich (bestehende Angabe)",
+    "telefon": "+41 76 412 21 22",
+    "telefon_quelle": "static/assets/js/main.js, WhatsApp-Nummer. Vor Verwendung als tel:-Link bestätigen lassen, dass die Nummer auch telefonisch erreichbar ist und nicht nur als WhatsApp-Konto existiert.",
+    "datenschutz_email": "",
+    "aufsicht_hinweis": ""
+  },
+  "impressum": {
+    "titel": "Impressum",
+    "freigabe": "offen",
+    "abschnitte": [
+      {
+        "id": "betreiber",
+        "titel": "Betreiberin dieser Website",
+        "absaetze": [
+          "Die Angaben zum Unternehmen ergeben sich aus dem Block «firma». Der Generator gibt jede Zeile nur aus, wenn sie gefüllt ist."
+        ]
+      },
+      {
+        "id": "zweck",
+        "titel": "Gegenstand des Angebots",
+        "absaetze": [
+          "ETA ist eine in der Schweiz ansässige Vermittlungsagentur für ästhetische und medizinische Behandlungen bei einer Partnerklinik in Istanbul.",
+          "ETA führt selbst keine medizinischen Behandlungen durch, stellt keine Diagnosen und erbringt keine Heilbehandlung. Der Behandlungsvertrag kommt ausschliesslich zwischen Ihnen und der Partnerklinik zustande; diese ist ein von ETA rechtlich unabhängiges Unternehmen."
+        ],
+        "hinweis": "Quelle: planning/vertrag-entwurf.md, Ziff. 1.1 und 1.2"
+      },
+      {
+        "id": "handelsregister",
+        "titel": "Handelsregister",
+        "absaetze": [
+          "Eintrag und Nummer werden aus dem Block «firma» übernommen, sobald sie vorliegen."
+        ]
+      },
+      {
+        "id": "kontakt",
+        "titel": "Kontakt",
+        "absaetze": [
+          "Telefon, E-Mail und Postadresse werden aus dem Block «firma» übernommen."
+        ]
+      },
+      {
+        "id": "haftung_inhalt",
+        "titel": "Haftung für Inhalte",
+        "absaetze": [
+          "Wir erstellen die Inhalte dieser Website mit Sorgfalt. Medizinische Angaben sind allgemein gehalten und ersetzen weder eine ärztliche Beratung noch eine Untersuchung. Ob und wie eine Behandlung für Sie in Frage kommt, kann nur die behandelnde Ärztin oder der behandelnde Arzt beurteilen."
+        ]
+      },
+      {
+        "id": "haftung_links",
+        "titel": "Haftung für Links",
+        "absaetze": [
+          "Diese Website verweist an einzelnen Stellen auf externe Seiten, etwa auf die Partnerklinik. Für deren Inhalte sind ausschliesslich die jeweiligen Betreiber verantwortlich."
+        ]
+      },
+      {
+        "id": "bilder",
+        "titel": "Bilder",
+        "absaetze": [
+          "Ein Teil der auf dieser Website gezeigten Bilder ist computergeneriert und dient der Illustration. Solche Bilder zeigen keine echten Patientinnen oder Patienten und keine echten Behandlungsergebnisse; sie sind als Symbolbild gekennzeichnet."
+        ],
+        "hinweis": "Befund inhalt B2: Alle 101 Behandlungsbilder sind KI-erzeugt. Der Hinweis «Symbolbild» schützt zugleich gegen den Vorwurf irreführender Werbung (UWG Art. 3 Abs. 1 lit. b). Der Generator soll ihn unter jedem KI-Bild ausgeben, nicht nur hier."
+      },
+      {
+        "id": "urheberrecht",
+        "titel": "Urheberrecht",
+        "absaetze": [
+          "Texte, Bilder und Gestaltung dieser Website sind urheberrechtlich geschützt. Eine Verwendung ausserhalb der gesetzlichen Schranken bedarf unserer Zustimmung."
+        ]
+      }
+    ],
+    "offene_punkte": [
+      "Firmenname und Rechtsform",
+      "Postadresse in der Schweiz",
+      "Handelsregisternummer und UID, dazu der Zefix-Link",
+      "vertretungsberechtigte Person mit Funktion",
+      "MWST-Nummer, falls mehrwertsteuerpflichtig",
+      "Bestätigung, dass die Telefonnummer auch telefonisch erreichbar ist"
+    ]
+  },
+  "datenschutz": {
+    "titel": "Datenschutzerklärung",
+    "freigabe": "offen",
+    "quelle": "planning/datenschutz-entwurf.md (15 Abschnitte, ~1600 Wörter), übertragen und ergänzt",
+    "abschnitte": [
+      {
+        "id": "verantwortlich",
+        "titel": "1. Verantwortliche Stelle",
+        "absaetze": [
+          "Verantwortlich für die Bearbeitung Ihrer Personendaten ist ETA. Die vollständigen Angaben stehen im Impressum.",
+          "Für Fragen zum Datenschutz erreichen Sie uns unter der dort genannten Adresse."
+        ]
+      },
+      {
+        "id": "geltung",
+        "titel": "2. Geltungsbereich und anwendbares Recht",
+        "absaetze": [
+          "ETA hat Sitz in der Schweiz. Für die Bearbeitung Ihrer Personendaten gilt in erster Linie das revidierte Schweizer Datenschutzgesetz (revDSG).",
+          "Da sich unser Angebot ausdrücklich auch an Kundinnen und Kunden aus Deutschland und Österreich richtet, wenden wir zusätzlich die Standards der EU-Datenschutz-Grundverordnung (DSGVO) an, soweit diese für Sie einschlägig sind. Wo sich die beiden Regelwerke unterscheiden, informieren wir Sie nach dem strengeren Massstab."
+        ]
+      },
+      {
+        "id": "daten",
+        "titel": "3. Welche Daten wir bearbeiten",
+        "absaetze": [
+          "Wir bearbeiten die folgenden Kategorien von Daten:"
+        ],
+        "liste": [
+          "Kontakt- und Stammdaten: Name, Adresse, Geburtsdatum, Telefonnummer, E-Mail-Adresse.",
+          "Anfrage- und Vertragsdaten: gewünschte Behandlung, Kommunikationsverlauf, Termin- und Reisedaten, Angaben zur Anzahlung.",
+          "Gesundheitsdaten: Angaben, die Sie uns zu Ihrem Gesundheitszustand, zu Vorerkrankungen, Medikamenten oder Behandlungswünschen machen. Dazu gehört auch schon die Angabe, für welche Behandlung Sie sich interessieren.",
+          "Foto- und Videomaterial, sofern im Rahmen der Behandlungsdokumentation erstellt und uns zugänglich gemacht.",
+          "Technische Daten beim Besuch der Website, siehe Ziffer 7."
+        ],
+        "hinweis": "Wichtig: Schon die gewünschte Behandlung ist ein Gesundheitsdatum und damit nach revDSG Art. 5 lit. c ein besonders schützenswertes Personendatum, ebenso nach Art. 9 DSGVO. Das ist der Grund für die gesonderte Einwilligung im Formular."
+      },
+      {
+        "id": "zwecke",
+        "titel": "4. Wozu wir die Daten bearbeiten",
+        "absaetze": [
+          "Wir bearbeiten Ihre Daten, um:"
+        ],
+        "liste": [
+          "Ihre Anfrage zu beantworten und Sie zu einer passenden Behandlung zu beraten,",
+          "die Vermittlung an die Partnerklinik vorzubereiten und zu koordinieren,",
+          "den Vermittlungsvertrag mit Ihnen abzuwickeln und Sie nach der Rückkehr zu betreuen,",
+          "gesetzlichen Aufbewahrungs- und Nachweispflichten nachzukommen,",
+          "die Website zu betreiben und sicher zu halten."
+        ]
+      },
+      {
+        "id": "rechtsgrundlagen",
+        "titel": "5. Auf welcher Grundlage wir das tun",
+        "absaetze": [
+          "Für Kundinnen und Kunden mit Wohnsitz in der Schweiz: Die Bearbeitung besonders schützenswerter Personendaten, also auch Ihrer Gesundheitsdaten, stützt sich auf Ihre ausdrückliche Einwilligung nach Art. 6 Abs. 7 lit. a revDSG sowie, soweit erforderlich, auf die Erfüllung des mit Ihnen geschlossenen Vermittlungsvertrags.",
+          "Für Kundinnen und Kunden mit Wohnsitz in der EU: Art. 6 Abs. 1 lit. b DSGVO für Kontakt- und Vertragsdaten, Art. 9 Abs. 2 lit. a DSGVO (ausdrückliche Einwilligung) für Gesundheitsdaten — ETA erbringt selbst keine Gesundheitsversorgung im Sinne von Art. 9 Abs. 2 lit. h DSGVO, sondern vermittelt — und Art. 6 Abs. 1 lit. f DSGVO für IT-Sicherheit und Betrugsprävention.",
+          "Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen."
+        ]
+      },
+      {
+        "id": "empfaenger",
+        "titel": "6. Wer Ihre Daten erhält",
+        "absaetze": [
+          "Ihre Daten werden weitergegeben an:"
+        ],
+        "liste": [
+          "die Partnerklinik in Istanbul, zur Vorbereitung Ihrer Behandlung — siehe Ziffer 8,",
+          "unseren Nachsorgepartner in der Schweiz, soweit für die Nachkontrolle erforderlich und nur mit Ihrer Zustimmung,",
+          "IT-Dienstleister, die für uns die Website, das Anfrageformular und die E-Mail betreiben; mit ihnen schliessen wir Auftragsbearbeitungsverträge ab,",
+          "Behörden, soweit wir gesetzlich dazu verpflichtet sind."
+        ]
+      },
+      {
+        "id": "whatsapp",
+        "titel": "7. Wenn Sie uns über WhatsApp schreiben",
+        "absaetze": [
+          "Schreiben Sie uns über WhatsApp, werden Ihre Nachrichten über die Infrastruktur von WhatsApp beziehungsweise Meta verarbeitet. Das liegt ausserhalb unseres Einflussbereichs, und dabei kann es zu einer Übermittlung in die USA kommen.",
+          "Für Angaben zu Ihrer Gesundheit empfehlen wir deshalb ausdrücklich das Kontaktformular oder eine E-Mail. Unser Kontaktformular übermittelt Ihre Angaben direkt an uns und schreibt keine Gesundheitsangaben in eine WhatsApp-Nachricht."
+        ],
+        "hinweis": "Befund inhalt B8: Genau das tut das Formular heute. Der Satz oben darf erst erscheinen, wenn der Absendeweg umgebaut ist — sonst steht in der Datenschutzerklärung das Gegenteil dessen, was die Seite tut. Bitte an die Bahn, die das Formular baut: entweder Absendeweg anpassen oder diesen Absatz umschreiben."
+      },
+      {
+        "id": "cookies",
+        "titel": "8. Cookies und Auswertung",
+        "absaetze": [
+          "Diese Website verwendet nur technisch notwendige Speicherung im Browser — namentlich die Erinnerung an Ihre Sprachwahl. Eine Auswertung des Nutzungsverhaltens und Werbe-oder Verfolgungsdienste setzen wir derzeit nicht ein."
+        ],
+        "hinweis": "Vor dem Start prüfen und bei Bedarf ersetzen: Sobald ein Auswertungs- oder Werbedienst eingesetzt wird, ist dieser Abschnitt zu ergänzen und ein Zustimmungsbanner mit Opt-in nötig. Vorlage: planning/datenschutz-entwurf.md Ziff. 7."
+      },
+      {
+        "id": "tuerkei",
+        "titel": "9. Übermittlung in die Türkei",
+        "absaetze": [
+          "Zur Vorbereitung und Durchführung Ihrer Behandlung geben wir die dafür erforderlichen Kontakt- und Gesundheitsdaten an unsere Partnerklinik in Istanbul weiter.",
+          "Die Türkei verfügt weder über einen Angemessenheitsbeschluss der EU-Kommission noch ist sie auf der Angemessenheitsliste des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten aufgeführt. Es handelt sich also um eine Übermittlung in ein Land ohne als angemessen anerkanntes Datenschutzniveau. Für Sie kann das bedeuten, dass Ihre Daten dort weniger gut geschützt sind, insbesondere gegenüber Behördenzugriff, und dass Ihre Rechte vor Ort schwerer durchzusetzen sind.",
+          "Wir weisen Sie darauf vor der Übermittlung ausdrücklich hin und holen Ihre gesonderte, informierte Einwilligung ein."
+        ],
+        "hinweis": "Offener Punkt aus planning/datenschutz-entwurf.md Ziff. 8: Auf welche Garantie sich die Übermittlung stützt — Standardvertragsklauseln, ausdrückliche Einwilligung (Art. 17 Abs. 1 revDSG / Art. 49 Abs. 1 lit. a DSGVO) oder Vertragserfüllung — ist juristisch festzulegen und mit der Klinik vertraglich abzusichern."
+      },
+      {
+        "id": "aufbewahrung",
+        "titel": "10. Wie lange wir Daten aufbewahren",
+        "absaetze": [
+          "Wir bewahren Ihre Daten nur so lange auf, wie es für den jeweiligen Zweck nötig ist oder wie das Gesetz es verlangt:"
+        ],
+        "liste": [
+          "Anfragen ohne Vertragsabschluss: Löschung nach Ablauf der unten genannten Frist.",
+          "Vertrags- und Zahlungsdaten: für die Dauer der handelsrechtlichen Aufbewahrungspflicht von zehn Jahren nach Art. 958f OR, soweit Buchungsbelege betroffen sind.",
+          "Gesundheitsdaten aus Anfrage und Betreuung — nicht die Krankenakte der Klinik: kürzer als allgemeine Vertragsdaten, nach dem Grundsatz der Datenminimierung.",
+          "Foto- und Videodokumentation: gemäss Ihrer Einwilligung; Widerruf jederzeit möglich."
+        ],
+        "hinweis": "Offener Punkt: Die konkreten Fristen sind festzulegen und mit einem Löschkonzept zu hinterlegen. Solange die Zahlen fehlen, gibt der Generator die betreffenden Zeilen ohne Frist aus — das ist ehrlicher als eine erfundene Angabe, aber vor dem Start zu schliessen."
+      },
+      {
+        "id": "sicherheit",
+        "titel": "11. Datensicherheit",
+        "absaetze": [
+          "Wir treffen angemessene technische und organisatorische Massnahmen, um Ihre Daten — insbesondere Gesundheitsdaten — vor unbefugtem Zugriff, Verlust und Missbrauch zu schützen. Dazu gehören verschlüsselte Übertragung und beschränkte Zugriffsrechte."
+        ],
+        "hinweis": "Konkrete Massnahmen ergänzen, sobald das IT- und Formular-Setup feststeht."
+      },
+      {
+        "id": "rechte",
+        "titel": "12. Ihre Rechte",
+        "absaetze": [
+          "Sie haben nach revDSG beziehungsweise DSGVO insbesondere folgende Rechte:"
+        ],
+        "liste": [
+          "Auskunft über die zu Ihrer Person bearbeiteten Daten,",
+          "Berichtigung unrichtiger Daten,",
+          "Löschung Ihrer Daten, soweit keine gesetzliche Aufbewahrungspflicht entgegensteht,",
+          "Einschränkung der Bearbeitung in den gesetzlich vorgesehenen Fällen,",
+          "Herausgabe Ihrer Daten in einem gängigen elektronischen Format,",
+          "Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft,",
+          "Widerspruch gegen Bearbeitungen, die auf ein berechtigtes Interesse gestützt sind."
+        ],
+        "hinweis": "Zur Ausübung genügt eine Nachricht an die im Impressum genannte Adresse."
+      },
+      {
+        "id": "beschwerde",
+        "titel": "13. Beschwerderecht",
+        "absaetze": [
+          "Wenn Sie der Ansicht sind, dass wir Ihre Daten nicht rechtmässig bearbeiten, können Sie sich beschweren: mit Wohnsitz Schweiz beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten, Feldeggweg 1, 3003 Bern (https://www.edoeb.admin.ch); mit Wohnsitz in der EU bei der für Ihren Wohnsitz zuständigen Aufsichtsbehörde."
+        ]
+      },
+      {
+        "id": "alter",
+        "titel": "14. Alter",
+        "absaetze": [
+          "Unser Angebot richtet sich an volljährige Personen."
+        ]
+      },
+      {
+        "id": "aenderungen",
+        "titel": "15. Änderungen",
+        "absaetze": [
+          "Wir passen diese Erklärung an, wenn sich unsere Datenbearbeitung, unsere Dienstleistungen oder die Rechtslage ändern. Es gilt jeweils die zum Zeitpunkt Ihrer Anfrage aktuelle Fassung."
+        ]
+      }
+    ],
+    "offene_punkte": [
+      "Vertreter in der EU nach Art. 27 DSGVO prüfen — ETA hat keine EU-Niederlassung, richtet das Angebot aber gezielt an DE und AT.",
+      "Übermittlungsgarantie für die Türkei festlegen und mit der Klinik vertraglich absichern.",
+      "Konkrete Aufbewahrungsfristen festlegen und ein Löschkonzept hinterlegen.",
+      "Auftragsbearbeiter namentlich nennen: Hosting, Formular- und CRM-Werkzeug, E-Mail-Anbieter, Zahlungsdienstleister.",
+      "Speicherort und Verschlüsselung der Anfragedaten klären und beschreiben.",
+      "WhatsApp/Meta: Zertifizierungsstatus prüfen und Notwendigkeit eines Auftragsbearbeitungsvertrags klären.",
+      "Abschnitt «Cookies» anpassen, sobald ein Auswertungs- oder Werbedienst eingesetzt wird.",
+      "Ziffer 7 erst freischalten, wenn das Formular keine Gesundheitsangaben mehr nach WhatsApp schreibt.",
+      "Gesamten Text anwaltlich prüfen lassen."
+    ]
+  },
+  "agb": {
+    "titel": "Allgemeine Geschäftsbedingungen",
+    "freigabe": "offen",
+    "quelle": "planning/vertrag-entwurf.md, Teil A (9 Ziffern), übertragen und ergänzt",
+    "abschnitte": [
+      {
+        "id": "geltung",
+        "titel": "1. Geltungsbereich",
+        "absaetze": [
+          "Diese Bedingungen gelten für Anfragen und Vermittlungen von ETA gegenüber Kundinnen und Kunden mit Wohnsitz in der Schweiz, in Österreich und in Deutschland."
+        ],
+        "hinweis": "Befund inhalt B9: Die heutige Fassung beschränkt den Geltungsbereich auf die Schweiz, während Fussbereich und Kontaktformular ausdrücklich AT und DE ansprechen und die Vorwahlauswahl +43 und +49 anbietet. Dieser Widerspruch ist hier aufgelöst. Die Folge ist juristisch zu prüfen: zwingendes Konsumentenschutzrecht in AT und DE kann einzelne Klauseln überlagern."
+      },
+      {
+        "id": "gegenstand",
+        "titel": "2. Gegenstand und Rechtsnatur",
+        "absaetze": [
+          "ETA vermittelt eine von Ihnen gewählte ästhetische oder medizinische Behandlung bei einer Partnerklinik in Istanbul und erbringt die damit verbundenen Organisations- und Betreuungsleistungen.",
+          "ETA führt selbst keine medizinischen Behandlungen durch, stellt keine Diagnosen und erbringt keine Heilbehandlung. Der Behandlungsvertrag über die medizinische Leistung kommt ausschliesslich zwischen Ihnen und der Partnerklinik zustande und richtet sich nach deren Bedingungen.",
+          "ETA schuldet die sorgfältige Erbringung der Vermittlungs- und Organisationsleistung, nicht einen bestimmten medizinischen Erfolg."
+        ]
+      },
+      {
+        "id": "leistungen",
+        "titel": "3. Unsere Leistungen",
+        "absaetze": [
+          "Im Rahmen der Vermittlung erbringen wir insbesondere:"
+        ],
+        "liste": [
+          "Beratung zur Auswahl einer geeigneten Behandlung anhand Ihrer Angaben,",
+          "Koordination und Terminvereinbarung mit der Partnerklinik,",
+          "Weiterleitung Ihrer Angaben an die Partnerklinik zur Vorbereitung der ärztlichen Anamnese,",
+          "Organisation von Transfer und Unterkunft gemäss dem gewählten Paket,",
+          "deutschsprachige Begleitung während des Aufenthalts, soweit im Paket enthalten,",
+          "Ansprechbarkeit nach Ihrer Rückkehr, soweit im Paket enthalten."
+        ],
+        "hinweis": "Der konkrete Umfang ergibt sich aus dem individuellen Angebot."
+      },
+      {
+        "id": "preise",
+        "titel": "4. Preise, Anzahlung und Zahlung",
+        "absaetze": [
+          "Massgebend sind die Preise im individuellen Angebot, das Sie vor Vertragsabschluss erhalten.",
+          "Zur verbindlichen Reservierung des Behandlungstermins wird eine Anzahlung fällig. Der Restbetrag wird zum im Angebot genannten Zeitpunkt fällig."
+        ],
+        "hinweis": "Offener Punkt: Höhe der Anzahlung, Zahlungsmittel, Währung und Zeitpunkt der Restzahlung fehlen. Solange sie fehlen, gibt der Generator keine Zahl aus — heute steht dort an drei Stellen ein Klammer-Platzhalter, unter anderem direkt unter dem Absendeknopf des Formulars."
+      },
+      {
+        "id": "storno",
+        "titel": "5. Terminverschiebung, Rücktritt und Storno",
+        "absaetze": [
+          "Eine kostenlose Verschiebung des vereinbarten Termins ist möglich, wenn Sie uns spätestens 72 Stunden vor dem Termin informieren.",
+          "Bei Absage oder Verschiebung innerhalb von 72 Stunden vor dem Termin sowie bei Nichterscheinen gelten die im Angebot genannten Bedingungen zur Anzahlung.",
+          "Ein gesetzliches Rücktritts- oder Widerrufsrecht nach dem Recht Ihres Wohnsitzlandes bleibt vorbehalten.",
+          "Die Storno- und Verschiebungsbedingungen der Partnerklinik selbst — etwa für bereits reservierte Operationstermine, Material und Anästhesie — gelten unabhängig hiervon und werden Ihnen von der Klinik gesondert mitgeteilt."
+        ],
+        "hinweis": "Quelle: planning/vertrag-entwurf.md Ziff. 4. Offen: Ob und in welchem Umfang die Anzahlung bei Kurzfrist-Storno verfällt, und die Anwendbarkeit eines Widerrufsrechts bei Fernabsatz-Dienstleistungen je nach Wohnsitzland. Beides juristisch klären."
+      },
+      {
+        "id": "mitwirkung",
+        "titel": "6. Ihre Mitwirkung",
+        "absaetze": [
+          "Sie sind verpflichtet, alle für Vermittlung und Behandlung relevanten Angaben — insbesondere zu Gesundheitszustand, Vorerkrankungen, Allergien und Medikamenten — vollständig und wahrheitsgemäss zu machen. Unvollständige oder unrichtige Angaben können die Sicherheit der Behandlung gefährden.",
+          "Sie befolgen die Vor- und Nachsorgehinweise der Partnerklinik und erscheinen rechtzeitig und reisefähig zum vereinbarten Termin.",
+          "Wir empfehlen Ihnen ausdrücklich, eine Reise- und Auslandkrankenversicherung abzuschliessen, die auch Komplikationen im Zusammenhang mit der Behandlung abdeckt. ETA schliesst eine solche Versicherung nicht für Sie ab."
+        ]
+      },
+      {
+        "id": "dokumentation",
+        "titel": "7. Foto- und Videodokumentation",
+        "absaetze": [
+          "Zur medizinischen Dokumentation, Verlaufskontrolle und Qualitätssicherung werden vor und nach der Behandlung Aufnahmen der behandelten Körperareale angefertigt. Diese werden vertraulich behandelt und nur zu diesen Zwecken verwendet.",
+          "Eine Verwendung zu Marketing- oder Referenzzwecken, etwa als Vorher-Nachher-Darstellung, erfolgt nur mit Ihrer gesonderten, ausdrücklichen und jederzeit widerrufbaren Einwilligung."
+        ],
+        "hinweis": "Quelle: planning/vertrag-entwurf.md Ziff. 6. Zusätzlich werberechtlich beachten: In Deutschland verbietet § 11 Abs. 1 Satz 3 Nr. 1 HWG die vergleichende Vorher-Nachher-Darstellung für operative plastisch-chirurgische Eingriffe ausserhalb der Fachkreise. Der Katalog enthält 19 solcher Eingriffe, und die Seite spricht Deutschland ausdrücklich an. Eine Einwilligung der Patientin genügt hier also nicht."
+      },
+      {
+        "id": "haftung",
+        "titel": "8. Haftung",
+        "absaetze": [
+          "ETA haftet für die sorgfältige Erbringung der eigenen Vermittlungs- und Organisationsleistungen.",
+          "Für die medizinische Behandlung selbst — einschliesslich Diagnose, Aufklärung, Durchführung, Komplikationen und Behandlungsergebnis — haftet ausschliesslich die Partnerklinik nach dem am Behandlungsort geltenden Recht. ETA ist an der medizinischen Entscheidung nicht beteiligt.",
+          "Eine Haftung für leichte Fahrlässigkeit im Rahmen der Organisations- und Vermittlungsleistung wird, soweit gesetzlich zulässig, wegbedungen. Die Haftung für grobe Fahrlässigkeit, Vorsatz und Personenschäden bleibt in jedem Fall vorbehalten."
+        ],
+        "hinweis": "Offener Punkt aus planning/vertrag-entwurf.md Ziff. 7.3: Zulässigkeit und Reichweite des Haftungsausschlusses nach Art. 100 OR und im Verhältnis zu zwingendem Konsumentenschutzrecht in DE und AT juristisch prüfen."
+      },
+      {
+        "id": "datenschutz",
+        "titel": "9. Datenschutz",
+        "absaetze": [
+          "Wir bearbeiten Ihre Personen- und Gesundheitsdaten gemäss unserer Datenschutzerklärung, auf die hiermit verwiesen wird.",
+          "Sie nehmen insbesondere zur Kenntnis, dass zur Vorbereitung der Behandlung Gesundheitsdaten an die Partnerklinik in der Türkei übermittelt werden — ein Land ohne als angemessen anerkanntes Datenschutzniveau — und erteilen hierzu eine gesonderte Einwilligung."
+        ]
+      },
+      {
+        "id": "schluss",
+        "titel": "10. Schlussbestimmungen",
+        "absaetze": [
+          "Änderungen und Ergänzungen bedürfen der Textform.",
+          "Sollte eine Bestimmung unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.",
+          "Es gilt Schweizer Recht."
+        ],
+        "hinweis": "Offener Punkt aus planning/vertrag-entwurf.md Ziff. 9.3: Gerichtsstand und Anwendbarkeit zwingender konsumentenschutzrechtlicher Bestimmungen am Wohnsitz der Kundin oder des Kunden (Lugano-Übereinkommen bei Konsumentenverträgen mit Bezug zu DE und AT) juristisch prüfen."
+      }
+    ],
+    "offene_punkte": [
+      "Höhe der Anzahlung, Zahlungsmittel, Währung, Zeitpunkt der Restzahlung.",
+      "Regelung, ob die Anzahlung bei Kurzfrist-Storno ganz, teilweise oder gar nicht verfällt.",
+      "Anwendbarkeit eines gesetzlichen Widerrufsrechts je Wohnsitzland (CH, AT, DE).",
+      "Zulässigkeit des Haftungsausschlusses für leichte Fahrlässigkeit nach Art. 100 OR.",
+      "Gerichtsstands- und Rechtswahlklausel im Licht des Lugano-Übereinkommens.",
+      "Revisions- und Nachbesserungsregelung: siehe data/seiteninhalte.json → wenn_etwas_schiefgeht. Sie gehört zusätzlich in die AGB, sobald sie mit der Klinik vereinbart ist.",
+      "Gesamten Text anwaltlich prüfen lassen."
+    ]
+  },
+  "einwilligungen": {
+    "_lies_mich": "Einwilligungstexte für das Anfrage- und das Vertragsformular. Befund inhalt B8: Heute gibt es genau eine Sammel-Checkbox ohne name-Attribut, die im Datensatz gar nicht ankommt, während main.js dsgvo_einwilligung fest auf true setzt. Das ist keine Einwilligung, schon gar keine ausdrückliche im Sinne von revDSG Art. 6 Abs. 7 lit. a.\n\nJede Checkbox hat hier ein eigenes «name», wird einzeln protokolliert und trägt «pflicht»: true oder false. Pflicht-Checkboxen dürfen nicht vorangekreuzt sein.",
+    "quelle": "planning/vertrag-entwurf.md, Teil B.4",
+    "freigabe": "offen",
+    "anfrageformular": [
+      {
+        "name": "einwilligung_datenschutz",
+        "pflicht": true,
+        "vorangekreuzt": false,
+        "text": "Ich habe die Datenschutzerklärung gelesen und bin mit der Bearbeitung meiner Kontaktangaben zur Beantwortung meiner Anfrage einverstanden.",
+        "link": "datenschutz.html",
+        "link_text": "Datenschutzerklärung"
+      },
+      {
+        "name": "einwilligung_gesundheitsdaten",
+        "pflicht": true,
+        "vorangekreuzt": false,
+        "text": "Mir ist bewusst, dass schon die Angabe der gewünschten Behandlung ein Gesundheitsdatum ist und als besonders schützenswertes Personendatum gilt. Ich willige ausdrücklich ein, dass ETA diese Angabe zur Beratung bearbeitet.",
+        "grundlage": "revDSG Art. 6 Abs. 7 lit. a; Art. 9 Abs. 2 lit. a DSGVO"
+      },
+      {
+        "name": "einwilligung_uebermittlung_tuerkei",
+        "pflicht": false,
+        "vorangekreuzt": false,
+        "text": "Ich willige ein, dass ETA meine Angaben zur Einholung einer ärztlichen Einschätzung an die Partnerklinik in Istanbul übermittelt. Mir ist bekannt, dass die Türkei über kein als angemessen anerkanntes Datenschutzniveau verfügt und meine Daten dort weniger gut geschützt sein können.",
+        "grundlage": "revDSG Art. 17 Abs. 1; Art. 49 Abs. 1 lit. a DSGVO",
+        "hinweis": "Nicht Pflicht für eine blosse Erstanfrage — erst nötig, wenn die Klinik eingebunden wird. Datenminimierung nach revDSG Art. 6 Abs. 2 und 3."
+      }
+    ],
+    "vertragsformular": [
+      {
+        "name": "zustimmung_agb",
+        "pflicht": true,
+        "vorangekreuzt": false,
+        "text": "Ich habe den Vermittlungsvertrag und die AGB von ETA gelesen und stimme ihnen zu.",
+        "link": "agb.html",
+        "link_text": "AGB"
+      },
+      {
+        "name": "einwilligung_gesundheitsdaten_vertrag",
+        "pflicht": true,
+        "vorangekreuzt": false,
+        "text": "Ich habe die Datenschutzerklärung gelesen, insbesondere die Hinweise zur Bearbeitung meiner Gesundheitsdaten und zur Übermittlung an die Partnerklinik in der Türkei, und willige in die dort beschriebene Datenbearbeitung sowie in die internationale Übermittlung ausdrücklich ein.",
+        "link": "datenschutz.html",
+        "link_text": "Datenschutzerklärung"
+      },
+      {
+        "name": "bestaetigung_angaben",
+        "pflicht": true,
+        "vorangekreuzt": false,
+        "text": "Ich bestätige, dass meine Angaben zu Kontaktdaten und Gesundheitszustand vollständig und wahrheitsgemäss sind."
+      },
+      {
+        "name": "einwilligung_dokumentation",
+        "pflicht": true,
+        "vorangekreuzt": false,
+        "text": "Ich willige ein, dass vor und nach der Behandlung Aufnahmen zu Dokumentations- und Qualitätssicherungszwecken erstellt werden."
+      },
+      {
+        "name": "einwilligung_marketing",
+        "pflicht": false,
+        "vorangekreuzt": false,
+        "text": "Ich willige zusätzlich ein, dass diese Aufnahmen zu Marketingzwecken verwendet werden dürfen. Diese Einwilligung kann ich jederzeit widerrufen.",
+        "hinweis": "Muss abwählbar bleiben und darf keine Voraussetzung für die Behandlung sein."
+      }
+    ],
+    "protokoll": "Jede Einwilligung wird mit Zeitstempel, Fassung des Textes und Formularinhalt gespeichert. Ohne dieses Protokoll ist die Einwilligung im Streitfall nicht nachweisbar.",
+    "datenminimierung": {
+      "befund": "Befund inhalt B8: Das Kontaktformular verlangt heute 12 Felder, davon 5 Pflichtfelder, darunter Strasse, PLZ, Ort und Geburtsdatum — für eine unverbindliche Anfrage weder nötig noch verhältnismässig (revDSG Art. 6 Abs. 2 und 3). Und es kostet Ausfüllquote.",
+      "erstanfrage_felder": [
+        "Name",
+        "Telefon oder E-Mail",
+        "gewünschte Behandlung",
+        "Nachricht (freiwillig)"
+      ],
+      "spaeter_erheben": [
+        "Postadresse",
+        "Geburtsdatum",
+        "Land",
+        "ausführliche Gesundheitsangaben"
+      ],
+      "spaeter_wo": "im Vermittlungsvertrag beziehungsweise in der ärztlichen Anamnese der Klinik"
+    }
+  },
+  "haftungsausschluss": "Diese Texte wurden redaktionell aus den Entwürfen unter planning/ aufbereitet. Sie ersetzen keine anwaltliche Prüfung. Die Entwürfe sagen das selbst, und daran hat sich nichts geändert."
+}

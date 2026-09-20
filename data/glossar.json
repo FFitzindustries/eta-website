@@ -1,0 +1,311 @@
+{
+  "_lies_mich": "Fachbegriffe, die auf der Website vorkommen, mit Erklärung. Befund inhalt B13: «DHI», «Saphir», «FUE», «perkutan», «Choi-Stift», «HIFU», «Masseter», «Polynukleotide», «ESWT», «Scarlet X» werden durchweg vorausgesetzt statt erklärt — und «Graft», die Grösse, nach der Haartransplantationen abgerechnet werden, kommt im ganzen Erzeugnis nicht vor.\n\nZwei Verwendungen: (1) «kurz» als Erklärung bei der ersten Nennung im Text, etwa als abbr-Titel oder als Halbsatz in Klammern. (2) «lang» für eine eigene Glossarseite, die zugleich ein Auffindbarkeitsgewinn ist, weil danach gesucht wird.",
+  "stand": "2026-09-20",
+  "eintraege": [
+    {
+      "begriff": "Graft",
+      "kurz": "Eine entnommene Einheit aus ein bis vier Haarwurzeln.",
+      "lang": "Bei einer Haartransplantation wird nicht einzelnes Haar verpflanzt, sondern die natürliche Einheit, in der Haare wachsen: ein Graft aus ein bis vier Haarwurzeln. Die Zahl der Grafts ist die Grösse, nach der Haartransplantationen üblicherweise abgerechnet werden — fragen Sie deshalb immer nach ihr, wenn Sie Angebote vergleichen. Eine Angebotszahl ohne Graft-Zahl ist nicht vergleichbar.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "fue-haartransplantation",
+        "dhi-haartransplantation",
+        "saphir-haartransplantation"
+      ]
+    },
+    {
+      "begriff": "FUE",
+      "kurz": "Follicular Unit Extraction: Einzelentnahme der Haarwurzeln.",
+      "lang": "Die heute übliche Grundmethode der Haartransplantation. Einzelne Grafts werden mit einer Hohlnadel von weniger als einem Millimeter aus dem Haarkranz am Hinterkopf herausgelöst — im Gegensatz zur älteren Streifenmethode, bei der ein Hautstreifen entnommen wurde und eine lange Narbe hinterliess. Bei FUE entstehen stattdessen viele winzige, punktförmige Narben.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "DHI",
+        "Saphir-FUE",
+        "Graft"
+      ]
+    },
+    {
+      "begriff": "DHI",
+      "kurz": "Direct Hair Implantation: Einsetzen mit dem Choi-Stift.",
+      "lang": "Eine Variante der FUE. Entnommen wird gleich; der Unterschied liegt im Einsetzen. Statt erst Kanäle zu öffnen und dann Grafts hineinzulegen, wird das Haar mit einem Choi-Stift in einem Zug eingebracht. Vorteil: Winkel, Richtung und Tiefe lassen sich für jedes Haar bestimmen, und es muss weniger rasiert werden. Nachteil: Es dauert länger, deshalb sind bei sehr grossen Flächen oft weniger Grafts pro Sitzung möglich.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "Choi-Stift",
+        "FUE"
+      ]
+    },
+    {
+      "begriff": "Choi-Stift",
+      "kurz": "Implantierstift mit Hohlnadel für die DHI-Technik.",
+      "lang": "Ein stiftförmiges Instrument mit einer sehr feinen Hohlnadel. Das Graft wird hineingeladen; die Nadel öffnet den Kanal und schiebt das Haar im selben Zug hinein. Benannt nach der Klinik in Südkorea, an der die Technik entwickelt wurde.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "DHI"
+      ]
+    },
+    {
+      "begriff": "Saphir-FUE",
+      "kurz": "FUE mit Klingen aus synthetischem Saphir.",
+      "lang": "Keine eigene Methode, sondern ein anderes Werkzeug innerhalb der FUE: Die Empfangskanäle werden nicht mit Stahl-, sondern mit Saphirklingen geöffnet. Diese laufen spitz zu und erzeugen eine V-förmige statt einer U-förmigen Öffnung — die Wunde ist kleiner und die Kanäle lassen sich enger setzen. Die Klinge macht allerdings nicht die Haarlinie; die macht die Person, die operiert.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "FUE"
+      ]
+    },
+    {
+      "begriff": "perkutane Technik",
+      "kurz": "Kanalöffnung mit runder Nadel statt mit Klinge.",
+      "lang": "Eine weitere Variante der Kanalöffnung bei der Haartransplantation: Statt eines Schlitzes wird mit einer runden Nadel ein rundes Loch gestochen. Ziel ist eine natürlichere Wuchsrichtung und eine dichtere Anordnung.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "FUE"
+      ]
+    },
+    {
+      "begriff": "Shock Loss",
+      "kurz": "Vorübergehender Haarausfall nach einer Transplantation.",
+      "lang": "Nach einer Haartransplantation fallen die verpflanzten Härchen nach zwei bis vier Wochen aus, und häufig dünnt auch bestehendes Haar im behandelten Bereich vorübergehend aus. Das erschreckt viele, gehört aber zum normalen Verlauf: Die Wurzel bleibt, und ab etwa dem dritten Monat wächst es nach.",
+      "freigabe": "offen"
+    },
+    {
+      "begriff": "HIFU",
+      "kurz": "Hochintensiver fokussierter Ultraschall zur Straffung.",
+      "lang": "Ein Handstück bündelt Ultraschallenergie in einer genau festgelegten Tiefe unter der Haut — je nach Aufsatz in 1,5, 3 oder 4,5 Millimetern. Dort entstehen punktförmige Erwärmungszonen, die das Gewebe zusammenziehen und die Bildung von neuem Kollagen anstossen. Die Hautoberfläche bleibt unverletzt, deshalb gibt es keine Ausfallzeit. Der Effekt baut sich über zwei bis drei Monate auf.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "hifu-facelifting"
+      ]
+    },
+    {
+      "begriff": "SMAS",
+      "kurz": "Die Bindegewebs- und Muskelschicht unter der Gesichtshaut.",
+      "lang": "Kurz für «superfizielles muskuloaponeurotisches System». Beim modernen Facelifting wird nicht nur Haut gestrafft — das war die Technik früherer Jahrzehnte und der Grund für den maskenhaften Ausdruck, den viele vor Augen haben. Stattdessen wird diese darunter liegende Schicht gehoben und befestigt; die Haut wird erst danach spannungsfrei angelegt. Fragen Sie vor einem Facelifting, woran die Spannung gehalten wird: an der Haut oder am SMAS.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "facelifting"
+      ]
+    },
+    {
+      "begriff": "Masseter",
+      "kurz": "Der Kaumuskel am Kieferwinkel.",
+      "lang": "Der kräftige Muskel, der beim Zubeissen am Kieferwinkel hervortritt. Wird er mit Botox entspannt, lässt das Zähneknirschen nach und das Gesicht kann optisch schmaler wirken. Die Wirkung hält einige Monate.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "masseter-botox"
+      ]
+    },
+    {
+      "begriff": "Rhinoplastik",
+      "kurz": "Fachbegriff für die Nasenkorrektur.",
+      "lang": "Die operative Formveränderung der Nase. Wird gleichzeitig die Nasenscheidewand begradigt, spricht man von einer Septorhinoplastik — das ist der Fall, wenn neben der Form auch die Atmung ein Thema ist.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "nasenkorrektur"
+      ]
+    },
+    {
+      "begriff": "Blepharoplastik",
+      "kurz": "Fachbegriff für die Lidstraffung.",
+      "lang": "Die operative Entfernung von überschüssiger Haut oder vorgewölbtem Fettgewebe an Ober- oder Unterlidern.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "lidstraffung"
+      ]
+    },
+    {
+      "begriff": "Abdominoplastik",
+      "kurz": "Fachbegriff für die Bauchdeckenstraffung.",
+      "lang": "Die operative Entfernung überschüssiger Haut und Fettgewebes am Unterbauch, fast immer verbunden mit dem Zusammennähen der auseinandergewichenen geraden Bauchmuskeln.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "Rektusdiastase"
+      ],
+      "behandlungen": [
+        "bauchdeckenstraffung"
+      ]
+    },
+    {
+      "begriff": "Rektusdiastase",
+      "kurz": "Auseinandergewichene gerade Bauchmuskeln.",
+      "lang": "Nach Schwangerschaften oder starker Gewichtszunahme weichen die beiden geraden Bauchmuskeln in der Mitte auseinander. Das ist der Grund, warum der Bauch trotz Training vorsteht, und es geht durch Training allein meist nicht zurück. Bei einer Bauchdeckenstraffung werden die Muskeln wieder zusammengeführt.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "bauchdeckenstraffung"
+      ]
+    },
+    {
+      "begriff": "Mastopexie",
+      "kurz": "Fachbegriff für die Bruststraffung.",
+      "lang": "Die operative Entfernung überschüssiger Haut mit Höhersetzen von Brustwarze und Warzenhof. Gibt Form, aber kein Volumen.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "bruststraffung"
+      ]
+    },
+    {
+      "begriff": "Kapselfibrose",
+      "kurz": "Verhärtung der Bindegewebskapsel um ein Brustimplantat.",
+      "lang": "Der Körper umschliesst jedes Implantat mit einer Kapsel aus Bindegewebe — das ist normal. Zieht sich diese Kapsel zusammen und verhärtet, wird die Brust fest, kann schmerzen und sich verformen. Die häufigste Spätkomplikation bei Brustimplantaten; sie kann Jahre nach dem Eingriff auftreten, und die Behandlung ist eine erneute Operation.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "brustvergroesserung"
+      ]
+    },
+    {
+      "begriff": "Tumeszenz",
+      "kurz": "Betäubende Flüssigkeit, die das Fettgewebe auflockert.",
+      "lang": "Vor einer Fettabsaugung wird eine grosse Menge einer Lösung ins Fettgewebe eingebracht, die es auflockert, die Gefässe verengt und die Region betäubt. Das reduziert Blutverlust und Schmerzen.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "fettabsaugung"
+      ]
+    },
+    {
+      "begriff": "Liposuktion",
+      "kurz": "Fachbegriff für die Fettabsaugung.",
+      "lang": "Das Absaugen von Fettgewebe über kleine Schnitte mit feinen Kanülen. Ein Verfahren zur Formgebung, nicht zur Gewichtsabnahme.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "Tumeszenz"
+      ],
+      "behandlungen": [
+        "fettabsaugung"
+      ]
+    },
+    {
+      "begriff": "Otoplastik",
+      "kurz": "Fachbegriff für die Ohrenkorrektur.",
+      "lang": "Die operative Formung des Ohrknorpels über einen Schnitt hinter dem Ohr, meist um abstehende Ohren anzulegen.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "ohrenkorrektur"
+      ]
+    },
+    {
+      "begriff": "Veneer",
+      "kurz": "Dünne Keramikschale auf der Sichtfläche eines Zahns.",
+      "lang": "Für ein Veneer wird nur wenig Zahnschmelz auf der Vorderseite abgetragen. Das ist der entscheidende Unterschied zur Krone, die den ganzen Zahn umfasst und ein deutliches Beschleifen ringsum verlangt. Bei einem weitgehend gesunden Zahn ist das Veneer die schonendere Wahl.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "Krone"
+      ],
+      "behandlungen": [
+        "kronen-veneers",
+        "hollywood-smile"
+      ]
+    },
+    {
+      "begriff": "Krone",
+      "kurz": "Kappe, die den ganzen Zahn umfasst.",
+      "lang": "Eine Krone wird nötig, wenn ein Zahn stark zerstört, gefüllt oder wurzelbehandelt ist. Der Zahn muss dafür ringsum beschliffen werden — und was abgetragen ist, kommt nicht zurück; der Zahn braucht dauerhaft eine Versorgung.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "Veneer"
+      ]
+    },
+    {
+      "begriff": "Periimplantitis",
+      "kurz": "Entzündung des Knochens um ein Zahnimplantat.",
+      "lang": "Die häufigste Ursache für den Verlust eines Implantats. Sie verläuft leiser als eine Entzündung am echten Zahn, weil das Implantat selbst nicht schmerzen kann — deshalb sind regelmässige Kontrollen keine Empfehlung, sondern die Bedingung dafür, dass das Implantat hält.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "zahnimplantate"
+      ]
+    },
+    {
+      "begriff": "Polynukleotide",
+      "kurz": "Gereinigte Bruchstücke von Erbsubstanz, meist aus Lachsmilch.",
+      "lang": "Werden als Gel in die Haut eingebracht mit der Vorstellung, Feuchtigkeit zu binden und die Hautzellen anzuregen. Belastbare Belege für eine bestimmte ästhetische Wirkung fehlen, und entsprechende Präparate sind in der Schweiz für diese Anwendung nicht als Arzneimittel zugelassen. Bei bekannter Fischallergie nicht geeignet.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "lachs-dna-serum"
+      ]
+    },
+    {
+      "begriff": "PRP",
+      "kurz": "Plättchenreiches Plasma aus dem eigenen Blut.",
+      "lang": "Blut wird abgenommen und zentrifugiert, sodass der Plasmaanteil mit hoher Konzentration an Blutplättchen übrig bleibt; dieser wird in Haut oder Kopfhaut eingebracht. Die Studienlage für ästhetische Anwendungen ist uneinheitlich, und ein Teil der Behandelten spricht nicht an.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "prp-vampirlifting",
+        "haar-prp"
+      ]
+    },
+    {
+      "begriff": "ESWT",
+      "kurz": "Extrakorporale Stosswellentherapie.",
+      "lang": "Behandlung mit Druckwellen von aussen, ohne Operation. Für einzelne Anwendungen — etwa in der Orthopädie — gut untersucht; für andere Indikationen nicht.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "stosswellentherapie"
+      ]
+    },
+    {
+      "begriff": "Scarlet X",
+      "kurz": "Gerätename für Microneedling mit Radiofrequenz.",
+      "lang": "Kein eigenes Verfahren, sondern ein Gerätename. Feine Nadeln bringen Radiofrequenzenergie in die Haut, um die Kollagenbildung anzuregen.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "microneedling-rf"
+      ]
+    },
+    {
+      "begriff": "Kryolipolyse",
+      "kurz": "Kältebehandlung von Fettpolstern.",
+      "lang": "Fettgewebe wird über längere Zeit kontrolliert gekühlt. Fettzellen reagieren empfindlicher auf Kälte als die umgebende Haut. Ein Verfahren für kleine, umschriebene Polster bei stabilem Gewicht, kein Mittel zum Abnehmen.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "kryolipolyse"
+      ]
+    },
+    {
+      "begriff": "Injektionslipolyse",
+      "kurz": "Einspritzen einer fettauflösenden Lösung.",
+      "lang": "Eine Wirkstofflösung wird in kleine Fettdepots eingespritzt. Die Präparate sind in der Schweiz für diese Anwendung nicht als Arzneimittel zugelassen, und die Wirkung ist nicht bei allen Behandelten nachweisbar. Rechnen Sie mit mehreren Tagen deutlicher Schwellung.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "fettweg-mesotherapie"
+      ]
+    },
+    {
+      "begriff": "Hyaluronidase",
+      "kurz": "Gegenmittel, das Hyaluronsäure-Filler auflöst.",
+      "lang": "Ein Enzym, das eingespritzte Hyaluronsäure innerhalb von ein bis zwei Tagen abbaut. Es ist zugleich das Notfallmittel beim Verschluss eines Gefässes durch Filler. Fragen Sie vor jeder Unterspritzung, ob es in der Praxis vorrätig ist — eine gute Praxis findet die Frage richtig, nicht unangenehm.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "Vaskuläre Okklusion"
+      ]
+    },
+    {
+      "begriff": "Vaskuläre Okklusion",
+      "kurz": "Verschluss eines Blutgefässes durch Füllmaterial.",
+      "lang": "Die schwerwiegendste Komplikation bei Unterspritzungen: Der Filler gelangt in ein Gefäss und unterbricht die Durchblutung. Warnzeichen sind starker Schmerz, Weissfärbung oder fleckige, netzartige Verfärbung der Haut — bei Injektionen um Nase und Augen auch eine plötzliche Sehstörung. Das ist ein Notfall: sofort zurück in die Praxis oder in die Notfallaufnahme. Behandelbar, wenn man schnell ist.",
+      "freigabe": "offen",
+      "siehe_auch": [
+        "Hyaluronidase"
+      ]
+    },
+    {
+      "begriff": "Botulinumtoxin",
+      "kurz": "Der Wirkstoff hinter «Botox».",
+      "lang": "Ein Eiweiss, das in sehr kleiner Menge in einen Muskel gespritzt die Signalübertragung vom Nerv zum Muskel für einige Monate blockiert. «Botox» ist ein Markenname, nicht der Wirkstoffname.",
+      "freigabe": "offen"
+    },
+    {
+      "begriff": "Skinbooster",
+      "kurz": "Feine Hyaluron-Depots zur Hautfeuchtigkeit.",
+      "lang": "Anders als ein formender Filler wird hier nicht Volumen aufgebaut, sondern Hyaluronsäure flächig fein verteilt, um Feuchtigkeit zu binden. Straffend wirkt das nur begrenzt.",
+      "freigabe": "offen",
+      "behandlungen": [
+        "skinbooster-jungbrunnen",
+        "gesichtsverjuengung-filler"
+      ]
+    },
+    {
+      "begriff": "Serom",
+      "kurz": "Ansammlung von Wundflüssigkeit unter der Haut.",
+      "lang": "Nach grösseren Eingriffen, besonders nach Bauchdeckenstraffungen und Fettabsaugungen, kann sich Wundflüssigkeit sammeln. Sie muss oft mehrfach mit einer Nadel abgezogen werden. Häufig und in der Regel gut behandelbar — aber ein Grund, den Rückflug nicht zu früh anzusetzen.",
+      "freigabe": "offen"
+    }
+  ]
+}

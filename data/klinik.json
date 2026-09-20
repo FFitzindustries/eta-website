@@ -1,0 +1,312 @@
+{
+  "_lies_mich": "Angaben zur Partnerklinik. Jeder Block trennt strikt zwischen «belegt» (mit Quelle und Abrufdatum) und «offen» (vom Kunden zu bestätigen). Felder mit leerem Wert gibt der Generator nicht aus. Nichts in dieser Datei ist erfunden: jede Behauptung hat entweder eine Quelle oder steht unter «offen».",
+  "stand": "2026-09-20",
+  "freigabe": "offen",
+  "freigabe_hinweis": "Alle Angaben sind von ETA gegen den Partnervertrag und ein aktuelles Klinikdossier zu prüfen, bevor sie öffentlich erscheinen. Ärztenamen und Zertifikate dürfen erst nach schriftlicher Bestätigung der Klinik veröffentlicht werden.",
+  "name": "Elit Klinik Vadistanbul",
+  "name_kurz": "Elit Klinik",
+  "url": "https://elitklinik.com.tr/",
+  "url_en": "https://elitklinik.com.tr/en/",
+  "quelle_name": {
+    "beleg": "Seite «Hakkımızda» der Klinik",
+    "url": "https://elitklinik.com.tr/hakkimizda/",
+    "abgerufen": "2026-09-20"
+  },
+  "adresse": {
+    "strasse": "Hamidiye Mah., Cendere Cad. No. 103, T4 Blok, D. 1",
+    "plz": "34396",
+    "ort": "Kağıthane / Istanbul",
+    "land": "Türkei",
+    "land_code": "TR",
+    "quartier": "Vadistanbul",
+    "quelle": {
+      "beleg": "Kontaktseite der Klinik",
+      "url": "https://elitklinik.com.tr/iletisim/",
+      "abgerufen": "2026-09-20"
+    },
+    "widerspruch_offen": "Die Kontaktseite nennt PLZ 34396, die Seite «Hakkımızda» nennt für dieselbe Adresse PLZ 34408 und eine abweichende Innentürnummer. Vor der Veröffentlichung eine Fassung bestätigen lassen.",
+    "karte_url": "",
+    "anfahrt_flughafen": ""
+  },
+  "kontakt": {
+    "telefon": "+90 552 000 00 34",
+    "telefon_quelle": {
+      "beleg": "Kontaktseite der Klinik",
+      "url": "https://elitklinik.com.tr/iletisim/",
+      "abgerufen": "2026-09-20"
+    },
+    "email": "",
+    "email_hinweis": "Die Kontaktseite zeigt die Adresse nur maskiert. Echte Adresse beim Partner erfragen. Für Interessenten ist ohnehin der ETA-Kontakt der richtige Weg, nicht der der Klinik."
+  },
+  "fakten_belegt": [
+    {
+      "label": "Standort",
+      "wert": "Vadistanbul, Stadtteil Kağıthane, Istanbul",
+      "quelle_url": "https://elitklinik.com.tr/hakkimizda/",
+      "abgerufen": "2026-09-20"
+    },
+    {
+      "label": "Fläche der Anlage",
+      "wert": "18 000 m²",
+      "quelle_url": "https://elitklinik.com.tr/hakkimizda/",
+      "abgerufen": "2026-09-20",
+      "hinweis": "Selbstangabe der Klinik. Bezieht sich laut Text auf die Gesamtanlage, nicht zwingend auf die von ETA genutzten Bereiche. Vor Verwendung präzisieren."
+    },
+    {
+      "label": "Ärztinnen und Ärzte auf der öffentlichen Ärzteliste",
+      "wert": "18",
+      "quelle_url": "https://elitklinik.com.tr/doktorlarimiz/",
+      "abgerufen": "2026-09-20"
+    }
+  ],
+  "fachbereiche": [
+    "Plastische, rekonstruktive und ästhetische Chirurgie",
+    "Haartransplantation",
+    "Zahnästhetik und Zahnmedizin",
+    "Medizinische Ästhetik (Botox, Filler, Laser)",
+    "Dermatologie",
+    "Hals-Nasen-Ohren-Heilkunde",
+    "Allgemeinchirurgie",
+    "Innere Medizin",
+    "Urologie",
+    "Anästhesiologie und Reanimation",
+    "Ernährungsberatung und Diätetik",
+    "Labordiagnostik und Bildgebung"
+  ],
+  "fachbereiche_quelle": {
+    "beleg": "Ärzteliste der Klinik",
+    "url": "https://elitklinik.com.tr/doktorlarimiz/",
+    "abgerufen": "2026-09-20"
+  },
+  "aerzte": {
+    "freigabe": "offen",
+    "hinweis": "Diese Liste ist eine wörtliche Übernahme der öffentlichen Ärzteliste der Klinik (Abruf 2026-09-20). Sie ist KEINE Bestätigung, dass diese Personen ETA-Kundinnen und -Kunden behandeln. Vor der Veröffentlichung auf der ETA-Website ist je Person nötig: (1) schriftliche Einwilligung zur Namensnennung, (2) Bestätigung des Facharzttitels, (3) Registrierungsnummer der türkischen Ärztekammer, (4) ein aktuelles Porträtfoto mit Nutzungsrecht. Solange «einwilligung» false ist, wird die Person nicht ausgegeben.",
+    "quelle_url": "https://elitklinik.com.tr/doktorlarimiz/",
+    "abgerufen": "2026-09-20",
+    "liste": [
+      {
+        "name": "Uzm. Dr. Suat Çulhaöz",
+        "rolle_tr": "Anestezi ve Reanimasyon · Mesul Müdür",
+        "fach_de": "Anästhesie und Intensivmedizin, ärztlicher Leiter",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Prof. Dr. Tamer Koldaş",
+        "rolle_tr": "Plastik, Rekonstrüktif ve Estetik Cerrahi",
+        "fach_de": "Plastische, rekonstruktive und ästhetische Chirurgie",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Prof. Dr. Mesut Sabri Tezer",
+        "rolle_tr": "Kulak Burun Boğaz",
+        "fach_de": "Hals-Nasen-Ohren-Heilkunde",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Op. Dr. Koray Cengiz",
+        "rolle_tr": "Kulak Burun Boğaz",
+        "fach_de": "Hals-Nasen-Ohren-Heilkunde",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Op. Dr. Mesut Karataş",
+        "rolle_tr": "Kulak Burun Boğaz",
+        "fach_de": "Hals-Nasen-Ohren-Heilkunde",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Op. Dr. Özgür Onbaşıoğlu",
+        "rolle_tr": "Genel Cerrahi",
+        "fach_de": "Allgemeinchirurgie",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Uzm. Dr. Ghazaleh Jafari",
+        "rolle_tr": "Dermatoloji",
+        "fach_de": "Dermatologie",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Uzm. Dr. Ülkü Çağlayan",
+        "rolle_tr": "Dermatoloji",
+        "fach_de": "Dermatologie",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Uzm. Dr. Emre Badur",
+        "rolle_tr": "Anesteziyoloji ve Reanimasyon",
+        "fach_de": "Anästhesiologie und Reanimation",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Dr. Aslı Yıldız",
+        "rolle_tr": "Medikal Estetik",
+        "fach_de": "Medizinische Ästhetik",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Dr. Müşerref Belce Yaycı",
+        "rolle_tr": "Medikal Estetik",
+        "fach_de": "Medizinische Ästhetik",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Dr. Erbil Ziylan",
+        "rolle_tr": "Medikal Estetik",
+        "fach_de": "Medizinische Ästhetik",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Dr. Şafak Tanyeri",
+        "rolle_tr": "Diş Hekimi",
+        "fach_de": "Zahnmedizin",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Dr. Abdulrahman Salem",
+        "rolle_tr": "Diş Hekimi",
+        "fach_de": "Zahnmedizin",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Dt. Ali Sina Sarrafi",
+        "rolle_tr": "Diş Hekimi",
+        "fach_de": "Zahnmedizin",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Dyt. Başak Çenberli",
+        "rolle_tr": "Beslenme ve Diyetetik",
+        "fach_de": "Ernährungsberatung und Diätetik",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Dr. Imad Moustafa",
+        "rolle_tr": "Pratisyen Hekim",
+        "fach_de": "Allgemeinmedizin",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      },
+      {
+        "name": "Dr. Gulchehra Alam",
+        "rolle_tr": "Pratisyen Hekim",
+        "fach_de": "Allgemeinmedizin",
+        "foto": "",
+        "kammer_nr": "",
+        "einwilligung": false
+      }
+    ]
+  },
+  "zertifizierungen": {
+    "belegt": [
+      {
+        "name": "Uluslararası Sağlık Turizmi Yetki Belgesi",
+        "name_de": "Bewilligung für internationalen Gesundheitstourismus",
+        "aussteller": "Sağlık Bakanlığı (Gesundheitsministerium der Republik Türkei)",
+        "nummer": "",
+        "gueltig_bis": "",
+        "beleg_url": "https://elitklinik.com.tr/hakkimizda/",
+        "abgerufen": "2026-09-20",
+        "belegstaerke": "selbstangabe",
+        "hinweis": "Selbstangabe der Klinik auf der eigenen Website. Die Bewilligung ist ein echtes, nachprüfbares türkisches Zertifikat. Vor der Veröffentlichung: Urkundennummer und Gültigkeitsdatum beim Partner anfordern und im Register des Gesundheitsministeriums nachschlagen. Erst dann als Tatsache ausgeben, sonst gar nicht."
+      }
+    ],
+    "nicht_belegt": [
+      {
+        "name": "JCI (Joint Commission International)",
+        "status": "NICHT BELEGT — NICHT VERWENDEN",
+        "befund": "Ein Drittanbieter-Verzeichnis (clicontact.com) schreibt der Klinik eine JCI-Akkreditierung zu. Die Klinik selbst behauptet das auf ihren eigenen Seiten nicht. Eine Suche im offiziellen JCI-Verzeichnis ergab keinen Eintrag. Geprüft am 2026-09-20.",
+        "regel": "Eine JCI-Akkreditierung darf erst genannt werden, wenn die Klinik die Urkunde vorlegt UND der Eintrag im offiziellen Verzeichnis unter jointcommissioninternational.org auffindbar ist. Eine unzutreffende Angabe wäre irreführende Werbung (UWG Art. 3 Abs. 1 lit. b) und im Schadensfall haftungsrelevant."
+      },
+      {
+        "name": "ISO 9001 / ISO 13485",
+        "status": "NICHT BELEGT",
+        "befund": "Keine Angabe auf der Klinik-Website gefunden, Stand 2026-09-20.",
+        "regel": "Nur nennen, wenn ein Zertifikat mit Nummer und Zertifizierungsstelle vorliegt."
+      }
+    ]
+  },
+  "externe_belege": [
+    {
+      "art": "Bewertungsprofil",
+      "anbieter": "Trustpilot",
+      "url": "https://www.trustpilot.com/review/elitklinik.com.tr",
+      "stand": "2026-09-20",
+      "score": "4,2 von 5",
+      "anzahl": 8,
+      "verwenden": false,
+      "hinweis": "Acht Bewertungen sind zu wenig, um damit zu werben — das wirkt dünn statt vertrauensbildend. Als ausgehender Link «Bewertungen der Klinik bei Trustpilot» ohne Zahlennennung ist es dennoch ein echter Nachprüfbarkeitsbeleg. Entscheidung liegt bei ETA. Keine aggregateRating-Auszeichnung im JSON-LD daraus bauen."
+    }
+  ],
+  "kapazitaet": {
+    "operationssaele": "",
+    "betten": "",
+    "behandlungszimmer": "",
+    "gegruendet": "",
+    "mitarbeitende": "",
+    "faelle_pro_jahr": "",
+    "hinweis": "Nicht öffentlich auffindbar. Beim Partner erfragen (siehe data/AUSFUELLHILFE.md)."
+  },
+  "sprachen_vor_ort": {
+    "wert": [],
+    "hinweis": "ETA wirbt mit deutschsprachiger Begleitung. Ob diese von ETA oder von der Klinik gestellt wird, muss vor der Veröffentlichung geklärt sein — der Satz «Beratung auf Deutsch» steht heute 101-mal auf der Seite."
+  },
+  "bilder": {
+    "aussen": "",
+    "empfang": "",
+    "behandlungsraum": "",
+    "hinweis": "Echte Fotos von Klinikgebäude, Empfang und Hotel sind rechtlich unbedenklich (anders als Vorher/Nachher-Bilder) und beantworten die Frage «wo lande ich da eigentlich». Höchste Priorität in der Materialbeschaffung. Nutzungsrecht schriftlich sichern."
+  },
+  "rundgang_360": {
+    "url": "https://elitklinik.com.tr/360-sanal-tur/",
+    "quelle": "data/behandlungen.json → weitere_seiten.virtuelle_tour_360",
+    "geprueft": false,
+    "hinweis": "Der Knopf «360°-Rundgang ansehen» zeigt heute auf href=\"#\". Entweder auf diese URL setzen (vorher prüfen, ob sie lädt und eingebettet werden darf) oder den Knopf entfernen. Ein toter Knopf kostet mehr Glaubwürdigkeit als ein fehlender."
+  },
+  "abgrenzung": {
+    "text": "ETA ist eine Schweizer Vermittlungsagentur und führt selbst keine medizinischen Behandlungen durch. Der Behandlungsvertrag kommt zwischen Ihnen und der Partnerklinik in Istanbul zustande; diese ist ein rechtlich eigenständiges Unternehmen.",
+    "quelle": "planning/vertrag-entwurf.md, Ziff. 1.2",
+    "freigabe": "offen"
+  },
+  "nachsorgepartner": {
+    "name": "Riverside Beauty",
+    "ort": "St. Margrethen, Rheintal, Schweiz",
+    "url": "",
+    "rolle": "Nachkontrollen in der Schweiz; lokale Alternative für 20 der 101 Behandlungen",
+    "freigabe": "offen",
+    "hinweis": "Riverside Beauty wird auf der Startseite dreimal genannt und nie verlinkt. Website-URL und der genaue Umfang der Nachsorge (wie viele Termine, was kostet was) fehlen — siehe data/seiteninhalte.json → nachsorge und data/AUSFUELLHILFE.md."
+  }
+}

@@ -1,0 +1,618 @@
+{
+  "_lies_mich": "Inhalte für Seiten, die es heute gar nicht gibt (Befund inhalt B15) und für die neue Seite «Wenn etwas nicht wie geplant läuft» (Befund inhalt B4). Alles als Daten, nicht als HTML — die Umsetzung gehört in scripts/build_site.py.\n\nLeere Felder gibt der Generator nicht aus. Was noch zu füllen ist, steht in data/AUSFUELLHILFE.md. Alles mit \"freigabe\": \"offen\" ist Entwurf.",
+  "stand": "2026-09-20",
+  "wenn_etwas_schiefgeht": {
+    "slug": "wenn-etwas-nicht-wie-geplant-laeuft",
+    "titel": "Wenn etwas nicht wie geplant läuft",
+    "freigabe": "offen",
+    "quelle": "planning/vertrag-entwurf.md Ziff. 1, 4, 5, 7; Befund inhalt B4",
+    "warum_diese_seite": "Die Wörter «Komplikation», «Garantie», «Haftung», «Nachbesserung», «Widerruf» und «Rücktritt» kommen heute auf 116 Seiten null-mal vor. Wer nach diesen Antworten sucht und sie nicht findet, schliesst daraus, dass sie verschwiegen werden. Diese Seite ist deshalb kein Kleingedrucktes, sondern gehört in die Hauptnavigation.",
+    "intro": "Die meisten Behandlungen verlaufen ohne Zwischenfall. Trotzdem gehört die Frage beantwortet, bevor Sie sich entscheiden — und nicht erst, wenn etwas ist. Auf dieser Seite steht, wer wofür zuständig ist, wie Nachbesserungen geregelt sind, wo Sie in der Schweiz Nachsorge bekommen und wen Sie erreichen, wenn es schnell gehen muss.",
+    "abschnitte": [
+      {
+        "id": "notfall",
+        "titel": "Wenn es dringend ist",
+        "vorrang": true,
+        "absaetze": [
+          "Wenn Sie nach einer Behandlung Beschwerden haben, die Sie beunruhigen, warten Sie nicht auf uns. Gehen Sie zur Ärztin oder zum Arzt — in Istanbul in die Partnerklinik, in der Schweiz zu Ihrer Hausärztin, Ihrem Hausarzt oder in die Notfallaufnahme.",
+          "Nehmen Sie Ihre Unterlagen der Klinik mit: Operationsbericht, Medikamentenliste und, wenn vorhanden, den Implantat- oder Materialpass. Ohne diese Papiere muss die behandelnde Person raten."
+        ],
+        "warnzeichen_titel": "Gehen Sie sofort in eine Notfallaufnahme bei",
+        "warnzeichen": [
+          "Atemnot, Brustschmerz, Herzrasen oder plötzlichem Husten",
+          "einem einseitig geschwollenen, warmen und schmerzenden Bein",
+          "Fieber über 38,5 Grad",
+          "einer Wunde, die sich öffnet, stark blutet, eitert oder überwärmt und zunehmend gerötet ist",
+          "rasch zunehmender Schwellung oder rasch zunehmendem Schmerz",
+          "plötzlicher Sehstörung nach einer Behandlung im Gesicht",
+          "nach einer Unterspritzung: starkem Schmerz, Weissfärbung oder fleckiger, netzartiger Verfärbung der Haut"
+        ],
+        "warnzeichen_hinweis": "Diese Zeichen können auf eine Thrombose, eine Lungenembolie, eine Infektion oder einen Gefässverschluss hinweisen. Sie gelten auch noch Wochen nach dem Eingriff und auch zu Hause. Eine Verzögerung kostet hier mehr als ein unnötiger Besuch.",
+        "notfallnummern": [
+          {
+            "label": "Notruf Schweiz",
+            "wert": "144"
+          },
+          {
+            "label": "Notruf Europa",
+            "wert": "112"
+          },
+          {
+            "label": "Notruf Türkei",
+            "wert": "112"
+          },
+          {
+            "label": "Ihre ETA-Ansprechperson",
+            "wert": ""
+          },
+          {
+            "label": "Partnerklinik, 24 Stunden",
+            "wert": ""
+          }
+        ],
+        "offen": [
+          "24-Stunden-Nummer der Klinik",
+          "Erreichbarkeitszeiten von ETA ausserhalb der Bürozeiten"
+        ]
+      },
+      {
+        "id": "zustaendig",
+        "titel": "Wer wofür zuständig ist",
+        "absaetze": [
+          "ETA ist eine Vermittlungsagentur. Wir organisieren, koordinieren, begleiten und sind Ihre Ansprechperson auf Deutsch. Wir behandeln nicht, stellen keine Diagnosen und treffen keine medizinischen Entscheidungen.",
+          "Der Behandlungsvertrag kommt zwischen Ihnen und der Partnerklinik zustande. Für die medizinische Leistung — Aufklärung, Durchführung, Komplikationen und Ergebnis — haftet die Klinik nach türkischem Recht. Das ist keine Formel zur Abwehr, sondern die Rechtslage, und Sie sollten sie kennen, bevor Sie unterschreiben.",
+          "Praktisch heisst das: Bei einem medizinischen Problem ist die Klinik die zuständige Stelle — und ETA die Stelle, die dafür sorgt, dass Sie dorthin durchkommen, auf Deutsch, ohne auf eine Antwort zu warten."
+        ],
+        "tabelle": [
+          {
+            "frage": "Beratung, Terminfindung, Angebot",
+            "wer": "ETA"
+          },
+          {
+            "frage": "Flug",
+            "wer": "Sie selbst, wenn nicht ausdrücklich im Paket enthalten"
+          },
+          {
+            "frage": "Transfer und Hotel",
+            "wer": "ETA, gemäss gewähltem Paket"
+          },
+          {
+            "frage": "Ärztliche Aufklärung und Einwilligung",
+            "wer": "Partnerklinik"
+          },
+          {
+            "frage": "Der Eingriff selbst",
+            "wer": "Partnerklinik"
+          },
+          {
+            "frage": "Komplikationen während des Aufenthalts",
+            "wer": "Partnerklinik; ETA organisiert und übersetzt"
+          },
+          {
+            "frage": "Nachkontrolle in der Schweiz",
+            "wer": "Nachsorgepartner im Rheintal, in Abstimmung mit der Klinik"
+          },
+          {
+            "frage": "Medizinische Haftung",
+            "wer": "Partnerklinik, nach türkischem Recht"
+          },
+          {
+            "frage": "Haftung für Organisation und Vermittlung",
+            "wer": "ETA, nach Schweizer Recht"
+          }
+        ]
+      },
+      {
+        "id": "revision",
+        "titel": "Nachbesserung und Revision",
+        "absaetze": [
+          "Nicht jedes Ergebnis, das nicht gefällt, ist ein Behandlungsfehler — und nicht jede Nachkorrektur ist kostenlos. Beides gehört vor der Buchung geklärt, schriftlich.",
+          "Zwei Dinge sollten Sie vor der Zusage in Händen halten: die Gewährleistungsregelung der Klinik — was sie unter welchen Voraussetzungen und in welchem Zeitraum nachbessert — und die Antwort auf die Frage, wer Reise und Unterkunft einer Revision bezahlt. Bei manchen Eingriffen ist eine Nachkorrektur keine Ausnahme: Bei Nasenkorrekturen ist sie die häufigste Zweitoperation überhaupt.",
+          "Beachten Sie ausserdem die Wartezeit. Vor Ablauf von zwölf Monaten lässt sich ein Ergebnis oft gar nicht beurteilen, und eine zu frühe Revision kann schaden."
+        ],
+        "regelung": {
+          "gewaehrleistung_klinik": "",
+          "frist": "",
+          "was_ist_abgedeckt": [],
+          "was_nicht": [],
+          "reise_bei_revision": "",
+          "wer_entscheidet": ""
+        },
+        "offen": [
+          "Gewährleistungsregelung der Partnerklinik schriftlich einholen: Umfang, Frist, Voraussetzungen.",
+          "Festlegen, wer Flug und Unterkunft einer Revision trägt — das ist die Frage, die Interessenten am häufigsten stellen und die heute nirgends beantwortet ist.",
+          "Festlegen, wer beurteilt, ob ein Revisionsfall vorliegt, und wie Sie widersprechen können.",
+          "Sobald vereinbart: zusätzlich in die AGB aufnehmen (data/recht.json → agb)."
+        ]
+      },
+      {
+        "id": "nachsorge_ch",
+        "titel": "Nachsorge in der Schweiz",
+        "absaetze": [
+          "Für die Nachkontrolle nach der Rückkehr arbeiten wir mit einem Partner im Rheintal zusammen. Was dort möglich ist, hängt von der Behandlung ab: Verbandwechsel, Fadenentfernung, Fotokontrolle und Beurteilung des Heilungsverlaufs gehören dazu. Eine Revisionsoperation gehört nicht dazu.",
+          "Wenn Sie nicht im Rheintal wohnen, ist das kein Ausschlussgrund — aber Sie sollten vorher wissen, was das für Sie heisst. Klären Sie mit uns, welche Termine wirklich vor Ort nötig sind und was sich mit Ihrer Hausärztin oder Ihrem Hausarzt erledigen lässt."
+        ],
+        "partner": {
+          "name": "Riverside Beauty",
+          "ort": "St. Margrethen, Rheintal",
+          "url": ""
+        },
+        "leistungen": {
+          "im_preis_enthalten": [],
+          "zusaetzlich_kostenpflichtig": [],
+          "anzahl_termine": "",
+          "zeitraum": ""
+        },
+        "offen": [
+          "Welche Nachsorgeleistungen sind im Fixpreis enthalten, welche kosten extra?",
+          "Wie viele Termine, über welchen Zeitraum?",
+          "Was gilt für Kundinnen und Kunden ausserhalb des Rheintals?",
+          "Was gilt für Kundinnen und Kunden aus Österreich und Deutschland, die ausdrücklich angesprochen werden?",
+          "Website-Adresse des Partners, damit der dreimal genannte Name endlich verlinkt ist."
+        ]
+      },
+      {
+        "id": "versicherung",
+        "titel": "Versicherung",
+        "absaetze": [
+          "Die Schweizer Grundversicherung übernimmt Behandlungen aus ästhetischen Gründen nicht — weder im Inland noch im Ausland. Sie übernimmt in der Regel auch die Behandlung von Komplikationen einer solchen Behandlung nicht ohne Weiteres.",
+          "Wir empfehlen Ihnen deshalb ausdrücklich, vor der Reise eine Reise- und Auslandkrankenversicherung abzuschliessen, die Komplikationen im Zusammenhang mit einer geplanten Behandlung ausdrücklich einschliesst. Viele Standardpolicen schliessen genau das aus — lesen Sie die Bedingungen, bevor Sie sich darauf verlassen.",
+          "ETA schliesst keine Versicherung für Sie ab und übernimmt dafür keine Verantwortung."
+        ],
+        "pruefliste": [
+          "Deckt meine Police Komplikationen nach einem geplanten Eingriff im Ausland?",
+          "Ist ein medizinischer Rücktransport gedeckt, und bis zu welcher Höhe?",
+          "Gilt die Deckung auch, wenn ich zum Zweck der Behandlung gereist bin?",
+          "Was übernimmt meine Zusatzversicherung, was die Grundversicherung?",
+          "Was passiert, wenn ich den Rückflug wegen ärztlicher Anordnung verschieben muss?"
+        ],
+        "offen": [
+          "Prüfen, ob ETA eine passende Versicherung als Partnerangebot vermitteln kann — das wäre ein echtes Argument gegenüber Mitbewerbern."
+        ]
+      },
+      {
+        "id": "beschwerde",
+        "titel": "Wenn Sie mit uns unzufrieden sind",
+        "absaetze": [
+          "Sagen Sie es uns zuerst, und zwar konkret. Wir nehmen jede Beschwerde schriftlich auf und melden uns innerhalb der unten genannten Frist zurück.",
+          "Wenn wir uns nicht einigen, bleibt Ihnen der ordentliche Rechtsweg. Für die medizinische Leistung ist die Partnerklinik Ihre Gegenseite, nicht ETA."
+        ],
+        "weg": {
+          "kontakt": "",
+          "frist_rueckmeldung": "",
+          "eskalation": ""
+        },
+        "offen": [
+          "Verbindliche Rückmeldefrist festlegen.",
+          "Eine benannte Person für Beschwerden bestimmen."
+        ]
+      }
+    ],
+    "offene_punkte_gesamt": [
+      "Ohne die Gewährleistungsregelung der Klinik bleibt der wichtigste Abschnitt dieser Seite leer. Das ist die dringendste Beschaffung in diesem ganzen Auftrag: Sie entscheidet darüber, ob die Seite Vertrauen schafft oder nur eine weitere Absichtserklärung ist."
+    ]
+  },
+  "reiseablauf": {
+    "slug": "ihre-reise",
+    "titel": "Ihre Reise, Tag für Tag",
+    "freigabe": "offen",
+    "quelle": "ETA-Redaktionsentwurf 2026-09-20. Fachlich und kaufmännisch nicht geprüft — Freigabe durch ETA und Partnerklinik ausstehend.",
+    "intro": "Wer zum ersten Mal für einen Eingriff ins Ausland fliegt, hat weniger Fragen zur Medizin als zum Ablauf: Wann lande ich, wer holt mich ab, wo schlafe ich, wann ist die Untersuchung, wann darf ich zurück. Hier steht es der Reihe nach. Die genaue Länge hängt von der Behandlung ab — sie steht auf der jeweiligen Behandlungsseite.",
+    "vor_der_reise": {
+      "titel": "Vor der Reise",
+      "schritte": [
+        {
+          "titel": "Erstgespräch",
+          "text": "Sie schildern Ihren Wunsch, wir klären offene Fragen und sagen Ihnen, was wir an Unterlagen brauchen. Auf Deutsch, unverbindlich, ohne Zeitdruck."
+        },
+        {
+          "titel": "Fotos und Vorbefunde",
+          "text": "Für eine erste ärztliche Einschätzung braucht die Klinik Fotos und, je nach Eingriff, Laborwerte oder Röntgenbilder. Was genau, sagen wir Ihnen."
+        },
+        {
+          "titel": "Ärztliche Einschätzung und Angebot",
+          "text": "Sie erhalten eine schriftliche Einschätzung der Klinik und ein Angebot mit Fixpreis. Darin steht, was enthalten ist und was nicht."
+        },
+        {
+          "titel": "Termin und Anzahlung",
+          "text": "Mit der Anzahlung wird der Termin verbindlich reserviert. Ab hier gelten die Stornobedingungen."
+        },
+        {
+          "titel": "Vorbereitung",
+          "text": "Blutverdünnende Medikamente und bestimmte Präparate müssen rechtzeitig pausiert werden — das ordnet die Ärztin oder der Arzt an, nicht wir. Wer raucht, sollte vor einer Operation pausieren; bei Straffungen und Haartransplantationen ist das der stärkste Einzelfaktor für die Wundheilung."
+        },
+        {
+          "titel": "Versicherung prüfen",
+          "text": "Prüfen Sie, ob Ihre Police Komplikationen nach einem geplanten Eingriff im Ausland deckt. Die meisten Standardpolicen tun das nicht."
+        }
+      ],
+      "mitnehmen": [
+        "Reisepass oder Identitätskarte, gültig",
+        "Krankenkassenkarte und Versicherungsunterlagen",
+        "Liste Ihrer Medikamente mit Wirkstoffnamen",
+        "Vorbefunde, Röntgen- oder Laborbilder, soweit vorhanden",
+        "bequeme, weite Kleidung, die man nicht über den Kopf ziehen muss",
+        "genug Bargeld oder eine Karte, die in der Türkei funktioniert",
+        "Ladegerät und Steckeradapter"
+      ]
+    },
+    "tage": [
+      {
+        "tag": "Anreisetag",
+        "titel": "Ankunft und Voruntersuchung",
+        "punkte": [
+          "Abholung am Flughafen durch unseren Fahrdienst, mit Namensschild.",
+          "Transfer zum Hotel, Einchecken.",
+          "Je nach Eingriff noch am selben Tag: Voruntersuchung in der Klinik, Blutentnahme, Gespräch mit der Ärztin oder dem Arzt, Fotodokumentation und Planung.",
+          "Die Aufklärung und die Einwilligung unterschreiben Sie in der Klinik. Nehmen Sie sich dafür Zeit und fragen Sie nach, was Sie nicht verstehen — dafür sind wir als Übersetzung dabei."
+        ]
+      },
+      {
+        "tag": "Behandlungstag",
+        "titel": "Der Eingriff",
+        "punkte": [
+          "Abholung im Hotel, Transfer zur Klinik.",
+          "Bei Vollnarkose: nüchtern ab dem Vorabend, nach Anweisung der Klinik.",
+          "Der Eingriff. Die Dauer steht auf der jeweiligen Behandlungsseite.",
+          "Je nach Eingriff eine oder zwei Nächte in der Klinik, sonst Rückkehr ins Hotel mit Begleitung."
+        ]
+      },
+      {
+        "tag": "Folgetage",
+        "titel": "Kontrolle und Erholung",
+        "punkte": [
+          "Verbandwechsel und Kontrolle in der Klinik, je nach Eingriff täglich oder jeden zweiten Tag.",
+          "Anleitung zur Pflege zu Hause: Wundversorgung, Kompressionswäsche, Medikamente.",
+          "Bei Bauch- und Körpereingriffen: mehrmals täglich kurz gehen. Das ist keine Empfehlung, sondern die wirksamste Massnahme gegen Thrombose.",
+          "Erholung im Hotel. Planen Sie keine Besichtigungen ein — Sie werden weniger unternehmen wollen, als Sie jetzt denken."
+        ]
+      },
+      {
+        "tag": "Abreisetag",
+        "titel": "Freigabe und Rückflug",
+        "punkte": [
+          "Abschlusskontrolle in der Klinik, Fädenziehen oder Schienenabnahme, sofern vorgesehen.",
+          "Sie erhalten Ihre Unterlagen: Operationsbericht, Medikamentenplan, Verhaltenshinweise und, wenn zutreffend, den Implantat- oder Materialpass. Prüfen Sie, ob Sie alles haben, bevor Sie gehen.",
+          "Der Rückflugtermin wird ärztlich freigegeben. Wird er verschoben, hat das einen Grund — bei Körpereingriffen ist ein zu früher Flug das grösste vermeidbare Risiko.",
+          "Transfer zum Flughafen."
+        ]
+      }
+    ],
+    "nach_der_rueckkehr": {
+      "titel": "Nach der Rückkehr",
+      "punkte": [
+        "Wir melden uns bei Ihnen und fragen nach, wie es läuft.",
+        "Nachkontrolle bei unserem Partner im Rheintal, in Abstimmung mit der Klinik.",
+        "Fotokontrolle zu den Zeitpunkten, die für Ihre Behandlung vorgesehen sind.",
+        "Bei Beschwerden, die Sie beunruhigen: nicht warten. Siehe «Wenn etwas nicht wie geplant läuft»."
+      ]
+    },
+    "offen": [
+      "Namen und Erreichbarkeit des Fahrdienstes.",
+      "Hotel: Name, Kategorie, Entfernung zur Klinik, Fotos, Nutzungsrecht.",
+      "Regelung für Begleitpersonen: was kostet eine zweite Person, was ist inbegriffen? Steht heute zweimal als «[Details zu Hotel und Begleitperson folgen]» im Erzeugnis.",
+      "Ob und wie ETA vor Ort begleitet: bei jedem Termin, nur beim Eingriff, telefonisch?"
+    ]
+  },
+  "gesamtkosten": {
+    "slug": "was-es-kostet",
+    "titel": "Was es wirklich kostet",
+    "freigabe": "offen",
+    "quelle": "ETA-Redaktionsentwurf 2026-09-20. Fachlich und kaufmännisch nicht geprüft — Freigabe durch ETA und Partnerklinik ausstehend.",
+    "warum": "Befund inhalt B15: Der Fixpreis «inkl. Transfer und Hotel» steht fünfmal auf der Seite, der Flug als Eigenleistung nur in einer FAQ-Antwort. Der Verdacht versteckter Kosten entsteht genau dann, wenn er nicht angesprochen wird.",
+    "intro": "Ein Fixpreis ist nur dann einer, wenn danebensteht, was er nicht enthält. Hier ist die ganze Rechnung — mit den Posten, die viele erst am Flughafen bemerken.",
+    "posten": [
+      {
+        "id": "behandlung",
+        "label": "Behandlung",
+        "traeger": "im Fixpreis",
+        "betrag": "",
+        "hinweis": "Der Preis steht auf der jeweiligen Behandlungsseite."
+      },
+      {
+        "id": "voruntersuchung",
+        "label": "Voruntersuchung und Laborwerte",
+        "traeger": "im Fixpreis",
+        "betrag": ""
+      },
+      {
+        "id": "narkose",
+        "label": "Narkose und Klinikaufenthalt",
+        "traeger": "im Fixpreis",
+        "betrag": ""
+      },
+      {
+        "id": "medikamente",
+        "label": "Medikamente für die erste Zeit",
+        "traeger": "im Fixpreis",
+        "betrag": ""
+      },
+      {
+        "id": "transfer",
+        "label": "Flughafentransfer, hin und zurück",
+        "traeger": "im Fixpreis",
+        "betrag": ""
+      },
+      {
+        "id": "hotel",
+        "label": "Hotel für die vorgesehenen Nächte",
+        "traeger": "im Fixpreis",
+        "betrag": ""
+      },
+      {
+        "id": "dolmetschen",
+        "label": "Deutschsprachige Begleitung",
+        "traeger": "im Fixpreis",
+        "betrag": ""
+      },
+      {
+        "id": "flug",
+        "label": "Flug ab der Schweiz",
+        "traeger": "Eigenleistung",
+        "betrag": "",
+        "hinweis": "Der grösste Posten ausserhalb des Fixpreises. Rechnen Sie mit Gepäck und mit einem umbuchbaren Rückflug — der Rückflugtermin kann ärztlich verschoben werden."
+      },
+      {
+        "id": "verpflegung",
+        "label": "Verpflegung ausserhalb des Hotels",
+        "traeger": "Eigenleistung",
+        "betrag": ""
+      },
+      {
+        "id": "begleitperson",
+        "label": "Begleitperson",
+        "traeger": "Aufpreis",
+        "betrag": "",
+        "hinweis": "Bei Eingriffen in Vollnarkose ist eine Begleitperson sinnvoll und teils vorgeschrieben."
+      },
+      {
+        "id": "zusatznaechte",
+        "label": "Zusätzliche Nächte, falls der Rückflug verschoben wird",
+        "traeger": "Eigenleistung",
+        "betrag": "",
+        "hinweis": "Der Posten, an den niemand denkt. Planen Sie ihn als Puffer ein."
+      },
+      {
+        "id": "umbuchung",
+        "label": "Umbuchung des Rückflugs",
+        "traeger": "Eigenleistung",
+        "betrag": ""
+      },
+      {
+        "id": "versicherung",
+        "label": "Reise- und Auslandkrankenversicherung",
+        "traeger": "Eigenleistung",
+        "betrag": "",
+        "hinweis": "Muss Komplikationen nach einem geplanten Eingriff ausdrücklich einschliessen."
+      },
+      {
+        "id": "nachsorge_ch",
+        "label": "Nachsorge in der Schweiz",
+        "traeger": "teils im Fixpreis",
+        "betrag": "",
+        "hinweis": "Was enthalten ist und was extra kostet, ist noch festzulegen."
+      },
+      {
+        "id": "folgekosten",
+        "label": "Langfristige Folgekosten",
+        "traeger": "Eigenleistung",
+        "betrag": "",
+        "hinweis": "Bei Implantaten und Zahnersatz: Kontrollen, professionelle Reinigung und irgendwann der Ersatz. Wer das nicht mitrechnet, rechnet zu billig."
+      }
+    ],
+    "rechenbeispiel": {
+      "freigabe": "offen",
+      "behandlung": "",
+      "zeilen": [],
+      "summe": "",
+      "hinweis": "Ein ehrliches Rechenbeispiel mit echten Zahlen ist der wirksamste einzelne Inhalt gegen den Verdacht versteckter Kosten. Es lässt sich erst bauen, wenn die Preise vorliegen."
+    },
+    "offen": [
+      "Alle Beträge.",
+      "Klärung, welche Nachsorgeleistungen im Fixpreis enthalten sind.",
+      "Ein durchgerechnetes Beispiel für eine gefragte Behandlung."
+    ]
+  },
+  "reise_faq": {
+    "titel": "Fragen zur Reise",
+    "freigabe": "offen",
+    "quelle": "ETA-Redaktionsentwurf 2026-09-20. Fachlich und kaufmännisch nicht geprüft — Freigabe durch ETA und Partnerklinik ausstehend.",
+    "warum": "Befund inhalt B15: Die bestehende FAQ hat sieben Fragen, keine davon zur Reise. Visum, Versicherung, Medikamente und Flugtauglichkeit sind ungestellt.",
+    "fragen": [
+      {
+        "frage": "Brauche ich als Schweizerin oder Schweizer ein Visum für die Türkei?",
+        "antwort": "Für einen touristischen Aufenthalt benötigen Schweizer Staatsangehörige derzeit kein Visum. Der Pass muss über den Aufenthalt hinaus gültig sein. Wenn Sie eine andere Staatsangehörigkeit haben, prüfen Sie die Einreisebestimmungen rechtzeitig selbst — die Regeln ändern sich, und wir können dafür nicht einstehen.",
+        "pruefen": true,
+        "quelle_offen": "Vor dem Start gegen die aktuellen Angaben des EDA prüfen und mit Datum versehen."
+      },
+      {
+        "frage": "Wie lange vor dem Rückflug muss ich nach dem Eingriff warten?",
+        "antwort": "Das gibt die Klinik vor, und es unterscheidet sich stark: Bei einer Haartransplantation sind es meist drei Tage, bei einer Nasenkorrektur sechs bis sieben, bei einer Bauchdeckenstraffung sechs bis acht. Der Grund ist nicht Vorsicht, sondern das Thromboserisiko, das sich mit dem Flug addiert. Buchen Sie den Rückflug umbuchbar."
+      },
+      {
+        "frage": "Darf ich meine Medikamente mitnehmen?",
+        "antwort": "Ja, in der Originalverpackung und im Handgepäck, zusammen mit einer Liste der Wirkstoffe. Bei verschreibungspflichtigen Medikamenten, insbesondere bei starken Schmerzmitteln, nehmen Sie ein ärztliches Attest mit. Erkundigen Sie sich bei Betäubungsmitteln vorab, was in der Türkei erlaubt ist."
+      },
+      {
+        "frage": "Was, wenn die Klinik meinen Termin verschiebt?",
+        "antwort": "Dann melden wir uns unverzüglich und suchen mit Ihnen einen neuen Termin. Was mit einem bereits gebuchten Flug geschieht, hängt von Ihrer Buchung ab — das ist einer der Gründe, einen umbuchbaren Tarif zu wählen.",
+        "offen": "Festlegen, ob und in welchem Umfang ETA in diesem Fall Umbuchungskosten übernimmt. Das ist ein starkes Argument, wenn die Antwort gut ist."
+      },
+      {
+        "frage": "Kann ich jemanden mitnehmen?",
+        "antwort": "Ja, und bei Eingriffen in Vollnarkose ist es sinnvoll. Was eine Begleitperson kostet und was für sie inbegriffen ist, steht im Angebot.",
+        "offen": "Konditionen für Begleitpersonen festlegen — steht heute zweimal als Platzhalter im Erzeugnis."
+      },
+      {
+        "frage": "Was zahlt meine Krankenkasse?",
+        "antwort": "Bei Behandlungen aus ästhetischen Gründen in aller Regel nichts, weder im Inland noch im Ausland. Bei medizinisch begründeten Eingriffen — etwa einer Lidstraffung bei eingeschränktem Gesichtsfeld oder einer Nasenscheidewandbegradigung — ist eine Kostenbeteiligung unter engen Voraussetzungen möglich, muss aber vor dem Eingriff mit der Kasse geklärt und bewilligt werden. Klären Sie das selbst mit Ihrer Kasse; ETA kann dazu keine Zusage machen."
+      },
+      {
+        "frage": "Was ist, wenn ich zu Hause Komplikationen bekomme?",
+        "antwort": "Gehen Sie zur Ärztin oder zum Arzt, ohne auf uns zu warten, und nehmen Sie Ihre Unterlagen der Klinik mit. Melden Sie sich anschliessend bei uns, damit wir die Klinik einbinden können. Die Warnzeichen und Notfallnummern stehen auf der Seite «Wenn etwas nicht wie geplant läuft»."
+      },
+      {
+        "frage": "In welcher Sprache läuft das vor Ort?",
+        "antwort": "Ihre Ansprechperson bei ETA spricht Deutsch. Wie die Verständigung in der Klinik geregelt ist, steht im Angebot.",
+        "offen": "Klären und präzisieren: Stellt ETA die Begleitung oder die Klinik? Bei jedem Termin oder nur beim Eingriff? Der Satz «Beratung auf Deutsch» steht heute 101-mal auf der Seite und ist nirgends hinterlegt."
+      },
+      {
+        "frage": "Wie bezahle ich?",
+        "antwort": "",
+        "offen": "Zahlungsmittel, Währung und Ablauf festlegen."
+      }
+    ]
+  },
+  "team": {
+    "slug": "team",
+    "titel": "Wer wir sind",
+    "freigabe": "offen",
+    "warum": "Befund inhalt B15: ETA verspricht «eine feste Ansprechperson, deutschsprachig». Diese Person hat heute weder Namen noch Gesicht. Für ein Vertrauensgeschäft ist das der einfachste grosse Gewinn: zwei Porträts, zwei Namen, zwei Sätze.",
+    "intro": "Sie sprechen bei uns nicht mit einem Verteiler. Von der ersten Frage bis zur Nachkontrolle haben Sie eine feste Ansprechperson.",
+    "personen": [],
+    "person_schema": {
+      "name": "",
+      "rolle": "",
+      "sprachen": [],
+      "foto": "",
+      "text": "",
+      "erreichbar": "",
+      "email": "",
+      "telefon": ""
+    },
+    "offen": [
+      "Mindestens zwei Personen mit vollem Namen, Rolle, Sprachen und Porträtfoto.",
+      "Je zwei bis drei Sätze: warum diese Person diese Arbeit macht, seit wann.",
+      "Einwilligung zur Namens- und Bildveröffentlichung einholen.",
+      "Erreichbarkeitszeiten."
+    ],
+    "hinweis_generator": "Solange «personen» leer ist, wird die Seite nicht erzeugt und erscheint nicht in der Navigation. Eine leere Team-Seite ist schlechter als keine."
+  },
+  "kontaktwege": {
+    "titel": "So erreichen Sie uns",
+    "freigabe": "offen",
+    "warum": "Befund inhalt B6: WhatsApp ist der einzige Abschlussweg. Auf allen 116 Seiten gibt es null tel:-Links und null mailto:-Links; Telefonnummer und E-Mail stehen nur als Fliesstext im Fussbereich. Wer WhatsApp nicht benutzt, hat keinen Weg.",
+    "kanaele": [
+      {
+        "id": "formular",
+        "label": "Unverbindlich anfragen",
+        "typ": "formular",
+        "ziel": "kontakt.html",
+        "rang": 1,
+        "beschriftung_einheitlich": "Unverbindlich anfragen",
+        "text": "Vier Angaben genügen. Wir melden uns innerhalb eines Arbeitstags.",
+        "hinweis": "Der gewollte Hauptschritt. Heisst überall gleich und führt immer aufs Formular."
+      },
+      {
+        "id": "whatsapp",
+        "label": "Per WhatsApp schreiben",
+        "typ": "whatsapp",
+        "nummer": "+41 76 412 21 22",
+        "rang": 2,
+        "text": "Schnell und unkompliziert. Bitte keine ausführlichen Gesundheitsangaben — dafür ist das Formular der sichere Weg.",
+        "hinweis": "Muss als WhatsApp erkennbar sein, bevor sich die App öffnet. Heute steht «Unverbindlich anfragen» 112-mal als href=\"#\" im Erzeugnis und ist für den Leser nicht als WhatsApp erkennbar."
+      },
+      {
+        "id": "telefon",
+        "label": "Anrufen",
+        "typ": "tel",
+        "nummer": "",
+        "rang": 3,
+        "text": "",
+        "zeiten": "",
+        "offen": "Telefonnummer für tel:-Link bestätigen lassen und Erreichbarkeitszeiten festlegen."
+      },
+      {
+        "id": "email",
+        "label": "E-Mail schreiben",
+        "typ": "mailto",
+        "adresse": "info@eta-agency.ch",
+        "rang": 4,
+        "text": "Für ausführliche Fragen und für Unterlagen."
+      },
+      {
+        "id": "termin",
+        "label": "Termin für ein Erstgespräch",
+        "typ": "termin",
+        "ziel": "",
+        "rang": 5,
+        "text": "Zwanzig Minuten per Video oder Telefon, zu einer Zeit, die Ihnen passt.",
+        "offen": "Noch nicht umgesetzt. Ein buchbares Zeitfenster ist eine deutlich kleinere Hürde als «schreib uns» und liefert einen festen Termin statt einer offenen Erwartung (Befund inhalt B15). Werkzeug auswählen und datenschutzrechtlich prüfen, bevor es eingebunden wird."
+      }
+    ],
+    "whatsapp": {
+      "nummer": "+41764122122",
+      "text_allgemein": "Guten Tag ETA, ich interessiere mich für eine Behandlung und hätte gern eine unverbindliche Einschätzung.",
+      "text_je_behandlung": "siehe data/behandlungsdaten.json → <slug> → whatsapp_text",
+      "hinweis_generator": "Der Behandlungsname ist dem Generator auf der Detailseite bekannt. Wird er nicht in die vorbelegte Nachricht übernommen, geht das qualifizierteste Signal des ganzen Besuchs verloren — laut Befund B6 der billigste Fix auf der gesamten Liste."
+    },
+    "hinweis_gesundheitsdaten": "Bitte schicken Sie uns Angaben zu Ihrer Gesundheit über das Formular oder per E-Mail, nicht über WhatsApp. Nachrichten laufen dort über die Infrastruktur von Meta, und das liegt ausserhalb unseres Einflussbereichs.",
+    "soziale_netze": {
+      "hinweis": "Befund inhalt B2: Instagram, Facebook und Messenger stehen 116-mal als href=\"#\" im Fussbereich. Die Zielgruppe kommt laut Auftrag über Instagram, findet dort «Instagram» und landet auf derselben Seite. Das liest sich als Attrappe. Entweder echte Adressen eintragen oder die Links entfernen — ein fehlender Link kostet nichts, ein toter kostet Glaubwürdigkeit.",
+      "instagram": "",
+      "facebook": "",
+      "tiktok": "",
+      "youtube": ""
+    },
+    "reaktionszeit": "",
+    "offen": [
+      "Telefonische Erreichbarkeit und Zeiten.",
+      "Zugesicherte Reaktionszeit.",
+      "Echte Adressen der sozialen Netze oder Entscheid zum Entfernen.",
+      "Terminbuchung: Werkzeug auswählen."
+    ]
+  },
+  "leistungsumfang": {
+    "titel": "Im Fixpreis enthalten",
+    "freigabe": "offen",
+    "hinweis": "Standardumfang, solange er nicht je Behandlung gepflegt ist. Sobald eine Behandlung in data/behandlungsdaten.json eigene Listen «enthalten» und «nicht_enthalten» hat, gehen diese vor.",
+    "enthalten": [
+      "Behandlung in der Partnerklinik",
+      "Voruntersuchung und erforderliche Laborwerte",
+      "Narkose und Klinikaufenthalt gemäss Eingriff",
+      "Medikamente für die erste Zeit",
+      "Flughafentransfer, hin und zurück",
+      "Hotel für die vorgesehenen Nächte",
+      "deutschsprachige Begleitung gemäss Paket",
+      "Nachkontrolle in der Schweiz gemäss Paket"
+    ],
+    "nicht_enthalten": [
+      "Flug ab der Schweiz, Österreich oder Deutschland",
+      "Verpflegung ausserhalb des Hotels",
+      "Begleitperson, soweit nicht gesondert vereinbart",
+      "zusätzliche Nächte, falls der Rückflug ärztlich verschoben wird",
+      "Umbuchungskosten",
+      "Reise- und Auslandkrankenversicherung",
+      "langfristige Folgekosten wie Kontrollen, Reinigung und späterer Ersatz von Implantaten oder Zahnersatz"
+    ],
+    "offen": [
+      "Vom Auftraggeber bestätigen lassen — diese Liste ist ein Entwurf und muss dem entsprechen, was ETA tatsächlich anbietet."
+    ]
+  },
+  "nachsorge": {
+    "titel": "Nachsorge in der Schweiz",
+    "freigabe": "offen",
+    "warum": "Befund inhalt B15: «Nachkontrolle im Rheintal bei Riverside Beauty» steht viermal auf der Seite. Nicht: wie viele Termine, was sie kosten, was inbegriffen ist, was gilt, wenn man nicht im Rheintal wohnt.",
+    "partner": {
+      "name": "Riverside Beauty",
+      "ort": "St. Margrethen, Rheintal",
+      "url": "",
+      "adresse": "",
+      "telefon": ""
+    },
+    "leistungen": [],
+    "anzahl_termine": "",
+    "zeitraum": "",
+    "kosten": "",
+    "ausserhalb_rheintal": "",
+    "at_de": "",
+    "offen": [
+      "Leistungsumfang je Behandlungsart festlegen.",
+      "Anzahl Termine und Zeitraum.",
+      "Was ist im Fixpreis enthalten, was kostet extra?",
+      "Regelung für Wohnorte ausserhalb des Rheintals.",
+      "Regelung für Kundinnen und Kunden aus Österreich und Deutschland.",
+      "Website-Adresse von Riverside Beauty, damit die drei Nennungen auf der Startseite endlich verlinkt sind."
+    ]
+  }
+}

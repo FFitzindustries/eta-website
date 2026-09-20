@@ -1,292 +1,1028 @@
+/* ==========================================================================
+   ETA – Gestaltungssystem
+   Eine Tonleiter für Farbe, Schrift und Abstand. Jeder Wert hier hat eine
+   Aufgabe; nackte Hexwerte und Einzelabstände gehören nicht in die Datei.
+   Kontrastwerte im Kommentar sind nach WCAG 2.1 gerechnet und nachgeprüft.
+   ========================================================================== */
+
 :root {
-  --rose: #D998A5;
-  --gold: #c58a32;
-  --gold-dark: #a06f24;
-  --black: #050505;
-  --ink: #1c1512;
-  --muted: #7a6a60;
-  --faint: #b7a99e;
-  --bg: #faf6f2;
-  --card-border: #f0e4dc;
-  --line: #e6d5c9;
-  --rose-bg: #fbeef0;
-  --rose-tile: #f7e4e6;
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'Jost', 'Helvetica Neue', system-ui, sans-serif;
+  /* ---------- Flächen ------------------------------------------------- */
+  --grund:        #f7f2ec;   /* Seitengrund, warmes Papier                            */
+  --flaeche:      #ffffff;   /* Karten, Formularfelder (1.11:1 gegen --grund)          */
+  --flaeche-warm: #fbeef0;   /* Rosé nur noch als kleine Hinweisfläche                 */
+  --tief:         #0a0a0a;   /* dunkle Bänder, Hero-Grund, Fusszeile                   */
+
+  /* ---------- Linien -------------------------------------------------- */
+  --linie:        #d8cbc0;   /* sichtbare Kante (1.59:1 auf Weiss, 1.43:1 auf --grund) */
+  --linie-zart:   #e9ded4;   /* Trenner innerhalb einer Fläche                         */
+  --linie-tief:   #241d18;   /* Trenner auf dunklem Grund                              */
+
+  /* ---------- Schrift auf hellem Grund -------------------------------- */
+  --text:         #1c1512;   /* 16.19:1 auf --grund · 18.02:1 auf Weiss                */
+  --text-2:       #5f5148;   /*  6.84:1 auf --grund · Fliesstext zweiter Ordnung       */
+  --text-3:       #7a6a60;   /*  4.65:1 auf --grund · kleinste zulässige Stufe         */
+
+  /* ---------- Schrift auf dunklem Grund ------------------------------- */
+  --auf-tief:     #ffffff;   /* 19.80:1 */
+  --auf-tief-2:   #c9bdb2;   /* 10.75:1 */
+  --auf-tief-3:   #a6968a;   /*  6.93:1 */
+
+  /* ---------- Akzent: ein Gold, zwei Helligkeiten --------------------- */
+  --gold:         #8a6123;   /* 5.50 auf Weiss · 4.95 auf --grund · 4.87 auf Rosé
+                                Weiss darauf 5.50 – trägt Text, Fläche und Rand       */
+  --gold-tief:    #6f4d1b;   /* Hover/Aktiv auf hellem Grund: 6.85 auf --grund         */
+  --gold-hell:    #d9a04a;   /* nur auf --tief: 8.56:1                                 */
+  --gold-flaeche: rgba(138, 97, 35, .10);
+  --rose-hell:    #e8b4bf;   /* einziger rosé Text, nur auf --tief: 11.04:1            */
+  --wa:           #25D366;   /* nur die feste Blase und Symbole, nie als Knopffläche   */
+  --wa-tief:      #1fb457;   /* Hover der festen Blase                                 */
+  --fehler:       #a3372f;   /* 6.68:1 auf hellem Grund                                */
+  --fehler-flaeche: #fdeceb;
+
+  /* ---------- Schrift-Tonleiter (7 Stufen statt 15) -------------------- */
+  --t-100: 13px;                          /* Kleingedrucktes, Zeichen – nie Fliesstext */
+  --t-200: 15px;                          /* Meta, Etiketten, Bildunterschriften       */
+  --t-300: 17px;                          /* Fliesstext – die Grundgrösse der Seite    */
+  --t-400: 20px;                          /* Lead, h3                                  */
+  --t-500: 24px;                          /* h3 gross, Ziffern                         */
+  --t-600: clamp(26px, 3vw, 34px);        /* h2                                        */
+  --t-700: clamp(34px, 4.5vw, 48px);      /* h1                                        */
+
+  --serif: 'Playfair Display', Georgia, serif;   /* nur ab --t-600 */
+  --sans:  'Jost', 'Helvetica Neue', system-ui, sans-serif;
+
+  /* ---------- Abstands-Tonleiter (4er-Raster, 9 Stufen statt 35) ------- */
+  --raum-1:  4px;
+  --raum-2:  8px;
+  --raum-3: 12px;
+  --raum-4: 16px;
+  --raum-5: 24px;
+  --raum-6: 32px;
+  --raum-7: 48px;
+  --raum-8: 64px;
+  --raum-9: 96px;
+
+  /* ---------- Satzspiegel und Kopfhöhe --------------------------------- */
+  --satz:      1312px;  /* Innenmass aller vollbreiten Bänder                   */
+  --rand:      4vw;     /* Mindestpolster am Bildschirmrand                     */
+  --kopfhoehe: 61px;    /* Höhe der klebenden Leiste; ab 1200 px 105 px         */
+  --ziel:      44px;    /* Mindestmass eines Tippziels                          */
+  --ziel-gross: 48px;   /* bequemes Mass für Knöpfe, Felder und Menüzeilen      */
+
+  /* ---------- Radien: eine Haltung ------------------------------------ */
+  --radius:       0;         /* Karten, Kacheln, Bilder, Felder, Knöpfe – scharfkantig */
+  --radius-pille: 999px;     /* nur Sprachumschalter                                   */
+  --radius-rund:  50%;       /* nur runde Symbolflächen und die feste Blase             */
+
+  /* ---------- Schatten: zwei, mit Aufgabe ------------------------------ */
+  --schatten-1: 0 1px 2px rgba(28, 21, 18, .05), 0 8px 24px -12px rgba(28, 21, 18, .18);
+  --schatten-2: 0 6px 18px rgba(5, 5, 5, .30);
+
+  /* ---------- Bewegung ------------------------------------------------- */
+  --ueber: 180ms cubic-bezier(.2, .6, .3, 1);
+
+  color-scheme: light;       /* kein Dunkelmodus – aber die Steuerelemente sollen es wissen */
 }
+
+/* ==========================================================================
+   Grundlagen
+   ========================================================================== */
 
 * { box-sizing: border-box; }
-body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--bg); line-height: 1.6; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: var(--t-300);
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--grund);
+  -webkit-text-size-adjust: 100%;
+}
+
 img, video { max-width: 100%; }
+
+/* Lange Fachwörter dürfen die Spalte nicht sprengen (320 px, „Schönheits-
+   behandlung" in 34 px). Umbruch nur im Notfall, keine automatische Silbentrennung. */
+h1, h2, h3, p, li, summary, td, figcaption { overflow-wrap: break-word; }
+
 a { color: var(--gold); text-decoration: none; }
-a:hover { color: var(--gold-dark); }
-h1, h2, .serif { font-family: var(--serif); font-weight: 500; color: var(--ink); }
-h1 { font-size: clamp(32px, 4.5vw, 48px); line-height: 1.15; margin: 0 0 12px; }
-h2 { font-size: clamp(26px, 3vw, 38px); margin: 0 0 16px; }
-h3 { font-size: 18px; font-weight: 500; margin: 0; }
-p { margin: 0 0 14px; }
-.small { font-size: 13px; }
-.muted { color: var(--faint); }
-.link { font-size: 15px; letter-spacing: 0.03em; border-bottom: 1px solid var(--gold); padding-bottom: 2px; color: var(--gold); }
-.link.center { display: block; text-align: center; border: none; margin-top: 12px; }
-.eyebrow { color: var(--rose); font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 10px; }
-.eyebrow.gold { color: var(--gold); }
+a:hover { color: var(--gold-tief); }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 28px; border-radius: 2px; font-size: 16px; font-weight: 500; letter-spacing: 0.03em; border: none; cursor: pointer; font-family: var(--sans); }
-.btn-gold { background: var(--gold); color: #fff; }
-.btn-gold:hover { background: var(--gold-dark); color: #fff; }
-.btn-sm { padding: 11px 20px; font-size: 15px; }
+h1, h2, .serif { font-family: var(--serif); font-weight: 500; color: var(--text); }
+h1 { font-size: var(--t-700); line-height: 1.12; margin: 0 0 var(--raum-3); }
+h2 { font-size: var(--t-600); line-height: 1.2; margin: 0 0 var(--raum-4); }
+/* Playfair trägt unterhalb von 26 px nicht – darunter führt die Grotesk. */
+h3 { font-family: var(--sans); font-size: var(--t-400); font-weight: 500; line-height: 1.35; margin: 0; }
+p { margin: 0 0 var(--raum-3); }
+
+.small { font-size: var(--t-200); }
+.muted { color: var(--text-2); }
+
+.link {
+  display: inline-flex; align-items: center; gap: 0.35em; min-height: var(--ziel);
+  font-size: var(--t-200); letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--gold); color: var(--gold);
+}
+.link:hover { color: var(--gold-tief); border-bottom-color: var(--gold-tief); }
+.link.center { display: flex; justify-content: center; text-align: center; border: none; margin-top: var(--raum-3); }
+/* Mehrere Verweise nebeneinander: am Handy brechen sie um. Da .link 44 px hoch ist,
+   berühren sich die Tippziele dann ohne Zwischenraum — deshalb hier ein echter Abstand. */
+p:has(.link + .link) { display: flex; flex-wrap: wrap; align-items: center; gap: var(--raum-2) var(--raum-3); }
+
+/* Telefon- und E-Mail-Verweise sind am Handy echte Tippziele, keine Textzeilen. */
+a[href^="tel:"], a[href^="mailto:"] { display: inline-block; padding-block: var(--raum-3); }
+
+/* Eyebrow: immer Gold, nie Rosé – eine Bedeutung, eine Farbe. */
+.eyebrow, .eyebrow.gold {
+  color: var(--gold); font-size: var(--t-200); letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: var(--raum-2);
+}
+
+/* Fokus: auf hellem und auf dunklem Grund sichtbar (18.0:1 bzw. 19.8:1). */
+:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+
+/* Sprunglink: aus dem Sichtfeld geschoben, aber in voller Grösse vorhanden –
+   wer ihn antippt, trifft ein echtes Ziel und keine 24-px-Zeile. */
+.skip-link {
+  position: absolute; left: -9999px; top: var(--raum-2); z-index: 100;
+  display: inline-flex; align-items: center; min-height: var(--ziel-gross);
+  padding: 0 var(--raum-5); background: var(--gold); color: var(--auf-tief);
+  font-size: var(--t-300);
+}
+.skip-link:focus { left: var(--raum-4); color: var(--auf-tief); }
+.main-nav :focus-visible,
+.site-footer :focus-visible,
+.cta-band :focus-visible,
+.usp-band :focus-visible,
+.hero :focus-visible,
+.wa-card :focus-visible,
+.lang-switch a.active:focus-visible { outline-color: var(--auf-tief); }
+
+/* Ein Übergang, überall derselbe. */
+a, .btn, .card, .cat-card, .t-card, summary, .lang-switch a, .nav-toggle, input, select, textarea {
+  transition: color var(--ueber), background-color var(--ueber),
+              border-color var(--ueber), opacity var(--ueber);
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Knöpfe
+   ========================================================================== */
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--raum-2);
+  min-height: var(--ziel-gross); padding: var(--raum-3) var(--raum-6);
+  border-radius: var(--radius); border: none; cursor: pointer;
+  font-family: var(--sans); font-size: var(--t-300); font-weight: 500; letter-spacing: 0.03em;
+}
+.btn-gold { background: var(--gold); color: var(--auf-tief); }      /* 5.50:1 */
+.btn-gold:hover { background: var(--gold-tief); color: var(--auf-tief); }
+.btn-sm { min-height: var(--ziel); padding: var(--raum-2) var(--raum-4); font-size: var(--t-200); }
 .btn-outline { border: 1px solid var(--gold); color: var(--gold); background: transparent; }
-.btn-outline-light { border: 1px solid rgba(255,255,255,0.4); color: #fff; }
-.btn-outline-light:hover { border-color: #fff; color: #fff; }
-.btn-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 16px; }
+.btn-outline:hover { border-color: var(--gold-tief); color: var(--gold-tief); background: var(--gold-flaeche); }
+.btn-outline-light { border: 1px solid rgba(255, 255, 255, 0.55); color: var(--auf-tief); background: transparent; }
+.btn-outline-light:hover { border-color: var(--auf-tief); color: var(--auf-tief); background: rgba(255, 255, 255, .08); }
+.btn:disabled { background: var(--text-3); color: var(--auf-tief); cursor: wait; }
+.btn-row { display: flex; gap: var(--raum-3); flex-wrap: wrap; margin-top: var(--raum-4); }
 
-/* Header */
-.site-header { background: #fff; }
-.header-utility { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 8px 4vw; max-width: 1440px; margin: 0 auto; border-bottom: 1px solid var(--card-border); }
+/* WhatsApp ist ein Weg, keine Farbe: die Knöpfe sind Gold, grün bleibt nur
+   die feste Blase. Weiss auf #25D366 wäre 1.98:1. */
+
+/* ==========================================================================
+   Kopfzeile und Navigation
+   Der Kopf hat drei Lagen. Von oben nach unten:
+     .kopf-strip   Sprachumschalter. Steht beim Aufruf sofort im Bild und
+                   scrollt dann weg — er wird einmal benutzt, nicht dauernd.
+     .header-bar   Zeichen, Suchfeld, WhatsApp-Knopf, Menüknopf. Das ist die
+                   Leiste, die klebt.
+     .main-nav     ab 1360 px das dunkle Band, darunter das Aufklappmenü.
+   ========================================================================== */
+
+:root {
+  /* Höhe des Streifens, der beim Scrollen verschwindet. Sie steht hier und
+     nicht oben bei den Tonleitern, weil genau dieser Wert als negativer
+     Klebeversatz zurückgerechnet wird: wer das eine ändert und das andere
+     nicht, lässt einen Spalt über der Leiste stehen. */
+  --strip-hoehe: 52px;
+}
+
+/* Der ganze Kopf klebt, nicht nur das Band darin. Vorher trug «.main-nav» das
+   «sticky», klebte aber nur innerhalb des 113 px hohen <header> und war nach
+   dem zweiten Wisch weg (Befund responsiv B3: auf der Katalogseite, die am
+   Handy 19,5 Bildschirme lang ist, gab es dann keinerlei Navigation mehr).
+   Der negative Versatz schiebt genau den Streifen aus dem Bild. */
+.site-header {
+  position: sticky; top: calc(-1 * var(--strip-hoehe)); z-index: 50;
+  background: var(--flaeche); border-bottom: 1px solid var(--linie-zart);
+}
+
+/* Anker dürfen nicht unter der klebenden Leiste landen — die Aufklappfelder
+   und der Sprunglink zeigen auf id-Ziele. */
+[id] { scroll-margin-top: calc(var(--kopfhoehe) + var(--raum-4)); }
+
+.kopf-strip {
+  display: flex; align-items: center; justify-content: flex-end;
+  height: var(--strip-hoehe);
+  padding-inline: max(var(--rand), calc((100% - var(--satz)) / 2));
+  border-bottom: 1px solid var(--linie-zart);
+}
+/* In der eigenen Zeile trägt die Pille kein Innenpolster mehr, sonst wird der
+   Streifen höher als der Versatz, der ihn wegschiebt. */
+.kopf-strip .lang-switch { padding: 0; }
+
+.header-bar {
+  display: flex; align-items: center; gap: var(--raum-3);
+  padding-block: var(--raum-2);
+  padding-inline: max(var(--rand), calc((100% - var(--satz)) / 2));
+}
+.logo-link { flex: 0 0 auto; display: flex; align-items: center; min-height: var(--ziel); }
 .logo { height: 40px; width: auto; display: block; }
-.main-nav { background: var(--black); position: sticky; top: 0; z-index: 40; }
-.main-nav-inner { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; max-width: 1440px; margin: 0 auto; padding: 0 4vw; min-height: 50px; }
-.main-nav a { color: var(--faint); font-size: 14px; letter-spacing: 0.02em; }
-.main-nav a:hover, .main-nav a.active { color: var(--gold); }
-.header-actions { display: flex; gap: 14px; align-items: center; }
-.nav-toggle { display: none; background: none; border: none; color: var(--ink); padding: 6px; cursor: pointer; }
 
-.wa-float { position: fixed; right: 22px; bottom: 22px; width: 58px; height: 58px; border-radius: 50%; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(5,5,5,0.3); z-index: 60; }
-.wa-float:hover { background: #1fb457; color: #fff; }
+.header-actions { display: flex; align-items: center; gap: var(--raum-3); min-width: 0; margin-inline-start: auto; }
 
-.lang-switch { display: flex; gap: 2px; border: 1px solid var(--card-border); border-radius: 20px; padding: 3px; }
-.lang-switch a { font-size: 12px; letter-spacing: 0.04em; color: var(--muted); padding: 4px 9px; border-radius: 16px; }
-.lang-switch a:hover { color: var(--ink); }
-.lang-switch a.active { background: var(--black); color: #fff; }
+/* Text, den nur Vorleseprogramme bekommen. Anders als «.hp» (der Honigtopf)
+   ist er für Hilfsmittel ausdrücklich sichtbar: er beschriftet die
+   Aufklappknöpfe, die sonst nur einen Pfeil zeigen. */
+.nur-vorlesen {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
 
-.lang-banner { display: none; background: var(--rose-bg); color: var(--ink); text-align: center; font-size: 14px; padding: 10px 4vw; margin: 0; }
+/* -------------------------------------------------------------- Suchfeld */
+
+.kopf-suche { position: relative; display: flex; align-items: center; flex: 1 1 160px; min-width: 0; max-width: 380px; }
+.suche-feld {
+  flex: 1 1 auto; min-width: 0; min-height: var(--ziel);
+  border: 1px solid var(--linie); border-radius: var(--radius); background: var(--flaeche);
+  /* Rechts bleibt die Breite des Lupenknopfes frei. */
+  padding-block: var(--raum-2); padding-inline: var(--raum-4) var(--ziel);
+  /* 17 px: unter 16 px zoomt iOS beim Hineintippen und zoomt nicht zurück. */
+  font-family: var(--sans); font-size: var(--t-300); color: var(--text);
+}
+.suche-feld::placeholder { color: var(--text-3); opacity: 1; }   /* 4.65:1 auf Weiss */
+.suche-feld::-webkit-search-cancel-button { display: none; }     /* der Lupenknopf genügt */
+.suche-feld:focus { outline: 3px solid var(--gold); outline-offset: -1px; }
+/* Die Lupe ist ein Zeichen, kein Knopf: ein zweites Bedienelement im selben
+   Feld liegt auf null Abstand neben dem ersten, und die Eingabetaste schickt
+   ein Formular mit einem einzigen Textfeld ohnehin ab. */
+.suche-lupe {
+  position: absolute; inset-inline-end: var(--raum-3); top: 50%;
+  transform: translateY(-50%); display: flex; color: var(--text-3); pointer-events: none;
+}
+
+.suche-liste {
+  position: absolute; top: calc(100% + var(--raum-1)); inset-inline: 0; z-index: 55;
+  margin: 0; padding: var(--raum-1) 0; list-style: none;
+  background: var(--flaeche); border: 1px solid var(--linie); box-shadow: var(--schatten-1);
+  max-height: min(60svh, 420px); overflow-y: auto; overscroll-behavior: contain;
+}
+.suche-liste[hidden] { display: none; }
+.suche-option {
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: var(--ziel-gross); padding: var(--raum-2) var(--raum-4);
+  font-size: var(--t-300); color: var(--text); cursor: pointer;
+}
+.suche-option[aria-selected="true"], .suche-option:hover { background: var(--gold-flaeche); color: var(--gold-tief); }
+.suche-option .suche-kat { font-size: var(--t-200); color: var(--text-2); }
+.suche-leer { padding: var(--raum-3) var(--raum-4); font-size: var(--t-200); color: var(--text-2); }
+
+/* ------------------------------------------------------ Navigationsband */
+
+.main-nav { background: var(--tief); }
+.main-nav-inner {
+  display: flex; align-items: center; flex-wrap: nowrap;
+  /* Gemessen bei 1360 px: die neun Punkte brauchen 1162 px. Mit 0,8vw
+     Abstand blieben 2 px Luft, mit 0,7vw sind es 13 px — und selbst wenn
+     eine fremde Schriftdarstellung darüber hinausgeht, frisst das 54 px
+     breite Seitenpolster den Überstand, bevor die Seite querscrollt. */
+  gap: clamp(var(--raum-2), 0.7vw, var(--raum-4));
+  padding-inline: max(var(--rand), calc((100% - var(--satz)) / 2));
+}
+.main-nav a {
+  display: inline-flex; align-items: center; min-height: var(--ziel);
+  color: var(--auf-tief-2); font-size: var(--t-200); letter-spacing: 0.02em; white-space: nowrap;
+}
+.main-nav a:hover, .main-nav a.active { color: var(--gold-hell); }   /* 8.56:1 auf --tief */
+
+/* Aufklappmenüs: der Name führt auf die Übersichtsseite, ein eigener Knopf
+   öffnet das Feld. Vorher trug ein einziger Verweis beides, und das «▾»
+   hing als ::after daran — auch dort, wo sich nichts öffnen liess.
+   Die Felder öffnen ausschliesslich über den Knopf, nicht mehr über :hover
+   oder :focus-within. Damit stimmt «aria-expanded» immer, und der Fokus wird
+   nicht mehr ungefragt in 116 Verweise gezogen (Befund technik B5). */
+.nav-drop { position: relative; display: flex; align-items: center; }
+/* «Zähne» ist das kürzeste Menüwort und war 41 px breit. Das Tippziel darf
+   nicht an der Wortlänge hängen. */
+.nav-drop-link { min-width: var(--ziel); }
+.nav-drop-knopf {
+  display: flex; align-items: center; justify-content: center;
+  min-width: var(--ziel); min-height: var(--ziel);
+  background: none; border: none; padding: 0; cursor: pointer; color: var(--auf-tief-3);
+  /* Der Knopf zeigt nur einen Pfeil, trägt aber vorgelesenen Text. Ohne
+     Angabe gälte der Browser-Standard für <button> – 13,3 px. */
+  font-family: var(--sans); font-size: var(--t-200);
+}
+.nav-drop-knopf:hover { color: var(--gold-hell); }
+.nav-chevron { transition: transform var(--ueber); }
+.nav-drop-knopf[aria-expanded="true"] .nav-chevron { transform: rotate(180deg); }
+
+.nav-drop-panel { display: none; }
+.nav-drop-knopf[aria-expanded="true"] + .nav-drop-panel { display: block; }
+.nav-drop-panel a.nav-drop-alle { color: var(--gold); }
+.nav-drop-panel a.nav-drop-alle:hover { color: var(--gold-tief); }
+.nav-drop-zahl { color: var(--text-3); margin-inline-start: 0.4em; }   /* der Flex-Kasten schluckt das Leerzeichen */
+
+/* -------------------------------------------------------------- Menüknopf */
+
+.nav-toggle {
+  display: none; background: none; border: none; color: var(--text);
+  min-width: var(--ziel); min-height: var(--ziel); padding: var(--raum-2);
+  align-items: center; justify-content: center; cursor: pointer;
+}
+/* Offen zeigt der Knopf ein Kreuz, nicht weiter den Burger — sonst steht der
+   Zustand nur im «aria-expanded» und nirgends im Bild. */
+.nav-toggle .ikon-x { display: none; }
+.nav-toggle[aria-expanded="true"] .ikon-burger { display: none; }
+.nav-toggle[aria-expanded="true"] .ikon-x { display: block; }
+
+/* ==========================================================================
+   Feste WhatsApp-Blase
+   ========================================================================== */
+
+.wa-float {
+  position: fixed;
+  right: max(var(--raum-4), env(safe-area-inset-right));
+  bottom: max(var(--raum-4), env(safe-area-inset-bottom));
+  width: 56px; height: 56px; border-radius: var(--radius-rund);
+  background: var(--wa); color: var(--tief);          /* dunkles Zeichen auf Grün: 9.98:1 */
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--schatten-2); z-index: 60;
+}
+.wa-float:hover { background: var(--wa-tief); color: var(--tief); }
+.wa-float { transition: opacity var(--ueber), visibility var(--ueber), transform var(--ueber), background-color var(--ueber); }
+/* Sie tritt zurück, sobald die Fusszeile im Bild ist (main.js setzt die
+   Klasse), und verschwindet, solange das Menü offen ist. Vorher lag sie über
+   der Preisbedingung auf der Kontaktseite und über der offenen Menüfläche im
+   Querformat (Befund responsiv B12). */
+.wa-float--ruht { opacity: 0; visibility: hidden; transform: translateY(var(--raum-2)); pointer-events: none; }
+body.menue-offen .wa-float { display: none; }
+/* Bei starkem Zoom und im Querformat darf die Blase keine Inhaltsfläche belegen. */
+@media (max-height: 420px), (max-width: 380px) {
+  .wa-float { width: 48px; height: 48px; }
+}
+
+/* ==========================================================================
+   Sprachumschalter und Sprachbanner
+   ========================================================================== */
+
+.lang-switch {
+  display: flex; align-items: center; gap: var(--raum-2);
+  border: 1px solid var(--linie); border-radius: var(--radius-pille);
+  padding: var(--raum-1); min-width: 0;
+}
+.lang-switch a {
+  display: flex; align-items: center; justify-content: center;
+  min-width: var(--ziel); min-height: var(--ziel);
+  padding: 0 var(--raum-2); border-radius: var(--radius-pille);
+  font-size: var(--t-200); letter-spacing: 0.04em; color: var(--text-2);
+}
+.lang-switch a:hover { color: var(--text); background: var(--gold-flaeche); }
+.lang-switch a.active { background: var(--tief); color: var(--auf-tief); }
+
+.lang-banner {
+  display: none; background: var(--flaeche-warm); color: var(--text);
+  text-align: center; font-size: var(--t-200); padding: var(--raum-3) var(--rand); margin: 0;
+}
 .lang-banner:not([hidden]) { display: block; }
-html[dir="rtl"] .header-utility, html[dir="rtl"] .main-nav-inner, html[dir="rtl"] .footer-grid, html[dir="rtl"] .hero-content { direction: rtl; }
 
-.nav-drop { position: relative; }
-.nav-drop > a { display: inline-flex; align-items: center; gap: 5px; }
-.nav-drop > a::after { content: "▾"; font-size: 9px; color: var(--faint); }
-.nav-drop-panel { display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid var(--card-border); box-shadow: 0 14px 28px rgba(5,5,5,0.1); padding: 14px 22px; min-width: 260px; max-height: 78vh; overflow-y: auto; z-index: 50; }
-.nav-drop-panel a { display: block; padding: 5px 0; font-size: 14px; white-space: nowrap; }
-.nav-drop-panel a:hover { color: var(--gold); }
-.nav-drop-panel.wide { flex-wrap: wrap; align-items: flex-start; gap: 4px 32px; width: min(90vw, 700px); }
-.nav-drop-group { flex: 0 0 200px; margin-bottom: 14px; }
-.nav-drop-group-label { font-family: var(--serif); font-size: 13px; letter-spacing: 0.04em; color: var(--muted); padding: 4px 0 6px !important; border-bottom: 1px solid var(--card-border); margin-bottom: 4px; white-space: normal !important; }
-.nav-drop-group-label:hover { color: var(--gold-dark); }
-@media (min-width: 901px) {
-  .nav-drop:hover .nav-drop-panel, .nav-drop:focus-within .nav-drop-panel { display: block; }
-  .nav-drop:hover .nav-drop-panel.wide, .nav-drop:focus-within .nav-drop-panel.wide { display: flex; }
-}
-@media (max-width: 900px) {
-  .nav-drop-panel { display: none !important; }
-}
+/* ==========================================================================
+   Hero
+   ========================================================================== */
 
-/* Hero */
-.hero { position: relative; min-height: 620px; background: var(--black); display: flex; align-items: center; overflow: hidden; }
-.hero-sub { min-height: 440px; }
+.hero {
+  position: relative; min-height: min(620px, 82svh);
+  background: var(--tief); display: flex; align-items: center; overflow: hidden;
+}
+.hero-sub { min-height: min(440px, 62svh); }
 .hero-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,5,0.87) 0%, rgba(5,5,5,0.6) 38%, rgba(5,5,5,0.08) 70%); }
-.hero-content { position: relative; max-width: 640px; padding: 90px 4vw; }
-.hero-content h1 { color: #fff; }
-.hero-content p { color: #e9ddd5; font-size: 18px; font-weight: 300; max-width: 480px; }
-.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
-.hero-trust { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 22px; color: var(--faint); font-size: 14px; }
-.hero-trust .dot { color: var(--gold); }
 
-/* Sektionen */
-.section { max-width: 1440px; margin: 0 auto; padding: 80px 4vw; }
-.section-white { background: #fff; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); max-width: none; }
-.section-white > * { max-width: 1312px; margin-left: auto; margin-right: auto; }
-.section-rose { background: var(--rose-bg); max-width: none; }
-.section-rose > * { max-width: 1312px; margin-left: auto; margin-right: auto; }
-.section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; margin-bottom: 34px; }
+/* Der Verlauf muss die Schrift auf JEDER Breite tragen. Waagrecht reicht nur,
+   solange die Textspalte schmal bleibt; darum steht am linken Rand 0.92 und
+   selbst am rechten Ende der Textspalte nie weniger als 0.55 Deckung. */
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+      rgba(10, 10, 10, .92) 0%,
+      rgba(10, 10, 10, .86) 30%,
+      rgba(10, 10, 10, .62) 55%,
+      rgba(10, 10, 10, .22) 85%,
+      rgba(10, 10, 10, .12) 100%);
+}
+.hero-content {
+  position: relative; max-width: min(640px, 100%); min-width: 0;
+  padding: clamp(var(--raum-7), 8svh, var(--raum-9)) var(--rand);
+}
+.hero-content h1 { color: var(--auf-tief); }
+.hero-content p { color: var(--auf-tief-2); font-size: var(--t-400); font-weight: 300; max-width: 46ch; }
+.hero-ctas { display: flex; gap: var(--raum-4); flex-wrap: wrap; margin-top: var(--raum-5); }
+.hero-trust {
+  display: flex; gap: var(--raum-3); flex-wrap: wrap; margin-top: var(--raum-5);
+  color: var(--auf-tief-2); font-size: var(--t-200);
+}
+.hero-trust .dot { color: var(--gold-hell); }
+
+/* ==========================================================================
+   Abschnitte und Bänder
+   Ein Innenmass für die ganze Seite: das Polster rechnet den Satzspiegel aus,
+   statt ihn auf jedes Kind zu vererben. Dadurch stehen Überschrift, Lauftext
+   und erster Abschnitt auf jeder Seite auf derselben linken Kante.
+   ========================================================================== */
+
+.section,
+.page-band,
+.usp-band,
+.cta-band,
+.site-footer {
+  padding-inline: max(var(--rand), calc((100% - var(--satz)) / 2));
+}
+
+.section { max-width: none; margin: 0 auto; padding-block: var(--raum-9); }
+.section-white { background: var(--flaeche); border-top: 1px solid var(--linie-zart); border-bottom: 1px solid var(--linie-zart); }
+/* Rosé ist keine Abschnittsfläche mehr (drei Helltöne waren nicht unterscheidbar). */
+.section-rose { background: var(--grund); }
+.section > p, .section-head p { max-width: 68ch; }
+
+.section-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: var(--raum-5); flex-wrap: wrap; margin-bottom: var(--raum-6);
+}
 .section-head h2 { margin-bottom: 0; }
 
-.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+/* Raster ohne Haltepunkte: die Mindestbreite entscheidet, nicht die Spaltenzahl. */
+.grid-4 { display: grid; gap: var(--raum-5); grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
+.grid-3 { display: grid; gap: var(--raum-5); grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
 
-.card { background: #fff; border: 1px solid var(--card-border); padding: 30px 28px; }
-.cat-card { background: #fff; border: 1px solid var(--card-border); padding: 30px 26px; display: flex; flex-direction: column; gap: 12px; color: var(--ink); }
-.cat-card:hover { border-color: var(--gold); color: var(--ink); }
-.cat-card h3 { font-family: var(--serif); font-size: 22px; }
-.cat-count { color: var(--faint); font-size: 12px; letter-spacing: 0.08em; }
-.cat-card p { color: var(--muted); font-size: 15px; margin: 0; }
-.cat-card .link { margin-top: auto; align-self: flex-start; font-size: 14px; }
+/* ==========================================================================
+   Karten und Kacheln
+   ========================================================================== */
 
-.usp-band { background: var(--black); padding: 60px 4vw; }
-.usp-band .grid-4 { max-width: 1312px; margin: 0 auto; gap: 36px; }
-.usp-icon { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: rgba(197,138,50,0.12); border: 1px solid rgba(197,138,50,0.4); }
-.usp h3 { color: #fff; font-size: 17px; margin: 14px 0 8px; }
-.usp p { color: var(--faint); font-size: 14px; margin: 0; }
+.card { background: var(--flaeche); border: 1px solid var(--linie); padding: var(--raum-6) var(--raum-5); }
 
-.steps .step { border-top: 1px solid var(--line); padding-top: 20px; }
-.steps .card.step { border-top: 1px solid var(--card-border); padding-top: 26px; }
-.step-nr { font-family: var(--serif); font-size: 38px; color: var(--rose); margin-bottom: 8px; }
-.step h3 { margin-bottom: 8px; }
-.step p { color: var(--muted); font-size: 15px; margin: 0; }
+.cat-card {
+  background: var(--flaeche); border: 1px solid var(--linie);
+  padding: var(--raum-6) var(--raum-5);
+  display: flex; flex-direction: column; gap: var(--raum-3); color: var(--text);
+}
+.cat-card:hover { border-color: var(--gold); color: var(--text); }
+.cat-card h3 { font-size: var(--t-500); }
+.cat-count { color: var(--text-3); font-size: var(--t-200); letter-spacing: 0.08em; }
+.cat-card p { color: var(--text-2); font-size: var(--t-300); margin: 0; }
+.cat-card .link { margin-top: auto; align-self: flex-start; }
 
-.ph-tile { position: relative; min-height: 280px; background: var(--rose-bg); border: 1px dashed var(--rose); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.usp-band { background: var(--tief); padding-block: var(--raum-9); }
+.usp-band .grid-4 { gap: var(--raum-6); }
+.usp-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; border-radius: var(--radius-rund);
+  background: var(--gold-flaeche); border: 1px solid var(--gold-hell); color: var(--gold-hell);
+}
+.usp h3 { color: var(--auf-tief); font-size: var(--t-400); margin: var(--raum-3) 0 var(--raum-2); }
+.usp p { color: var(--auf-tief-2); font-size: var(--t-300); margin: 0; }
+
+.steps .step { border-top: 1px solid var(--linie); padding-top: var(--raum-5); }
+.steps .card.step { border-top: 1px solid var(--linie); padding-top: var(--raum-6); }
+.step-nr { font-family: var(--serif); font-size: var(--t-600); color: var(--gold); margin-bottom: var(--raum-2); }
+.step h3 { margin-bottom: var(--raum-2); }
+.step p { color: var(--text-2); font-size: var(--t-300); margin: 0; }
+
+/* Platzhalterkachel – nur noch für tatsächlich fehlende Bilder. */
+.ph-tile {
+  position: relative; min-height: 280px; background: var(--flaeche-warm);
+  border: 1px dashed var(--linie); display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
 .ph-tile.small-tile { min-height: 200px; }
 .ph-tile.wide-tile { min-height: 200px; grid-column: span 2; }
-.ph-tile.img-tile img { width: 100%; height: 100%; object-fit: cover; }
-.ph-wm { position: absolute; top: 14px; right: 16px; font-family: var(--serif); font-size: 15px; letter-spacing: 0.14em; color: var(--rose); opacity: 0.55; }
-.ph-text { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; color: var(--muted); font-size: 13px; letter-spacing: 0.04em; line-height: 1.7; padding: 0 18px; }
-.ph-text::before { content: ""; width: 30px; height: 30px; background: var(--rose); opacity: 0.35; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Ccircle cx='9' cy='10' r='2'/%3E%3Cpath d='M21 16l-5-4-4 3-3-2-6 5'/%3E%3C/svg%3E") center/contain no-repeat; mask-repeat: no-repeat; }
+/* Ein echtes Foto ist kein Platzhalter: kein gestrichelter Rahmen, keine Rosafläche. */
+.ph-tile.img-tile { border: none; background: none; min-height: 0; }
+.ph-tile.img-tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ph-wm {
+  position: absolute; top: var(--raum-3); right: var(--raum-4);
+  font-family: var(--serif); font-size: var(--t-200); letter-spacing: 0.14em; color: var(--text-3);
+}
+.ph-text {
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  gap: var(--raum-2); text-align: center; color: var(--text-2); font-size: var(--t-200);
+  letter-spacing: 0.04em; line-height: 1.7; padding: 0 var(--raum-4);
+}
+.ph-text::before {
+  content: ""; width: 30px; height: 30px; background: var(--text-3);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Ccircle cx='9' cy='10' r='2'/%3E%3Cpath d='M21 16l-5-4-4 3-3-2-6 5'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask-repeat: no-repeat;
+}
+.ph-note { color: var(--text-2); font-style: italic; }
+.detail-gallery { max-width: 480px; margin-bottom: var(--raum-6); }
+.detail-bild { display: block; width: 100%; height: auto; }
 
-/* FAQ */
-.faq-section { display: grid; grid-template-columns: 360px 1fr; gap: 60px; }
-.faq-intro p { color: var(--muted); font-size: 15px; }
-.faq-list details { border-top: 1px solid var(--line); padding: 20px 0; }
-.faq-list details:last-child { border-bottom: 1px solid var(--line); }
-.faq-list summary { font-size: 17px; font-weight: 500; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.faq-list summary::after { content: "+"; color: var(--gold); font-size: 22px; font-weight: 300; }
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+
+.faq-section { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: var(--raum-8); }
+.faq-intro p { color: var(--text-2); font-size: var(--t-300); }
+.faq-list details { border-top: 1px solid var(--linie); padding: var(--raum-2) 0; }
+.faq-list details:last-child { border-bottom: 1px solid var(--linie); }
+.faq-list summary {
+  display: flex; justify-content: space-between; align-items: center; gap: var(--raum-4);
+  min-height: var(--ziel-gross); padding: var(--raum-2) 0;
+  font-size: var(--t-400); font-weight: 500; cursor: pointer; list-style: none;
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; color: var(--gold); font-size: var(--t-500); font-weight: 300; }
 .faq-list details[open] summary::after { content: "–"; }
-.faq-list p { color: var(--muted); font-size: 15px; margin: 12px 0 0; max-width: 640px; }
-.faq-list.wide { max-width: 820px; }
-.ph-note { color: var(--faint); font-style: italic; }
+.faq-list p { color: var(--text-2); font-size: var(--t-300); margin: var(--raum-3) 0 var(--raum-4); max-width: 70ch; }
+.faq-list.wide { max-width: 70ch; }
 
-/* CTA-Band */
-.cta-band { background: var(--black); padding: 70px 4vw; }
-.cta-inner { max-width: 1312px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; }
-.cta-inner h2 { color: #fff; margin-bottom: 6px; font-size: clamp(24px, 2.5vw, 32px); }
-.cta-inner p { color: var(--faint); margin: 0; }
+/* ==========================================================================
+   CTA-Band
+   ========================================================================== */
 
-/* Footer */
-.site-footer { background: var(--black); border-top: 1px solid #241d18; padding: 64px 4vw 0; }
-.footer-grid { max-width: 1312px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.3fr; gap: 44px; }
-.footer-grid a { display: block; color: var(--faint); font-size: 14px; margin-bottom: 10px; }
-.footer-grid a:hover { color: #fff; }
-.footer-logo { font-family: var(--serif); font-size: 32px; letter-spacing: 0.12em; color: var(--gold); }
-.footer-sub { color: var(--muted); font-size: 11px; letter-spacing: 0.28em; margin: 6px 0 12px; }
-.footer-brand p { color: var(--faint); font-size: 14px; max-width: 300px; }
-.footer-title { color: #fff; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
-.footer-line { color: var(--faint); font-size: 14px; margin-bottom: 10px; }
-.footer-social { display: flex; gap: 10px; align-items: center; margin-top: 6px; }
-.footer-social a { display: inline; margin: 0; }
-.footer-social span { color: var(--muted); }
-.footer-bottom { max-width: 1312px; margin: 44px auto 0; border-top: 1px solid #241d18; padding: 20px 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
+.cta-band { background: var(--tief); padding-block: var(--raum-9); }
+.cta-inner { display: flex; justify-content: space-between; align-items: center; gap: var(--raum-6); flex-wrap: wrap; }
+.cta-inner h2 { color: var(--auf-tief); margin-bottom: var(--raum-2); font-size: var(--t-600); }
+.cta-inner p { color: var(--auf-tief-2); margin: 0; max-width: 60ch; }
 
-/* Unterseiten */
-.page-band { background: var(--rose-bg); padding: 56px 4vw; }
-.page-band > * { max-width: 1312px; margin-left: auto; margin-right: auto; }
-.page-band.slim { padding: 28px 4vw; }
-.page-band p { color: var(--muted); font-size: 17px; max-width: 640px; }
-.crumbs { display: flex; gap: 10px; align-items: center; color: #a08a7c; font-size: 13px; letter-spacing: 0.06em; margin-bottom: 14px; flex-wrap: wrap; }
-.crumbs a { color: #a08a7c; }
-.crumbs span:last-child { color: var(--ink); }
+/* ==========================================================================
+   Fusszeile
+   ========================================================================== */
 
-.kat-group { margin-bottom: 56px; padding-top: 28px; border-top: 1px solid var(--line); }
+/* CTA-Band und Fusszeile sind ein dunkler Abschluss, keine zwei Bänder. */
+.site-footer { background: var(--tief); padding-top: var(--raum-8); padding-bottom: var(--raum-9); }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: var(--raum-5) var(--raum-7); }
+.footer-grid a {
+  display: block; color: var(--auf-tief-2); font-size: var(--t-200);
+  padding: var(--raum-3) 0; margin-bottom: var(--raum-2);     /* 22 → 46 px hoch, 8 px Abstand */
+}
+.footer-grid a:hover { color: var(--auf-tief); }
+.footer-logo { font-family: var(--serif); font-size: var(--t-600); letter-spacing: 0.12em; color: var(--gold-hell); }
+.footer-sub { color: var(--auf-tief-3); font-size: var(--t-200); letter-spacing: 0.12em; margin: var(--raum-1) 0 var(--raum-3); }
+.footer-brand p { color: var(--auf-tief-2); font-size: var(--t-200); max-width: 42ch; }
+.footer-title { color: var(--auf-tief); font-size: var(--t-200); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--raum-3); }
+.footer-line { color: var(--auf-tief-2); font-size: var(--t-200); margin-bottom: var(--raum-2); }
+.footer-social { display: flex; gap: var(--raum-2); align-items: center; flex-wrap: wrap; margin-top: var(--raum-2); }
+.footer-social a { display: inline-flex; align-items: center; min-height: var(--ziel); padding: var(--raum-3) var(--raum-2); margin: 0; }
+.footer-social span { color: var(--auf-tief-3); }
+.footer-bottom {
+  display: flex; justify-content: space-between; gap: var(--raum-4); flex-wrap: wrap;
+  margin-top: var(--raum-7); border-top: 1px solid var(--linie-tief); padding: var(--raum-5) 0 0;
+  color: var(--auf-tief-3); font-size: var(--t-200);
+}
+
+/* ==========================================================================
+   Unterseiten
+   ========================================================================== */
+
+.page-band { background: var(--flaeche-warm); padding-block: var(--raum-8); }
+.page-band.slim { padding-block: var(--raum-6); }
+.page-band p { color: var(--text-2); font-size: var(--t-300); max-width: 62ch; }
+.crumbs {
+  display: flex; gap: var(--raum-2); align-items: center; flex-wrap: wrap;
+  color: var(--text-2); font-size: var(--t-200); letter-spacing: 0.06em; margin-bottom: var(--raum-2);
+}
+.crumbs a { display: inline-flex; align-items: center; justify-content: flex-start;
+             min-width: var(--ziel); min-height: var(--ziel); color: var(--text-2); }
+.crumbs a:hover { color: var(--gold); }
+.crumbs span:last-child { color: var(--text); }
+
+.kat-group { margin-bottom: var(--raum-8); padding-top: var(--raum-6); border-top: 1px solid var(--linie); }
 .kat-group:first-child { padding-top: 0; border-top: none; }
-.group-head { display: flex; gap: 16px; align-items: baseline; margin-bottom: 22px; }
-.group-head h2 { font-family: var(--serif); font-size: 28px; color: var(--rose); margin: 0; }
-.kat-groups { padding-top: 60px; }
-.kat-block { padding-top: 40px; padding-bottom: 20px; }
+.group-head { display: flex; gap: var(--raum-4); align-items: baseline; flex-wrap: wrap; margin-bottom: var(--raum-5); }
+.group-head h2 { font-family: var(--serif); font-size: var(--t-600); color: var(--gold); margin: 0; }
+.kat-groups { padding-top: var(--raum-8); }
+.kat-block { padding-top: var(--raum-7); padding-bottom: var(--raum-5); }
 
-.t-card { background: #fff; border: 1px solid var(--card-border); padding: 24px 22px; display: flex; flex-direction: column; gap: 8px; color: var(--ink); }
+.t-card {
+  background: var(--flaeche); border: 1px solid var(--linie); padding: var(--raum-5);
+  display: flex; flex-direction: column; gap: var(--raum-2); color: var(--text);
+}
 .t-card:hover { border-color: var(--gold); }
-.t-card h3 { font-family: var(--serif); font-size: 18px; color: var(--ink); }
-.t-card:hover h3 { color: var(--gold-dark); }
-.t-card p { color: var(--muted); font-size: 14px; margin: 0; }
-.t-card .link { margin-top: auto; align-self: flex-start; font-size: 13px; }
+.t-card h3 { font-size: var(--t-400); color: var(--text); }
+.t-card:hover h3 { color: var(--gold-tief); }
+.t-card p { color: var(--text-2); font-size: var(--t-300); margin: 0; }
+.t-card .link { margin-top: auto; align-self: flex-start; }
+/* Eine Karte ohne Beschreibung ist keine Karte, sondern eine Zeile: im
+   Gesamtkatalog stehen 100 Kacheln, die nur Titel und Verweis enthalten. */
+.t-card:not(:has(p)) {
+  flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 0 var(--raum-4); padding: var(--raum-3) var(--raum-4);
+}
+/* min-width: 0 – sonst nagelt der längste Behandlungsname die Zeile fest und
+   die Seite scrollt unter 350 px quer. */
+.t-card:not(:has(p)) > * { min-width: 0; }
+.t-card:not(:has(p)) .link { margin-top: 0; align-self: center; }
 
-/* Detailseite */
-.detail-layout { display: grid; grid-template-columns: 1fr 380px; gap: 56px; align-items: start; }
-.detail-main .lead { font-size: 18px; color: var(--ink); }
-.detail-main p { color: var(--muted); font-size: 16px; max-width: 680px; }
-.detail-main h2 { font-size: 26px; margin-top: 40px; }
+/* ==========================================================================
+   Detailseite
+   ========================================================================== */
+
+.detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: var(--raum-8); align-items: start; }
+.detail-main .lead { font-size: var(--t-400); color: var(--text); max-width: 64ch; }
+.detail-main p { color: var(--text-2); font-size: var(--t-300); max-width: 68ch; }
+.detail-main h2 { font-size: var(--t-600); margin-top: var(--raum-7); }
+
 .ablauf-list { list-style: none; padding: 0; margin: 0; counter-reset: schritt; }
-.ablauf-list li { border-top: 1px solid var(--line); padding: 18px 0 18px 56px; position: relative; counter-increment: schritt; }
-.ablauf-list li:last-child { border-bottom: 1px solid var(--line); }
-.ablauf-list li::before { content: "0" counter(schritt); position: absolute; left: 0; top: 16px; font-family: var(--serif); font-size: 22px; color: var(--rose); }
-.ablauf-list h3 { margin-bottom: 4px; font-size: 17px; }
-.ablauf-list p { font-size: 15px; margin: 0; }
-.detail-aside { position: sticky; top: 100px; }
-.facts .btn { width: 100%; margin-top: 18px; }
-.fact { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--card-border); font-size: 15px; }
-.fact span { color: var(--muted); }
-.fact strong { font-weight: 500; text-align: right; }
-.price-box { background: var(--rose-bg); padding: 16px 18px; margin-top: 16px; display: flex; flex-direction: column; gap: 2px; }
-.price-box span { color: var(--muted); font-size: 12px; letter-spacing: 0.06em; }
-.price-box strong { font-family: var(--serif); font-size: 22px; font-weight: 500; }
-.price-box em { color: #a08a7c; font-size: 13px; font-style: normal; }
-.note-box { background: var(--rose-bg); border-left: 2px solid var(--gold); padding: 16px 20px; font-size: 15px; color: var(--muted); margin-top: 24px; }
+.ablauf-list li { border-top: 1px solid var(--linie); padding: var(--raum-5) 0 var(--raum-5) var(--raum-8); position: relative; counter-increment: schritt; }
+.ablauf-list li:last-child { border-bottom: 1px solid var(--linie); }
+.ablauf-list li::before { content: "0" counter(schritt); position: absolute; left: 0; top: var(--raum-5); font-family: var(--serif); font-size: var(--t-500); color: var(--gold); }
+.ablauf-list h3 { margin-bottom: var(--raum-1); font-size: var(--t-400); }
+.ablauf-list p { font-size: var(--t-300); margin: 0; max-width: 68ch; }
 
-/* Klinik */
-.klinik-layout { display: grid; grid-template-columns: 1fr 460px; gap: 56px; }
-.check-list { list-style: none; padding: 0; margin: 14px 0 0; }
-.check-list li { padding: 7px 0 7px 30px; position: relative; font-size: 15px; }
-.check-list li::before { content: ""; position: absolute; left: 0; top: 12px; width: 16px; height: 9px; border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(-45deg); }
-.klinik-fotos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-content: start; }
+/* Nur der obere, entscheidende Teil klebt – und nie höher als der Bildschirm. */
+.detail-aside {
+  position: sticky; top: calc(var(--kopfhoehe) + var(--raum-4));
+  max-height: calc(100svh - var(--kopfhoehe) - var(--raum-6));
+  overflow-y: auto; overscroll-behavior: contain;
+}
+@media (max-height: 760px) {
+  .detail-aside { position: static; max-height: none; overflow: visible; }
+}
 
-/* Kontakt */
-.kontakt-layout { display: grid; grid-template-columns: 400px 1fr; gap: 48px; align-items: start; }
-.kontakt-side { display: flex; flex-direction: column; gap: 18px; }
-.wa-card { background: linear-gradient(155deg, #14100d 0%, var(--black) 55%, #1d1210 100%); padding: 34px 30px; color: var(--faint); border-top: 2px solid var(--gold); }
-.wa-card svg { color: #25D366; }
-.wa-card h2 { color: #fff; font-size: 24px; margin: 14px 0 8px; }
-.wa-card p { font-size: 15px; }
-.wa-number { font-size: 19px; color: var(--rose); letter-spacing: 0.04em; margin: 10px 0 16px; }
+.facts .btn { width: 100%; margin-top: var(--raum-4); }
+/* Zwei feste Spuren statt Flex: der lange Wert zerrt die Beschriftung nicht
+   mehr in drei Zeilen, und rechtsbündiger Flattersatz entfällt. */
+.fact { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: var(--raum-4);
+        padding: var(--raum-3) 0; border-bottom: 1px solid var(--linie-zart); font-size: var(--t-200); }
+.fact span { color: var(--text-2); }
+.fact strong { font-weight: 500; text-align: start; }
+.price-box { background: var(--flaeche-warm); padding: var(--raum-4); margin-top: var(--raum-4); display: flex; flex-direction: column; gap: var(--raum-1); }
+.price-box span { color: var(--text-2); font-size: var(--t-200); letter-spacing: 0.06em; }
+.price-box strong { font-family: var(--serif); font-size: var(--t-500); font-weight: 500; }
+.price-box em { color: var(--text-2); font-size: var(--t-200); font-style: normal; }
+.note-box { background: var(--flaeche-warm); border-left: 3px solid var(--gold); padding: var(--raum-4) var(--raum-5); font-size: var(--t-300); color: var(--text-2); margin-top: var(--raum-5); max-width: 68ch; }
+
+/* ==========================================================================
+   Partnerklinik
+   ========================================================================== */
+
+.klinik-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: var(--raum-8); }
+.klinik-text p { max-width: 68ch; }
+.check-list { list-style: none; padding: 0; margin: var(--raum-3) 0 0; }
+.check-list li { padding: var(--raum-2) 0 var(--raum-2) var(--raum-6); position: relative; font-size: var(--t-300); }
+.check-list li::before {
+  content: ""; position: absolute; left: 0; top: 14px; width: 16px; height: 9px;
+  border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(-45deg);
+}
+.klinik-fotos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: var(--raum-4); align-content: start; }
+
+/* ==========================================================================
+   Kontakt und Formulare
+   ========================================================================== */
+
+.kontakt-layout { display: grid; grid-template-columns: minmax(300px, 400px) minmax(0, 1fr); gap: var(--raum-7); align-items: start; }
+.kontakt-side { display: flex; flex-direction: column; gap: var(--raum-4); }
+
+.wa-card { background: var(--tief); padding: var(--raum-6); color: var(--auf-tief-2); border-top: 2px solid var(--gold-hell); }
+.wa-card svg { color: var(--wa); }
+.wa-card h2 { color: var(--auf-tief); font-size: var(--t-500); margin: var(--raum-3) 0 var(--raum-2); }
+.wa-card p { font-size: var(--t-300); }
+.wa-number { font-size: var(--t-400); color: var(--rose-hell); letter-spacing: 0.04em; margin: var(--raum-2) 0 var(--raum-4); }
+/* Seit die Nummer ein tel:-Verweis ist, erbt sie sonst das Gold der Verweise –
+   auf dunklem Grund 3.6:1. Rosé auf --tief sind 11.04:1. */
+.wa-number a { color: inherit; }
+.wa-number a:hover { color: var(--auf-tief); }
 .wa-card .btn { width: 100%; }
-.kontakt-form { padding: 38px 40px; background: var(--bg); border-color: var(--line); }
-.kontakt-form h2 { margin-bottom: 20px; }
-.kontakt-form label { display: flex; flex-direction: column; gap: 7px; font-size: 13px; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 18px; }
-.kontakt-form input, .kontakt-form select, .kontakt-form textarea { border: 1px solid var(--line); background: #fff; padding: 13px 15px; font-size: 15px; color: var(--ink); font-family: var(--sans); border-radius: 5px; }
-.kontakt-form input:focus, .kontakt-form select:focus, .kontakt-form textarea:focus { outline: 2px solid var(--gold); outline-offset: -1px; }
-.form-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-.form-grid-3 { display: grid; grid-template-columns: 120px 1fr 180px; gap: 18px; }
-.form-grid-tel { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 18px; }
-.checkbox { flex-direction: row !important; align-items: flex-start; gap: 12px !important; text-transform: none !important; letter-spacing: 0 !important; font-size: 14px !important; color: var(--muted); }
-.checkbox input { width: 18px; height: 18px; accent-color: var(--gold); margin-top: 2px; }
-.form-footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
-.form-footer .small { max-width: 380px; text-align: right; margin: 0; }
-.form-status { color: var(--gold-dark); }
+
+.kontakt-form { padding: var(--raum-7); background: var(--grund); border: 1px solid var(--linie); }
+.kontakt-form h2 { margin-bottom: var(--raum-5); }
+.kontakt-form label,
+.mini-form label {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--raum-1);
+  font-size: var(--t-200); letter-spacing: 0.05em; color: var(--text-2); margin-bottom: var(--raum-4);
+}
+/* Das Feld bekommt immer eine eigene Zeile, die Beschriftung samt Pflichtstern
+   bleibt in einer. */
+.kontakt-form label > input,
+.kontakt-form label > select,
+.kontakt-form label > textarea,
+.mini-form label > input,
+.mini-form label > select,
+.mini-form label > textarea { flex: 1 0 100%; margin-top: var(--raum-2); }
+/* 16 px ist die Grenze, unter der iOS beim Hineintippen zoomt und nicht mehr
+   herauszoomt. Darum tragen alle Felder mindestens --t-300 (17 px). */
+.kontakt-form input, .kontakt-form select, .kontakt-form textarea,
+.mini-form input, .mini-form select, .mini-form textarea {
+  border: 1px solid var(--linie); border-radius: var(--radius); background: var(--flaeche);
+  padding: var(--raum-3) var(--raum-4); min-height: var(--ziel-gross);
+  font-size: var(--t-300); line-height: 1.4; color: var(--text); font-family: var(--sans);
+  min-width: 0; max-width: 100%;
+}
+.kontakt-form textarea, .mini-form textarea { min-height: 120px; }
+.kontakt-form input:focus, .kontakt-form select:focus, .kontakt-form textarea:focus,
+.mini-form input:focus, .mini-form textarea:focus { outline: 3px solid var(--gold); outline-offset: -1px; }
+
+/* Die 1fr-Spuren dürfen keine Mindestbreite aus dem Feldinhalt ziehen –
+   sonst nagelt Chromium das Formular auf 672 px fest (Querscrollen 641–699 px). */
+.form-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--raum-4); }
+.form-grid-3 { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.6fr) minmax(0, 1fr); gap: 0 var(--raum-4); }
+.form-grid-tel { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr) minmax(0, 1.6fr); gap: 0 var(--raum-4); }
+
+/* Das Pflichtkästchen: 44 × 44 px Trefferfläche, optisch 24 px.
+   Gezeichnet mit zwei Farbflächen, damit es ohne Fremdmittel auskommt. */
+.checkbox {
+  flex-direction: row !important; flex-wrap: nowrap !important; align-items: flex-start;
+  gap: var(--raum-3) !important; text-transform: none !important; letter-spacing: 0 !important;
+  font-size: var(--t-200) !important; color: var(--text-2);
+}
+.checkbox input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none;
+  flex: 0 0 var(--ziel-gross); width: var(--ziel-gross); height: var(--ziel-gross); margin: 0;
+  border: none; cursor: pointer;
+  background:
+    linear-gradient(var(--flaeche), var(--flaeche)) center / 22px 22px no-repeat,
+    linear-gradient(var(--linie), var(--linie)) center / 24px 24px no-repeat;
+}
+.checkbox input[type="checkbox"]:checked {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5.5 5.5L20 6'/%3E%3C/svg%3E") center / 16px 16px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) center / 24px 24px no-repeat;
+}
+.checkbox input[type="checkbox"]:focus-visible { outline: 3px solid var(--text); outline-offset: -10px; }
+/* Der Verweis auf die Datenschutzerklärung steht mitten im Satz und ist
+   trotzdem ein Tippziel – deshalb bekommt er Höhe statt nur Farbe. */
+.checkbox a { display: inline-block; padding-block: var(--raum-3); }
+
+.form-footer { display: flex; justify-content: space-between; align-items: center; gap: var(--raum-5); flex-wrap: wrap; }
+.form-footer .small { max-width: 60ch; text-align: left; margin: 0; }
+
+/* Rückmeldung: Fläche, Zeichen und Farbe – nicht Farbe allein. */
+.form-status {
+  font-size: var(--t-300); color: var(--text);
+  background: var(--flaeche-warm); border-left: 3px solid var(--gold);
+  padding: var(--raum-4) var(--raum-5); margin-top: var(--raum-4); max-width: 60ch;
+}
+.form-status::before { content: "✓ "; color: var(--gold); font-weight: 500; }
+.form-status.fehler { background: var(--fehler-flaeche); border-left-color: var(--fehler); }
+.form-status.fehler::before { content: "! "; color: var(--fehler); }
+
+/* Honigtopf gegen Bots: Das Feld muss im Seitenaufbau existieren, aber für
+   Menschen unerreichbar sein. Deshalb aus dem Sichtfeld schieben statt
+   display:none – manche automatischen Ausfüller überspringen ausgeblendete
+   Felder und tappen sonst nicht in die Falle. */
+.hp { position: absolute !important; left: -9999px !important; top: auto; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
 
 /* Kompaktes Anfrage-Formular (Behandlungsseiten-Aside) */
-.mini-form { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--card-border); }
-.mini-form label { display: flex; flex-direction: column; gap: 6px; font-size: 12px; letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; }
-.mini-form input, .mini-form textarea { border: 1px solid var(--line); background: #fff; padding: 11px 13px; font-size: 14px; color: var(--ink); font-family: var(--sans); border-radius: 2px; }
-.mini-form input:focus, .mini-form textarea:focus { outline: 2px solid var(--gold); outline-offset: -1px; }
-.mini-form .btn { width: 100%; margin-top: 4px; }
-.mini-form .checkbox { margin-bottom: 16px; }
+.mini-form { margin-top: var(--raum-5); padding-top: var(--raum-5); border-top: 1px solid var(--linie-zart); }
+.mini-form label { letter-spacing: 0.06em; text-transform: uppercase; }
+.mini-form .btn { width: 100%; margin-top: var(--raum-1); }
+.mini-form .checkbox { margin-bottom: var(--raum-4); text-transform: none; }
 
-/* Legal */
-.legal { max-width: 820px; }
-.legal h2 { font-size: 22px; margin-top: 32px; }
-.legal p { color: var(--muted); }
+/* Pflichtfeld-Zeichen und der Hinweis darunter gehören zusammen. */
+.pflicht { color: var(--gold); margin-inline-start: var(--raum-1); }
+.form-pflicht { color: var(--text-2); margin-top: var(--raum-2); }
 
-/* Responsive */
-@media (max-width: 1100px) {
-  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .faq-section { grid-template-columns: 1fr; gap: 24px; }
-  .detail-layout { grid-template-columns: 1fr; }
-  .detail-aside { position: static; }
-  .klinik-layout { grid-template-columns: 1fr; }
-  .kontakt-layout { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 900px) {
-  .main-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--card-border); }
+/* ==========================================================================
+   Rechtstexte
+   ========================================================================== */
+
+.legal { max-width: none; }
+.legal > * { max-width: 72ch; }
+.legal h2 { font-size: var(--t-500); margin-top: var(--raum-6); }
+.legal p { color: var(--text-2); }
+
+/* ==========================================================================
+   Haltepunkte
+   Weniger als vorher: die Raster regeln sich über minmax/auto-fit selbst.
+   ========================================================================== */
+
+@media (max-width: 1359px) {
+  /* Gemessen: die neun Punkte brauchen 1158 px plus acht Lücken; damit das
+     Band innerhalb des Satzspiegels bleibt, sind 1353 px nötig (Welle 1 kam
+     mit vier Punkten weniger auf 1200 px aus). Darunter der Menüknopf — das
+     Aufklappmenü ist seit dieser Welle die bessere Antwort als ein
+     gequetschtes Band. */
+  .main-nav {
+    display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 45;
+    background: var(--flaeche); border-bottom: 1px solid var(--linie);
+    box-shadow: var(--schatten-1);
+    /* Das Menü scrollt selbst, wenn es länger ist als der Bildschirm — im
+       Querformat ragte es vorher 71 px unter den Rand, und «Kontakt» lag
+       unter der Falz. «overscroll-behavior» hält die Seite dahinter still.
+       Die Höhe rechnet den Streifen mit ab: solange nicht gescrollt ist,
+       hängt das Menü unter dem ganzen Kopf (113 px), nach dem ersten Wisch
+       unter der klebenden Leiste (61 px). Der grössere der beiden Werte ist
+       der sichere. */
+    max-height: calc(100svh - var(--kopfhoehe) - var(--strip-hoehe));
+    overflow-y: auto; overscroll-behavior: contain;
+  }
   .main-nav.open { display: block; }
-  .main-nav-inner { flex-direction: column; align-items: flex-start; padding: 18px 4vw; gap: 16px; min-height: 0; }
-  .main-nav a { color: var(--ink); }
+  .main-nav-inner {
+    flex-direction: column; align-items: stretch; flex-wrap: wrap;
+    padding-block: var(--raum-2); gap: 0;
+  }
+  .main-nav a { display: flex; min-height: var(--ziel-gross); color: var(--text); font-size: var(--t-300); white-space: normal; }
+  .main-nav-inner > * + * { border-top: 1px solid var(--linie-zart); }
   .main-nav a:hover, .main-nav a.active { color: var(--gold); }
-  .nav-drop > a::after { color: var(--muted); }
-  .nav-toggle { display: block; }
-  .site-header { position: relative; }
-}
-@media (max-width: 640px) {
-  .grid-3 { grid-template-columns: 1fr; }
-  .grid-4 { grid-template-columns: 1fr; }
-  .hero { min-height: 540px; }
-  .hero-media { object-position: 70% center; }
-  .form-grid-2, .form-grid-3, .form-grid-tel { grid-template-columns: 1fr; gap: 0; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .section { padding: 56px 5vw; }
-  .ph-tile.wide-tile { grid-column: auto; }
-  .logo { height: 48px; }
+  /* Weisser Fokusring auf weissem Grund wäre unsichtbar — das Menü ist hier
+     hell, nicht mehr das dunkle Band. */
+  .main-nav :focus-visible { outline-color: var(--text); }
+  /* Name und Aufklappknopf teilen sich die Zeile, das Feld bekommt darunter
+     eine eigene. So sind die 32 Menü-Behandlungen am Handy erreichbar —
+     vorher waren alle 116 per «display: none !important» abgeschaltet
+     (Befund responsiv B2). */
+  .nav-drop { display: flex; width: 100%; flex-wrap: wrap; align-items: stretch; }
+  .nav-drop > .nav-drop-link { flex: 1 1 auto; min-width: 0; }
+  .nav-drop-knopf {
+    flex: 0 0 var(--ziel-gross); min-height: var(--ziel-gross); color: var(--text-2);
+    border-inline-start: 1px solid var(--linie-zart);
+  }
+  .nav-drop-knopf:hover { color: var(--gold); }
+  .nav-drop-panel { flex: 1 0 100%; background: var(--grund); border-top: 1px solid var(--linie-zart); }
+  .nav-drop-panel a { padding-inline-start: var(--raum-6); color: var(--text-2); }
+  .nav-drop-panel a.nav-drop-alle { border-top: 1px solid var(--linie-zart); }
+  .nav-toggle { display: flex; }
 }
 
-/* WhatsApp-Brandfarbe auf allen WhatsApp-Buttons */
-.btn.js-whatsapp { background: #25D366; color: #fff; }
-.btn.js-whatsapp:hover { background: #1fb457; color: #fff; }
+@media (max-width: 1199px) {
+  /* Spaltenlayouts – diese Grenze stammt aus Welle 1 und hat mit der
+     Navigation nichts zu tun. */
+  .detail-layout { grid-template-columns: minmax(0, 1fr); }
+  .klinik-layout { grid-template-columns: minmax(0, 1fr); }
+  .kontakt-layout { grid-template-columns: minmax(0, 1fr); }
+  .faq-section { grid-template-columns: minmax(0, 1fr); gap: var(--raum-5); }
+}
+
+@media (min-width: 1360px) {
+  /* Ab hier trägt der Kopf das Navigationsband, also klebt beides zusammen. */
+  :root { --kopfhoehe: 105px; }
+  .nav-drop-panel {
+    position: absolute; top: 100%; inset-inline-start: 0; z-index: 51;
+    background: var(--flaeche); border: 1px solid var(--linie); box-shadow: var(--schatten-1);
+    padding-block: var(--raum-2); min-width: 280px; max-width: calc(100vw - 2 * var(--rand));
+    max-height: 78vh; overflow-y: auto; overscroll-behavior: contain;
+  }
+  .nav-drop-panel a {
+    display: flex; align-items: center; min-height: var(--ziel);
+    padding-inline: var(--raum-5); font-size: var(--t-200); color: var(--text-2); white-space: nowrap;
+  }
+  .nav-drop-panel a:hover { color: var(--gold); background: var(--gold-flaeche); }
+  .nav-drop-panel a.nav-drop-alle { border-top: 1px solid var(--linie-zart); margin-top: var(--raum-2); padding-block: var(--raum-2); }
+  /* Die hinteren Aufklappfelder öffnen nach links, sonst stehen sie über dem Rand. */
+  .nav-drop:nth-of-type(n+4) > .nav-drop-panel { inset-inline-start: auto; inset-inline-end: 0; }
+  /* Die drei Einzelpunkte rücken ans Ende. Die Aufklapppunkte tragen einen
+     44 px breiten Knopf und stehen dadurch von selbst auseinander; ohne das
+     hier klebten Partnerklinik, Finanzierung und Kontakt als Block daneben. */
+  .main-nav-inner > a:first-of-type { margin-inline-start: auto; }
+}
+
+
+@media (max-width: 900px) {
+  /* Unter 900 px teilen sich Zeichen, Suchfeld und Menüknopf eine Zeile.
+     Der WhatsApp-Knopf entfällt — die feste Blase bietet denselben Weg. */
+  .header-bar { gap: var(--raum-2); }
+  .kopf-suche { flex: 1 1 120px; }
+  .header-actions .btn.js-whatsapp { display: none; }
+  .form-footer { flex-direction: column; align-items: stretch; }
+  .form-footer .btn { width: 100%; }
+  .form-footer .small { text-align: left; }
+}
+
+@media (max-width: 760px) {
+  /* Einspaltig, bevor die drei Formularspalten klemmen. */
+  .form-grid-2, .form-grid-3, .form-grid-tel { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}
+
+@media (max-width: 640px) {
+  .section, .usp-band, .cta-band { padding-block: var(--raum-8); }
+  /* Am Handy stehen bis zu 49 Karten untereinander – dort zählt jeder
+     eingesparte Abstand, ohne dass die Schrift kleiner wird. */
+  .grid-3, .grid-4 { gap: var(--raum-4); }
+  .t-card { padding: var(--raum-4); gap: var(--raum-1); }
+  .cat-card { padding: var(--raum-5) var(--raum-4); }
+  .page-band { padding-block: var(--raum-6); }
+  .page-band.slim { padding-block: var(--raum-5); }
+  .section, .page-band, .usp-band, .cta-band, .site-footer { padding-inline: 5vw; }
+  .hero { min-height: min(540px, 88svh); }
+  .hero-media { object-position: 70% center; }
+  /* In schmaler Spalte steht der Text über der ganzen Bildbreite – der Verlauf
+     muss deshalb senkrecht laufen, waagrecht trägt er die Schrift nicht. */
+  .hero-overlay {
+    background: linear-gradient(180deg,
+        rgba(10, 10, 10, .80) 0%,
+        rgba(10, 10, 10, .70) 45%,
+        rgba(10, 10, 10, .86) 100%);
+  }
+  .ph-tile.wide-tile { grid-column: auto; }
+  .kontakt-form { padding: var(--raum-5); }
+  .footer-bottom { margin-top: var(--raum-6); }
+}
+
+@media (max-width: 900px) and (min-width: 641px) {
+  /* Zwischen Handy und Laptop steht die Textspalte oft über der hellen
+     Bildhälfte – dort dieselbe senkrechte Absicherung, nur etwas leichter. */
+  .hero-overlay {
+    background: linear-gradient(180deg,
+        rgba(10, 10, 10, .78) 0%,
+        rgba(10, 10, 10, .66) 45%,
+        rgba(10, 10, 10, .84) 100%);
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  /* Im Querformat gehören Überschrift und Handlungsaufruf ins erste Bild. */
+  .hero, .hero-sub { min-height: 100svh; }
+  .hero-content { padding-block: var(--raum-5); }
+  .hero-content p { display: none; }
+  .hero-trust { display: none; }
+}
+
+/* ==========================================================================
+   Rechts-nach-links (Arabisch)
+   Alles ausschliesslich unter [dir="rtl"]. Für linksläufige Sprachen ändert
+   sich dadurch nichts. Wo möglich mit logischen Eigenschaften gearbeitet;
+   die zugehörige physische Angabe aus dem Grundteil wird vorher neutralisiert.
+   ========================================================================== */
+
+[dir="rtl"] body { text-align: start; }
+
+/* Ausrichtungen, die im Grundteil hart auf rechts stehen */
+[dir="rtl"] .form-footer .small { text-align: left; }
+
+/* Buchstabensperrung bricht arabische Schrift auf (die Zeichen sind verbunden).
+   Eigennamen in lateinischer Schrift (ETA, EUROPEAN TURKEY ASIA, Sprachkürzel,
+   Telefonnummer) behalten ihre Sperrung. */
+[dir="rtl"] .eyebrow,
+[dir="rtl"] .footer-title,
+[dir="rtl"] .cat-count,
+[dir="rtl"] .crumbs,
+[dir="rtl"] .btn,
+[dir="rtl"] .link,
+[dir="rtl"] .main-nav a,
+[dir="rtl"] .nav-drop-group-label,
+[dir="rtl"] .kontakt-form label,
+[dir="rtl"] .mini-form label,
+[dir="rtl"] .price-box span,
+[dir="rtl"] .ph-text { letter-spacing: normal; }
+
+/* Aus dem Sichtfeld geschobene Elemente. «left: -9999px» erzeugt im
+   rechtsläufigen Satz eine scrollbare Fläche von 9999 px — gemessen: auf
+   /index.html bei 390 px war das Dokument 10 389 px breit, jede arabische
+   Seite hatte einen waagrechten Rollbalken. Rechtsläufig gehören diese
+   Elemente nach rechts hinaus, dort ist der Überstand nicht scrollbar. */
+[dir="rtl"] .skip-link { left: auto; right: -9999px; }
+[dir="rtl"] .skip-link:focus { left: auto; right: var(--raum-4); }
+[dir="rtl"] .hp { left: auto !important; right: -9999px !important; }
+
+/* Kopfzeile und Navigation */
+[dir="rtl"] .nav-drop-panel { left: auto; right: auto; inset-inline-start: 0; }
+[dir="rtl"] .nav-drop-panel a { text-align: start; }
+@media (min-width: 1360px) {
+  [dir="rtl"] .nav-drop:nth-of-type(n+4) > .nav-drop-panel { inset-inline-start: auto; inset-inline-end: 0; }
+}
+
+/* Schwebende WhatsApp-Blase wandert auf die linke Seite */
+[dir="rtl"] .wa-float { right: auto; inset-inline-end: max(var(--raum-4), env(safe-area-inset-left)); }
+
+/* Hero: Bildausschnitt und Abdunklung müssen mitspiegeln, sonst steht der
+   Text auf der hellen Bildseite */
+[dir="rtl"] .hero-media { object-position: left center; }
+[dir="rtl"] .hero-overlay {
+  background: linear-gradient(270deg,
+      rgba(10, 10, 10, .92) 0%,
+      rgba(10, 10, 10, .86) 30%,
+      rgba(10, 10, 10, .62) 55%,
+      rgba(10, 10, 10, .22) 85%,
+      rgba(10, 10, 10, .12) 100%);
+}
+
+/* Bild-Wasserzeichen in die gegenüberliegende Ecke */
+[dir="rtl"] .ph-wm { right: auto; inset-inline-end: var(--raum-4); }
+
+/* Aufzählungen: Einzug und Zählmarke wechseln die Seite.
+   Das Häkchen selbst wird nicht gespiegelt, es ist kein Schriftzeichen. */
+[dir="rtl"] .ablauf-list li { padding-left: 0; padding-inline-start: var(--raum-8); }
+[dir="rtl"] .ablauf-list li::before { left: auto; inset-inline-start: 0; }
+[dir="rtl"] .check-list li { padding-left: 0; padding-inline-start: var(--raum-6); }
+[dir="rtl"] .check-list li::before { left: auto; inset-inline-start: 0; }
+
+/* Einseitige Abstände und Linien */
+[dir="rtl"] .note-box { border-left: 0; border-inline-start: 3px solid var(--gold); }
+[dir="rtl"] .form-status { border-left: 0; border-inline-start: 3px solid var(--gold); }
+[dir="rtl"] .form-status.fehler { border-inline-start-color: var(--fehler); }
+
+/* Mobile Sonderfälle, die sonst von den Regeln oben überstimmt würden */
+@media (max-width: 640px) {
+  [dir="rtl"] .hero-media { object-position: 30% center; }
+  [dir="rtl"] .hero-overlay {
+    background: linear-gradient(180deg,
+        rgba(10, 10, 10, .80) 0%,
+        rgba(10, 10, 10, .70) 45%,
+        rgba(10, 10, 10, .86) 100%);
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "_lies_mich": "Zweiter Zugang zum Katalog: nach Anliegen statt nach Verfahren, plus Vergleichstabellen je Gruppe. Befund inhalt B12: Die meisten Interessenten kennen nicht das Verfahren, sondern ihr Anliegen. Wer sich nicht entscheiden kann, fragt nicht an — er vertagt.\n\nDie Vergleichstabellen ziehen ihre Werte aus data/behandlungsdaten.json. Wo ein Feld dort leer ist, bleibt die Zelle leer — sie wird nicht mit einem Platzhalter gefüllt.",
+  "stand": "2026-09-20",
+  "freigabe": "offen",
+  "anliegen": [
+    {
+      "id": "haut-muede",
+      "titel": "Meine Haut wirkt müde und fahl",
+      "text": "Wenn nicht das Gesichtsoval das Thema ist, sondern die Oberfläche — Glanz, Textur, Poren, feine Knitterfältchen —, dann geht es um Hautqualität. Dafür gibt es andere Verfahren als für Erschlaffung, und sie brauchen meist mehrere Sitzungen.",
+      "verfahren": [
+        "hydrafacial",
+        "mesotherapie-gesicht",
+        "skinbooster-jungbrunnen",
+        "chemisches-peeling",
+        "fraktionierter-laser",
+        "bbl-lichttherapie"
+      ],
+      "vergleich": "haut-beauty/hautverjuengung-pflege"
+    },
+    {
+      "id": "oval-sackt-ab",
+      "titel": "Mein Gesichtsoval sackt ab",
+      "text": "Unschärfer werdende Kinnlinie, abgesunkene Wangen, beginnende Hängebäckchen: Hier entscheidet der Grad. Bei beginnender Erschlaffung kommen Verfahren ohne Operation in Frage; bei deutlichem Hautüberschuss ist ein Facelifting die ehrliche Antwort — alles andere wäre Geld für ein Jahr.",
+      "verfahren": [
+        "hifu-facelifting",
+        "fadenlifting",
+        "microneedling-rf",
+        "facelifting"
+      ],
+      "vergleich": "haut-beauty/straffung-ohne-op"
+    },
+    {
+      "id": "falten-mimik",
+      "titel": "Mich stören meine Zornes- und Stirnfalten",
+      "text": "Falten, die beim Sprechen und Lachen entstehen, kommen vom Muskel darunter. Falten, die auch im entspannten Gesicht bleiben, kommen aus der Haut. Für das eine ist Botox gedacht, für das andere Filler oder Laser. Die Unterscheidung gehört an den Anfang der Beratung, nicht ans Ende.",
+      "verfahren": [
+        "stirn-botox",
+        "gesichts-botox",
+        "augenbrauen-botox",
+        "nasolabial-filler",
+        "laser-faltenbehandlung"
+      ],
+      "vergleich": "haut-beauty/botox"
+    },
+    {
+      "id": "volumen-fehlt",
+      "titel": "Mein Gesicht wirkt eingefallen",
+      "text": "Mit den Jahren geht Volumen verloren — an den Wangen, an den Schläfen, unter den Augen. Filler geben es zurück. Der häufigste Fehler dabei ist zu viel: Ein aufgepolstertes Gesicht wirkt älter, nicht jünger.",
+      "verfahren": [
+        "wangen-filler",
+        "jawline-filler",
+        "augenringe-filler",
+        "eigenfett-transfer"
+      ],
+      "vergleich": "haut-beauty/hyaluron-filler"
+    },
+    {
+      "id": "geheimratsecken",
+      "titel": "Mein Haar wird lichter",
+      "text": "Zuerst zählt die Frage, ob noch Haarwurzeln da sind. Wo sie geschwächt sind, kommen Behandlungen ohne Operation in Frage; wo sie fehlen, hilft nur eine Transplantation. Beides schliesst sich nicht aus — und bei erblichem Haarausfall sollte parallel besprochen werden, was den weiteren Verlust bremst.",
+      "verfahren": [
+        "fue-haartransplantation",
+        "dhi-haartransplantation",
+        "saphir-haartransplantation",
+        "haar-prp",
+        "haar-mesotherapie",
+        "haarpigmentierung"
+      ],
+      "vergleich": "haartransplantation/haartransplantation"
+    },
+    {
+      "id": "haar-frauen",
+      "titel": "Mein Scheitel wird breiter",
+      "text": "Weiblicher Haarausfall ist häufiger diffus als bei Männern, und er hat oft eine behandelbare Ursache: Eisen, Schilddrüse, Hormone, Medikamente. Vor jeder Transplantation gehört deshalb die Abklärung — sonst verpflanzt man in einen laufenden Prozess hinein.",
+      "verfahren": [
+        "haartransplantation-frauen",
+        "haar-prp",
+        "haar-mesotherapie"
+      ],
+      "vergleich": "haartransplantation/haarbehandlungen-ohne-op"
+    },
+    {
+      "id": "bauch-nach-schwangerschaft",
+      "titel": "Mein Bauch ist nach der Schwangerschaft nicht zurückgekommen",
+      "text": "Wenn Haut übrig ist und die geraden Bauchmuskeln auseinandergewichen sind, reagiert das auf kein Training. Wenn nur einzelne Fettpolster stören und die Haut straff ist, ist eine Fettabsaugung der kleinere Eingriff. Voraussetzung für beides: stabiles Gewicht und abgeschlossene Familienplanung.",
+      "verfahren": [
+        "bauchdeckenstraffung",
+        "fettabsaugung",
+        "kryolipolyse"
+      ],
+      "vergleich": "plastische-chirurgie/koerper"
+    },
+    {
+      "id": "fettpolster",
+      "titel": "Einzelne Fettpolster gehen nicht weg",
+      "text": "Wenn der Rest des Körpers auf Sport und Ernährung reagiert und eine Stelle nicht, geht es um Form, nicht um Gewicht. Keines dieser Verfahren hilft beim Abnehmen — und wer mit dieser Erwartung kommt, riskiert, dass zu viel gemacht wird.",
+      "verfahren": [
+        "fettabsaugung",
+        "kryolipolyse",
+        "fettweg-mesotherapie",
+        "radiofrequenz"
+      ],
+      "vergleich": "haut-beauty/koerperformung"
+    },
+    {
+      "id": "brust",
+      "titel": "Meine Brust hat sich verändert",
+      "text": "Zwei verschiedene Fragen: Fehlt Volumen, oder ist die Brust abgesunken? Eine Vergrösserung schafft Volumen, aber keine Straffung; eine Straffung schafft Form, aber kein Volumen. Wer beides möchte, braucht beides — mit entsprechend mehr Aufwand und Risiko.",
+      "verfahren": [
+        "brustvergroesserung",
+        "bruststraffung",
+        "eigenfett-transfer"
+      ],
+      "vergleich": "plastische-chirurgie/brust"
+    },
+    {
+      "id": "nase",
+      "titel": "Meine Nase stört mich",
+      "text": "Geht es um einen Höcker, eine Schiefstellung oder die Spitze — und bekommen Sie gut Luft? Kleine Unebenheiten lassen sich ohne Operation mit Filler ausgleichen, mit begrenztem Umfang und begrenzter Dauer. Alles Weitere, und besonders alles, was mit der Atmung zu tun hat, ist ein operativer Eingriff.",
+      "verfahren": [
+        "nasenkorrektur",
+        "nasen-filler"
+      ],
+      "vergleich": "plastische-chirurgie/gesicht"
+    },
+    {
+      "id": "blick-muede",
+      "titel": "Mein Blick wirkt müde",
+      "text": "Der entscheidende Unterschied: Liegt es am Lid oder an der Braue? Ein einfacher Hinweis — heben Sie die Braue sanft mit dem Finger an. Wirkt das Auge dann schon wach, ist die Braue das Thema, und eine Lidstraffung wäre der falsche Eingriff.",
+      "verfahren": [
+        "lidstraffung",
+        "brauenlifting-schlaefenstraffung",
+        "augenbrauen-botox",
+        "augenringe-filler"
+      ],
+      "vergleich": "plastische-chirurgie/gesicht"
+    },
+    {
+      "id": "zaehne",
+      "titel": "Ich mag meine Zähne nicht zeigen",
+      "text": "Zu dunkel, abgebrochen, schief oder alles zusammen? Sind die Zähne gesund und nur verfärbt, reicht eine Aufhellung und kostet keine Zahnsubstanz. Sind sie gesund, aber schief, ist eine kieferorthopädische Behandlung schonender. Erst wenn Substanz fehlt, sind Veneers oder Kronen die richtige Antwort — und was abgetragen wird, kommt nicht zurück.",
+      "verfahren": [
+        "bleaching",
+        "kronen-veneers",
+        "hollywood-smile",
+        "zahnimplantate"
+      ],
+      "vergleich": "zaehne/zahnaesthetik-zahnbehandlungen"
+    },
+    {
+      "id": "koerperbehaarung",
+      "titel": "Ich will weniger Körperbehaarung",
+      "text": "Laser wirkt über das Pigment im Haar. Dunkles Haar spricht gut an, helles, rotes und graues kaum. Es ist eine dauerhafte Haarreduktion, keine dauerhafte Haarfreiheit — und sie braucht sechs bis zehn Sitzungen.",
+      "verfahren": [
+        "laser-haarentfernung"
+      ],
+      "vergleich": "haut-beauty/laser-behandlungen"
+    }
+  ],
+  "vergleiche": {
+    "_hinweis": "Je Gruppe eine Gegenüberstellung. Die Spalten sind Feldnamen aus data/behandlungsdaten.json; der Generator liest die Werte dort und lässt leere Zellen leer. So wächst die Tabelle automatisch mit, sobald ETA die Daten füllt — und sie erfindet nie etwas.",
+    "spalten_standard": [
+      "dauer_eingriff",
+      "betaeubung",
+      "ausfallzeit_alltag",
+      "haltbarkeit",
+      "sitzungen",
+      "preis_ab"
+    ],
+    "gruppen": {
+      "haut-beauty/straffung-ohne-op": {
+        "titel": "HIFU, Fäden, Radiofrequenz und Mesolifting im Vergleich",
+        "behandlungen": [
+          "hifu-facelifting",
+          "fadenlifting",
+          "microneedling-rf",
+          "gesichts-mesolifting"
+        ],
+        "entscheidungshilfe": "Alle vier straffen ohne Operation, aber sie tun Verschiedenes. HIFU wirkt flächig über neu gebildetes Kollagen, ohne Ausfallzeit, mit langsamem Aufbau über zwei bis drei Monate. Fäden heben mechanisch an und wirken sofort, kosten aber einige Tage Schwellung. Radiofrequenz mit Microneedling zielt zusätzlich auf die Hautqualität. Mesolifting ist vor allem Feuchtigkeit und straffend nur begrenzt. Keines von ihnen ersetzt ein Facelifting bei deutlichem Hautüberschuss — das ist der Satz, den eine Beratung sagen muss, wenn er zutrifft."
+      },
+      "haartransplantation/haartransplantation": {
+        "titel": "FUE, DHI, Saphir und perkutan im Vergleich",
+        "behandlungen": [
+          "fue-haartransplantation",
+          "dhi-haartransplantation",
+          "saphir-haartransplantation",
+          "perkutane-haartransplantation"
+        ],
+        "entscheidungshilfe": "Alle vier sind Varianten derselben Grundmethode: Einzelentnahme aus dem Haarkranz, Einsetzen im lichten Bereich. Der Unterschied liegt im Werkzeug. Saphir betrifft die Klinge, mit der die Kanäle geöffnet werden; DHI betrifft den Stift, mit dem das Haar eingesetzt wird. Grob: klassische FUE bei grossen Flächen, DHI bei Haarlinie und Verdichtung zwischen vorhandenem Haar. Wer Ihnen eine der Varianten ohne Blick auf Ihren Befund als die generell bessere verkauft, verkauft und berät nicht. Die Zahl, nach der Sie Angebote vergleichen, heisst in allen vier Fällen gleich: Grafts."
+      },
+      "plastische-chirurgie/brust": {
+        "titel": "Vergrösserung, Straffung und Eigenfett im Vergleich",
+        "behandlungen": [
+          "brustvergroesserung",
+          "bruststraffung",
+          "eigenfett-transfer"
+        ],
+        "entscheidungshilfe": "Volumen und Form sind zwei verschiedene Fragen. Ein Implantat gibt Volumen und hält meist zehn bis fünfzehn Jahre — rechnen Sie einen Wechsel mit ein. Eigenfett geht ohne Fremdmaterial, aber nur um eine knappe Körbchengrösse pro Sitzung, und ein Teil wird wieder abgebaut. Eine Straffung hebt und formt, füllt aber nicht."
+      },
+      "zaehne/zahnaesthetik-zahnbehandlungen": {
+        "titel": "Aufhellung, Veneers, Kronen und Implantate im Vergleich",
+        "behandlungen": [
+          "bleaching",
+          "kronen-veneers",
+          "hollywood-smile",
+          "zahnimplantate"
+        ],
+        "entscheidungshilfe": "Sortiert nach dem, was Sie dabei an Zahnsubstanz verlieren: Eine Aufhellung kostet keine. Ein Veneer kostet wenig Schmelz. Eine Krone verlangt, dass der Zahn rundum beschliffen wird — und das ist endgültig. Ein Implantat ersetzt einen Zahn, der schon fehlt. Fragen Sie bei jedem Pauschalangebot nach, ob Veneers oder Kronen geplant sind; viele Angebote arbeiten aus Zeitgründen mit Kronen, und der Unterschied ist erheblich."
+      },
+      "plastische-chirurgie/koerper": {
+        "titel": "Absaugen oder straffen?",
+        "behandlungen": [
+          "fettabsaugung",
+          "bauchdeckenstraffung",
+          "oberschenkelstraffung",
+          "oberarmstraffung"
+        ],
+        "entscheidungshilfe": "Die Frage ist nicht, wie viel Fett weg soll, sondern wie gut sich die Haut zurückzieht. Ist sie straff, reicht Absaugen. Ist sie erschlafft, entsteht durch Absaugen eine leere Hülle, und die richtige Antwort ist eine Straffung — mit Narbe. Beide Eingriffe verlangen ein stabiles Gewicht, und beide haben in diesem Katalog das höchste Thromboserisiko."
+      }
+    }
+  },
+  "verwandte_behandlungen": {
+    "hinweis": "Befund inhalt B5 und B12: Keine Behandlungsseite verlinkt heute eine verwandte Behandlung. Wer auf «Fadenlifting» landet, hat keinen Weg zu «HIFU» ausser über das Menü. Die Zuordnung steht je Behandlung in data/behandlungsdaten.json → verwandt und ist aus der Gruppenzugehörigkeit abgeleitet, also vollständig für alle 101 Behandlungen."
+  },
+  "lokale_alternative": {
+    "hinweis": "Befund inhalt B12, Punkt 4: «Diese Behandlung gibt es auch in St. Margrethen» wird heute als grauer Hinweiskasten für 20 von 101 Behandlungen gezeigt. Das ist kein Kleingedrucktes, sondern das stärkste Beratungsargument, das ETA hat: «Für diese Behandlung müssen Sie nicht fliegen.» Ein Vermittler, der einem auch mal von der Reise abrät, wird glaubwürdiger, nicht weniger.",
+    "text": "Diese Behandlung bietet unser Nachsorge-Partner Riverside Beauty auch in St. Margrethen an. Bei einer Behandlung dieser Grössenordnung lohnt eine Reise meist nicht — wir sagen Ihnen gern, was in Ihrem Fall sinnvoller ist.",
+    "freigabe": "offen"
+  }
+}

@@ -1,0 +1,2509 @@
+{
+ "hero-a.jpg": {
+  "breite": 1920,
+  "hoehe": 1085,
+  "webp": [
+   {
+    "breite": 480,
+    "hoehe": 271
+   },
+   {
+    "breite": 960,
+    "hoehe": 543
+   },
+   {
+    "breite": 1170,
+    "hoehe": 661
+   },
+   {
+    "breite": 1440,
+    "hoehe": 814
+   },
+   {
+    "breite": 1920,
+    "hoehe": 1085
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 960,
+    "hoehe": 543
+   },
+   {
+    "breite": 1440,
+    "hoehe": 814
+   }
+  ]
+ },
+ "hero-b.jpg": {
+  "breite": 1920,
+  "hoehe": 1085,
+  "webp": [
+   {
+    "breite": 480,
+    "hoehe": 271
+   },
+   {
+    "breite": 960,
+    "hoehe": 543
+   },
+   {
+    "breite": 1170,
+    "hoehe": 661
+   },
+   {
+    "breite": 1440,
+    "hoehe": 814
+   },
+   {
+    "breite": 1920,
+    "hoehe": 1085
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 960,
+    "hoehe": 543
+   },
+   {
+    "breite": 1440,
+    "hoehe": 814
+   }
+  ]
+ },
+ "og-image.jpg": {
+  "breite": 1200,
+  "hoehe": 678,
+  "webp": [],
+  "jpg": [
+   {
+    "breite": 1200,
+    "hoehe": 678
+   }
+  ]
+ },
+ "behandlungen/4d-hautverjuengung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/achselaufhellung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/allgemeinchirurgie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/anaesthesiologie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/augenbrauen-botox.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/augenbrauentransplantation.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/augenringe-filler.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/barthaartransplantation.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/bauchdeckenstraffung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/bbl-lichttherapie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/besenreiser-couperose.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/bleaching.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/botox-achseln.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/botox-haende.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/brauenlifting-schlaefenstraffung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/bruststraffung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/brustvergroesserung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/check-up.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/chemisches-peeling.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/dehnungsstreifen-pigmentflecken.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/dermatologie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/dhi-haartransplantation.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/eigenfett-transfer.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/ernaehrungsberatung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/facelifting.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/fadenlifting.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/fettabsaugung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/fettweg-mesotherapie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/feuermal-behandlung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/fraktionierter-laser.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/fue-haartransplantation.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/g5-cellulite-massage.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/gefaessveraenderungen.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/gesichts-botox.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/gesichts-mesolifting.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/gesichtsverjuengung-filler.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/gesundheitsatteste.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/gynaekologie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/haar-mesotherapie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/haar-prp.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/haaraufhellung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/haarpigmentierung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/haartransplantation-frauen.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/hifu-facelifting.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/hno.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/hollywood-smile.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/hydrafacial.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/innere-medizin.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/intimaufhellung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/jawline-filler.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/karbon-peeling.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/komplementaermedizin.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/kronen-veneers.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/kryolipolyse.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/labor.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/lachs-dna-serum.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/laser-faltenbehandlung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/laser-haarentfernung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/laser-hautaufhellung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/laser-pigmentflecken.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/laser-tattooentfernung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/lidstraffung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/lippen-botox.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/lippen-filler.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/lymphdrainage.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/masseter-botox.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/medizinische-hautpflege.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/mesotherapie-gesicht.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/microneedling-rf.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/nasen-filler.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/nasenkorrektur.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/nasolabial-filler.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/oberarmstraffung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/oberschenkelstraffung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/ohrenkorrektur.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/orthopaedie-traumatologie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/penis-eigenfett.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/penis-prp.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/penisvergroesserung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/penisverkruemmung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/perkutane-haartransplantation.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/physiotherapie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/prp-vampirlifting.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/q-switch-laser.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/radiofrequenz.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/radiologie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/saphir-haartransplantation.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/schamlippenkorrektur.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/skinbooster-jungbrunnen.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/smart-filler.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/stammzellen-therapie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/stirn-botox.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/stosswellentherapie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/urologie.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/venushuegel-korrektur.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/wangen-filler.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/wurzelbehandlung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/zahnfuellungen.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/zahnimplantate.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/zahnprothesen.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ },
+ "behandlungen/zahnreinigung.jpg": {
+  "breite": 1200,
+  "hoehe": 1200,
+  "webp": [
+   {
+    "breite": 400,
+    "hoehe": 400
+   },
+   {
+    "breite": 600,
+    "hoehe": 600
+   },
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ],
+  "jpg": [
+   {
+    "breite": 800,
+    "hoehe": 800
+   }
+  ]
+ }
+}
